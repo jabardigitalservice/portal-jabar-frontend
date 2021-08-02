@@ -114,6 +114,56 @@ export default {
               items: []
             }
           ]
+        },
+        {
+          id: 3,
+          title: 'Tentang Jawa Barat',
+          link: '#',
+          items: [
+            {
+              id: 1,
+              title: null,
+              description: null,
+              icon: null,
+              link: '#',
+              items: [
+                {
+                  id: 1,
+                  title: 'Visi dan Misi',
+                  link: '#'
+                },
+                {
+                  id: 2,
+                  title: 'Struktur Pemerintahan',
+                  link: '#'
+                },
+                {
+                  id: 3,
+                  title: 'Perangkat Daerah',
+                  link: '#'
+                }
+              ]
+            },
+            {
+              id: 2,
+              title: null,
+              description: null,
+              icon: null,
+              link: '#',
+              items: [
+                {
+                  id: 1,
+                  title: 'Program Unggulan',
+                  link: '#'
+                },
+                {
+                  id: 2,
+                  title: 'Ekosistem Data Jawa Barat',
+                  link: '#'
+                }
+              ]
+            }
+          ]
         }
       ],
       activeMenu: null
