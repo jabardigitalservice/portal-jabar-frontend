@@ -75,6 +75,45 @@ export default {
               items: []
             }
           ]
+        },
+        {
+          id: 2,
+          title: 'Informasi dan Berita',
+          link: '#',
+          items: [
+            {
+              id: 1,
+              title: 'Informasi',
+              description: null,
+              icon: null,
+              link: '#',
+              items: [
+                {
+                  id: 1,
+                  title: 'Lowongan Kerja dan Pelatihan',
+                  link: '#'
+                },
+                {
+                  id: 2,
+                  title: 'Informasi Bantuan Pemerintah',
+                  link: '#'
+                },
+                {
+                  id: 3,
+                  title: 'Informasi Relawan',
+                  link: '#'
+                }
+              ]
+            },
+            {
+              id: 2,
+              title: 'Berita',
+              description: null,
+              icon: null,
+              link: 'http://humas.jabarprov.go.id/',
+              items: []
+            }
+          ]
         }
       ],
       activeMenu: null
