@@ -1,3 +1,5 @@
 <template>
-  <main />
+  <main>
+    <FeaturedProgram />
+  </main>
 </template>
