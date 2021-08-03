@@ -1,3 +1,5 @@
 <template>
-  <main />
+  <main>
+    <QuickLink />
+  </main>
 </template>
