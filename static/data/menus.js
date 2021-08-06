@@ -3,7 +3,7 @@ export const quickLinkMenu = [
     id: 1,
     title: 'Kependudukan',
     description: 'Ketahui lebih lanjut tentang semua hal hebat yang ditawarkan Jawa Barat.',
-    icon: '/icons/kependudukan.svg',
+    icon: '/icons/kependudukan-icon.svg',
     link: 'http://disdukcapil.jabarprov.go.id/portal'
   },
   {
