@@ -83,6 +83,18 @@
               </a>
             </div>
           </div>
+          <div class="flex flex-col gap-6">
+            <p class="font-medium">
+              Layanan Pemerintah
+            </p>
+            <ul class="flex flex-col gap-4 text-sm">
+              <li v-for="menu in menus" :key="menu.id">
+                <MenuLink :link="menu.link">
+                  {{ menu.title }}
+                </MenuLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -114,7 +126,14 @@
 </template>
 
 <script>
+import { layananPemerintahMenu } from '~/static/data/menus'
+
 export default {
+  data () {
+    return {
+      menus: layananPemerintahMenu
+    }
+  },
   computed: {
     year () {
       return new Date().getFullYear()
