@@ -32,7 +32,8 @@
               <div class="flex gap-3">
                 <div class="py-0.5">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.41333 7.19333C5.37333 9.08 6.92 10.62 8.80667 11.5867L10.2733 10.12C10.4533 9.94 10.72 9.88 10.9533 9.96C11.7 10.2067 12.5067 10.34 13.3333 10.34C13.7 10.34 14 10.64 14 11.0067V13.3333C14 13.7 13.7 14 13.3333 14C7.07333 14 2 8.92667 2 2.66667C2 2.3 2.3 2 2.66667 2H5C5.36667 2 5.66667 2.3 5.66667 2.66667C5.66667 3.5 5.8 4.3 6.04667 5.04667C6.12 5.28 6.06667 5.54 5.88 5.72667L4.41333 7.19333Z" fill="white" /><mask
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.41333 7.19333C5.37333 9.08 6.92 10.62 8.80667 11.5867L10.2733 10.12C10.4533 9.94 10.72 9.88 10.9533 9.96C11.7 10.2067 12.5067 10.34 13.3333 10.34C13.7 10.34 14 10.64 14 11.0067V13.3333C14 13.7 13.7 14 13.3333 14C7.07333 14 2 8.92667 2 2.66667C2 2.3 2.3 2 2.66667 2H5C5.36667 2 5.66667 2.3 5.66667 2.66667C5.66667 3.5 5.8 4.3 6.04667 5.04667C6.12 5.28 6.06667 5.54 5.88 5.72667L4.41333 7.19333Z" fill="white" />
+                    <mask
                       id="mask0"
                       mask-type="alpha"
                       maskUnits="userSpaceOnUse"
@@ -40,7 +41,8 @@
                       y="2"
                       width="12"
                       height="12"
-                    ><path fill-rule="evenodd" clip-rule="evenodd" d="M4.41333 7.19333C5.37333 9.08 6.92 10.62 8.80667 11.5867L10.2733 10.12C10.4533 9.94 10.72 9.88 10.9533 9.96C11.7 10.2067 12.5067 10.34 13.3333 10.34C13.7 10.34 14 10.64 14 11.0067V13.3333C14 13.7 13.7 14 13.3333 14C7.07333 14 2 8.92667 2 2.66667C2 2.3 2.3 2 2.66667 2H5C5.36667 2 5.66667 2.3 5.66667 2.66667C5.66667 3.5 5.8 4.3 6.04667 5.04667C6.12 5.28 6.06667 5.54 5.88 5.72667L4.41333 7.19333Z" fill="white" />
+                    >
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M4.41333 7.19333C5.37333 9.08 6.92 10.62 8.80667 11.5867L10.2733 10.12C10.4533 9.94 10.72 9.88 10.9533 9.96C11.7 10.2067 12.5067 10.34 13.3333 10.34C13.7 10.34 14 10.64 14 11.0067V13.3333C14 13.7 13.7 14 13.3333 14C7.07333 14 2 8.92667 2 2.66667C2 2.3 2.3 2 2.66667 2H5C5.36667 2 5.66667 2.3 5.66667 2.66667C5.66667 3.5 5.8 4.3 6.04667 5.04667C6.12 5.28 6.06667 5.54 5.88 5.72667L4.41333 7.19333Z" fill="white" />
                     </mask>
                     <g mask="url(#mask0)" />
                   </svg>
@@ -69,17 +71,8 @@
               </div>
             </div>
             <div class="flex gap-2">
-              <a href="https://www.facebook.com/jabarprov" target="_blank" rel="noreferrer">
-                <img src="/icons/facebook-footer.svg" alt="Facebook" width="34" height="34">
-              </a>
-              <a href="https://www.instagram.com/jabarprovgoid" target="_blank" rel="noreferrer">
-                <img src="/icons/instagram-footer.svg" alt="Instagram" width="34" height="34">
-              </a>
-              <a href="https://twitter.com/jabarprovgoid" target="_blank" rel="noreferrer">
-                <img src="/icons/twitter-footer.svg" alt="Twitter" width="34" height="34">
-              </a>
-              <a href="https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA" target="_blank" rel="noreferrer">
-                <img src="/icons/youtube-footer.svg" alt="Youtube" width="34" height="34">
+              <a v-for="socialMediaSite in socialMediaSites" :key="socialMediaSite.id" :href="socialMediaSite.link" target="_blank" rel="noreferrer">
+                <img :src="socialMediaSite.icon" :alt="socialMediaSite.name" width="34" height="34">
               </a>
             </div>
           </div>
@@ -131,7 +124,33 @@ import { layananPemerintahMenu } from '~/static/data/menus'
 export default {
   data () {
     return {
-      menus: layananPemerintahMenu
+      menus: layananPemerintahMenu,
+      socialMediaSites: [
+        {
+          id: 1,
+          name: 'Facebook',
+          icon: '/icons/facebook-footer.svg',
+          link: 'https://www.facebook.com/jabarprov'
+        },
+        {
+          id: 2,
+          name: 'Instagram',
+          icon: '/icons/instagram-footer.svg',
+          link: 'https://www.instagram.com/jabarprovgoid'
+        },
+        {
+          id: 3,
+          name: 'Twitter',
+          icon: '/icons/twitter-footer.svg',
+          link: 'https://twitter.com/jabarprovgoid'
+        },
+        {
+          id: 4,
+          name: 'YouTube',
+          icon: '/icons/youtube-footer.svg',
+          link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
+        }
+      ]
     }
   },
   computed: {
