@@ -56,7 +56,7 @@
           </div>
           <div class="flex flex-col gap-6">
             <p class="font-medium">
-              Layanan Pemerintah
+              Layanan Publik
             </p>
             <ul class="flex flex-col gap-4 text-sm">
               <li v-for="menu in menus" :key="menu.id">
@@ -97,12 +97,12 @@
 </template>
 
 <script>
-import { layananPemerintahMenu } from '~/static/data/menus'
+import { layananPublikMenu } from '~/static/data/menus'
 
 export default {
   data () {
     return {
-      menus: layananPemerintahMenu,
+      menus: layananPublikMenu,
       socialMediaSites: [
         {
           id: 1,

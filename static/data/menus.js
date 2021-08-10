@@ -220,7 +220,7 @@ export const quickLinkMenu = [
   }
 ]
 
-export const layananPemerintahMenu = [
+export const layananPublikMenu = [
   {
     id: 1,
     title: 'Kependudukan',
