@@ -219,3 +219,36 @@ export const quickLinkMenu = [
     link: 'http://saberpungli.jabarprov.go.id'
   }
 ]
+
+export const layananPublikMenu = [
+  {
+    id: 1,
+    title: 'Kependudukan',
+    link: 'http://disdukcapil.jabarprov.go.id/portal'
+  },
+  {
+    id: 2,
+    title: 'Perpajakan',
+    link: 'https://bapenda.jabarprov.go.id'
+  },
+  {
+    id: 3,
+    title: 'Perizinan',
+    link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline'
+  },
+  {
+    id: 4,
+    title: 'Pariwisata dan Ekonomi Kreatif',
+    link: 'http://www.disparbud.jabarprov.go.id/applications/frontend/index.php'
+  },
+  {
+    id: 5,
+    title: 'Program Unggulan',
+    link: '#'
+  },
+  {
+    id: 6,
+    title: 'Pengaduan Publik',
+    link: 'https://www.lapor.go.id'
+  }
+]
