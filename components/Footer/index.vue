@@ -8,8 +8,10 @@
         <div class="flex items-center gap-4">
           <img src="/logo.png" alt="Logo Jawa Barat" width="65" height="76">
           <div class="flex flex-col text-lg">
-            <span>Pemerintah Daerah Provinsi</span>
-            <span class="font-medium">Jawa Barat</span>
+            <p>Pemerintah Daerah Provinsi</p>
+            <p class="font-medium">
+              Jawa Barat
+            </p>
           </div>
         </div>
         <div class="grid grid-cols-4">
@@ -22,10 +24,10 @@
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <div>Gedung Sate Bandung</div>
+                  <p>Gedung Sate Bandung</p>
                   <div class="flex flex-col opacity-80">
-                    <span>Jl. Diponegoro No.22, Citarum, Bandung Wetan,</span>
-                    <span>Kota Bandung, Jawa Barat 40115</span>
+                    <p>Jl. Diponegoro No.22, Citarum, Bandung Wetan,</p>
+                    <p>Kota Bandung, Jawa Barat 40115</p>
                   </div>
                 </div>
               </div>
@@ -35,7 +37,7 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.41333 7.19333C5.37333 9.08 6.92 10.62 8.80667 11.5867L10.2733 10.12C10.4533 9.94 10.72 9.88 10.9533 9.96C11.7 10.2067 12.5067 10.34 13.3333 10.34C13.7 10.34 14 10.64 14 11.0067V13.3333C14 13.7 13.7 14 13.3333 14C7.07333 14 2 8.92667 2 2.66667C2 2.3 2.3 2 2.66667 2H5C5.36667 2 5.66667 2.3 5.66667 2.66667C5.66667 3.5 5.8 4.3 6.04667 5.04667C6.12 5.28 6.06667 5.54 5.88 5.72667L4.41333 7.19333Z" fill="white" />
                   </svg>
                 </div>
-                <div>+62 22 423248</div>
+                <p>+62 22 423248</p>
               </div>
               <div class="flex gap-3">
                 <div class="py-0.5">
@@ -76,7 +78,7 @@
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.995 1C3.235 1 1 3.24 1 6C1 8.76 3.235 11 5.995 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 5.995 1ZM9.46 4.00003H7.985C7.825 3.37503 7.595 2.77503 7.295 2.22003C8.215 2.53503 8.98 3.17503 9.46 4.00003ZM6 2.01998C6.415 2.61998 6.74 3.28498 6.955 3.99998H5.045C5.26 3.28498 5.585 2.61998 6 2.01998ZM2.13 7C2.05 6.68 2 6.345 2 6C2 5.655 2.05 5.32 2.13 5H3.82C3.78 5.33 3.75 5.66 3.75 6C3.75 6.34 3.78 6.67 3.82 7H2.13ZM2.54 8H4.015C4.175 8.625 4.405 9.225 4.705 9.78C3.785 9.465 3.02 8.83 2.54 8ZM4.015 4.00003H2.54C3.02 3.17003 3.785 2.53503 4.705 2.22003C4.405 2.77503 4.175 3.37503 4.015 4.00003ZM6 9.98C5.585 9.38 5.26 8.715 5.045 8H6.955C6.74 8.715 6.415 9.38 6 9.98ZM7.17 7H4.83C4.785 6.67 4.75 6.34 4.75 6C4.75 5.66 4.785 5.325 4.83 5H7.17C7.215 5.325 7.25 5.66 7.25 6C7.25 6.34 7.215 6.67 7.17 7ZM7.295 9.78C7.595 9.225 7.825 8.625 7.985 8H9.46C8.98 8.825 8.215 9.465 7.295 9.78ZM8.18 7C8.22 6.67 8.25 6.34 8.25 6C8.25 5.66 8.22 5.33 8.18 5H9.87C9.95 5.32 10 5.655 10 6C10 6.345 9.95 6.68 9.87 7H8.18Z" fill="white" fill-opacity="0.8" />
               </svg>
-              <span>Bahasa</span>
+              <p>Bahasa</p>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.35012 5.81235C8.61203 5.48497 8.37894 5 7.95969 5H4.04031C3.62106 5 3.38797 5.48497 3.64988 5.81235L5.60957 8.26196C5.80973 8.51216 6.19027 8.51216 6.39043 8.26196L8.35012 5.81235Z" fill="white" />
               </svg>
