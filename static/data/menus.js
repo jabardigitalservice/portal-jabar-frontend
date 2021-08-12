@@ -216,7 +216,7 @@ export const quickLinkMenu = [
     title: 'Lapor',
     description: 'Layanan aspirasi dan pengaduan daring warga Jawa Barat.',
     icon: '/icons/lapor.svg',
-    link: 'http://saberpungli.jabarprov.go.id'
+    link: 'https://www.lapor.go.id'
   }
 ]
 
