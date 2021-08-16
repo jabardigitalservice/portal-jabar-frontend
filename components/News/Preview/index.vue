@@ -9,7 +9,7 @@
       :title="item.title"
       :excerpt="item.excerpt"
       :image="item.image"
-      :path="item.path"
+      :slug="item.slug"
       :created-at="item.createdAt"
       :category="item.category"
       :fetch-state="$fetchState"

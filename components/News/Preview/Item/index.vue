@@ -17,9 +17,9 @@
       </div>
     </div>
   </div>
-  <MenuLink
+  <nuxt-link
     v-else
-    :link="path"
+    :to="`/informasi-dan-berita/berita/${slug}`"
     class="flex items-start gap-6 p-4 rounded-lg bg-white cursor-pointer hover:shadow"
   >
     <img
@@ -42,7 +42,7 @@
         <p>{{ category }}</p>
       </div>
     </div>
-  </MenuLink>
+  </nuxt-link>
 </template>
 
 <script>
@@ -62,7 +62,7 @@ export default {
       type: String,
       required: true
     },
-    path: {
+    slug: {
       type: String,
       required: true
     },
