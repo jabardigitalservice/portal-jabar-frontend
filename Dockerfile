@@ -6,6 +6,8 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+ARG API_URL
+ENV API_URL $API_URL
 ENV HOST 0.0.0.0
 ENV PORT 3000
 
