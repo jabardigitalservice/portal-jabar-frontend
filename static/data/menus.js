@@ -137,6 +137,63 @@ export const navigationMenu = [
   }
 ]
 
+export const mostPopularServicesMenu = [
+  {
+    id: 1,
+    title: 'Layanan Kependudukan',
+    link: 'http://disdukcapil.jabarprov.go.id/portal',
+    category: 'Wargi'
+  },
+  {
+    id: 2,
+    title: 'Pajak Kendaraan Bermotor (PKB)',
+    link: 'https://bapenda.jabarprov.go.id/infopkb',
+    category: 'Wargi'
+  },
+  {
+    id: 3,
+    title: 'Perizinan Bangunan',
+    link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+    category: 'Wargi'
+  },
+  {
+    id: 4,
+    title: 'Perizinan Industri Rumah Tangga (PIRT)',
+    link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+    category: 'Usaha'
+  },
+  {
+    id: 5,
+    title: 'Bantuan Langsung Tunai (BLT) UMKM',
+    link: 'https://www.jabarprov.go.id/index.php/news/39744/2020/10/21/Mudah-Cek-BLT-BPUM-24-Juta-Lewat-Sini',
+    category: 'Usaha'
+  },
+  {
+    id: 6,
+    title: 'Pengajuan Sertifikasi Halal',
+    link: 'https://www.halalmui.org/mui14/main/page/prosedur-sertifikasi-halal-mui',
+    category: 'Usaha'
+  },
+  {
+    id: 7,
+    title: 'Info Wisata di Jawa Barat',
+    link: 'http://disparbud.jabarprov.go.id/wisata/index.php?lang=id',
+    category: 'Wisatawan'
+  },
+  {
+    id: 8,
+    title: 'Hotel Murah di Jawa Barat',
+    link: 'http://disparbud.jabarprov.go.id/applications/frontend/index.php?mod=objek-wisata&act=showHotelList',
+    category: 'Wisatawan'
+  },
+  {
+    id: 9,
+    title: 'Desa Wisata Jawa Barat',
+    link: 'http://disparbud.jabarprov.go.id/wisata/cat-det.php?id=51&lang=id',
+    category: 'Wisatawan'
+  }
+]
+
 export const featuredProgramMenu = [
   {
     id: 1,
