@@ -39,7 +39,7 @@
       <div class="flex gap-3 opacity-60">
         <p>{{ date }}</p>
         <div>|</div>
-        <p>{{ category }}</p>
+        <p>{{ category.title }}</p>
       </div>
     </div>
   </nuxt-link>
@@ -71,7 +71,7 @@ export default {
       required: true
     },
     category: {
-      type: String,
+      type: Object,
       required: true
     },
     fetchState: {

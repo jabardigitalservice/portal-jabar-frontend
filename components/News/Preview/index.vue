@@ -10,7 +10,7 @@
       :excerpt="item.excerpt"
       :image="item.image"
       :slug="item.slug"
-      :created-at="item.createdAt"
+      :created-at="item.created_at"
       :category="item.category"
       :fetch-state="$fetchState"
     />
