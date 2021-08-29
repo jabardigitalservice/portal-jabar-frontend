@@ -16,6 +16,7 @@ This is the main codebase of Portal Jabar website.
 ### Technologies
 
 Here is a list of all the core technologies this project use:
+- [npm](https://www.npmjs.com/): Package manager
 - [Tailwind CSS](https://tailwindcss.com/): CSS framework for styling
 - [Vue.js](https://vuejs.org/): JavaScript framework for building user interfaces
 - [NuxtJS](https://nuxtjs.org/): Vue.js framework for server-side rendering
