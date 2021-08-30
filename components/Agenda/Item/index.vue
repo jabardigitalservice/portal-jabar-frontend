@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { format, toISO } from '~/utils/date'
+import { format, formatISODate } from '~/utils/date'
 
 export default {
   props: {
@@ -71,9 +71,9 @@ export default {
       return `${startHour} - ${endHour} WIB`
     },
     hasBackground () {
-      const date = toISO(this.date)
-      const currentDate = toISO(new Date())
-      const currentDateInNextMonth = toISO(new Date().setMonth(new Date().getMonth() + 1))
+      const date = formatISODate(this.date)
+      const currentDate = formatISODate(new Date())
+      const currentDateInNextMonth = formatISODate(new Date().setMonth(new Date().getMonth() + 1))
 
       return date === currentDate || date === currentDateInNextMonth
     }
