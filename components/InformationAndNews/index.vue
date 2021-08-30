@@ -6,6 +6,7 @@
       </h2>
       <div class="grid grid-cols-3 gap-8">
         <NewsPreview />
+        <Agenda />
       </div>
     </div>
   </section>

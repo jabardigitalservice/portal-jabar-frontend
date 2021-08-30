@@ -25,11 +25,11 @@
     <img
       :src="image"
       :alt="title"
-      class="w-48 h-48 object-cover rounded-md"
-      width="192"
-      height="192"
+      class="w-52 h-52 object-cover rounded-md"
+      width="208"
+      height="208"
     >
-    <div class="flex flex-col gap-4 w-full">
+    <div class="flex flex-col gap-5 w-full">
       <h1 class="line-clamp-2 text-2xl font-medium leading-9">
         {{ title }}
       </h1>
@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     date () {
-      return format(this.createdAt)
+      return format(this.createdAt, { day: 'numeric', month: 'short', year: 'numeric' })
     }
   }
 }

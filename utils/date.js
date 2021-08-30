@@ -1,9 +1,3 @@
-export function format (date) {
-  const options = {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  }
-
+export function format (date, options) {
   return new Date(date).toLocaleDateString('id-ID', options)
 }
