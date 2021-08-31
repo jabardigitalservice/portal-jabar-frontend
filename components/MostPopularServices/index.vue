@@ -17,7 +17,7 @@
       <ul class="grid grid-cols-3 grid-rows-3 grid-flow-col gap-x-8 gap-y-2">
         <li v-for="menu in menus" :key="menu.id" class="bg-green-800 rounded-md text-white text-lg flex items-center">
           <a :href="menu.link" target="_blank" rel="noreferrer" class="p-4 w-full flex justify-between items-center">
-            {{ menu.title }}
+            <span>{{ menu.title }}</span>
             <!--
               TODO: Replace icon with icon from jabar design system
             -->
