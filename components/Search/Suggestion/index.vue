@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable vue/no-v-html -->
   <div v-show="hasSuggestions" class="absolute bg-white flex flex-col mt-2 gap-2 border border-gray-500 rounded-lg px-2 py-3 w-full shadow-xl">
     <div v-for="(suggestion, index) in suggestions" :key="index" class="flex">
       <div
