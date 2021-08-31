@@ -11,7 +11,7 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z" fill="#868C89" />
       </svg>
     </button>
-    <button class="bg-green-800 px-4 py-2 rounded-lg text-white text-sm font-bold">
+    <button type="submit" class="bg-green-800 px-4 py-2 rounded-lg text-white text-sm font-bold">
       Cari
     </button>
   </form>
