@@ -16,6 +16,7 @@
 
 <script>
 import { add, differenceInCalendarMonths, endOfMonth } from 'date-fns'
+import { formatISODate } from '~/utils/date'
 
 export default {
   data () {
@@ -45,7 +46,7 @@ export default {
         date = endOfMonth(baseDate)
       }
 
-      return date.toISOString().substring(0, 10)
+      return formatISODate(date)
     }
   }
 }
