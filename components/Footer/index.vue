@@ -1,10 +1,12 @@
 <template>
   <footer
-    class="bg-green-800 text-white bg-no-repeat"
-    :style="{ backgroundImage: `url('/images/menu.png')`, backgroundPosition: '98% 75%' }"
+    class="bg-green-800 text-white"
   >
     <div class="container">
-      <div class="flex flex-col gap-10 pt-16 pb-24">
+      <div
+        class="flex flex-col gap-10 pt-16 pb-24 bg-no-repeat"
+        :style="{ backgroundImage: `url('/images/menu.svg')`, backgroundPosition: '100% 100%' }"
+      >
         <div class="flex items-center gap-4">
           <img src="/logo.png" alt="Logo Jawa Barat" width="65" height="76">
           <div class="flex flex-col text-lg">
