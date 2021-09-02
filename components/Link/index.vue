@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     isExternalLink () {
-      return this.link.substr(0, 8) === 'https://' || this.link.substr(0, 7) === 'http://'
+      return this.link.startsWith('http')
     }
   }
 }
