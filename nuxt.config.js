@@ -45,7 +45,7 @@ export default {
 
   googleFonts: {
     families: {
-      Roboto: [100, 300, 400, 500, 700, 900]
+      Roboto: [400, 500, 600, 700]
     },
     display: 'swap'
   },
