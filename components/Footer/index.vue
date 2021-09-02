@@ -48,9 +48,17 @@
                 <a href="mailto:info@jabarprov.go.id">info@jabarprov.go.id</a>
               </div>
             </div>
-            <div class="flex gap-2">
-              <a v-for="socialMediaSite in socialMediaSites" :key="socialMediaSite.id" :href="socialMediaSite.link" target="_blank" rel="noreferrer">
-                <img :src="socialMediaSite.icon" :alt="socialMediaSite.name" width="34" height="34">
+            <div class="flex gap-3">
+              <a
+                v-for="socialMediaSite in socialMediaSites"
+                :key="socialMediaSite.id"
+                :href="socialMediaSite.link"
+                target="_blank"
+                :aria-label="socialMediaSite.name"
+                rel="noreferrer"
+                class="p-2 flex justify-center items-center rounded border border-white border-opacity-20"
+              >
+                <Icon :name="socialMediaSite.icon" size="18px" />
               </a>
             </div>
           </div>
@@ -74,14 +82,14 @@
         <div class="flex justify-between py-6 text-xs">
           <p>Copyright © {{ year }} Pemerintah Daerah Provinsi Jawa Barat. All Right Reserved</p>
           <div class="flex gap-6">
-            <div class="flex items-center gap-1 cursor-pointer">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.995 1C3.235 1 1 3.24 1 6C1 8.76 3.235 11 5.995 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 5.995 1ZM9.46 4.00003H7.985C7.825 3.37503 7.595 2.77503 7.295 2.22003C8.215 2.53503 8.98 3.17503 9.46 4.00003ZM6 2.01998C6.415 2.61998 6.74 3.28498 6.955 3.99998H5.045C5.26 3.28498 5.585 2.61998 6 2.01998ZM2.13 7C2.05 6.68 2 6.345 2 6C2 5.655 2.05 5.32 2.13 5H3.82C3.78 5.33 3.75 5.66 3.75 6C3.75 6.34 3.78 6.67 3.82 7H2.13ZM2.54 8H4.015C4.175 8.625 4.405 9.225 4.705 9.78C3.785 9.465 3.02 8.83 2.54 8ZM4.015 4.00003H2.54C3.02 3.17003 3.785 2.53503 4.705 2.22003C4.405 2.77503 4.175 3.37503 4.015 4.00003ZM6 9.98C5.585 9.38 5.26 8.715 5.045 8H6.955C6.74 8.715 6.415 9.38 6 9.98ZM7.17 7H4.83C4.785 6.67 4.75 6.34 4.75 6C4.75 5.66 4.785 5.325 4.83 5H7.17C7.215 5.325 7.25 5.66 7.25 6C7.25 6.34 7.215 6.67 7.17 7ZM7.295 9.78C7.595 9.225 7.825 8.625 7.985 8H9.46C8.98 8.825 8.215 9.465 7.295 9.78ZM8.18 7C8.22 6.67 8.25 6.34 8.25 6C8.25 5.66 8.22 5.33 8.18 5H9.87C9.95 5.32 10 5.655 10 6C10 6.345 9.95 6.68 9.87 7H8.18Z" fill="white" fill-opacity="0.8" />
-              </svg>
-              <p>Bahasa</p>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.35012 5.81235C8.61203 5.48497 8.37894 5 7.95969 5H4.04031C3.62106 5 3.38797 5.48497 3.64988 5.81235L5.60957 8.26196C5.80973 8.51216 6.19027 8.51216 6.39043 8.26196L8.35012 5.81235Z" fill="white" />
-              </svg>
+            <div class="flex items-center gap-2 cursor-pointer">
+              <div class="flex items-center gap-1">
+                <svg width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.995 1C3.235 1 1 3.24 1 6C1 8.76 3.235 11 5.995 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 5.995 1ZM9.46 4.00003H7.985C7.825 3.37503 7.595 2.77503 7.295 2.22003C8.215 2.53503 8.98 3.17503 9.46 4.00003ZM6 2.01998C6.415 2.61998 6.74 3.28498 6.955 3.99998H5.045C5.26 3.28498 5.585 2.61998 6 2.01998ZM2.13 7C2.05 6.68 2 6.345 2 6C2 5.655 2.05 5.32 2.13 5H3.82C3.78 5.33 3.75 5.66 3.75 6C3.75 6.34 3.78 6.67 3.82 7H2.13ZM2.54 8H4.015C4.175 8.625 4.405 9.225 4.705 9.78C3.785 9.465 3.02 8.83 2.54 8ZM4.015 4.00003H2.54C3.02 3.17003 3.785 2.53503 4.705 2.22003C4.405 2.77503 4.175 3.37503 4.015 4.00003ZM6 9.98C5.585 9.38 5.26 8.715 5.045 8H6.955C6.74 8.715 6.415 9.38 6 9.98ZM7.17 7H4.83C4.785 6.67 4.75 6.34 4.75 6C4.75 5.66 4.785 5.325 4.83 5H7.17C7.215 5.325 7.25 5.66 7.25 6C7.25 6.34 7.215 6.67 7.17 7ZM7.295 9.78C7.595 9.225 7.825 8.625 7.985 8H9.46C8.98 8.825 8.215 9.465 7.295 9.78ZM8.18 7C8.22 6.67 8.25 6.34 8.25 6C8.25 5.66 8.22 5.33 8.18 5H9.87C9.95 5.32 10 5.655 10 6C10 6.345 9.95 6.68 9.87 7H8.18Z" fill="white" fill-opacity="0.8" />
+                </svg>
+                <p>Bahasa</p>
+              </div>
+              <Icon name="caret-down" size="10px" />
             </div>
             <MenuLink link="/">
               Beranda
@@ -107,25 +115,25 @@ export default {
         {
           id: 1,
           name: 'Facebook',
-          icon: '/icons/facebook-footer.svg',
+          icon: 'facebook',
           link: 'https://www.facebook.com/jabarprov'
         },
         {
           id: 2,
           name: 'Instagram',
-          icon: '/icons/instagram-footer.svg',
+          icon: 'instagram',
           link: 'https://www.instagram.com/jabarprovgoid'
         },
         {
           id: 3,
           name: 'Twitter',
-          icon: '/icons/twitter-footer.svg',
+          icon: 'twitter',
           link: 'https://twitter.com/jabarprovgoid'
         },
         {
           id: 4,
           name: 'YouTube',
-          icon: '/icons/youtube-footer.svg',
+          icon: 'youtube',
           link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
         }
       ]
