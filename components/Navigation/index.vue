@@ -1,8 +1,8 @@
 <template>
   <nav class="flex items-center">
-    <MenuLink link="/" class="mr-auto">
+    <Link link="/" class="mr-auto">
       <img src="/logo.png" width="55" height="60" alt="Beranda">
-    </MenuLink>
+    </Link>
     <Menu>
       <MenuList
         v-for="menu in menus"

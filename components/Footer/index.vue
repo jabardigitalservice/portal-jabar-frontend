@@ -1,10 +1,12 @@
 <template>
   <footer
-    class="bg-green-800 text-white bg-no-repeat"
-    :style="{ backgroundImage: `url('/images/menu.png')`, backgroundPosition: '98% 75%' }"
+    class="bg-green-800 text-white"
   >
     <div class="container">
-      <div class="flex flex-col gap-10 pt-16 pb-24">
+      <div
+        class="flex flex-col gap-10 pt-16 pb-24 bg-no-repeat"
+        :style="{ backgroundImage: `url('/images/menu.svg')`, backgroundPosition: '100% 100%' }"
+      >
         <div class="flex items-center gap-4">
           <img src="/logo.png" alt="Logo Jawa Barat" width="65" height="76">
           <div class="flex flex-col text-lg">
@@ -60,9 +62,9 @@
             </p>
             <ul class="flex flex-col gap-4 text-sm">
               <li v-for="menu in menus" :key="menu.id">
-                <MenuLink :link="menu.link">
+                <Link :link="menu.link">
                   {{ menu.title }}
-                </MenuLink>
+                </Link>
               </li>
             </ul>
           </div>
@@ -83,12 +85,12 @@
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.35012 5.81235C8.61203 5.48497 8.37894 5 7.95969 5H4.04031C3.62106 5 3.38797 5.48497 3.64988 5.81235L5.60957 8.26196C5.80973 8.51216 6.19027 8.51216 6.39043 8.26196L8.35012 5.81235Z" fill="white" />
               </svg>
             </div>
-            <MenuLink link="/">
+            <Link link="/">
               Beranda
-            </MenuLink>
-            <MenuLink link="#">
+            </Link>
+            <Link link="#">
               Sitemap
-            </MenuLink>
+            </Link>
           </div>
         </div>
       </div>
