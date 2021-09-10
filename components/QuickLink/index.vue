@@ -1,6 +1,6 @@
 <template>
-  <section class="pt-6 pb-16">
-    <div class="container">
+  <section class="bg-white pt-6 pb-16">
+    <div class="container mx-auto">
       <h2 class="text-4xl font-medium leading-loose mb-4 text-center">
         Akses Cepat
       </h2>

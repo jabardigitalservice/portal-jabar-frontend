@@ -20,7 +20,6 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -44,7 +43,9 @@ export default {
 
   googleFonts: {
     families: {
-      Roboto: [400, 500, 600, 700]
+      Lato: [400, 500, 600, 700],
+      Roboto: [400, 500, 600, 700],
+      Lora: [400, 500, 600, 700]
     },
     display: 'swap'
   },

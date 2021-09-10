@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-gray-50 py-6">
-    <div class="container">
+  <section class="py-6">
+    <div class="container mx-auto">
       <div class="flex justify-between items-center">
         <h2 class="text-4xl font-medium leading-loose mb-4">
           Program Unggulan

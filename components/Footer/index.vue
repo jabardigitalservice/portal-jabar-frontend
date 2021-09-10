@@ -2,7 +2,7 @@
   <footer
     class="bg-green-800 text-white"
   >
-    <div class="container">
+    <div class="container mx-auto">
       <div
         class="flex flex-col gap-10 pt-16 pb-24 bg-no-repeat"
         :style="{ backgroundImage: `url('/images/menu.svg')`, backgroundPosition: '100% 100%' }"
@@ -80,7 +80,7 @@
       </div>
     </div>
     <div class="border-t border-white border-opacity-20">
-      <div class="container">
+      <div class="container mx-auto">
         <div class="flex justify-between py-6 text-xs">
           <p>Copyright © {{ year }} Pemerintah Daerah Provinsi Jawa Barat. All Right Reserved</p>
           <div class="flex gap-6">

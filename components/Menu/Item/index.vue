@@ -1,6 +1,6 @@
 <template>
   <ul v-show="isMenuActive" class="bg-green-800 w-full absolute top-full left-0 border-t border-white">
-    <div class="container">
+    <div class="container mx-auto">
       <div
         class="flex mx-auto items-start pt-7 pb-10 bg-no-repeat"
         :style="{ backgroundImage: `url('/images/menu.svg')`, backgroundPosition: '100% 100%' }"

@@ -1,9 +1,9 @@
 <template>
   <section
-    class="flex justify-center items-center bg-no-repeat bg-bottom bg-contain"
+    class="bg-white flex justify-center items-center bg-no-repeat bg-bottom bg-contain"
     :style="{ backgroundImage: `url('/images/hero.svg')`, height: '528px' }"
   >
-    <div class="container flex flex-col items-center gap-10">
+    <div class="container mx-auto flex flex-col items-center gap-10">
       <h1 class="text-5xl leading-snug font-medium text-center max-w-4xl">
         Informasi, Layanan dan Pemerintahan Jawa Barat
       </h1>
