@@ -6,7 +6,7 @@
         :style="{ backgroundImage: `url('/images/menu.svg')`, backgroundPosition: '100% 100%' }"
       >
         <img src="/logo.svg" alt="Logo Portal Jabar" width="151" height="46">
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-5">
           <FooterContact />
           <FooterMenu />
         </div>

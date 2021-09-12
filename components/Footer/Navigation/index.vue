@@ -1,6 +1,9 @@
 <template>
-  <div class="flex gap-6 relative">
-    <button type="button" class="flex items-center gap-2 cursor-pointer">
+  <div class="flex gap-6">
+    <button
+      type="button"
+      class="flex items-center gap-2 cursor-pointer"
+    >
       <div class="flex items-center gap-1">
         <Icon src="/icons/world.svg" alt="Bahasa" size="16px" />
         <p class="text-white">

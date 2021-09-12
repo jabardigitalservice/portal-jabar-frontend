@@ -301,7 +301,7 @@ export const layananPublikMenu = [
   {
     id: 5,
     title: 'Program Unggulan',
-    link: '#'
+    link: '/tentang-jawa-barat/program-unggulan'
   },
   {
     id: 6,

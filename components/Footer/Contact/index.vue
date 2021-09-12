@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-start">
+  <div class="flex flex-col items-start col-span-2">
     <div class="flex flex-col">
       <div class="flex items-start gap-3 pb-4 border-b border-white border-opacity-20">
         <Icon src="/icons/location.svg" alt="Lokasi" size="18px" class="py-1" />
