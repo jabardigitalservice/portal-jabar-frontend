@@ -1,17 +1,17 @@
 <template>
   <nav class="flex items-center">
     <Link link="/" class="mr-auto">
-      <img src="/logo.png" width="55" height="60" alt="Beranda">
+      <img src="/logo.svg" width="125" height="38" alt="Beranda">
     </Link>
-    <Menu>
-      <MenuList
+    <HeaderMenu>
+      <HeaderMenuList
         v-for="menu in menus"
         :id="menu.id"
         :key="menu.id"
         :title="menu.title"
         @click="setActiveMenu"
       >
-        <MenuItem
+        <HeaderMenuItem
           :id="menu.id"
           :title="menu.title"
           :link="menu.link"
@@ -19,8 +19,8 @@
           :active-menu="activeMenu"
           @click="setActiveMenu"
         />
-      </MenuList>
-    </Menu>
+      </HeaderMenuList>
+    </HeaderMenu>
   </nav>
 </template>
 
@@ -37,6 +37,7 @@ export default {
   methods: {
     setActiveMenu (id) {
       this.activeMenu = id
+      this.$emit('active', id)
     }
   }
 }
