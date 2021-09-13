@@ -22,20 +22,15 @@ export default {
 </script>
 
 <style scoped>
+/**
+ *  TODO: This is a temporary solution, remove this if it has been implemented in jabar design system
+ */
 button {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 14px;
   font-weight: 700;
-}
-.jds-button--tertiary-paddingless {
-  padding: 0;
-}
-.jds-button--tertiary-paddingless:hover {
-  background-color: inherit;
-}
-.jds-button--tertiary-paddingless:focus {
-  box-shadow: inherit;
+  font-size: 14px;
+  line-height: 18px;
 }
 </style>
