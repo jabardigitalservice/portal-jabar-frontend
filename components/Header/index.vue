@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import throttle from 'lodash/throttle'
+
 export default {
   data () {
     return {
@@ -26,9 +28,16 @@ export default {
     window.addEventListener('scroll', this.scrollHandler)
   },
   methods: {
-    scrollHandler () {
-      this.windowsHeight = window.scrollY
-    },
+    scrollHandler: throttle(
+      function () {
+        if (!window) {
+          return
+        }
+        this.windowsHeight = window.scrollY
+      },
+      1000 / 60,
+      { leading: true, trailing: true }
+    ),
     setActiveMenu (id) {
       this.activeMenu = id
     }
