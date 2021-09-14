@@ -130,6 +130,16 @@ export const navigationMenu = [
             id: 2,
             title: 'Ekosistem Data Jawa Barat',
             link: '#'
+          },
+          {
+            id: 3,
+            title: 'Informasi Keuangan',
+            link: '#'
+          },
+          {
+            id: 4,
+            title: 'Telusuri Jawa Barat',
+            link: '#'
           }
         ]
       }
@@ -301,7 +311,7 @@ export const layananPublikMenu = [
   {
     id: 5,
     title: 'Program Unggulan',
-    link: '#'
+    link: '/tentang-jawa-barat/program-unggulan'
   },
   {
     id: 6,

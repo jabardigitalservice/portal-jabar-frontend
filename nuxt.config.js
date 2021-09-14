@@ -1,26 +1,25 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Website Resmi Pemerintah Daerah Provinsi Jawa Barat',
+    title: 'Portal Jabar - Satu Portal untuk Semua Hal Tentang Jawa Barat',
     htmlAttrs: {
       lang: 'id'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Informasi, Layanan dan Pemerintahan Jawa Barat. Di sini kamu bisa akses informasi, layanan publik dan sampaikan aspirasi mengenai program dari Pemerintah Daerah Provinsi Jawa Barat.' },
+      { hid: 'description', name: 'description', content: 'Portal ini menyediakan informasi resmi, akses ke berbagai layanan publik, dan tempat menyampaikan aspirasi mengenai program dari Pemerintah Daerah Provinsi Jawa Barat.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'preload', as: 'image', href: '/logo.png' },
+      { rel: 'preload', as: 'image', href: '/logo.svg' },
       { rel: 'preload', as: 'image', href: '/images/hero.svg' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -44,7 +43,9 @@ export default {
 
   googleFonts: {
     families: {
-      Roboto: [400, 500, 600, 700]
+      Lato: [400, 500, 600, 700],
+      Roboto: [400, 500, 600, 700],
+      Lora: [400, 500, 600, 700]
     },
     display: 'swap'
   },

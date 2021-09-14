@@ -1,6 +1,6 @@
 <template>
-  <section class="pb-8">
-    <div class="container">
+  <section class="bg-white pb-8">
+    <div class="container mx-auto">
       <h2 class="text-4xl font-medium leading-loose mb-4">
         Layanan Terpopuler
       </h2>

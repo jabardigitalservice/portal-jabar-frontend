@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-gray-50 pt-6 pb-10">
-    <div class="container">
+  <section class="pt-6 pb-10">
+    <div class="container mx-auto">
       <h2 class="text-4xl font-medium leading-loose mb-4">
         Informasi dan Berita
       </h2>
