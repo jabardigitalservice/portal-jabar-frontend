@@ -59,7 +59,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      divideColor: ['group-hover']
+      divideColor: ['group-hover'],
+      grayscale: ['group-hover']
     }
   },
   plugins: [

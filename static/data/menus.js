@@ -150,57 +150,87 @@ export const navigationMenu = [
 export const mostPopularServicesMenu = [
   {
     id: 1,
-    title: 'Layanan Kependudukan',
-    link: 'http://disdukcapil.jabarprov.go.id/portal',
-    category: 'Wargi'
+    name: 'Wargi',
+    icon: '/icons/layanan-terpopuler/wargi.svg',
+    items: [
+      {
+        id: 1,
+        title: 'Layanan Kependudukan',
+        description: 'Informasi mengenai syarat dan tata cara mendapatkan layanan kependudukan di seluruh Kabupaten/Kota di Jawa Barat.',
+        link: 'http://disdukcapil.jabarprov.go.id/portal',
+        icon: '/icons/layanan-terpopuler/layanan-kependudukan.svg'
+      },
+      {
+        id: 2,
+        title: 'Pajak Kendaraan Bermotor (PKB)',
+        description: 'Temukan informasi dan layanan mengenai Pajak Kendaran Bermotor (PKB) di sini.',
+        link: 'https://bapenda.jabarprov.go.id/infopkb',
+        icon: '/icons/layanan-terpopuler/pajak-kendaraan-bermotor.svg'
+      },
+      {
+        id: 3,
+        title: 'Perizinan Bangunan',
+        description: 'Layanan informasi tentang syarat dan cara melakukan pembayaran Pajak Bumi dan Bangunan (PBB).',
+        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        icon: '/icons/layanan-terpopuler/perizinan-bangunan.svg'
+      }
+    ]
   },
   {
     id: 2,
-    title: 'Pajak Kendaraan Bermotor (PKB)',
-    link: 'https://bapenda.jabarprov.go.id/infopkb',
-    category: 'Wargi'
+    name: 'Usaha',
+    icon: '/icons/layanan-terpopuler/usaha.svg',
+    items: [
+      {
+        id: 4,
+        title: 'Perizinan Industri Rumah Tangga (PIRT)',
+        description: 'Temukan informasi dan layanan mengenai Perizinan Industri Rumah Tangga (PIRT) di sini.',
+        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        icon: '/icons/layanan-terpopuler/perizinan-industri-rumah-tangga.svg'
+      },
+      {
+        id: 5,
+        title: 'Bantuan Langsung Tunai (BLT)',
+        description: 'Temukan Informasi mengenai Bantuan Langsung Tunai (BLT) di sini.',
+        link: 'https://www.jabarprov.go.id/index.php/news/39744/2020/10/21/Mudah-Cek-BLT-BPUM-24-Juta-Lewat-Sini',
+        icon: '/icons/layanan-terpopuler/bantuan-langsung-tunai.svg'
+      },
+      {
+        id: 6,
+        title: 'Pengajuan Sertifikasi Halal',
+        description: 'Temukan informasi dan layanan mengenai pengajuan sertifikasi halal di sini.',
+        link: 'https://www.halalmui.org/mui14/main/page/prosedur-sertifikasi-halal-mui',
+        icon: '/icons/layanan-terpopuler/pengajuan-sertifikasi-halal.svg'
+      }
+    ]
   },
   {
     id: 3,
-    title: 'Perizinan Bangunan',
-    link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
-    category: 'Wargi'
-  },
-  {
-    id: 4,
-    title: 'Perizinan Industri Rumah Tangga (PIRT)',
-    link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
-    category: 'Usaha'
-  },
-  {
-    id: 5,
-    title: 'Bantuan Langsung Tunai (BLT) UMKM',
-    link: 'https://www.jabarprov.go.id/index.php/news/39744/2020/10/21/Mudah-Cek-BLT-BPUM-24-Juta-Lewat-Sini',
-    category: 'Usaha'
-  },
-  {
-    id: 6,
-    title: 'Pengajuan Sertifikasi Halal',
-    link: 'https://www.halalmui.org/mui14/main/page/prosedur-sertifikasi-halal-mui',
-    category: 'Usaha'
-  },
-  {
-    id: 7,
-    title: 'Info Wisata di Jawa Barat',
-    link: 'http://disparbud.jabarprov.go.id/wisata/index.php?lang=id',
-    category: 'Wisatawan'
-  },
-  {
-    id: 8,
-    title: 'Hotel Murah di Jawa Barat',
-    link: 'http://disparbud.jabarprov.go.id/applications/frontend/index.php?mod=objek-wisata&act=showHotelList',
-    category: 'Wisatawan'
-  },
-  {
-    id: 9,
-    title: 'Desa Wisata Jawa Barat',
-    link: 'http://disparbud.jabarprov.go.id/wisata/cat-det.php?id=51&lang=id',
-    category: 'Wisatawan'
+    name: 'Wisatawan',
+    icon: '/icons/layanan-terpopuler/wisatawan.svg',
+    items: [
+      {
+        id: 7,
+        title: 'Info Wisata Jabar',
+        description: 'Temukan informasi mengenai destinasi wisata yang wajib dikunjungi di Jawa Barat.',
+        link: 'http://disparbud.jabarprov.go.id/wisata/index.php?lang=id',
+        icon: '/icons/layanan-terpopuler/info-wisata-jabar.svg'
+      },
+      {
+        id: 8,
+        title: 'Hotel Murah di Jawa Barat',
+        description: 'Temukan informasi mengenai tempat menginap di Jawa Barat sesuai keinginan.',
+        link: 'http://disparbud.jabarprov.go.id/applications/frontend/index.php?mod=objek-wisata&act=showHotelList',
+        icon: '/icons/layanan-terpopuler/hotel-murah-di-jawa-barat.svg'
+      },
+      {
+        id: 9,
+        title: 'Daerah Wisata Jawa Barat',
+        description: 'Temukan informasi mengenai tempat wisata di Jawa Barat yang wajib dikunjungi.',
+        link: 'http://disparbud.jabarprov.go.id/wisata/cat-det.php?id=51&lang=id',
+        icon: '/icons/layanan-terpopuler/daerah-wisata-di-jawa-barat.svg'
+      }
+    ]
   }
 ]
 
