@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="relative -top-48 z-10 -mb-44">
     <div class="container mx-auto">
       <div class="bg-white p-10 rounded-xl shadow">
         <h2 class="text-4xl font-medium leading-loose mb-12">

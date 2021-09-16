@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="overflow-hidden">
     <Hero />
     <MostPopularServices />
     <FeaturedProgram />

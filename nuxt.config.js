@@ -13,6 +13,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'preload', as: 'image', href: '/images/banners/1.webp' },
       { rel: 'preload', as: 'image', href: '/logo.svg' },
       { rel: 'preload', as: 'image', href: '/images/hero.svg' }
     ]
