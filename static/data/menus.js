@@ -239,7 +239,7 @@ export const quickLinkMenu = [
   {
     id: 2,
     title: 'PPID Jabar',
-    description: 'Pejabat Pengelola Informasi dan Dokumentasi Jawa Barat.',
+    description: 'Cari tahu mengenai Pejabat Pengelola Informasi dan Dokumentasi Jawa Barat.',
     icon: '/icons/akses-cepat/ppid-jabar.svg',
     link: 'http://ppid.jabarprov.go.id'
   },
@@ -253,14 +253,14 @@ export const quickLinkMenu = [
   {
     id: 4,
     title: 'Info Harga Pangan',
-    description: 'Dapatkan info harga rata-rata komoditas harian di Jawa Barat.',
+    description: 'Dapatkan info harga rata-rata komoditas harian di daerah sekitar Jawa Barat.',
     icon: '/icons/akses-cepat/info-harga-pangan.svg',
     link: 'http://priangan.org'
   },
   {
     id: 5,
     title: 'E-Samsat',
-    description: 'Cara mudah bayar pajak kendaraan secara daring.',
+    description: 'Cara mudah untuk pajak kendaraan secara daring dimana saja dan kapan saja.',
     icon: '/icons/akses-cepat/e-samsat.svg',
     link: 'https://bapenda.jabarprov.go.id/e-samsat-jabar'
   },
@@ -274,14 +274,14 @@ export const quickLinkMenu = [
   {
     id: 7,
     title: 'Saber Pungli',
-    description: 'Laporkan aktivitas Pungutan Liar (Pungli) di sini!',
+    description: 'Laporkan segala aktivitas Pungutan Liar (Pungli) di sekitarmu!',
     icon: '/icons/akses-cepat/saber-pungli.svg',
     link: 'http://saberpungli.jabarprov.go.id'
   },
   {
     id: 8,
     title: 'Lapor',
-    description: 'Layanan aspirasi dan pengaduan daring warga Jawa Barat.',
+    description: 'Layanan aspirasi dan pengaduan daring untuk warga Jawa Barat.',
     icon: '/icons/akses-cepat/lapor.svg',
     link: 'https://www.lapor.go.id'
   }

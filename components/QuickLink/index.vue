@@ -1,19 +1,25 @@
 <template>
-  <section class="bg-white pt-6 pb-16">
+  <section class="bg-white p-16">
     <div class="container mx-auto">
-      <h2 class="text-4xl font-medium leading-loose mb-4 text-center">
-        Akses Cepat
-      </h2>
-      <ul class="grid grid-cols-4 gap-4">
-        <li v-for="menu in menus" :key="menu.id" class="p-4 rounded-md cursor-pointer hover:shadow-md">
-          <a :href="menu.link" target="_blank" rel="noreferrer">
-            <img :src="menu.icon" :alt="menu.title" width="32" height="32" class="mb-2">
-            <div class="flex gap-2 items-center mb-2">
-              <span class="text-lg font-medium">{{ menu.title }}</span>
-              <Icon name="open-new-tab" size="14px" class="text-green-800" />
-            </div>
-            <p class="text-sm text-gray-600 leading-normal">{{ menu.description }}</p>
-          </a>
+      <ul class="grid grid-cols-3 grid-rows-3 gap-x-20 gap-y-12">
+        <li class="flex flex-col gap-2">
+          <h2 class="text-4xl font-medium leading-loose">
+            Akses Cepat
+          </h2>
+          <p class="text-sm text-gray-600 leading-6">
+            Dapatkan kemudahaan akses ke beberapa layanan Pemerintah Provinsi Jawa Barat untuk kebutuhan Anda.
+          </p>
+        </li>
+        <li v-for="menu in menus" :key="menu.id" class="group px-4 py-3 rounded-md hover:bg-green-50">
+          <Link :link="menu.link" class="flex flex-col gap-4">
+            <Icon :src="menu.icon" :alt="menu.title" width="32" height="32" />
+            <p class="font-roboto font-bold group-hover:text-green-800">
+              {{ menu.title }}
+            </p>
+            <p class="text-sm text-gray-600 leading-6 group-hover:text-blue-gray-800 focus:outline-none">
+              {{ menu.description }}
+            </p>
+          </Link>
         </li>
       </ul>
     </div>
