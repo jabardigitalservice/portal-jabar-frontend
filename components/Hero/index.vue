@@ -19,6 +19,7 @@
         <HeroSearch />
       </div>
     </section>
+    <HeroWidgetSocialMedia />
     <div class="curved" />
   </div>
 </template>
