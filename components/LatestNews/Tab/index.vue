@@ -32,10 +32,16 @@
 import { format } from '~/utils/date'
 
 export default {
+  props: {
+    perPage: {
+      type: Number,
+      required: false,
+      default: 4
+    }
+  },
   data () {
     return {
       items: [],
-      perPage: 4,
       tabs: ['terbaru', 'terpopuler'],
       selectedTab: 'terbaru'
     }

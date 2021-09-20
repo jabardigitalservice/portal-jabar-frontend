@@ -60,10 +60,16 @@
 import { format, daysDifference, relativeTime } from '~/utils/date'
 
 export default {
+  props: {
+    perPage: {
+      type: Number,
+      required: false,
+      default: 5
+    }
+  },
   data () {
     return {
-      items: [],
-      perPage: 5
+      items: []
     }
   },
   async fetch () {
