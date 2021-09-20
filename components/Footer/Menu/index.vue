@@ -50,12 +50,12 @@
 </template>
 
 <script>
-import { layananPublikMenu, socialMediaSites } from '~/static/data'
+import { publicServiceMenu, socialMediaSites } from '~/static/data'
 
 export default {
   data () {
     return {
-      menus: layananPublikMenu,
+      menus: publicServiceMenu,
       socialMediaSites
     }
   }
