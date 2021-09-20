@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { socialMediaSites } from '~/static/data/menus'
+import { socialMediaSites } from '~/static/data'
 
 export default {
   data () {

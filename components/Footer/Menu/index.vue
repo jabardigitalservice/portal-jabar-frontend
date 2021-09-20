@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { layananPublikMenu, socialMediaSites } from '~/static/data/menus'
+import { layananPublikMenu, socialMediaSites } from '~/static/data'
 
 export default {
   data () {

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { quickLinkMenu } from '~/static/data/menus'
+import { quickLinkMenu } from '~/static/data'
 
 export default {
   data () {
