@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-md overflow-hidden flex flex-col">
+  <div class="col-span-2 rounded-md overflow-hidden flex flex-col">
     <p class="text-2xl leading-loose bg-green-800 px-4 py-2 text-white">
       Agenda Acara
     </p>
