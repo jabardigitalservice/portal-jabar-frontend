@@ -35,12 +35,13 @@ export default {
   data () {
     return {
       items: [],
+      perPage: 4,
       tabs: ['terbaru', 'terpopuler'],
       selectedTab: 'terbaru'
     }
   },
   async fetch () {
-    const perPage = 'per_page=4'
+    const perPage = `per_page=${this.perPage}`
     const sortByMostPopularNews = 'sort_by=views'
     let queryParams = `?${perPage}`
 

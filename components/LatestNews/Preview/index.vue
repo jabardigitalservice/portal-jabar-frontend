@@ -62,11 +62,12 @@ import { format, daysDifference, relativeTime } from '~/utils/date'
 export default {
   data () {
     return {
-      items: []
+      items: [],
+      perPage: 5
     }
   },
   async fetch () {
-    const perPage = 'per_page=5'
+    const perPage = `per_page=${this.perPage}`
     const filterByHighlightNews = 'highlight=true'
     const queryParams = `?${filterByHighlightNews}&${perPage}`
 
