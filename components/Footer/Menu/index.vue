@@ -19,9 +19,10 @@
           <p class="font-bold">
             Umpan Balik
           </p>
-          <button type="button" class="text-sm text-left leading-6">
+          <button type="button" class="text-sm text-left leading-6" @click="toggleFeedbackForm">
             Isi survei performa situs web
           </button>
+          <Feedback :show="isFeedbackFormOpen" @close="toggleFeedbackForm" />
         </div>
       </div>
       <div class="flex gap-3 pt-4">
@@ -55,6 +56,7 @@ import { layananPublikMenu } from '~/static/data/menus'
 export default {
   data () {
     return {
+      isFeedbackFormOpen: false,
       menus: layananPublikMenu,
       socialMediaSites: [
         {
@@ -82,6 +84,11 @@ export default {
           link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
         }
       ]
+    }
+  },
+  methods: {
+    toggleFeedbackForm () {
+      this.isFeedbackFormOpen = !this.isFeedbackFormOpen
     }
   }
 }
