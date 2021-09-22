@@ -1,9 +1,8 @@
 <template>
-  <div class="col-span-5 rounded-lg overflow-hidden h-5/6">
+  <div class="col-span-5 rounded-lg overflow-hidden">
     <Carousel
       lazy
       :items="items"
-      :duration="5000"
       :speed="1000"
     >
       <template #default="{ item, index, slider }">
