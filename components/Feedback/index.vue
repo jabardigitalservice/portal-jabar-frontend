@@ -174,33 +174,19 @@ export default {
       }
     },
     isAllowed () {
-      const lastSubmitted = this.getCookie('feedback')
+      const lastSubmitted = this.getLocalStorage('feedback')
 
       if (lastSubmitted) {
-        return hoursDifference(lastSubmitted) > 1
+        return hoursDifference(lastSubmitted) > 0
       }
 
       return true
     },
-    getCookie (key) {
-      const name = key + '='
-      const decodedCookie = decodeURIComponent(document.cookie)
-      const cookieArray = decodedCookie.split(';')
-
-      for (let i = 0; i < cookieArray.length; i++) {
-        let cookie = cookieArray[i]
-        while (cookie.charAt(0) === ' ') {
-          cookie = cookie.substring(1)
-        }
-        if (cookie.indexOf(name) === 0) {
-          return cookie.substring(name.length, cookie.length)
-        }
-      }
-
-      return ''
+    getLocalStorage (key) {
+      return localStorage.getItem(key)
     },
-    setCookie (key, value) {
-      document.cookie = `${key}=${value};`
+    setLocalStorage (key, value) {
+      localStorage.setItem(key, value)
     },
     async submitHandler () {
       if (!this.isAllowed()) {
@@ -211,7 +197,7 @@ export default {
           await this.$axios.$post('/v1/feedback', this.form)
           this.isLoading = false
           this.openedModal = 'success'
-          this.setCookie('feedback', new Date())
+          this.setLocalStorage('feedback', new Date())
         } catch (error) {
           this.isLoading = false
           this.openedModal = 'error'
