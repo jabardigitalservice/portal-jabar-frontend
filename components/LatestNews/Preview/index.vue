@@ -3,7 +3,6 @@
     <Carousel
       lazy
       :items="items"
-      :duration="5000"
       :speed="1000"
     >
       <template #default="{ item, index, slider }">
