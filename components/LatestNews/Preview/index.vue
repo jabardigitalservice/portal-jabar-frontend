@@ -1,5 +1,5 @@
 <template>
-  <div class="col-span-5 rounded-lg overflow-hidden h-5/6">
+  <div class="col-span-5 rounded-lg overflow-hidden">
     <Carousel
       lazy
       :items="items"
