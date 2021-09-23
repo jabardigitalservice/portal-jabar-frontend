@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { navigationMenu } from '~/static/data/menus'
+import { navigationMenu } from '~/static/data'
 
 export default {
   data () {

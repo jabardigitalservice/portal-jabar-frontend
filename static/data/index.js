@@ -1,3 +1,21 @@
+export const heroImages = [
+  {
+    id: 1,
+    image: '/images/banners/1.webp',
+    title: 'Portal Jabar'
+  },
+  {
+    id: 2,
+    image: '/images/banners/2.webp',
+    title: 'Portal Jabar'
+  },
+  {
+    id: 3,
+    image: '/images/banners/3.webp',
+    title: 'Portal Jabar'
+  }
+]
+
 export const navigationMenu = [
   {
     id: 1,
@@ -317,7 +335,7 @@ export const quickLinkMenu = [
   }
 ]
 
-export const layananPublikMenu = [
+export const publicServiceMenu = [
   {
     id: 1,
     title: 'Kependudukan',
@@ -347,5 +365,32 @@ export const layananPublikMenu = [
     id: 6,
     title: 'Pengaduan Publik',
     link: 'https://www.lapor.go.id'
+  }
+]
+
+export const socialMediaSites = [
+  {
+    id: 1,
+    name: 'Facebook',
+    icon: 'facebook',
+    link: 'https://www.facebook.com/jabarprov'
+  },
+  {
+    id: 2,
+    name: 'Instagram',
+    icon: 'instagram',
+    link: 'https://www.instagram.com/jabarprovgoid'
+  },
+  {
+    id: 3,
+    name: 'Twitter',
+    icon: 'twitter',
+    link: 'https://twitter.com/jabarprovgoid'
+  },
+  {
+    id: 4,
+    name: 'YouTube',
+    icon: 'youtube',
+    link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
   }
 ]

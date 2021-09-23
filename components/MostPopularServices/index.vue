@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mostPopularServicesMenu } from '~/static/data/menus'
+import { mostPopularServicesMenu } from '~/static/data'
 
 export default {
   data () {
