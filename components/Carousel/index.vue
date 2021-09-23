@@ -2,7 +2,7 @@
   <div ref="slider" class="h-screen relative overflow-hidden">
     <div
       v-for="(image, index) in images"
-      :key="index"
+      :key="image.id"
       class="w-full h-screen absolute top-0"
       :style="{ opacity: opacities[index] }"
     >

@@ -1,3 +1,21 @@
+export const heroImages = [
+  {
+    id: 1,
+    source: '/images/banners/1.webp',
+    title: 'Portal Jabar'
+  },
+  {
+    id: 2,
+    source: '/images/banners/2.webp',
+    title: 'Portal Jabar'
+  },
+  {
+    id: 3,
+    source: '/images/banners/3.webp',
+    title: 'Portal Jabar'
+  }
+]
+
 export const navigationMenu = [
   {
     id: 1,
