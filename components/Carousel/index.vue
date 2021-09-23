@@ -1,16 +1,26 @@
 <template>
-  <div ref="slider" class="h-screen relative overflow-hidden">
+  <div ref="slider" class="w-full h-full relative overflow-hidden group">
     <div
       v-for="(image, index) in images"
       :key="image.id"
       class="w-full h-screen absolute top-0"
       :style="{ opacity: opacities[index] }"
     >
-      <img
-        class="keen-slider__slide object-cover object-center w-full h-full"
-        :src="image.source"
-        :alt="image.title"
-      >
+      <div class="keen-slider__slide w-full h-full relative">
+        <img
+          v-if="lazy"
+          class="lazyload w-full h-full object-cover object-center transition duration-500 ease-in-out group-hover:transform group-hover:scale-110"
+          :data-src="item.image"
+          :alt="item.title"
+        >
+        <img
+          v-else
+          class="w-full h-full object-cover object-center transition duration-500 ease-in-out group-hover:transform group-hover:scale-110"
+          :src="item.image"
+          :alt="item.title"
+        >
+        <slot :item="item" :index="index" :slider="slider" />
+      </div>
     </div>
   </div>
 </template>
@@ -20,7 +30,7 @@ import KeenSlider from 'keen-slider'
 
 export default {
   props: {
-    images: {
+    items: {
       type: Array,
       required: true
     },
@@ -28,6 +38,16 @@ export default {
       type: Number,
       required: false,
       default: 3000
+    },
+    speed: {
+      type: Number,
+      required: false,
+      default: 3000
+    },
+    lazy: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data () {
@@ -39,9 +59,9 @@ export default {
   },
   mounted () {
     this.slider = new KeenSlider(this.$refs.slider, {
-      slides: this.images.length,
+      slides: this.items.length,
       loop: true,
-      duration: 3000,
+      duration: this.speed,
       move: (s) => {
         const opacities = s.details().positions.map(slide => slide.portion)
         this.setOpacities(opacities)

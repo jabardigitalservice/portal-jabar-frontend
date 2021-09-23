@@ -19,9 +19,10 @@
           <p class="font-bold">
             Umpan Balik
           </p>
-          <button type="button" class="text-sm text-left leading-6">
+          <button type="button" class="text-sm text-left leading-6" @click="toggleFeedbackForm">
             Isi survei performa situs web
           </button>
+          <Feedback :show="isFeedbackFormOpen" @close="toggleFeedbackForm" />
         </div>
       </div>
       <div class="flex gap-3 pt-4">
@@ -57,6 +58,11 @@ export default {
     return {
       menus: publicServiceMenu,
       socialMediaSites
+    }
+  },
+  methods: {
+    toggleFeedbackForm () {
+      this.isFeedbackFormOpen = !this.isFeedbackFormOpen
     }
   }
 }
