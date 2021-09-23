@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { featuredProgramMenu } from '~/static/data/menus'
+import { featuredProgramMenu } from '~/static/data'
 
 export default {
   data () {

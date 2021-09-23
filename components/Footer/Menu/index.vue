@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { layananPublikMenu } from '~/static/data/menus'
+import { layananPublikMenu } from '~/static/data'
 
 export default {
   data () {
