@@ -9,10 +9,12 @@
 </template>
 
 <script>
+import { heroImages } from '~/static/data'
+
 export default {
-  computed: {
-    items () {
-      return [1, 2, 3].map(item => ({ image: `/images/banners/${item}.webp`, title: 'Jawa Barat' }))
+  data () {
+    return {
+      items: heroImages
     }
   }
 }
