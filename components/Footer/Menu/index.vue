@@ -51,13 +51,13 @@
 </template>
 
 <script>
-import { layananPublikMenu } from '~/static/data'
+import { publicServiceMenu } from '~/static/data'
 
 export default {
   data () {
     return {
       isFeedbackFormOpen: false,
-      menus: layananPublikMenu,
+      menus: publicServiceMenu,
       socialMediaSites: [
         {
           id: 1,

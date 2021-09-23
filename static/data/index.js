@@ -317,7 +317,7 @@ export const quickLinkMenu = [
   }
 ]
 
-export const layananPublikMenu = [
+export const publicServiceMenu = [
   {
     id: 1,
     title: 'Kependudukan',
