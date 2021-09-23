@@ -51,39 +51,14 @@
 </template>
 
 <script>
-import { publicServiceMenu } from '~/static/data'
+import { publicServiceMenu, socialMediaSites } from '~/static/data'
 
 export default {
   data () {
     return {
       isFeedbackFormOpen: false,
       menus: publicServiceMenu,
-      socialMediaSites: [
-        {
-          id: 1,
-          name: 'Facebook',
-          icon: 'facebook',
-          link: 'https://www.facebook.com/jabarprov'
-        },
-        {
-          id: 2,
-          name: 'Instagram',
-          icon: 'instagram',
-          link: 'https://www.instagram.com/jabarprovgoid'
-        },
-        {
-          id: 3,
-          name: 'Twitter',
-          icon: 'twitter',
-          link: 'https://twitter.com/jabarprovgoid'
-        },
-        {
-          id: 4,
-          name: 'YouTube',
-          icon: 'youtube',
-          link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
-        }
-      ]
+      socialMediaSites
     }
   },
   methods: {
