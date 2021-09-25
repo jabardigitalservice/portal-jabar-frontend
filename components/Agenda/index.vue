@@ -1,52 +1,87 @@
 <template>
   <div class="col-span-2 rounded-md overflow-hidden flex flex-col">
-    <p class="text-2xl leading-loose bg-green-800 px-4 py-2 text-white">
-      Agenda Acara
-    </p>
-    <div class="rounded-br-md rounded-bl-md flex-grow bg-white">
-      <AgendaList
-        v-for="(event, index) in events"
-        :key="index"
-        :start-date="event.startDate"
-        :end-date="event.endDate"
-      />
+    <div class="flex flex-col gap-1 bg-green-800 px-5 pt-3 pb-4 text-white">
+      <h4 class="text-xl leading-8 font-bold">
+        Agenda Jawa Barat
+      </h4>
+      <p class="text-xs leading-5">
+        Dapatkan informasi terkait semua kegiatan yang dilakukan di jawa barat.
+      </p>
+    </div>
+    <div class="rounded-br-md rounded-bl-md flex-grow bg-white border border-blue-gray-50 overflow-hidden">
+      <div class="bg-white flex flex-col gap-6 pt-5">
+        <div class="px-4">
+          <p class="font-roboto font-medium mb-1">
+            {{ currentMonth }}
+          </p>
+          <p class="text-xs text-gray-500">
+            Minggu ke {{ currentWeek }}
+          </p>
+        </div>
+        <AgendaSlider :items="eachDayOfWeek" @click="setSelectedDay" />
+        <AgendaList :start-date="selectedDay" :end-date="selectedDay" />
+      </div>
+      <Link link="/informasi-dan-berita/agenda-jabar" class="flex justify-center items-center py-5 border-t border-gray-100">
+        <Button type="button" variant="tertiary-paddingless" tabindex="-1">
+          Lihat Semua Agenda
+          <Icon name="open-new-tab" size="12px" variant="borderle" />
+        </Button>
+      </Link>
     </div>
   </div>
 </template>
 
 <script>
-import { add, differenceInCalendarMonths, endOfMonth } from 'date-fns'
-import { formatISODate } from '~/utils/date'
+import {
+  format,
+  formatISODate,
+  getCurrentWeek,
+  getEachDay,
+  getFirstDayOfMonth,
+  getFirstDayOfWeek,
+  getLastDayOfMonth,
+  getLastDayOfWeek,
+  monthsDifference
+} from '~/utils/date'
 
 export default {
   data () {
     return {
-      events: [
-        {
-          startDate: this.getDate(),
-          endDate: this.getDate({ days: 2 })
-        },
-        {
-          startDate: this.getDate({ months: 1 }),
-          endDate: this.getDate({ days: 2, months: 1 })
-        }
-      ]
+      selectedDay: formatISODate(new Date())
+    }
+  },
+  computed: {
+    currentMonth () {
+      return format(this.startDate, { month: 'long', year: 'numeric' })
+    },
+    currentWeek () {
+      return getCurrentWeek()
+    },
+    startDate () {
+      let firstDayOfWeek = getFirstDayOfWeek()
+
+      if (monthsDifference(firstDayOfWeek)) {
+        firstDayOfWeek = getFirstDayOfMonth()
+      }
+
+      return formatISODate(firstDayOfWeek)
+    },
+    endDate () {
+      let lastDayOfWeek = getLastDayOfWeek()
+
+      if (monthsDifference(lastDayOfWeek)) {
+        lastDayOfWeek = getLastDayOfMonth()
+      }
+
+      return formatISODate(lastDayOfWeek)
+    },
+    eachDayOfWeek () {
+      return getEachDay({ start: this.startDate, end: this.endDate })
     }
   },
   methods: {
-    getDate (duration = {}) {
-      let baseDate = new Date()
-      let date = add(baseDate, duration)
-
-      if (duration.months) {
-        baseDate = add(baseDate, { months: duration.months })
-      }
-
-      if (differenceInCalendarMonths(date, baseDate)) {
-        date = endOfMonth(baseDate)
-      }
-
-      return formatISODate(date)
+    setSelectedDay (day) {
+      this.selectedDay = formatISODate(day)
     }
   }
 }

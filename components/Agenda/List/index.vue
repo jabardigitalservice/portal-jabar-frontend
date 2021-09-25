@@ -1,31 +1,24 @@
 <template>
-  <div class="bg-white flex flex-col px-4 pt-5">
-    <p class="text-sm uppercase border-b pb-4 text-gray-700 font-medium border-gray-300">
-      {{ month }}
-    </p>
-    <div class="flex flex-col gap-5 py-5 border-b border-gray-300">
-      <!--
+  <div>
+    <div class="bg-white flex flex-col pl-6 pr-4">
+      <div class="flex flex-col h-80 overflow-hidden overflow-y-scroll">
+        <!--
         TODO: Show a placeholder if an error occur
       -->
-      <!--
+        <!--
         TODO: Show a placeholder if no data
       -->
-      <AgendaItem
-        v-for="event in events"
-        :id="event.id"
-        :key="event.id"
-        :title="event.title"
-        :date="event.date"
-        :start-hour="event.start_hour"
-        :end-hour="event.end_hour"
-        :fetch-state="$fetchState"
-      />
-    </div>
-    <div class="py-4 self-end flex items-center gap-2">
-      <nuxt-link to="/informasi-dan-berita/agenda-jabar" class="font-medium">
-        Selengkapnya
-      </nuxt-link>
-      <Icon name="arrow-right" size="14px" class="text-green-800" />
+        <AgendaListItem
+          v-for="event in events"
+          :id="event.id"
+          :key="event.id"
+          :title="event.title"
+          :date="startDate"
+          :start-hour="event.start_hour"
+          :end-hour="event.end_hour"
+          :fetch-state="$fetchState"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -42,6 +35,11 @@ export default {
     endDate: {
       type: String,
       required: true
+    },
+    perPage: {
+      type: Number,
+      required: false,
+      default: 5
     }
   },
   data () {
@@ -50,12 +48,22 @@ export default {
     }
   },
   async fetch () {
-    const response = await this.$axios.$get(`/v1/events?start_date=${this.startDate}&end_date=${this.endDate}&per_page=3`)
+    const startDate = `start_date=${this.startDate}`
+    const endDate = `end_date=${this.endDate}`
+    const perPage = `per_page=${this.perPage}`
+    const queryParams = `?${startDate}&${endDate}&${perPage}`
+
+    const response = await this.$axios.$get(`/v1/events${queryParams}`)
     this.events = response.data
   },
   computed: {
     month () {
       return format(this.startDate, { month: 'long', year: 'numeric' })
+    }
+  },
+  watch: {
+    startDate () {
+      this.$fetch()
     }
   },
   activated () {
