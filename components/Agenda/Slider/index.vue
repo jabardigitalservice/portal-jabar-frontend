@@ -105,6 +105,10 @@ export default {
       return format(date, { day: 'numeric' })
     },
     getDayIndex (date = new Date()) {
+      if (getDayOfWeek(date) === 0) {
+        return 6
+      }
+
       return getDayOfWeek(date) - 1
     },
     isToday (date) {
