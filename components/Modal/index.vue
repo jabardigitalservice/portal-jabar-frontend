@@ -10,7 +10,7 @@
           <h4 class="font-medium text-xl text-green-800">
             {{ header }}
           </h4>
-          <div @click="clickHandler">
+          <div v-if="closeButton" @click="clickHandler">
             <Icon name="times" size="18px" class="text-gray-800 cursor-pointer" />
           </div>
         </div>
@@ -53,6 +53,11 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    closeButton: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   methods: {
