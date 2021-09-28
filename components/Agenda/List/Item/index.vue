@@ -186,11 +186,19 @@ export default {
     },
     startHour: {
       type: String,
-      required: true
+      required: true,
+      validator (value) {
+        const pattern = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
+        return pattern.test(value)
+      }
     },
     endHour: {
       type: String,
-      required: true
+      required: true,
+      validator (value) {
+        const pattern = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
+        return pattern.test(value)
+      }
     },
     fetchState: {
       type: Object,
