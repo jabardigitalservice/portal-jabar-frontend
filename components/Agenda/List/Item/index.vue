@@ -188,6 +188,9 @@ export default {
       type: String,
       required: true,
       validator (value) {
+        /**
+         *  The value must match HH:mm:ss format
+         */
         const pattern = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
         return pattern.test(value)
       }
@@ -196,6 +199,9 @@ export default {
       type: String,
       required: true,
       validator (value) {
+        /**
+         *  The value must match HH:mm:ss format
+         */
         const pattern = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
         return pattern.test(value)
       }
