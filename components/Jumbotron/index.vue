@@ -1,8 +1,15 @@
 <template>
-  <section class="w-full bg-blue-800">
-    <div class="container mx-auto py-32">
+  <section
+    class="relative w-full bg-blue-800"
+    :style="jumbotronStyle"
+  >
+    <div class="overlay" />
+    <div class="relative container mx-auto py-32 z-10">
       <v-slot name="breadcrumb">
         <div class="mb-6">
+          <!--
+            TODO: create Breadcrumb component
+           -->
           <p>Breadcrumb > Breadcrumb</p>
         </div>
       </v-slot>
@@ -35,14 +42,39 @@ export default {
       type: [String, Number],
       required: false,
       default: ''
+    },
+
+    /**
+     * Jumbotron background image url.
+     * Refering to `static` folder.
+     */
+    backgroundImageUrl: {
+      type: [String],
+      required: false,
+      default: '/images/banners/1.webp'
     }
   },
-  data () {
-    return {}
+
+  computed: {
+    jumbotronStyle () {
+      return {
+        backgroundImage: `url('${this.backgroundImageUrl}')`,
+        backgroundPosition: 'center center'
+      }
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: radial-gradient(100% 2589.12% at 0% 0%, rgba(0, 40, 19, 0.98) 0%, rgba(0, 32, 39, 0.9) 100%);
+}
 
 </style>
