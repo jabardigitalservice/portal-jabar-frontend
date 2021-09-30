@@ -15,7 +15,7 @@ export default {
       jumbotron: {
         title: 'Program Unggulan',
         subtitle: 'Dapatkan informasi mengenai program-program unggulan dari Pemerintah Daerah Provinsi Jawa Barat.',
-        backgroundImage: '/image/banner/1.webp'
+        backgroundImageUrl: '/images/banners/1.webp'
       }
     }
   }
