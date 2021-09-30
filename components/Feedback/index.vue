@@ -5,7 +5,7 @@
       header="Seberapa Puas Anda dengan Portal Jabar"
       @close="closeFeedbackForm"
     >
-      <form class="" @submit.prevent="submitHandler">
+      <form @submit.prevent="submitHandler">
         <div class="p-6">
           <div class="flex flex-col mb-5">
             <label class="text-sm leading-6 text-gray-800 mb-2">
@@ -159,6 +159,7 @@ export default {
     },
     closeFeedbackForm () {
       this.$emit('close')
+      this.resetFormInput()
     },
     closeModal () {
       this.closeFeedbackForm()
