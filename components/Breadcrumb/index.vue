@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     breadcrumbItems () {
-      const fullPath = this.$route.fullPath
+      const fullPath = this.$route.path
       const params = fullPath.substring(1).split('/')
       const crumbs = []
       let path = ''
@@ -64,7 +64,7 @@ export default {
     },
 
     activeRoute () {
-      return this.$route.fullPath
+      return this.$route.path
     }
   }
 }
