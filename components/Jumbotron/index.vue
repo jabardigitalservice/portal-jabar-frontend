@@ -5,14 +5,7 @@
   >
     <div class="overlay" />
     <div class="relative container mx-auto py-32 z-10">
-      <slot name="breadcrumb">
-        <div class="mb-6">
-          <!--
-            TODO: create Breadcrumb component
-           -->
-          <p>Breadcrumb > Breadcrumb</p>
-        </div>
-      </slot>
+      <slot name="breadcrumb" />
       <h1 class="font-lora font-bold text-3xl leading-relaxed text-green-500 mb-2">
         {{ title }}
       </h1>
