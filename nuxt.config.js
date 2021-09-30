@@ -36,8 +36,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-fonts',
-    'nuxt-lazysizes'
+    '@nuxtjs/google-fonts'
   ],
 
   eslint: {

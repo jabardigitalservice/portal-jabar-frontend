@@ -8,13 +8,6 @@
     >
       <div class="keen-slider__slide w-full h-full relative">
         <img
-          v-if="lazy"
-          class="lazyload w-full h-full object-cover object-center transition duration-500 ease-in-out group-hover:transform group-hover:scale-110"
-          :data-src="item.image"
-          :alt="item.title"
-        >
-        <img
-          v-else
           class="w-full h-full object-cover object-center transition duration-500 ease-in-out group-hover:transform group-hover:scale-110"
           :src="item.image"
           :alt="item.title"
@@ -43,11 +36,6 @@ export default {
       type: Number,
       required: false,
       default: 3000
-    },
-    lazy: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   },
   data () {
