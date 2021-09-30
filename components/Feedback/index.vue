@@ -27,7 +27,7 @@
             </label>
             <textarea
               id="compliments"
-              v-model="form.compliments"
+              v-model.trim="form.compliments"
               name="compliments"
               cols="30"
               rows="3"
@@ -45,7 +45,7 @@
             </label>
             <textarea
               id="criticism"
-              v-model="form.criticism"
+              v-model.trim="form.criticism"
               name="criticism"
               cols="30"
               rows="3"
@@ -63,7 +63,7 @@
             </label>
             <textarea
               id="suggestions"
-              v-model="form.suggestions"
+              v-model.trim="form.suggestions"
               name="suggestions"
               cols="30"
               rows="3"
