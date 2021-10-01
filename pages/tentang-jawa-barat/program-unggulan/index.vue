@@ -5,11 +5,17 @@
         <Breadcrumb class="mb-6" />
       </template>
     </Jumbotron>
+    <FeaturedProgram />
   </main>
 </template>
 
 <script>
+import FeaturedProgram from '~/components/AboutJabar/FeaturedProgram'
+
 export default {
+  components: {
+    FeaturedProgram
+  },
   data () {
     return {
       jumbotron: {
