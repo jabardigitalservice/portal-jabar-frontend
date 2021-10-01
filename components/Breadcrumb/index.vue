@@ -18,6 +18,14 @@ export default {
   name: 'Breadcrumb',
   props: {
     /**
+     * Predefined array of breadcrumb items
+     * Use this props to override default breadcrumb item list.
+     */
+    items: {
+      type: Array,
+      default: () => []
+    },
+    /**
      * Array of hidden breadcrumb item
      */
     hideItems: {
@@ -27,6 +35,13 @@ export default {
   },
   computed: {
     breadcrumbItems () {
+      /**
+       * return list of `items` props if defined
+       */
+      if (Array.isArray(this.items) && this.items.length > 0) {
+        return this.items
+      }
+
       const fullPath = this.$route.path
       const params = fullPath.substring(1).split('/')
       const crumbs = []
