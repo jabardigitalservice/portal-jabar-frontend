@@ -394,3 +394,68 @@ export const socialMediaSites = [
     link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
   }
 ]
+
+export const dummyFeaturedProgram = {
+  data: [
+    {
+      id: 1,
+      title: 'Sapawarga',
+      description: 'Temukan informasi dan akses layanan tentang Organisasi Perangkat Daerah di Jawa Barat',
+      icon: '/icons/program-unggulan/sapawarga.svg',
+      organization: 'Diskominfo',
+      category_name: 'informasi layanan publik',
+      service_type: 'online',
+      websites: [
+        'https://sapawarga.jabarprov.go.id',
+        'https://digitalservice.jabarprov.go.id/sapawarga'
+      ],
+      social_media: {
+        facebook: 'https://www.facebook.com/bangunbagustapa',
+        instagram: 'https://www.instagram.com/bangunbagustapa',
+        twitter: 'https://twitter.com/bangunbagustapa',
+        tiktok: 'https://tiktok.com/bangunbagustapa',
+        youtube: 'https://youtube.com/bangunbagustapa'
+      }
+    },
+    {
+      id: 2,
+      title: 'Desa Digital',
+      description: 'Temukan informasi dan akses layanan tentang Organisasi Perangkat Daerah di Jawa Barat',
+      icon: '/icons/program-unggulan/desa-digital.svg',
+      organization: 'Diskominfo',
+      category_name: 'informasi layanan publik',
+      service_type: 'online',
+      websites: [
+        'https://sapawarga.jabarprov.go.id',
+        'https://digitalservice.jabarprov.go.id/sapawarga'
+      ],
+      social_media: {
+        facebook: 'https://www.facebook.com/bangunbagustapa',
+        instagram: 'https://www.instagram.com/bangunbagustapa',
+        twitter: 'https://twitter.com/bangunbagustapa',
+        tiktok: 'https://tiktok.com/bangunbagustapa',
+        youtube: 'https://youtube.com/bangunbagustapa'
+      }
+    },
+    {
+      id: 3,
+      title: 'Ekosistem Data Jabar',
+      description: 'Temukan informasi dan akses layanan tentang Organisasi Perangkat Daerah di Jawa Barat',
+      icon: '/icons/program-unggulan/ekosistem-data-jabar.svg',
+      organization: 'Diskominfo',
+      category_name: 'informasi layanan publik',
+      service_type: 'online',
+      websites: [
+        'https://sapawarga.jabarprov.go.id',
+        'https://digitalservice.jabarprov.go.id/sapawarga'
+      ],
+      social_media: {
+        facebook: 'https://www.facebook.com/bangunbagustapa',
+        instagram: 'https://www.instagram.com/bangunbagustapa',
+        twitter: 'https://twitter.com/bangunbagustapa',
+        tiktok: 'https://tiktok.com/bangunbagustapa',
+        youtube: 'https://youtube.com/bangunbagustapa'
+      }
+    }
+  ]
+}
