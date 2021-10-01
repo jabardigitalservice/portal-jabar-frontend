@@ -97,7 +97,7 @@
                 Tanggal
               </p>
               <p class="text-sm text-gray-800 whitespace-nowrap">
-                {{ date }}
+                {{ formattedDate }}
               </p>
             </div>
           </div>
@@ -162,7 +162,7 @@ export default {
       type: String,
       required: true
     },
-    startDate: {
+    date: {
       type: String,
       required: true
     },
@@ -256,8 +256,8 @@ export default {
 
       return 'Belum dimulai'
     },
-    date () {
-      return format(this.startDate, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
+    formattedDate () {
+      return format(this.date, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
     },
     isOnline () {
       return this.type === 'online'
