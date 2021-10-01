@@ -1,3 +1,24 @@
 <template>
-  <main />
+  <main class="overflow-hidden">
+    <Jumbotron v-bind="jumbotron">
+      <template #breadcrumb>
+        <Breadcrumb :hide-items="['Tentang Jawa Barat']" class="mb-6" />
+      </template>
+    </Jumbotron>
+  </main>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      jumbotron: {
+        title: 'Program Unggulan',
+        subtitle: 'Dapatkan informasi mengenai program-program unggulan dari Pemerintah Daerah Provinsi Jawa Barat.',
+        backgroundImageUrl: '/images/banners/1.webp'
+      }
+    }
+  }
+
+}
+</script>
