@@ -2,7 +2,7 @@
   <main class="overflow-hidden">
     <Jumbotron v-bind="jumbotron">
       <template #breadcrumb>
-        <Breadcrumb :hide-items="['Tentang Jawa Barat']" class="mb-6" />
+        <Breadcrumb class="mb-6" />
       </template>
     </Jumbotron>
   </main>
