@@ -13,7 +13,7 @@
           :id="event.id"
           :key="event.id"
           :title="event.title"
-          :start-date="startDate"
+          :date="event.date"
           :category="event.category.title"
           :type="event.type"
           :url="event.url"
