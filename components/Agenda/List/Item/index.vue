@@ -1,56 +1,52 @@
 <template>
   <AgendaListItemSkeleton v-if="fetchState.pending" />
   <div v-else>
-    <div class="flex gap-5 mb-5 w-full relative cursor-pointer">
+    <div class="flex gap-4 mb-4 w-full relative cursor-pointer">
       <div>
+        <div class="relative pl-1">
+          <div
+            class="w-2 h-2 rounded-full relative z-10"
+            :class="circleClass"
+          />
+          <div
+            v-if="ongoing"
+            class="animate-ping w-2 h-2 rounded-full absolute z-10 top-0 border-2 border-green-800 bg-white"
+          />
+        </div>
         <div
-          class="w-2 h-2 rounded-full relative z-10"
-          :class="[
-            { 'bg-green-800': done },
-            ongoing ? 'border-2 border-green-800 bg-white' : 'bg-gray-300'
-          ]"
-        />
-        <div
-          class="border-l h-20 absolute bottom-16 left-1"
-          :class="[
-            { 'border-green-800': done },
-            ongoing ? 'border-green-800' : 'border-gray-300'
-          ]"
+          class="absolute border-l left-2"
+          :class="borderClass"
+          style="height: 112px; bottom: 88px"
         />
       </div>
       <div
         class="flex gap-2 w-full px-3 py-2 rounded-lg"
-        :class="[
-          { 'bg-green-50 bg-opacity-75 border border-green-800': done },
-          ongoing ? 'bg-green-800 bg-opacity-100' : 'bg-gray-50'
-        ]"
+        :class="cardClass"
         @click="toggleEventDetail"
       >
-        <div class="flex flex-col gap-3 w-full justify-center">
+        <div class="flex flex-col gap-2 w-full justify-center">
           <p
             class="line-clamp-1 text-sm font-roboto font-medium"
-            :class="{
-              'text-green-800': done,
-              'text-white': ongoing
-            }"
+            :class="titleClass"
           >
             {{ title }}
+          </p>
+          <p
+            class="line-clamp-1 text-xs px-2 py-1 rounded-md self-start"
+            :class="categoryClass"
+          >
+            {{ category }}
           </p>
           <div class="flex justify-between">
             <p
               class="line-clamp-1 text-xs whitespace-nowrap"
-              :class="[
-                { 'text-green-800': done },
-                ongoing ? 'text-white' : 'text-gray-600']"
+              :class="timeClass"
             >
               {{ time }}
             </p>
             <p
               class="line-clamp-1 text-xs whitespace-nowrap"
-              :class="[
-                { 'text-green-800': done },
-                ongoing ? 'text-white' : 'text-gray-600']
-              "
+              :class="statusClass"
             >
               {{ status }}
             </p>
@@ -245,6 +241,9 @@ export default {
 
       return currentHour && startMinuteDifferent >= 0 && endMinuteDifferent < 0
     },
+    notStarted () {
+      return !this.done && !this.ongoing
+    },
     status () {
       if (this.done) {
         return 'Telah selesai'
@@ -261,6 +260,53 @@ export default {
     },
     isOnline () {
       return this.type === 'online'
+    },
+    circleClass () {
+      return {
+        'bg-gray-300': this.notStarted,
+        'border-2 border-green-800 bg-white': this.ongoing,
+        'bg-green-800': this.done
+      }
+    },
+    borderClass () {
+      return {
+        'border-gray-300': this.notStarted,
+        'border-green-800': this.ongoing || this.done
+      }
+    },
+    cardClass () {
+      return {
+        'bg-gray-50': this.notStarted,
+        'bg-green-800 bg-opacity-100': this.ongoing,
+        'bg-green-50 bg-opacity-50 border border-green-800': this.done
+      }
+    },
+    titleClass () {
+      return {
+        'text-white': this.ongoing,
+        'text-green-800': this.done
+      }
+    },
+    categoryClass () {
+      return {
+        'bg-gray-200 bg-opacity-75': this.notStarted,
+        'bg-green-900 bg-opacity-50 text-white': this.ongoing,
+        'text-green-800 bg-green-100 bg-opacity-40': this.done
+      }
+    },
+    timeClass () {
+      return {
+        'text-gray-600': this.notStarted,
+        'text-green-800': this.done,
+        'text-white': this.ongoing
+      }
+    },
+    statusClass () {
+      return {
+        'text-gray-600': this.notStarted,
+        'text-green-800': this.done,
+        'text-white': this.ongoing
+      }
     }
   },
   methods: {
