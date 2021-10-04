@@ -42,9 +42,9 @@ export default {
      * Refering to `static` folder.
      */
     backgroundImageUrl: {
-      type: [String],
+      type: String,
       required: false,
-      default: '/images/banners/1.webp'
+      default: '/images/jumbotron/default.webp'
     }
   },
 
