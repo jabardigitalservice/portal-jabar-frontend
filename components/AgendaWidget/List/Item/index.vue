@@ -1,5 +1,5 @@
 <template>
-  <AgendaListItemSkeleton v-if="fetchState.pending" />
+  <AgendaWidgetListItemSkeleton v-if="fetchState.pending" />
   <div v-else>
     <div class="flex gap-4 mb-4 w-full relative cursor-pointer">
       <div>
