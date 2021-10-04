@@ -276,7 +276,7 @@ export default {
     },
     cardClass () {
       return {
-        'bg-gray-50': this.notStarted,
+        'bg-gray-50 group hover:bg-green-50': this.notStarted,
         'bg-green-800 bg-opacity-100': this.ongoing,
         'bg-green-50 bg-opacity-50 border border-green-800': this.done
       }
@@ -289,8 +289,8 @@ export default {
     },
     categoryClass () {
       return {
-        'bg-gray-200 bg-opacity-75': this.notStarted,
-        'bg-green-900 bg-opacity-50 text-white': this.ongoing,
+        'text-green-800 bg-gray-200 bg-opacity-75 group-hover:bg-green-100 group-hover:bg-opacity-40': this.notStarted,
+        'text-white bg-green-900 bg-opacity-50': this.ongoing,
         'text-green-800 bg-green-100 bg-opacity-40': this.done
       }
     },
