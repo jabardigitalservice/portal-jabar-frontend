@@ -21,7 +21,7 @@
         <AgendaWidgetSlider :items="eachDayOfWeek" @click="setSelectedDay" />
         <AgendaWidgetList :start-date="selectedDay" :end-date="selectedDay" />
       </div>
-      <Link link="/informasi-dan-berita/agenda-jabar" class="flex justify-center items-center py-5 border-t border-gray-100">
+      <Link link="/agenda-jawa-barat" class="flex justify-center items-center py-5 border-t border-gray-100">
         <Button type="button" variant="tertiary-paddingless" tabindex="-1">
           Lihat Semua Agenda
           <Icon name="open-new-tab" size="12px" variant="borderle" />
