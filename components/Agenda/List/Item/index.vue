@@ -283,6 +283,7 @@ export default {
     },
     titleClass () {
       return {
+        'group-hover:text-green-800': this.notStarted,
         'text-white': this.ongoing,
         'text-green-800': this.done
       }
