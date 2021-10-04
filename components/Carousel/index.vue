@@ -1,5 +1,10 @@
 <template>
-  <div ref="slider" class="w-full h-full relative overflow-hidden group">
+  <div
+    ref="slider"
+    class="w-full h-full relative overflow-hidden group"
+    @mouseover="setPause(true)"
+    @mouseout="setPause(false)"
+  >
     <div
       v-for="(item, index) in items"
       :key="index"
@@ -59,6 +64,7 @@ export default {
   },
   mounted () {
     this.slider = new KeenSlider(this.$refs.slider, {
+      pause: false,
       slides: this.items.length,
       loop: true,
       duration: this.speed,
@@ -88,6 +94,10 @@ export default {
     },
     resetInterval () {
       clearInterval(this.interval)
+    },
+    setPause (active) {
+      this.pause = active
+      this.setInterval()
     }
   }
 }
