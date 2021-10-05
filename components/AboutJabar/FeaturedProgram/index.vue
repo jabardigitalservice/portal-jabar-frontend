@@ -20,17 +20,11 @@
             <!--
               TODO: replace this component with JdsSearch small variant
               -->
-            <form>
-              <div class="inline-flex gap-2 border border-blue-gray-50 p-2 rounded-lg">
-                <jds-icon name="magnifier" size="16px" fill="#BDBDBD" />
-                <input
-                  v-model="searchValue"
-                  type="text"
-                  class="font-lato text-gray-600 focus:outline-none leading-4"
-                  placeholder="Cari Program"
-                >
-              </div>
-            </form>
+            <Search
+              v-model="searchValue"
+              placeholder="Cari Program"
+              small
+            />
           </section>
 
           <!-- Featured Program Card -->
