@@ -5,7 +5,7 @@
       header="Seberapa Puas Anda dengan Portal Jabar"
       @click="closeFeedbackForm"
     >
-      <form class="" @submit.prevent="submitHandler">
+      <form @submit.prevent="submitHandler">
         <div class="p-6">
           <div class="flex flex-col mb-5">
             <label class="text-sm leading-6 text-gray-800 mb-2">
@@ -27,7 +27,7 @@
             </label>
             <textarea
               id="compliments"
-              v-model="form.compliments"
+              v-model.trim="form.compliments"
               name="compliments"
               cols="30"
               rows="3"
@@ -45,7 +45,7 @@
             </label>
             <textarea
               id="criticism"
-              v-model="form.criticism"
+              v-model.trim="form.criticism"
               name="criticism"
               cols="30"
               rows="3"
@@ -63,7 +63,7 @@
             </label>
             <textarea
               id="suggestions"
-              v-model="form.suggestions"
+              v-model.trim="form.suggestions"
               name="suggestions"
               cols="30"
               rows="3"
@@ -169,6 +169,7 @@ export default {
     },
     closeFeedbackForm () {
       this.$emit('close')
+      this.resetFormInput()
     },
     closeModal () {
       this.closeFeedbackForm()
