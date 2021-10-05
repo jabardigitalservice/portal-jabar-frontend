@@ -142,7 +142,7 @@ export const navigationMenu = [
           {
             id: 1,
             title: 'Program Unggulan',
-            link: '#'
+            link: '/tentang-jawa-barat/program-unggulan'
           },
           {
             id: 2,

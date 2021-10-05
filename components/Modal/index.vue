@@ -6,13 +6,10 @@
       style="z-index: 100;"
     >
       <div class="w-full max-w-lg bg-white rounded-lg overflow-hidden">
-        <div class="px-6 pt-6 flex justify-between items-center">
+        <div class="px-6 pt-6">
           <h4 class="font-medium text-xl text-green-800">
             {{ header }}
           </h4>
-          <div v-if="closeButton" @click="clickHandler">
-            <Icon name="times" size="18px" class="text-gray-800 cursor-pointer" />
-          </div>
         </div>
         <slot>
           <div class="p-6">
@@ -62,7 +59,7 @@ export default {
   },
   methods: {
     clickHandler () {
-      this.$emit('close')
+      this.$emit('click')
     }
   }
 }

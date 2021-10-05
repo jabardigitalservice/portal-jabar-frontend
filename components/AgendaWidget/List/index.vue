@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div class="bg-white flex flex-col pl-6 pr-4">
-      <div class="flex flex-col h-80 overflow-hidden overflow-y-scroll">
+    <div class="bg-white flex flex-col pl-5 pr-4">
+      <div class="flex flex-col h-80 overflow-y-scroll">
         <!--
-        TODO: Show a placeholder if an error occur
-      -->
+          TODO: Show a placeholder if an error occur
+        -->
         <!--
-        TODO: Show a placeholder if no data
-      -->
-        <AgendaListItem
+          TODO: Show a placeholder if no data
+        -->
+        <AgendaWidgetListItem
           v-for="event in events"
           :id="event.id"
           :key="event.id"
           :title="event.title"
-          :start-date="startDate"
+          :date="event.date"
           :category="event.category.title"
           :type="event.type"
           :url="event.url"
