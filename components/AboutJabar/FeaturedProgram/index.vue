@@ -57,10 +57,10 @@
               <section class="col-span-2 flex gap-4">
                 <Icon src="/icons/info-circle-outline.svg" size="16px" class="self-start text-green-600" />
                 <div>
-                  <h2 class="font-lato text-sm text-blue-gray-200 mb-1">
+                  <h2 class="font-lato text-xs text-blue-gray-200 mb-1">
                     Deskripsi Program
                   </h2>
-                  <p class="text-gray-800">
+                  <p class="text-gray-800 font-normal text-sm">
                     {{ programDetail.description || '-' }}
                   </p>
                 </div>
@@ -69,10 +69,10 @@
               <section class="col-span-1 flex gap-4">
                 <Icon src="/icons/organization.svg" size="16px" class="self-start text-green-600" />
                 <div>
-                  <h2 class="font-lato text-sm text-blue-gray-200 mb-1">
+                  <h2 class="font-lato text-xs text-blue-gray-200 mb-1">
                     Organisasi
                   </h2>
-                  <p class="text-gray-800">
+                  <p class="text-gray-800 font-normal text-sm">
                     {{ programDetail.organization || "-" }}
                   </p>
                 </div>
@@ -81,20 +81,20 @@
               <section class="col-span-1 flex gap-4">
                 <Icon src="/icons/category.svg" size="16px" class="self-start text-green-600" />
                 <div>
-                  <h2 class="font-lato text-sm text-blue-gray-200 mb-1">
+                  <h2 class="font-lato text-xs text-blue-gray-200 mb-1">
                     Kategori
                   </h2>
                   <template v-if="hasCategory">
                     <p
                       v-for="(category, index) in programDetail.categories"
                       :key="index"
-                      class="text-gray-800 capitalize"
+                      class="text-gray-800 font-normal capitalize text-sm"
                     >
                       {{ category }}
                     </p>
                   </template>
                   <template v-else>
-                    <p class="text-gray-800">
+                    <p class="text-gray-800 font-normal text-sm">
                       -
                     </p>
                   </template>
@@ -104,7 +104,7 @@
               <section class="col-span-2 flex gap-4">
                 <Icon src="/icons/link.svg" size="16px" class="self-start text-green-600" />
                 <div>
-                  <h2 class="font-lato text-sm text-blue-gray-200 mb-1">
+                  <h2 class="font-lato text-xs text-blue-gray-200 mb-1">
                     Link Website
                   </h2>
                   <template v-if="hasWebsite">
@@ -114,13 +114,13 @@
                       :href="website"
                       rel="noopener noreferrer"
                       target="_blank"
-                      class="block text-blue-500 hover:text-blue-700 underline mb-1"
+                      class="block text-blue-500 text-sm hover:text-blue-700 underline mb-1"
                     >
                       {{ website }}
                     </a>
                   </template>
                   <template v-else>
-                    <p class="text-gray-800">
+                    <p class="text-gray-800 font-normal text-sm">
                       Link tidak tersedia
                     </p>
                   </template>
@@ -130,7 +130,7 @@
               <section v-if="hasSocialSites" class="col-span-2 flex gap-4">
                 <Icon src="/icons/share.svg" size="16px" class="self-start text-green-600" />
                 <div>
-                  <h2 class="font-lato text-sm text-blue-gray-200 mb-1">
+                  <h2 class="font-lato text-xs text-blue-gray-200 mb-1">
                     Social Media
                   </h2>
                   <div class="flex gap-2">
@@ -145,7 +145,7 @@
                         :src="site.logo"
                         height="18px"
                       />
-                      <p class="text-gray-800 capitalize font-sm">
+                      <p class="text-gray-800 capitalize font-normal text-sm ">
                         {{ site.label }}
                       </p>
                     </Link>
