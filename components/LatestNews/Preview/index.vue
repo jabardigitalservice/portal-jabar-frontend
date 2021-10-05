@@ -41,7 +41,7 @@
                   <Icon name="chevron-left" size="10px" />
                 </div>
                 <p class="text-sm text-gray-500">
-                  <span class="font-bold text-white mr-1">{{ index + 1 }}</span>dari 5
+                  <span class="font-bold text-white mr-1">{{ index + 1 }}</span>dari {{ items.length }}
                 </p>
                 <div class="cursor-pointer" @click="slider.next()">
                   <Icon name="chevron-right" size="10px" />

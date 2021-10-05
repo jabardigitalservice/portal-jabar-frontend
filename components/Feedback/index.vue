@@ -3,9 +3,9 @@
     <Modal
       :show="show"
       header="Seberapa Puas Anda dengan Portal Jabar"
-      @close="closeFeedbackForm"
+      @click="closeFeedbackForm"
     >
-      <form class="" @submit.prevent="submitHandler">
+      <form @submit.prevent="submitHandler">
         <div class="p-6">
           <div class="flex flex-col mb-5">
             <label class="text-sm leading-6 text-gray-800 mb-2">
@@ -27,7 +27,7 @@
             </label>
             <textarea
               id="compliments"
-              v-model="form.compliments"
+              v-model.trim="form.compliments"
               name="compliments"
               cols="30"
               rows="3"
@@ -45,7 +45,7 @@
             </label>
             <textarea
               id="criticism"
-              v-model="form.criticism"
+              v-model.trim="form.criticism"
               name="criticism"
               cols="30"
               rows="3"
@@ -63,7 +63,7 @@
             </label>
             <textarea
               id="suggestions"
-              v-model="form.suggestions"
+              v-model.trim="form.suggestions"
               name="suggestions"
               cols="30"
               rows="3"
@@ -76,7 +76,17 @@
             </small>
           </div>
         </div>
-        <div class="bg-gray-50 py-4 flex justify-center items-center">
+        <div class="bg-gray-50 py-4 px-6 flex justify-end items-center gap-4">
+          <!--
+            TODO: Replace button with button component from jabar design system
+          -->
+          <button
+            type="button"
+            class="border border-green-700 text-green-700 rounded-lg px-4 py-2 font-bold text-sm leading-4 hover:bg-green-50"
+            @click="closeFeedbackForm"
+          >
+            Tutup
+          </button>
           <Button
             type="submit"
             :disabled="!isValid"
@@ -93,21 +103,21 @@
       header="Terima kasih"
       body="Feedback Anda telah kami terima. Masukan Anda akan menjadi acuan kami untuk pengembangan Portal Jabar ke arah yang lebih baik."
       label="OK"
-      @close="closeModal"
+      @click="closeModal"
     />
     <Modal
       :show="openedModal === 'not-allowed'"
       header="Mohon Maaf"
       body="Kami melihat bahwa Anda telah mengirimkan feedback baru-baru ini. Silakan kembali untuk mecoba mengirimkan feedback dalam kurun waktu 1 Jam (60 menit)."
       label="OK, saya mengerti"
-      @close="closeModal"
+      @click="closeModal"
     />
     <Modal
       :show="openedModal === 'error'"
       header="Mohon Maaf"
       body="Terjadi kesalahan pada sistem kami. Silakan coba kembali beberapa saat lagi."
       label="OK, saya mengerti"
-      @close="closeModal"
+      @click="closeModal"
     />
   </div>
 </template>
@@ -159,6 +169,7 @@ export default {
     },
     closeFeedbackForm () {
       this.$emit('close')
+      this.resetFormInput()
     },
     closeModal () {
       this.closeFeedbackForm()

@@ -3,11 +3,14 @@
     <template v-for="(item, index) in breadcrumbItems">
       <nuxt-link
         :key="index"
-        :to="item.fullPath"
-        class="breadcrumb__item font-roboto capitalize text-sm flex items-center"
-        :class="item.fullPath === activeRoute ? 'font-bold text-white' : 'text-blue-400'"
+        :to="item.path"
+        class="breadcrumb__item font-roboto text-sm flex items-center"
+        :class="[
+          item.path === activeRoute ? 'font-bold text-white' : 'text-blue-400',
+          items.length ? '' : 'capitalize'
+        ]"
       >
-        {{ item.pathName }}
+        {{ item.label }}
       </nuxt-link>
     </template>
   </section>
@@ -18,6 +21,14 @@ export default {
   name: 'Breadcrumb',
   props: {
     /**
+     * Predefined array of breadcrumb items
+     * Use this props to override default breadcrumb item list.
+     */
+    items: {
+      type: Array,
+      default: () => []
+    },
+    /**
      * Array of hidden breadcrumb item
      */
     hideItems: {
@@ -27,6 +38,13 @@ export default {
   },
   computed: {
     breadcrumbItems () {
+      /**
+       * return `items` props if defined
+       */
+      if (Array.isArray(this.items) && this.items.length > 0) {
+        return this.items
+      }
+
       const fullPath = this.$route.path
       const params = fullPath.substring(1).split('/')
       const crumbs = []
@@ -34,16 +52,16 @@ export default {
 
       // Add homepage to first index of breadcrumb items
       crumbs.push({
-        fullPath: '/',
-        pathName: 'beranda'
+        path: '/',
+        label: 'beranda'
       })
 
       params.map((param) => {
         path = `${path}/${param}`
 
         crumbs.push({
-          fullPath: path,
-          pathName: param.replace('/', '').replaceAll('-', ' ')
+          path,
+          label: param.replace('/', '').replaceAll('-', ' ')
         })
 
         return null
