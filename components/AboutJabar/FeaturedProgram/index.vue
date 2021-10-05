@@ -211,7 +211,7 @@ export default {
      * Check whether selected program has category
      * @returns {Boolean}
      */
-    hasCategorie () {
+    hasCategory () {
       const { categories } = this.programDetail
 
       if (Array.isArray(categories) && categories.length) {
