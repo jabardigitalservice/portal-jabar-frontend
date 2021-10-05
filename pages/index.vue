@@ -7,7 +7,7 @@
       <div class="container mx-auto">
         <div class="grid grid-cols-7 gap-8">
           <LatestNews />
-          <Agenda />
+          <AgendaWidget />
         </div>
       </div>
     </section>
