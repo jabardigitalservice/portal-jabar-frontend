@@ -3,24 +3,38 @@
     TODO: Replace search input with search component from jabar design system
   -->
   <form
-    class="flex items-center gap-2 rounded-lg w-full bg-white"
-    style="padding: 6px 8px"
+    class="flex items-center gap-2 rounded-lg bg-white"
+    :class="small ? 'inline-flex border border-blue-gray-50' : 'w-full'"
+    :style="small ? 'padding: 12px 9px' : 'padding: 6px 8px'"
     @submit.prevent="submitFormData"
   >
-    <Icon name="magnifier" size="16px" class="text-gray-400" />
-    <input
-      :value="value"
-      type="text"
-      class="placeholder-gray-600 border-none flex-grow focus:outline-none"
-      placeholder="Cari disini"
-      @input="setInputValue"
-    >
-    <button v-show="hasValue" type="button" class="text-gray-500" @click="clearInputValue">
-      <Icon name="times-circle" size="16px" />
-    </button>
-    <Button type="submit" class="bg-green-800 rounded-lg text-white text-sm font-bold">
-      Cari
-    </Button>
+    <template v-if="small">
+      <Icon name="magnifier" size="16px" class="text-gray-400" />
+      <input
+        :value="value"
+        type="text"
+        class="font-lato text-gray-600 focus:outline-none leading-4"
+        :placeholder="placeholder"
+        @input="setInputValue"
+      >
+    </template>
+
+    <template v-else>
+      <Icon name="magnifier" size="16px" class="text-gray-400" />
+      <input
+        :value="value"
+        type="text"
+        class="placeholder-gray-600 border-none flex-grow focus:outline-none"
+        :placeholder="placeholder"
+        @input="setInputValue"
+      >
+      <button v-show="hasValue" type="button" class="text-gray-500" @click="clearInputValue">
+        <Icon name="times-circle" size="16px" />
+      </button>
+      <Button type="submit" class="bg-green-800 rounded-lg text-white text-sm font-bold">
+        Cari
+      </Button>
+    </template>
   </form>
 </template>
 
@@ -30,6 +44,14 @@ export default {
     value: {
       type: String,
       required: true
+    },
+    small: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: [String, Number],
+      default: 'Cari disini'
     }
   },
   computed: {
