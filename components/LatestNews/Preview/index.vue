@@ -1,7 +1,6 @@
 <template>
   <div class="col-span-5 rounded-lg overflow-hidden">
     <Carousel
-      lazy
       :items="items"
       :speed="1000"
     >
