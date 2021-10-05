@@ -39,8 +39,8 @@
               v-for="item in programList"
               :key="item.id"
               :title="item.title"
-              :description="item.description"
-              :icon="item.icon"
+              :description="item.excerpt || '-'"
+              icon="/icons/program-unggulan/sapawarga.svg"
             />
           </section>
         </div>
@@ -51,7 +51,6 @@
 
 <script>
 import Card from '~/components/Base/Card'
-import { dummyFeaturedProgram } from '~/static/data'
 
 export default {
   name: 'FeaturedProgramList',
@@ -60,8 +59,17 @@ export default {
   },
   data () {
     return {
-      programList: dummyFeaturedProgram.data,
+      programList: [],
       searchValue: ''
+    }
+  },
+  async fetch () {
+    try {
+      const response = await this.$axios('v1/featured-programs')
+      this.programList = response.data.data
+    } catch (error) {
+      this.programList = []
+      // silent error
     }
   }
 }
