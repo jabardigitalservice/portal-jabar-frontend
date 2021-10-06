@@ -1,4 +1,5 @@
 import {
+  add,
   differenceInCalendarMonths,
   differenceInDays,
   differenceInHours,
@@ -70,6 +71,10 @@ export function getEachHour ({ start, end }) {
 
 export function getEachDay ({ start, end }) {
   return eachDayOfInterval({ start: new Date(start), end: new Date(end) })
+}
+
+export function addDay (date, days) {
+  return add(new Date(date), { days })
 }
 
 export function isCurrentHour (current, previous = new Date()) {
