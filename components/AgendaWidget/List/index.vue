@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-white flex flex-col pl-5 pr-4">
+    <div class="bg-white flex flex-col">
       <div class="flex flex-col h-80 overflow-y-scroll">
         <!--
           TODO: Show a placeholder if an error occur
