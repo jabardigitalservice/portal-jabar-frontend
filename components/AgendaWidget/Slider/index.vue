@@ -56,7 +56,6 @@
 
 <script>
 import KeenSlider from 'keen-slider'
-import 'keen-slider/keen-slider.min.css'
 import { format, getDayOfWeek, isCurrentDay } from '~/utils/date'
 
 export default {

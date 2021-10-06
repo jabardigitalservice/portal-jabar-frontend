@@ -61,7 +61,7 @@ export default {
 
         crumbs.push({
           path,
-          label: param.replace('/', '').replaceAll('-', ' ')
+          label: param.replace('/', '').replace(/-/g, ' ')
         })
 
         return null

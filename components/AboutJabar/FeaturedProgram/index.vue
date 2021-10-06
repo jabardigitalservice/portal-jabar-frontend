@@ -1,6 +1,6 @@
 <template>
   <section class="w-full bg-gray-200">
-    <div class="relative container mx-auto -top-20 z-20">
+    <div class="relative container mx-auto -top-24 z-20">
       <div class="py-8 px-10 rounded-xl bg-white">
         <div class="p-4">
           <!-- Search and Filter -->
