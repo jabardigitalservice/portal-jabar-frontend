@@ -20,7 +20,7 @@
         </div>
         <AgendaWidgetSlider :items="eachDayOfWeek" @click="setSelectedDay" />
         <div class="pl-5 pr-4">
-          <AgendaWidgetList :start-date="selectedDay" :end-date="selectedDay" />
+          <AgendaWidgetList :start-date="selectedDay" :end-date="selectedDay" max-height="320px" />
         </div>
       </div>
       <Link link="/agenda-jawa-barat" class="flex justify-center items-center py-5 border-t border-gray-100">

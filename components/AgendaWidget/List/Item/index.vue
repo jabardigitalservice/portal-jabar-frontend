@@ -1,6 +1,9 @@
 <template>
-  <AgendaWidgetListItemSkeleton v-if="fetchState.pending" />
-  <div v-else>
+  <AgendaWidgetListItemSkeleton v-if="fetchState.pending" :with-time="withTime" />
+  <div v-else class="flex gap-4">
+    <div v-if="withTime" class="relative left-0 text-sm text-blue-gray-200">
+      {{ startTime }}
+    </div>
     <div class="flex gap-4 mb-4 w-full relative cursor-pointer">
       <div>
         <div class="relative pl-1">
@@ -150,6 +153,10 @@ import { format, getEachHour, hoursDifference, isCurrentHour, minutesDifference 
 
 export default {
   props: {
+    withTime: {
+      type: Boolean,
+      required: true
+    },
     id: {
       type: Number,
       required: true
@@ -213,11 +220,14 @@ export default {
     }
   },
   computed: {
+    startTime () {
+      return this.startHour.substring(0, 5)
+    },
+    endTime () {
+      return this.endHour.substring(0, 5)
+    },
     time () {
-      const startHour = this.startHour.substring(0, 5)
-      const endHour = this.endHour.substring(0, 5)
-
-      return `${startHour} - ${endHour} WIB`
+      return `${this.startTime} - ${this.endTime} WIB`
     },
     done () {
       const endHour = new Date(this.date).setHours(...this.endHour.split(':'))

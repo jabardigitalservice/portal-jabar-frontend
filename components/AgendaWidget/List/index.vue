@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="bg-white flex flex-col">
-      <div class="flex flex-col h-80 overflow-y-scroll">
+      <div
+        class="flex flex-col overflow-y-scroll"
+        :style="{ 'max-height': maxHeight }"
+      >
         <!--
           TODO: Show a placeholder if an error occur
         -->
@@ -12,6 +15,7 @@
           v-for="event in events"
           :id="event.id"
           :key="event.id"
+          :with-time="withTime"
           :title="event.title"
           :date="event.date"
           :category="event.category.title"
@@ -32,6 +36,16 @@ import { format } from '~/utils/date'
 
 export default {
   props: {
+    withTime: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    maxHeight: {
+      type: String,
+      required: false,
+      default: null
+    },
     startDate: {
       type: String,
       required: true
