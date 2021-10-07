@@ -1,5 +1,8 @@
 <template>
-  <article class="w-full bg-white py-3 px-4 group cursor-pointer">
+  <article
+    class="w-full bg-white py-3 px-4 group cursor-pointer rounded-lg hover:bg-green-50"
+    v-on="$listeners"
+  >
     <div v-if="icon" class="inline-flex w-10 h-10 p-1 items-center justify-center mb-1">
       <img
         :src="icon"
