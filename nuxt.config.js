@@ -66,7 +66,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['@jabardigitalservice/jds-design-system']
+    transpile: [
+      '@jabardigitalservice/jds-design-system',
+      /@fullcalendar.*/
+    ]
   },
 
   loading: {
