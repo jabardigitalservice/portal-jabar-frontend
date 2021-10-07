@@ -29,6 +29,7 @@
               icon="/icons/program-unggulan/sapawarga.svg"
               @click="showDetail(item)"
             />
+            <EmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
           </section>
 
           <Modal :show="openModal">
@@ -45,16 +46,19 @@
 
 <script>
 import ProgramDetail from './ProgramDetail'
+import EmptyState from './EmptyState'
 import Card from '~/components/Base/Card'
 
 export default {
   name: 'FeaturedProgramList',
   components: {
     Card,
-    ProgramDetail
+    ProgramDetail,
+    EmptyState
   },
   data () {
     return {
+      data: [],
       programList: [],
       searchValue: '',
       programDetail: {},
@@ -64,11 +68,31 @@ export default {
   async fetch () {
     try {
       const response = await this.$axios('v1/featured-programs')
-      this.programList = response.data.data
+      this.data = response.data.data
     } catch (error) {
       this.programList = []
       // silent error
     }
+  },
+  computed: {
+    /**
+     * Check whether search result is empty
+     * @returns {Boolean}
+     */
+    isSearchEmpty () {
+      return this.programList.length === 0
+    }
+  },
+  watch: {
+    searchValue: {
+      handler () {
+        this.programList = this.data.filter(item => item.title.toLowerCase().includes(this.searchValue.toLowerCase()))
+      },
+      immediate: true
+    }
+  },
+  mounted () {
+    this.programList = this.data
   },
   methods: {
     /**
