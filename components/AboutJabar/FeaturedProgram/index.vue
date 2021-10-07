@@ -86,7 +86,9 @@ export default {
   watch: {
     searchValue: {
       handler () {
-        this.programList = this.data.filter(item => item.title.toLowerCase().includes(this.searchValue.toLowerCase()))
+        this.programList = this.data.filter(
+          item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
+        )
       },
       immediate: true
     }
