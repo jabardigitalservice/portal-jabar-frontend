@@ -1,11 +1,15 @@
 <template>
   <div class="grid grid-cols-2 w-full px-6 gap-y-5">
     <section class="col-span-2">
-      <figure class="inline-flex w-10 h-10 p-1 items-center justify-center mb-1">
+      <figure
+        class="inline-flex w-12 h-12 p-1 items-center justify-center mb-1 bg-white rounded-full"
+        :class="programDetail.logo || 'bg-gray-200'"
+      >
         <img
-          src="/icons/program-unggulan/sapawarga.svg"
+          v-if="programDetail.logo"
+          :src="programDetail.logo"
           :alt="programDetail.title"
-          class="w-full h-full object-center"
+          class="max-w-full max-h-full object-center object-contain"
         >
       </figure>
       <h1 class="font-medium text-2xl text-green-700 leading-relaxed">
