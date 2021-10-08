@@ -3,13 +3,17 @@
     class="w-full bg-white py-3 px-4 group cursor-pointer rounded-lg hover:bg-green-50"
     v-on="$listeners"
   >
-    <div v-if="icon" class="inline-flex w-10 h-10 p-1 items-center justify-center mb-1">
+    <figure
+      class="inline-flex w-10 h-10 p-1 items-center justify-center mb-1 rounded-full bg-white"
+      :class="icon || 'bg-gray-200'"
+    >
       <img
+        v-if="icon"
         :src="icon"
         :alt="title"
-        class="w-full h-full object-center"
+        class="w-full h-full object-center object-contain"
       >
-    </div>
+    </figure>
     <h2 class="font-lato font-bold text-lg text-blue-gray-800 leading-7 mb-1 group-hover:text-green-700">
       {{ title }}
     </h2>

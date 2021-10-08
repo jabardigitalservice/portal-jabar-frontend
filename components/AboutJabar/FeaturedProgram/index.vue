@@ -26,7 +26,7 @@
               :key="item.id"
               :title="item.title"
               :description="item.excerpt || '-'"
-              icon="/icons/program-unggulan/sapawarga.svg"
+              :icon="item.logo"
               @click="showDetail(item)"
             />
             <EmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
@@ -69,6 +69,7 @@ export default {
     try {
       const response = await this.$axios('v1/featured-programs')
       this.data = response.data.data
+      this.programList = this.data
     } catch (error) {
       this.programList = []
       // silent error
@@ -89,12 +90,8 @@ export default {
         this.programList = this.data.filter(
           item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
         )
-      },
-      immediate: true
+      }
     }
-  },
-  mounted () {
-    this.programList = this.data
   },
   methods: {
     /**
