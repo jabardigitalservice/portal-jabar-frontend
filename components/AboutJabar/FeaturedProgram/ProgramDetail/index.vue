@@ -60,29 +60,22 @@
       </div>
     </section>
 
-    <section class="col-span-2 flex gap-4">
+    <section v-if="hasWebsite" class="col-span-2 flex gap-4">
       <Icon src="/icons/link.svg" size="16px" class="self-start text-green-600" />
       <div>
         <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
           Link Website
         </h2>
-        <template v-if="hasWebsite">
-          <a
-            v-for="(website, index) in programDetail.websites"
-            :key="index"
-            :href="website"
-            rel="noopener noreferrer"
-            target="_blank"
-            class="block text-blue-500 text-sm hover:text-blue-700 underline mb-1 leading-relaxed"
-          >
-            {{ website }}
-          </a>
-        </template>
-        <template v-else>
-          <p class="text-gray-800 font-normal text-sm leading-relaxed">
-            Link tidak tersedia
-          </p>
-        </template>
+        <a
+          v-for="(website, index) in programDetail.websites"
+          :key="index"
+          :href="website"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="block text-blue-500 text-sm hover:text-blue-700 underline mb-1 leading-relaxed"
+        >
+          {{ website }}
+        </a>
       </div>
     </section>
 
@@ -90,7 +83,7 @@
       <Icon src="/icons/share.svg" size="16px" class="self-start text-green-600" />
       <div>
         <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
-          Social Media
+          Sosial Media
         </h2>
         <div class="flex gap-2">
           <Link
