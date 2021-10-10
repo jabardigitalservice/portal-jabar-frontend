@@ -1,6 +1,6 @@
 <template>
   <section class="bg-white p-16">
-    <div class="container mx-auto">
+    <BaseContainer>
       <ul class="grid grid-cols-3 grid-rows-3 gap-x-20 gap-y-12">
         <li class="flex flex-col gap-2">
           <h2 class="text-4xl font-medium leading-loose">
@@ -22,7 +22,7 @@
           </Link>
         </li>
       </ul>
-    </div>
+    </BaseContainer>
   </section>
 </template>
 

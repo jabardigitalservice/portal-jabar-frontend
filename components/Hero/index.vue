@@ -2,22 +2,24 @@
   <div class="relative">
     <HeroImage />
     <section class="flex justify-center items-center h-screen w-full absolute top-0">
-      <div
-        class="container mx-auto flex flex-col items-center -mt-20 bg-no-repeat py-3"
-        style="background-image: url('/images/hero.svg'); background-position: center top;"
-      >
-        <h1
-          class="text-white font-lora uppercase leading-snug font-bold text-center max-w-3xl mb-11 tracking-wider"
-          style="font-size: 40px;"
+      <BaseContainer>
+        <div
+          class="flex flex-col items-center -mt-20 bg-no-repeat py-3"
+          style="background-image: url('/images/hero.svg'); background-position: center top;"
         >
-          Satu Portal untuk Semua Hal Tentang Jawa Barat
-        </h1>
-        <p class="text-white font-medium leading-relaxed text-center max-w-2xl mb-7">
-          Portal ini menyediakan informasi resmi, akses ke berbagai layanan publik, dan tempat
-          menyampaikan aspirasi mengenai program dari Pemerintah Daerah Provinsi Jawa Barat.
-        </p>
-        <HeroSearch />
-      </div>
+          <h1
+            class="text-white font-lora uppercase leading-snug font-bold text-center max-w-3xl mb-11 tracking-wider"
+            style="font-size: 40px;"
+          >
+            Satu Portal untuk Semua Hal Tentang Jawa Barat
+          </h1>
+          <p class="text-white font-medium leading-relaxed text-center max-w-2xl mb-7">
+            Portal ini menyediakan informasi resmi, akses ke berbagai layanan publik, dan tempat
+            menyampaikan aspirasi mengenai program dari Pemerintah Daerah Provinsi Jawa Barat.
+          </p>
+          <HeroSearch />
+        </div>
+      </BaseContainer>
     </section>
     <HeroWidgetFeedback />
     <HeroWidgetSocialMedia />

@@ -3,9 +3,9 @@
     class="flex items-center w-full h-20 fixed top-0 z-50"
     :class="[hasBackgroundColor ? 'bg-green-800' : 'bg-black bg-opacity-10 backdrop-filter backdrop-blur-lg hover:bg-green-800']"
   >
-    <div class="container mx-auto">
+    <BaseContainer>
       <HeaderNavigation @active="setActiveMenu" />
-    </div>
+    </BaseContainer>
   </header>
 </template>
 
