@@ -41,12 +41,19 @@ export default {
   components: {
     FullCalendar
   },
+  props: {
+    selectedDate: {
+      type: Date,
+      required: true
+    }
+  },
   data () {
     return {
       calendarApi: null,
       calendarOptions: {
         plugins: [dayGridPlugin],
         initialView: 'dayGridMonth',
+        initialDate: this.selectedDate,
         locale: idLocale,
         headerToolbar: false
       }
@@ -61,6 +68,11 @@ export default {
     },
     year () {
       return format(this.date, { year: 'numeric' })
+    }
+  },
+  watch: {
+    selectedDate (date) {
+      this.calendarApi.gotoDate(date)
     }
   },
   mounted () {

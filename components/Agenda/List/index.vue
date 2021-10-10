@@ -62,9 +62,11 @@ export default {
     },
     prevDay () {
       this.setSelectedDay(addDay(this.selectedDay, -1))
+      this.$emit('change', this.selectedDay)
     },
     nextDay () {
       this.setSelectedDay(addDay(this.selectedDay, 1))
+      this.$emit('change', this.selectedDay)
     }
   }
 }
