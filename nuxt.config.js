@@ -69,7 +69,14 @@ export default {
     transpile: [
       '@jabardigitalservice/jds-design-system',
       /@fullcalendar.*/
-    ]
+    ],
+    postcss: {
+      plugins: {
+        cssnano: {
+          preset: ['default', { calc: false }]
+        }
+      }
+    }
   },
 
   loading: {
