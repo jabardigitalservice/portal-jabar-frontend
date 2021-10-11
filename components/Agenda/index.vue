@@ -16,6 +16,9 @@ export default {
       selectedDate: new Date()
     }
   },
+  deactivated () {
+    this.selectedDate = new Date()
+  },
   methods: {
     setSelectedDate (date) {
       this.selectedDate = new Date(date)

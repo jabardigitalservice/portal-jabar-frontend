@@ -56,6 +56,9 @@ export default {
       return format(this.selectedDay, { day: 'numeric', month: 'long', year: 'numeric' })
     }
   },
+  deactivated () {
+    this.selectedDay = formatISODate(new Date())
+  },
   methods: {
     setSelectedDay (day) {
       this.selectedDay = formatISODate(day)
