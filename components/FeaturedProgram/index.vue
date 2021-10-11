@@ -45,9 +45,6 @@
 </template>
 
 <script>
-import ProgramDetail from './ProgramDetail'
-import EmptyState from './EmptyState'
-import Card from '~/components/Base/Card'
 
 export default {
   name: 'FeaturedProgramList',
