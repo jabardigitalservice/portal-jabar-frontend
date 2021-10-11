@@ -21,7 +21,7 @@
 
           <!-- Featured Program Card -->
           <section class="grid grid-cols-3 gap-8">
-            <Card
+            <BaseCard
               v-for="item in programList"
               :key="item.id"
               :title="item.title"
@@ -29,11 +29,11 @@
               :icon="item.logo || '/icons/program-unggulan/logo-placeholder.svg'"
               @click="showDetail(item)"
             />
-            <EmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
+            <FeaturedProgramEmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
           </section>
 
           <Modal :show="openModal">
-            <ProgramDetail
+            <FeaturedProgramDetail
               :program-detail="programDetail"
               @close="closeDetail"
             />
@@ -47,12 +47,6 @@
 <script>
 
 export default {
-  name: 'FeaturedProgramList',
-  components: {
-    Card,
-    ProgramDetail,
-    EmptyState
-  },
   data () {
     return {
       data: [],
