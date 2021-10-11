@@ -26,7 +26,7 @@
               :key="item.id"
               :title="item.title"
               :description="item.excerpt || '-'"
-              :icon="item.logo"
+              :icon="item.logo || '/icons/program-unggulan/logo-placeholder.svg'"
               @click="showDetail(item)"
             />
             <EmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />

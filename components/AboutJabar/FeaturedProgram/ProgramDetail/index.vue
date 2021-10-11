@@ -3,11 +3,9 @@
     <section class="col-span-2">
       <figure
         class="inline-flex w-12 h-12 p-1 items-center justify-center mb-1 bg-white rounded-full"
-        :class="programDetail.logo || 'bg-gray-200'"
       >
         <img
-          v-if="programDetail.logo"
-          :src="programDetail.logo"
+          :src="programDetail.logo || '/icons/program-unggulan/logo-placeholder.svg'"
           :alt="programDetail.title"
           class="max-w-full max-h-full object-center object-contain"
         >
