@@ -4,8 +4,8 @@
     v-on="$listeners"
   >
     <figure
-      class="inline-flex w-10 h-10 p-1 items-center justify-center mb-1 rounded-full bg-white"
-      :class="[!icon ? 'bg-gray-200' : '']"
+      class="inline-flex w-10 h-10 p-1 items-center justify-center mb-1 rounded-full"
+      :class="[icon ? 'bg-white' : 'bg-gray-200']"
     >
       <img
         v-if="icon"
