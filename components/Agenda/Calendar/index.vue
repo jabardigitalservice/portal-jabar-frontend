@@ -35,11 +35,17 @@
 import FullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import idLocale from '@fullcalendar/core/locales/id'
-import { format } from '~/utils/date'
+import { format, formatISODate } from '~/utils/date'
 
 export default {
   components: {
     FullCalendar
+  },
+  props: {
+    selectedDate: {
+      type: Date,
+      required: true
+    }
   },
   data () {
     return {
@@ -47,8 +53,11 @@ export default {
       calendarOptions: {
         plugins: [dayGridPlugin],
         initialView: 'dayGridMonth',
+        initialDate: this.selectedDate,
         locale: idLocale,
-        headerToolbar: false
+        dayHeaderFormat: { weekday: 'long' },
+        headerToolbar: false,
+        dayCellClassNames: this.dayCellClassNames
       }
     }
   },
@@ -63,6 +72,11 @@ export default {
       return format(this.date, { year: 'numeric' })
     }
   },
+  watch: {
+    selectedDate (date) {
+      this.calendarApi.gotoDate(date)
+    }
+  },
   mounted () {
     this.calendarApi = this.$refs.fullCalendar.getApi()
   },
@@ -72,7 +86,86 @@ export default {
     },
     prevMonth () {
       this.calendarApi.prev()
+    },
+    dayCellClassNames ({ date }) {
+      const currentDate = formatISODate(date)
+      const selectedDate = formatISODate(this.selectedDate)
+
+      /**
+       *  Adding classNames to the <td> cell dynamically
+       *  if date is selected
+       */
+      if (currentDate === selectedDate) {
+        return ['active']
+      }
+
+      return ['not-active']
     }
   }
 }
 </script>
+
+<style>
+/**
+ *  Set font family to calendar
+ */
+.fc {
+  font-family: 'Roboto', sans-serif !important;
+}
+/**
+ *  Add border radius to calendar
+ */
+.fc-scrollgrid.fc-scrollgrid-liquid {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+/**
+ *  Styling for header title
+ */
+.fc-col-header-cell.fc-day {
+  background-color: rgba(230, 246, 236, 0.5) !important;
+  color: #069550 !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  padding: 12px !important;
+  border: none !important;
+  border-bottom: 1px solid #DDDDDD !important;
+}
+/**
+ *  Text color is red for sunday
+ */
+.fc-daygrid-day.fc-day.fc-day-sun {
+  color: red !important;
+}
+/**
+ *  Change text color to white for sunday if the current day is active
+ */
+.fc-daygrid-day.fc-day.fc-day-sun.active {
+  color: white !important;
+}
+/**
+ *  Change padding and text align for each date
+ */
+.fc-daygrid-day-top {
+  flex-direction: unset !important;
+  padding: 12px !important;
+}
+/**
+ *  Active style for selected date
+ */
+.active {
+  background-color: #069550 !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+}
+/**
+ *  Default style for date when it is not selected
+ */
+.not-active {
+  background-color: white !important;
+  color: #133C6B !important;
+  font-weight: 400 !important;
+}
+</style>
