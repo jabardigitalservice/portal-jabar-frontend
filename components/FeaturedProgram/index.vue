@@ -37,7 +37,12 @@
               :icon="item.logo || '/icons/program-unggulan/logo-placeholder.svg'"
               @click="showDetail(item)"
             />
-            <FeaturedProgramEmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
+
+            <FeaturedProgramEmptyState
+              v-show="isSearchEmpty && !$fetchState.pending"
+              class="col-span-3"
+              :search-value="searchValue"
+            />
           </section>
 
           <Modal :show="openModal">
