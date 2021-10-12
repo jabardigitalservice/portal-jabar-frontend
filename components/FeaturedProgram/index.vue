@@ -29,14 +29,16 @@
               />
             </template>
 
-            <BaseCard
-              v-for="item in programList"
-              :key="item.id"
-              :title="item.title"
-              :description="item.excerpt || '-'"
-              :icon="item.logo || '/icons/program-unggulan/logo-placeholder.svg'"
-              @click="showDetail(item)"
-            />
+            <template v-else>
+              <BaseCard
+                v-for="item in programList"
+                :key="item.id"
+                :title="item.title"
+                :description="item.excerpt || '-'"
+                :icon="item.logo || '/icons/program-unggulan/logo-placeholder.svg'"
+                @click="showDetail(item)"
+              />
+            </template>
 
             <FeaturedProgramEmptyState
               v-show="isSearchEmpty && !$fetchState.pending"
