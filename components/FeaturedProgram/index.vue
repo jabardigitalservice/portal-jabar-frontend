@@ -72,15 +72,17 @@ export default {
      * @returns {Boolean}
      */
     isSearchEmpty () {
-      return this.programList.length === 0
+      return !this.$fetchState.pending && this.programList.length === 0
     }
   },
   watch: {
     searchValue: {
       handler () {
-        this.programList = this.data.filter(
-          item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
-        )
+        if (!this.$fetchState.pending) {
+          this.programList = this.data.filter(
+            item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
+          )
+        }
       }
     }
   },
