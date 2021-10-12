@@ -17,16 +17,14 @@
         :key="index"
         class="keen-slider__slide group cursor-pointer flex flex-col justify-center items-center w-12 h-12 rounded flex-shrink-0 flex-grow-0 hover:bg-green-50"
         :class="{
-          'bg-green-700 hover:bg-green-800' : isToday(item),
-          'bg-green-50' : isSelected(item)
+          'bg-green-700 hover:bg-green-800' : isSelected(item)
         }"
         @click="setSelectedDay(item)"
       >
         <div
           class="uppercase leading-3 mb-1"
           :class="[
-            isToday(item) ? 'font-bold text-white': 'text-blue-gray-200 group-hover:text-blue-gray-800',
-            { 'text-blue-gray-800': isSelected(item) && !isToday(item) }
+            isSelected(item) ? 'font-bold text-white': 'text-blue-gray-200 group-hover:text-blue-gray-800',
           ]"
           style="font-size: 10px;"
         >
@@ -34,7 +32,7 @@
         </div>
         <div
           class="font-roboto font-medium leading-none"
-          :class="{ 'font-bold text-white': isToday(item) }"
+          :class="{ 'font-bold text-white': isSelected(item) }"
         >
           {{ getNumericDay(item) }}
         </div>
@@ -56,7 +54,7 @@
 
 <script>
 import KeenSlider from 'keen-slider'
-import { format, getDayOfWeek, isCurrentDay } from '~/utils/date'
+import { format, getDayOfWeek } from '~/utils/date'
 
 export default {
   props: {
@@ -109,9 +107,6 @@ export default {
       }
 
       return getDayOfWeek(date) - 1
-    },
-    isToday (date) {
-      return isCurrentDay(date)
     },
     isSelected (date) {
       return this.selectedDay === this.getDayIndex(date)
