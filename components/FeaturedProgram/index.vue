@@ -1,52 +1,106 @@
 <template>
-  <section class="py-12">
-    <BaseContainer>
-      <div class="flex items-center gap-4 mb-4">
-        <h2 class="font-medium text-4xl leading-loose">
-          Program Unggulan
-        </h2>
-        <div class="flex-1 flex justify-center flex-col text-center">
-          <div class="border-b border-gray-300" />
+  <section class="w-full bg-gray-200">
+    <BaseContainer class="relative -top-24 z-20">
+      <div class="py-8 px-10 rounded-xl bg-white">
+        <div class="p-4">
+          <!-- Search and Filter -->
+          <section class="flex w-full justify-end mb-8">
+            <!--
+              TODO: Add category selection here
+            -->
+
+            <!--
+              TODO: replace this component with JdsSearch small variant
+              -->
+            <Search
+              v-model="searchValue"
+              placeholder="Cari Program"
+              small
+            />
+          </section>
+
+          <!-- Featured Program Card -->
+          <section class="grid grid-cols-3 gap-8">
+            <BaseCard
+              v-for="item in programList"
+              :key="item.id"
+              :title="item.title"
+              :description="item.excerpt || '-'"
+              :icon="item.logo || '/icons/program-unggulan/logo-placeholder.svg'"
+              @click="showDetail(item)"
+            />
+            <FeaturedProgramEmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
+          </section>
+
+          <Modal :show="openModal">
+            <FeaturedProgramDetail
+              :program-detail="programDetail"
+              @close="closeDetail"
+            />
+          </Modal>
         </div>
-        <Link link="/tentang-jawa-barat/program-unggulan" tabindex="-1">
-          <Button type="button" variant="secondary">
-            Lihat Semua Program
-            <Icon name="open-new-tab" size="14px" />
-          </Button>
-        </Link>
       </div>
-      <ul class="grid grid-cols-3 gap-8">
-        <li
-          v-for="menu in menus"
-          :key="menu.id"
-          class="flex flex-col gap-4 group bg-white p-6 rounded-lg border border-white hover:border-blue-gray-50 hover:shadow"
-        >
-          <img :src="menu.icon" :alt="menu.title" width="32px" height="32px">
-          <h3 class="font-bold text-2xl leading-normal group-hover:text-green-800">
-            {{ menu.title }}
-          </h3>
-          <p class="text-sm leading-6 text-gray-600 group-hover:text-blue-gray-800">
-            {{ menu.description }}
-          </p>
-          <Link :link="menu.link" class="self-start">
-            <Button type="button" variant="tertiary-paddingless" tabindex="-1">
-              Selengkapnya
-              <Icon name="arrow-right" size="14px" />
-            </Button>
-          </Link>
-        </li>
-      </ul>
     </BaseContainer>
   </section>
 </template>
 
 <script>
-import { featuredProgramMenu } from '~/static/data'
 
 export default {
   data () {
     return {
-      menus: featuredProgramMenu
+      data: [],
+      programList: [],
+      searchValue: '',
+      programDetail: {},
+      openModal: false
+    }
+  },
+  async fetch () {
+    try {
+      const response = await this.$axios('v1/featured-programs')
+      this.data = response.data.data
+      this.programList = this.data
+    } catch (error) {
+      this.programList = []
+      // silent error
+    }
+  },
+  computed: {
+    /**
+     * Check whether search result is empty
+     * @returns {Boolean}
+     */
+    isSearchEmpty () {
+      return this.programList.length === 0
+    }
+  },
+  watch: {
+    searchValue: {
+      handler () {
+        this.programList = this.data.filter(
+          item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
+        )
+      }
+    }
+  },
+  methods: {
+    /**
+     * Open a Modal containing featured program details
+     * @params {Object} item
+     */
+    showDetail (item) {
+      this.programDetail = { ...item }
+      this.openModal = true
+    },
+
+    /**
+     * Close current Modal
+     * @params {Object} item
+     */
+    closeDetail () {
+      this.openModal = false
+      this.programDetail = {}
     }
   }
 }

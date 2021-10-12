@@ -10,12 +10,7 @@
 </template>
 
 <script>
-import FeaturedProgram from '~/components/AboutJabar/FeaturedProgram'
-
 export default {
-  components: {
-    FeaturedProgram
-  },
   data () {
     return {
       jumbotron: {
