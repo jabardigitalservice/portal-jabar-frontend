@@ -21,6 +21,14 @@
 
           <!-- Featured Program Card -->
           <section class="grid grid-cols-3 gap-8">
+            <!-- Render 9 card skeleton as default -->
+            <template v-if="$fetchState.pending">
+              <BaseCardSkeleton
+                v-for="i in 9"
+                :key="`skel-${i}`"
+              />
+            </template>
+
             <BaseCard
               v-for="item in programList"
               :key="item.id"
@@ -78,9 +86,11 @@ export default {
   watch: {
     searchValue: {
       handler () {
-        this.programList = this.data.filter(
-          item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
-        )
+        if (!this.$fetchState.pending) {
+          this.programList = this.data.filter(
+            item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
+          )
+        }
       }
     }
   },
