@@ -1,10 +1,28 @@
 <template>
   <div class="relative -top-24 z-10">
-    <div class="container mx-auto">
+    <BaseContainer>
       <div class="bg-white p-10 rounded-xl shadow flex flex-col gap-7">
-        <AgendaCalendar />
-        <AgendaList />
+        <AgendaCalendar :selected-date="selectedDate" />
+        <AgendaList @change="setSelectedDate" />
       </div>
-    </div>
+    </BaseContainer>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      selectedDate: new Date()
+    }
+  },
+  deactivated () {
+    this.selectedDate = new Date()
+  },
+  methods: {
+    setSelectedDate (date) {
+      this.selectedDate = new Date(date)
+    }
+  }
+}
+</script>

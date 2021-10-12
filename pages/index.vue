@@ -4,12 +4,12 @@
     <MostPopularServices />
     <FeaturedProgramPreview />
     <section class="pt-6 pb-10">
-      <div class="container mx-auto">
+      <BaseContainer>
         <div class="grid grid-cols-7 gap-8">
           <LatestNews />
           <AgendaWidget />
         </div>
-      </div>
+      </BaseContainer>
     </section>
     <QuickLink />
   </main>

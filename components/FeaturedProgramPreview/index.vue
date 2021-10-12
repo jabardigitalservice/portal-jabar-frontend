@@ -1,6 +1,6 @@
 <template>
   <section class="py-12">
-    <div class="container mx-auto">
+    <BaseContainer>
       <div class="flex items-center gap-4 mb-4">
         <h2 class="font-medium text-4xl leading-loose">
           Program Unggulan
@@ -36,7 +36,7 @@
           </Link>
         </li>
       </ul>
-    </div>
+    </BaseContainer>
   </section>
 </template>
 

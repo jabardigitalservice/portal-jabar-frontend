@@ -4,7 +4,7 @@
     :style="jumbotronStyle"
   >
     <div class="overlay" />
-    <div class="relative container mx-auto pt-24 pb-40 z-10">
+    <BaseContainer class="relative pt-24 pb-40 z-10">
       <slot name="breadcrumb" />
       <h1 class="font-lora font-bold text-3xl leading-relaxed text-green-500 mb-2">
         {{ title }}
@@ -12,7 +12,7 @@
       <h2 class="font-lato text-sm leading-2 text-white">
         {{ subtitle }}
       </h2>
-    </div>
+    </BaseContainer>
   </section>
 </template>
 
