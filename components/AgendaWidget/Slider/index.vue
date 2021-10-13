@@ -106,6 +106,7 @@ export default {
   },
   activated () {
     this.selectedDay = this.getDayIndex()
+    this.slider.moveToSlide(this.getDayIndex())
   },
   methods: {
     getShortWeekday (date) {
