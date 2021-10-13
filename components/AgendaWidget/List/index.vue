@@ -24,7 +24,7 @@
           :address="event.address"
           :start-hour="event.start_hour"
           :end-hour="event.end_hour"
-          :fetch-state="$fetchState"
+          :fetch-state="fetchState"
         />
       </div>
     </div>
@@ -62,17 +62,12 @@ export default {
   },
   data () {
     return {
-      events: []
+      events: [],
+      fetchState: {
+        pending: false,
+        error: false
+      }
     }
-  },
-  async fetch () {
-    const startDate = `start_date=${this.startDate}`
-    const endDate = `end_date=${this.endDate}`
-    const perPage = `per_page=${this.perPage}`
-    const queryParams = `?${startDate}&${endDate}&${perPage}`
-
-    const response = await this.$axios.$get(`/v1/events${queryParams}`)
-    this.events = response.data
   },
   computed: {
     month () {
@@ -81,15 +76,28 @@ export default {
   },
   watch: {
     startDate () {
-      this.$fetch()
+      this.getEvents()
     }
   },
-  activated () {
-    /**
-     *  Call fetch again if last fetch more than a minute ago
-     */
-    if (this.$fetchState.timestamp <= Date.now() - 60000) {
-      this.$fetch()
+  mounted () {
+    this.getEvents()
+  },
+  methods: {
+    async getEvents () {
+      this.fetchState.pending = true
+      const startDate = `start_date=${this.startDate}`
+      const endDate = `end_date=${this.endDate}`
+      const perPage = `per_page=${this.perPage}`
+      const queryParams = `?${startDate}&${endDate}&${perPage}`
+
+      try {
+        const response = await this.$axios.$get(`/v1/events${queryParams}`)
+        this.events = response.data
+        this.fetchState.pending = false
+      } catch (error) {
+        this.fetchState.error = true
+        this.fetchState.pending = false
+      }
     }
   }
 }
