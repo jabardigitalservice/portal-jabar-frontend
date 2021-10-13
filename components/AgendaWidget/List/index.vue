@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="bg-white flex flex-col">
-      <div
-        class="flex flex-col overflow-y-scroll"
-        :style="{ 'max-height': maxHeight }"
-      >
+    <div
+      class="bg-white flex flex-col"
+      :style="{ 'height': height }"
+    >
+      <div class="flex flex-col overflow-y-scroll">
         <!--
           TODO: Show a placeholder if an error occur
         -->
@@ -27,6 +27,12 @@
           :fetch-state="fetchState"
         />
       </div>
+      <Link v-if="hasEvents" link="/agenda-jawa-barat" class="flex justify-center items-center py-5 border-t border-gray-100">
+        <Button type="button" variant="tertiary-paddingless" tabindex="-1">
+          Lihat Semua Agenda
+          <Icon name="open-new-tab" size="12px" />
+        </Button>
+      </Link>
     </div>
   </div>
 </template>
@@ -41,7 +47,7 @@ export default {
       required: false,
       default: false
     },
-    maxHeight: {
+    height: {
       type: String,
       required: false,
       default: null
@@ -72,6 +78,9 @@ export default {
   computed: {
     month () {
       return format(this.startDate, { month: 'long', year: 'numeric' })
+    },
+    hasEvents () {
+      return this.events.length
     }
   },
   watch: {

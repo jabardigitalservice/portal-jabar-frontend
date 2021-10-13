@@ -20,15 +20,9 @@
         </div>
         <AgendaWidgetSlider :items="eachDayOfWeek" @click="setSelectedDay" />
         <div class="pl-5 pr-4">
-          <AgendaWidgetList :start-date="selectedDay" :end-date="selectedDay" max-height="320px" />
+          <AgendaWidgetList :start-date="selectedDay" :end-date="selectedDay" height="380px" />
         </div>
       </div>
-      <Link link="/agenda-jawa-barat" class="flex justify-center items-center py-5 border-t border-gray-100">
-        <Button type="button" variant="tertiary-paddingless" tabindex="-1">
-          Lihat Semua Agenda
-          <Icon name="open-new-tab" size="12px" />
-        </Button>
-      </Link>
     </div>
   </div>
 </template>
