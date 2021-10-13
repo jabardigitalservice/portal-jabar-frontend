@@ -104,6 +104,9 @@ export default {
   beforeDestroy () {
     if (this.slider) { this.slider.destroy() }
   },
+  activated () {
+    this.selectedDay = this.getDayIndex()
+  },
   methods: {
     getShortWeekday (date) {
       return format(date, { weekday: 'short' })
