@@ -57,7 +57,12 @@ export default {
         locale: idLocale,
         dayHeaderFormat: { weekday: 'long' },
         headerToolbar: false,
-        dayCellClassNames: this.dayCellClassNames
+        dayCellClassNames: this.dayCellClassNames,
+        events: this.getCalendarEvents,
+        dayMaxEvents: 0,
+        moreLinkContent (args) {
+          return args.num + ' Kegiatan'
+        }
       }
     }
   },
@@ -100,6 +105,29 @@ export default {
       }
 
       return ['not-active']
+    },
+
+    /**
+     * Get events data from API
+     * @param {Object} fetchInfo - Object containing calendar information
+     * See {@link https://fullcalendar.io/docs/events-function} for more information
+     * @return {Array}
+     */
+    async getCalendarEvents (fetchInfo) {
+      const params = {
+        start_date: formatISODate(fetchInfo.start),
+        end_date: formatISODate(fetchInfo.end)
+      }
+
+      const response = await this.$axios.get('v1/events', { params })
+
+      const { data } = response.data
+
+      return data.map(event => ({
+        id: event.id,
+        title: event.title,
+        date: formatISODate(event.date)
+      }))
     }
   }
 }
@@ -155,7 +183,7 @@ export default {
  *  Active style for selected date
  */
 .active {
-  background-color: #069550 !important;
+  background-color: #16A75C !important;
   color: white !important;
   font-weight: 700 !important;
   border-radius: 8px !important;
@@ -167,5 +195,48 @@ export default {
   background-color: white !important;
   color: #133C6B !important;
   font-weight: 400 !important;
+}
+
+.fc-daygrid-day-frame {
+  position: relative !important;
+}
+/**
+ *  Default style for date when it is not selected
+ */
+.fc-daygrid-day-events {
+  position: absolute !important;
+  width: 100% !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0.8rem 1rem !important;
+}
+/**
+ *  Default style for events
+ */
+.fc-daygrid-more-link {
+  padding: 6px 10px !important;
+  background: #FAFAFB !important;
+  color: #A9ACB1 !important;
+  font-size: 14px !important;
+  line-height: 23px !important;
+  border-radius: 6px !important;
+}
+/**
+ *  Default style for today and future events
+ */
+.fc-day-today .fc-daygrid-more-link,
+.fc-day-future .fc-daygrid-more-link {
+  background: #F1FAF4 !important;
+  color: #16A75C !important;
+}
+/**
+ *  Default style for active events
+ */
+.active .fc-daygrid-more-link{
+  background: #069550 !important;
+  color: #fff !important;
 }
 </style>
