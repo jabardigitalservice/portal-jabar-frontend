@@ -119,15 +119,20 @@ export default {
         end_date: formatISODate(fetchInfo.end)
       }
 
-      const response = await this.$axios.get('v1/events', { params })
+      try {
+        const response = await this.$axios.get('v1/events', { params })
 
-      const { data } = response.data
+        const { data } = response.data
 
-      return data.map(event => ({
-        id: event.id,
-        title: event.title,
-        date: formatISODate(event.date)
-      }))
+        return data.map(event => ({
+          id: event.id,
+          title: event.title,
+          date: formatISODate(event.date)
+        }))
+      } catch (error) {
+        // silent error
+        return []
+      }
     }
   }
 }
