@@ -228,6 +228,7 @@ export default {
   font-size: 14px !important;
   line-height: 23px !important;
   border-radius: 6px !important;
+  pointer-events: none;
 }
 /**
  *  Default style for today and future events
