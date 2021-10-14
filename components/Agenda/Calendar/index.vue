@@ -183,7 +183,7 @@ export default {
  *  Active style for selected date
  */
 .active {
-  background-color: #16A75C !important;
+  background-color: #069550 !important;
   color: white !important;
   font-weight: 700 !important;
   border-radius: 8px !important;
@@ -230,13 +230,13 @@ export default {
 .fc-day-today .fc-daygrid-more-link,
 .fc-day-future .fc-daygrid-more-link {
   background: #F1FAF4 !important;
-  color: #16A75C !important;
+  color: #069550 !important;
 }
 /**
  *  Default style for active events
  */
 .active .fc-daygrid-more-link{
-  background: #069550 !important;
+  background: #008444 !important;
   color: #fff !important;
 }
 </style>
