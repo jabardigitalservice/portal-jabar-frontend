@@ -87,11 +87,9 @@ export default {
   },
   methods: {
     nextMonth () {
-      this.calendarApi.next()
       this.changeSelectedDate('nextMonth')
     },
     prevMonth () {
-      this.calendarApi.prev()
       this.changeSelectedDate('prevMonth')
     },
     dayCellClassNames ({ date }) {
@@ -145,12 +143,12 @@ export default {
       const date = this.calendarApi.getDate()
 
       if (action === 'nextMonth') {
-        const firstDayOfMonth = date
+        const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1) // get first date of next month
         return this.$emit('change', firstDayOfMonth)
       }
 
       if (action === 'prevMonth') {
-        const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0)
+        const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 0) // get last date of prev month
         return this.$emit('change', lastDayOfMonth)
       }
 
