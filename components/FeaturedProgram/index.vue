@@ -72,16 +72,26 @@ export default {
      * @returns {Boolean}
      */
     isSearchEmpty () {
-      return !this.$fetchState.pending && this.programList.length === 0
+      return this.isSearchActive && this.programList.length === 0
+    },
+    /**
+     * Check whether search should be active or not
+     * based on `searchValue` value
+     * @returns {Boolean}
+     */
+    isSearchActive () {
+      return !!this.searchValue
     }
   },
   watch: {
     searchValue: {
       handler () {
-        if (!this.$fetchState.pending) {
+        if (this.isSearchActive) {
           this.programList = this.data.filter(
             item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
           )
+        } else {
+          this.programList = this.data
         }
       }
     }
