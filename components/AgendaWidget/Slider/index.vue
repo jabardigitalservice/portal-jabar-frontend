@@ -75,7 +75,17 @@ export default {
       return this.currentIndex === 0
     },
     lastSlide () {
-      return this.currentIndex === 3
+      /**
+       *  Current index is the first index on the displayed slide,
+       *  by adding 4 to the index, it will be the last index on the displayed slide.
+       */
+      const currentIndex = this.currentIndex + 4
+
+      if (this.items.length < 5) {
+        return true
+      }
+
+      return currentIndex === this.items.length
     }
   },
   mounted () {
@@ -93,6 +103,10 @@ export default {
   },
   beforeDestroy () {
     if (this.slider) { this.slider.destroy() }
+  },
+  activated () {
+    this.selectedDay = this.getDayIndex()
+    this.slider.moveToSlide(this.getDayIndex())
   },
   methods: {
     getShortWeekday (date) {

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="bg-white flex flex-col">
-      <div
-        class="flex flex-col overflow-y-scroll"
-        :style="{ 'max-height': maxHeight }"
-      >
+    <div
+      class="bg-white flex flex-col"
+      :style="{ 'height': height, 'max-height': maxHeight }"
+    >
+      <div class="flex flex-col overflow-y-scroll">
         <!--
           TODO: Show a placeholder if an error occur
         -->
@@ -24,9 +24,15 @@
           :address="event.address"
           :start-hour="event.start_hour"
           :end-hour="event.end_hour"
-          :fetch-state="$fetchState"
+          :fetch-state="fetchState"
         />
       </div>
+      <Link v-if="seeMore && hasEvents" link="/agenda-jawa-barat" class="flex justify-center items-center py-5 border-t border-gray-100">
+        <Button type="button" variant="tertiary-paddingless" tabindex="-1">
+          Lihat Semua Agenda
+          <Icon name="open-new-tab" size="12px" />
+        </Button>
+      </Link>
     </div>
   </div>
 </template>
@@ -40,6 +46,16 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    seeMore: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    height: {
+      type: String,
+      required: false,
+      default: null
     },
     maxHeight: {
       type: String,
@@ -62,34 +78,45 @@ export default {
   },
   data () {
     return {
-      events: []
+      events: [],
+      fetchState: {
+        pending: false,
+        error: false
+      }
     }
-  },
-  async fetch () {
-    const startDate = `start_date=${this.startDate}`
-    const endDate = `end_date=${this.endDate}`
-    const perPage = `per_page=${this.perPage}`
-    const queryParams = `?${startDate}&${endDate}&${perPage}`
-
-    const response = await this.$axios.$get(`/v1/events${queryParams}`)
-    this.events = response.data
   },
   computed: {
     month () {
       return format(this.startDate, { month: 'long', year: 'numeric' })
+    },
+    hasEvents () {
+      return this.events.length
     }
   },
   watch: {
     startDate () {
-      this.$fetch()
+      this.getEvents()
     }
   },
-  activated () {
-    /**
-     *  Call fetch again if last fetch more than a minute ago
-     */
-    if (this.$fetchState.timestamp <= Date.now() - 60000) {
-      this.$fetch()
+  mounted () {
+    this.getEvents()
+  },
+  methods: {
+    async getEvents () {
+      this.fetchState.pending = true
+      const startDate = `start_date=${this.startDate}`
+      const endDate = `end_date=${this.endDate}`
+      const perPage = `per_page=${this.perPage}`
+      const queryParams = `?${startDate}&${endDate}&${perPage}`
+
+      try {
+        const response = await this.$axios.$get(`/v1/events${queryParams}`)
+        this.events = response.data
+        this.fetchState.pending = false
+      } catch (error) {
+        this.fetchState.error = true
+        this.fetchState.pending = false
+      }
     }
   }
 }
