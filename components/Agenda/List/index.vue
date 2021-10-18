@@ -42,6 +42,11 @@ import { addDay, format, formatISODate, isCurrentDay } from '~/utils/date'
 
 export default {
   props: {
+    calendarApi: {
+      type: Object,
+      required: false,
+      default: null
+    },
     selectedDate: {
       type: Date,
       default: () => new Date()
