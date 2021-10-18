@@ -47,6 +47,14 @@ export default {
       required: false,
       default: null
     },
+    agendaView: {
+      type: String,
+      required: true
+    },
+    eachDayOfWeek: {
+      type: Array,
+      required: true
+    },
     selectedDate: {
       type: Date,
       default: () => new Date()

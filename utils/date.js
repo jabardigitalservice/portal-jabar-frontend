@@ -1,5 +1,6 @@
 import {
   add,
+  differenceInCalendarISOWeeks,
   differenceInCalendarMonths,
   differenceInDays,
   differenceInHours,
@@ -12,6 +13,7 @@ import {
   getDay,
   getWeekOfMonth,
   isSameHour,
+  isThisWeek,
   isToday,
   startOfMonth,
   startOfWeek
@@ -35,6 +37,10 @@ export function hoursDifference (current, previous = new Date()) {
 
 export function daysDifference (current, previous = new Date()) {
   return differenceInDays(new Date(previous), new Date(current))
+}
+
+export function weeksDifference (week, current = new Date()) {
+  return differenceInCalendarISOWeeks(new Date(week), new Date(current))
 }
 
 export function monthsDifference (current, previous = new Date()) {
@@ -77,12 +83,20 @@ export function addDay (date, days) {
   return add(new Date(date), { days })
 }
 
+export function addWeek (date, weeks) {
+  return add(new Date(date), { weeks })
+}
+
 export function isCurrentHour (current, previous = new Date()) {
   return isSameHour(new Date(current), new Date(previous))
 }
 
 export function isCurrentDay (date) {
   return isToday(new Date(date))
+}
+
+export function isCurrentWeek (date) {
+  return isThisWeek(new Date(date), { weekStartsOn: 1 })
 }
 
 export function relativeTime (time) {
