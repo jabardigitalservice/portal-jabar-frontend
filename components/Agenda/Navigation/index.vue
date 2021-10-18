@@ -115,11 +115,11 @@ export default {
         }
 
         if (weeksDifference(selectedWeek) > 0) {
-          selectedDay = getFirstDayOfWeek(1, selectedWeek)
+          selectedDay = getFirstDayOfWeek(selectedWeek)
         }
 
         if (weeksDifference(selectedWeek) < 0) {
-          selectedDay = getLastDayOfWeek(1, selectedWeek)
+          selectedDay = getLastDayOfWeek(selectedWeek)
         }
 
         return this.$emit('change', selectedDay)
@@ -134,11 +134,11 @@ export default {
         }
 
         if (weeksDifference(selectedWeek) > 0) {
-          selectedDay = getFirstDayOfWeek(1, selectedWeek)
+          selectedDay = getFirstDayOfWeek(selectedWeek)
         }
 
         if (weeksDifference(selectedWeek) < 0) {
-          selectedDay = getLastDayOfWeek(1, selectedWeek)
+          selectedDay = getLastDayOfWeek(selectedWeek)
         }
 
         return this.$emit('change', selectedDay)

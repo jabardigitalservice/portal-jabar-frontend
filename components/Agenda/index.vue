@@ -40,12 +40,12 @@ export default {
   },
   computed: {
     startDate () {
-      const firstDayOfWeek = getFirstDayOfWeek(1, this.selectedDate)
+      const firstDayOfWeek = getFirstDayOfWeek(this.selectedDate)
 
       return formatISODate(firstDayOfWeek)
     },
     endDate () {
-      const lastDayOfWeek = getLastDayOfWeek(1, this.selectedDate)
+      const lastDayOfWeek = getLastDayOfWeek(this.selectedDate)
 
       return formatISODate(lastDayOfWeek)
     },

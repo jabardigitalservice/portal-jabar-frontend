@@ -51,11 +51,11 @@ export function getDayOfWeek (date) {
   return getDay(new Date(date))
 }
 
-export function getFirstDayOfWeek (weekStartOn = 1, date = new Date()) {
+export function getFirstDayOfWeek (date = new Date(), weekStartOn = 1) {
   return startOfWeek(new Date(date), { weekStartsOn: weekStartOn })
 }
 
-export function getLastDayOfWeek (weekStartOn = 1, date = new Date()) {
+export function getLastDayOfWeek (date = new Date(), weekStartOn = 1) {
   return endOfWeek(new Date(date), { weekStartsOn: weekStartOn })
 }
 
@@ -67,7 +67,7 @@ export function getLastDayOfMonth (date = new Date()) {
   return endOfMonth(new Date(date))
 }
 
-export function getCurrentWeek (weekStartOn = 1, date = new Date()) {
+export function getCurrentWeek (date = new Date(), weekStartOn = 1) {
   return getWeekOfMonth(new Date(date), { weekStartsOn: weekStartOn })
 }
 
