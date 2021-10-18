@@ -1,5 +1,6 @@
 <template>
   <div>
+    <slot name="header" />
     <div
       class="bg-white flex flex-col"
       :style="{ 'height': height, 'max-height': maxHeight }"
