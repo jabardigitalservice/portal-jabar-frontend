@@ -87,10 +87,10 @@ export default {
   },
   methods: {
     nextMonth () {
-      this.calendarApi.next()
+      this.changeSelectedDate('nextMonth')
     },
     prevMonth () {
-      this.calendarApi.prev()
+      this.changeSelectedDate('prevMonth')
     },
     dayCellClassNames ({ date }) {
       const currentDate = formatISODate(date)
@@ -133,6 +133,27 @@ export default {
         // silent error
         return []
       }
+    },
+    /**
+     * change `selectedDate` based on action
+     * @param {string} action
+     * @return {Event}
+     */
+    changeSelectedDate (action) {
+      const date = this.calendarApi.getDate()
+
+      if (action === 'nextMonth') {
+        const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1) // get first date of next month
+        return this.$emit('change', firstDayOfMonth)
+      }
+
+      if (action === 'prevMonth') {
+        const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 0) // get last date of prev month
+        return this.$emit('change', lastDayOfMonth)
+      }
+
+      // TODO : add event on date click
+      return null
     }
   }
 }

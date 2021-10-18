@@ -41,9 +41,10 @@
 import { addDay, format, formatISODate, isCurrentDay } from '~/utils/date'
 
 export default {
-  data () {
-    return {
-      selectedDay: formatISODate(new Date())
+  props: {
+    selectedDate: {
+      type: Date,
+      default: () => new Date()
     }
   },
   computed: {
@@ -55,22 +56,20 @@ export default {
     },
     date () {
       return format(this.selectedDay, { day: 'numeric', month: 'long', year: 'numeric' })
+    },
+    selectedDay () {
+      return formatISODate(this.selectedDate)
     }
   },
   deactivated () {
-    this.selectedDay = formatISODate(new Date())
+    this.$emit('change', this.selectedDay)
   },
   methods: {
-    setSelectedDay (day) {
-      this.selectedDay = formatISODate(day)
-    },
     prevDay () {
-      this.setSelectedDay(addDay(this.selectedDay, -1))
-      this.$emit('change', this.selectedDay)
+      this.$emit('change', addDay(this.selectedDay, -1))
     },
     nextDay () {
-      this.setSelectedDay(addDay(this.selectedDay, 1))
-      this.$emit('change', this.selectedDay)
+      this.$emit('change', addDay(this.selectedDay, 1))
     }
   }
 }
