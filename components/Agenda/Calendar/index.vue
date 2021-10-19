@@ -5,6 +5,7 @@
 <script>
 import FullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
 import idLocale from '@fullcalendar/core/locales/id'
 import { formatISODate } from '~/utils/date'
 
@@ -26,7 +27,7 @@ export default {
   data () {
     return {
       calendarOptions: {
-        plugins: [dayGridPlugin],
+        plugins: [dayGridPlugin, interactionPlugin],
         initialView: 'dayGridMonth',
         initialDate: this.selectedDate,
         locale: idLocale,
@@ -37,7 +38,8 @@ export default {
         dayMaxEvents: 0,
         moreLinkContent (args) {
           return args.num + ' Kegiatan'
-        }
+        },
+        dateClick: this.handleDateClick
       }
     }
   },
@@ -91,6 +93,15 @@ export default {
         // silent error
         return []
       }
+    },
+    /**
+     * Emit event when date is clicked
+     * @param {Object} dateInfo - Object containing information about clicked date
+     * * See {@link https://fullcalendar.io/docs/dateClick} for more information
+     * @return {Event}
+     */
+    handleDateClick (dateInfo) {
+      this.$emit('change', dateInfo.date)
     }
   }
 }
