@@ -141,6 +141,18 @@ export default {
   color: red !important;
 }
 /**
+ * Cursor pointer on day grid
+ */
+.fc-daygrid-day {
+  cursor: pointer !important;
+}
+/**
+ * Cursor pointer on day grid
+ */
+.fc-daygrid-day.not-active:hover {
+  background: #F1FAF4 !important;
+}
+/**
  *  Change text color to white for sunday if the current day is active
  */
 .fc-daygrid-day.fc-day.fc-day-sun.active {
