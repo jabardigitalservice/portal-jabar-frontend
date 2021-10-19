@@ -147,7 +147,7 @@ export default {
   cursor: pointer !important;
 }
 /**
- * Cursor pointer on day grid
+ * Change backgound color on non active day grid
  */
 .fc-daygrid-day.not-active:hover {
   background: #F1FAF4 !important;
