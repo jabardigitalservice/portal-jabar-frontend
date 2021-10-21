@@ -52,7 +52,9 @@ export default {
     jumbotronStyle () {
       return {
         backgroundImage: `url('${this.backgroundImageUrl}')`,
-        backgroundPosition: 'center center'
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat'
       }
     }
   }
