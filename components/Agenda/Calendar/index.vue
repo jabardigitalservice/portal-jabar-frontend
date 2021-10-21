@@ -1,5 +1,5 @@
 <template>
-  <FullCalendar ref="fullCalendar" :options="calendarOptions" />
+  <FullCalendar v-show="isMonthView" ref="fullCalendar" :options="calendarOptions" />
 </template>
 
 <script>
@@ -17,6 +17,14 @@ export default {
       type: Object,
       required: false,
       default: null
+    },
+    agendaView: {
+      type: String,
+      required: true
+    },
+    eachDayOfWeek: {
+      type: Array,
+      required: true
     },
     selectedDate: {
       type: Date,
@@ -39,6 +47,11 @@ export default {
           return args.num + ' Kegiatan'
         }
       }
+    }
+  },
+  computed: {
+    isMonthView () {
+      return this.agendaView === 'month'
     }
   },
   watch: {

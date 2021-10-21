@@ -4,15 +4,21 @@
       <div class="bg-white p-10 rounded-xl shadow flex flex-col gap-7">
         <AgendaNavigation
           :calendar-api="calendarApi"
+          :agenda-view.sync="agendaView"
+          :each-day-of-week="eachDayOfWeek"
           :selected-date="selectedDate"
           @change="setSelectedDate"
         />
         <AgendaCalendar
           :calendar-api.sync="calendarApi"
+          :agenda-view="agendaView"
+          :each-day-of-week="eachDayOfWeek"
           :selected-date="selectedDate"
           @change="setSelectedDate"
         />
         <AgendaList
+          :agenda-view="agendaView"
+          :each-day-of-week="eachDayOfWeek"
           :selected-date="selectedDate"
           @change="setSelectedDate"
         />
@@ -22,11 +28,29 @@
 </template>
 
 <script>
+import { formatISODate, getEachDay, getFirstDayOfWeek, getLastDayOfWeek } from '~/utils/date'
+
 export default {
   data () {
     return {
       calendarApi: null,
-      selectedDate: new Date()
+      selectedDate: new Date(),
+      agendaView: 'month'
+    }
+  },
+  computed: {
+    startDate () {
+      const firstDayOfWeek = getFirstDayOfWeek(this.selectedDate)
+
+      return formatISODate(firstDayOfWeek)
+    },
+    endDate () {
+      const lastDayOfWeek = getLastDayOfWeek(this.selectedDate)
+
+      return formatISODate(lastDayOfWeek)
+    },
+    eachDayOfWeek () {
+      return getEachDay({ start: this.startDate, end: this.endDate })
     }
   },
   deactivated () {

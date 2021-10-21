@@ -6,17 +6,17 @@
           name="chevron-left"
           class="text-green-800 cursor-pointer"
           size="18px"
-          @click="prevMonth"
+          @click="prev"
         />
         <Icon
           name="chevron-right"
           class="text-green-800 cursor-pointer"
           size="18px"
-          @click="nextMonth"
+          @click="next"
         />
       </div>
       <p class="font-roboto font-bold text-3xl">
-        {{ month }}
+        {{ day }} {{ month }}
         <span class="font-medium text-gray-500">{{ year }}</span>
       </p>
     </div>
@@ -24,12 +24,13 @@
       label="Tampilkan dalam"
       :options="[{ value: 'month', label: 'Bulan' }, { value: 'week', label: 'Minggu' }]"
       value="month"
+      @click="setAgendaView"
     />
   </div>
 </template>
 
 <script>
-import { format } from '~/utils/date'
+import { addWeek, format, getFirstDayOfWeek, getLastDayOfWeek, isCurrentWeek, weeksDifference } from '~/utils/date'
 
 export default {
   props: {
@@ -37,6 +38,14 @@ export default {
       type: Object,
       required: false,
       default: null
+    },
+    agendaView: {
+      type: String,
+      required: true
+    },
+    eachDayOfWeek: {
+      type: Array,
+      required: true
     },
     selectedDate: {
       type: Date,
@@ -47,11 +56,20 @@ export default {
     date () {
       return this.calendarApi ? this.calendarApi.getDate() : new Date()
     },
+    day () {
+      const firstDayOfWeek = new Date(this.eachDayOfWeek[0]).getDate()
+      const lastDayOfWeek = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1]).getDate()
+
+      return this.isMonthView ? '' : `${firstDayOfWeek} - ${lastDayOfWeek}`
+    },
     month () {
       return format(this.date, { month: 'long' })
     },
     year () {
       return format(this.date, { year: 'numeric' })
+    },
+    isMonthView () {
+      return this.agendaView === 'month'
     }
   },
   watch: {
@@ -60,11 +78,15 @@ export default {
     }
   },
   methods: {
-    nextMonth () {
-      this.changeSelectedDate('nextMonth')
+    next () {
+      const next = this.isMonthView ? 'nextMonth' : 'nextWeek'
+
+      this.changeSelectedDate(next)
     },
-    prevMonth () {
-      this.changeSelectedDate('prevMonth')
+    prev () {
+      const prev = this.isMonthView ? 'prevMonth' : 'prevWeek'
+
+      this.changeSelectedDate(prev)
     },
     /**
      * change `selectedDate` based on action
@@ -84,8 +106,49 @@ export default {
         return this.$emit('change', lastDayOfMonth)
       }
 
+      if (action === 'nextWeek') {
+        const selectedWeek = addWeek(date, 1)
+        let selectedDay
+
+        if (isCurrentWeek(selectedWeek)) {
+          selectedDay = new Date()
+        }
+
+        if (weeksDifference(selectedWeek) > 0) {
+          selectedDay = getFirstDayOfWeek(selectedWeek)
+        }
+
+        if (weeksDifference(selectedWeek) < 0) {
+          selectedDay = getLastDayOfWeek(selectedWeek)
+        }
+
+        return this.$emit('change', selectedDay)
+      }
+
+      if (action === 'prevWeek') {
+        const selectedWeek = addWeek(date, -1)
+        let selectedDay
+
+        if (isCurrentWeek(selectedWeek)) {
+          selectedDay = new Date()
+        }
+
+        if (weeksDifference(selectedWeek) > 0) {
+          selectedDay = getFirstDayOfWeek(selectedWeek)
+        }
+
+        if (weeksDifference(selectedWeek) < 0) {
+          selectedDay = getLastDayOfWeek(selectedWeek)
+        }
+
+        return this.$emit('change', selectedDay)
+      }
+
       // TODO : add event on date click
       return null
+    },
+    setAgendaView (view) {
+      this.$emit('update:agenda-view', view)
     }
   }
 }
