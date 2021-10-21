@@ -9,13 +9,15 @@
           :selected-date="selectedDate"
           @change="setSelectedDate"
         />
-        <AgendaCalendar
-          :calendar-api.sync="calendarApi"
-          :agenda-view="agendaView"
-          :each-day-of-week="eachDayOfWeek"
-          :selected-date="selectedDate"
-          @change="setSelectedDate"
-        />
+        <section :style="{minHeight:'600px'}">
+          <AgendaCalendar
+            :calendar-api.sync="calendarApi"
+            :agenda-view="agendaView"
+            :each-day-of-week="eachDayOfWeek"
+            :selected-date="selectedDate"
+            @change="setSelectedDate"
+          />
+        </section>
         <AgendaList
           :agenda-view="agendaView"
           :each-day-of-week="eachDayOfWeek"
