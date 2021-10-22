@@ -208,9 +208,15 @@ export default {
       if (!this.isAllowed()) {
         this.openedModal = 'not-allowed'
       } else {
+        const form = {
+          rating: this.form.rating,
+          compliments: this.form.compliments.trim(),
+          criticism: this.form.criticism.trim(),
+          suggestions: this.form.suggestions.trim()
+        }
         try {
           this.isLoading = true
-          await this.$axios.$post('/v1/feedback', this.form)
+          await this.$axios.$post('/v1/feedback', form)
           this.isLoading = false
           this.openedModal = 'success'
           this.setLocalStorage('feedback', new Date())
