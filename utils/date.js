@@ -14,6 +14,7 @@ import {
   getWeekOfMonth,
   isSameHour,
   isThisWeek,
+  isThisMonth,
   isToday,
   startOfMonth,
   startOfWeek
@@ -87,6 +88,10 @@ export function addWeek (date, weeks) {
   return add(new Date(date), { weeks })
 }
 
+export function addMonth (date, months) {
+  return add(new Date(date), { months })
+}
+
 export function isCurrentHour (current, previous = new Date()) {
   return isSameHour(new Date(current), new Date(previous))
 }
@@ -97,6 +102,10 @@ export function isCurrentDay (date) {
 
 export function isCurrentWeek (date) {
   return isThisWeek(new Date(date), { weekStartsOn: 1 })
+}
+
+export function isCurrentMonth (date) {
+  return isThisMonth(new Date(date))
 }
 
 export function relativeTime (time) {

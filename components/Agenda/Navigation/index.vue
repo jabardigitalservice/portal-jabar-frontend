@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { addWeek, format, getFirstDayOfWeek, getLastDayOfWeek, isCurrentWeek, weeksDifference } from '~/utils/date'
+import { addWeek, addMonth, format, getFirstDayOfWeek, getLastDayOfWeek, isCurrentWeek, isCurrentMonth, weeksDifference } from '~/utils/date'
 
 export default {
   props: {
@@ -97,13 +97,25 @@ export default {
       const date = this.calendarApi.getDate()
 
       if (action === 'nextMonth') {
-        const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1) // get first date of next month
-        return this.$emit('change', firstDayOfMonth)
+        const nextMonth = addMonth(date, 1)
+
+        if (isCurrentMonth(nextMonth)) {
+          return this.$emit('change', new Date())
+        } else {
+          const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1) // get first date of next month
+          return this.$emit('change', firstDayOfMonth)
+        }
       }
 
       if (action === 'prevMonth') {
-        const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 0) // get last date of prev month
-        return this.$emit('change', lastDayOfMonth)
+        const prevMonth = addMonth(date, -1)
+
+        if (isCurrentMonth(prevMonth)) {
+          return this.$emit('change', new Date())
+        } else {
+          const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 0) // get last date of prev month
+          return this.$emit('change', lastDayOfMonth)
+        }
       }
 
       if (action === 'nextWeek') {
@@ -143,9 +155,6 @@ export default {
 
         return this.$emit('change', selectedDay)
       }
-
-      // TODO : add event on date click
-      return null
     },
     setAgendaView (view) {
       this.$emit('update:agenda-view', view)

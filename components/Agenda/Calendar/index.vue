@@ -56,11 +56,6 @@ export default {
       return this.agendaView === 'month'
     }
   },
-  watch: {
-    selectedDate (date) {
-      this.calendarApi.gotoDate(date)
-    }
-  },
   mounted () {
     this.$emit('update:calendar-api', this.$refs.fullCalendar.getApi())
   },
