@@ -8,7 +8,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
+    "lint": "npm run lint:js",
+    "test": "jest"
   },
   "dependencies": {
     "@fullcalendar/core": "^5.9.0",
@@ -31,9 +32,14 @@
     "@nuxtjs/google-fonts": "^1.3.0",
     "@nuxtjs/tailwindcss": "^4.2.0",
     "@tailwindcss/line-clamp": "^0.2.1",
+    "@vue/test-utils": "^1.2.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^27.3.1",
     "eslint": "^7.29.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
-    "postcss": "^8.3.5"
+    "jest": "^27.3.1",
+    "postcss": "^8.3.5",
+    "vue-jest": "^3.0.7"
   }
 }
