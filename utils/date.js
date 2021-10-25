@@ -88,6 +88,10 @@ export function addWeek (date, weeks) {
   return add(new Date(date), { weeks })
 }
 
+export function addMonth (date, months) {
+  return add(new Date(date), { months })
+}
+
 export function isCurrentHour (current, previous = new Date()) {
   return isSameHour(new Date(current), new Date(previous))
 }
