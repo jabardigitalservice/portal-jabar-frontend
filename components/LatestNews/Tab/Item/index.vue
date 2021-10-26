@@ -9,7 +9,7 @@
         <div class="flex justify-between items-center">
           <div class="flex gap-2 text-xs">
             <p class="text-gray-700 group-hover:text-blue-gray-800">
-              {{ category.title }}
+              {{ category }}
             </p>
             <div class="text-gray-700 group-hover:text-blue-gray-800">
               |
@@ -43,7 +43,7 @@ export default {
       required: true
     },
     category: {
-      type: Object,
+      type: String,
       required: true
     },
     fetchState: {
