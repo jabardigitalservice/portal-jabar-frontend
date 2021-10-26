@@ -1,5 +1,5 @@
 <template>
-  <FullCalendar v-show="isMonthView" ref="fullCalendar" :options="calendarOptions" />
+  <FullCalendar v-if="isMonthView" ref="fullCalendar" :options="calendarOptions" />
 </template>
 
 <script>

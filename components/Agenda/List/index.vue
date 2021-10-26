@@ -4,10 +4,8 @@
       <AgendaWidgetList
         with-time
         :see-more="false"
-        max-height="700px"
         :start-date="selectedDay"
         :end-date="selectedDay"
-        :per-page="10"
       >
         <template #header>
           <AgendaListHeader
