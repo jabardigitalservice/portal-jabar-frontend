@@ -27,7 +27,7 @@
             </label>
             <textarea
               id="compliments"
-              v-model.trim="form.compliments"
+              v-model="form.compliments"
               name="compliments"
               cols="30"
               rows="3"
@@ -45,7 +45,7 @@
             </label>
             <textarea
               id="criticism"
-              v-model.trim="form.criticism"
+              v-model="form.criticism"
               name="criticism"
               cols="30"
               rows="3"
@@ -63,7 +63,7 @@
             </label>
             <textarea
               id="suggestions"
-              v-model.trim="form.suggestions"
+              v-model="form.suggestions"
               name="suggestions"
               cols="30"
               rows="3"
@@ -154,7 +154,12 @@ export default {
   },
   computed: {
     hasValue () {
-      return !!this.form.rating && !!this.form.compliments && !!this.form.criticism && !!this.form.suggestions
+      const rating = !!this.form.rating
+      const compliments = !!this.form.compliments.trim()
+      const criticism = !!this.form.criticism.trim()
+      const suggestions = !!this.form.suggestions.trim()
+
+      return rating && compliments && criticism && suggestions
     },
     isValid () {
       return this.hasValue
@@ -203,9 +208,15 @@ export default {
       if (!this.isAllowed()) {
         this.openedModal = 'not-allowed'
       } else {
+        const form = {
+          rating: this.form.rating,
+          compliments: this.form.compliments.trim(),
+          criticism: this.form.criticism.trim(),
+          suggestions: this.form.suggestions.trim()
+        }
         try {
           this.isLoading = true
-          await this.$axios.$post('/v1/feedback', this.form)
+          await this.$axios.$post('/v1/feedback', form)
           this.isLoading = false
           this.openedModal = 'success'
           this.setLocalStorage('feedback', new Date())
