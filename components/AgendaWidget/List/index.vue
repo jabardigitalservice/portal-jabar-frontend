@@ -1,10 +1,14 @@
 <template>
   <div>
+    <slot name="header" />
     <div
-      class="bg-white flex flex-col"
+      class="bg-white flex flex-col overflow-hidden"
       :style="{ 'height': height, 'max-height': maxHeight }"
     >
-      <div class="flex flex-col overflow-y-scroll">
+      <div
+        class="flex flex-col"
+        :class="{ 'overflow-y-scroll': hasHeight }"
+      >
         <!--
           TODO: Show a placeholder if an error occur
         -->
@@ -73,7 +77,7 @@ export default {
     perPage: {
       type: Number,
       required: false,
-      default: 5
+      default: null
     }
   },
   data () {
@@ -91,6 +95,9 @@ export default {
     },
     hasEvents () {
       return this.events.length
+    },
+    hasHeight () {
+      return !!this.height || !!this.maxHeight
     }
   },
   watch: {
@@ -104,13 +111,14 @@ export default {
   methods: {
     async getEvents () {
       this.fetchState.pending = true
-      const startDate = `start_date=${this.startDate}`
-      const endDate = `end_date=${this.endDate}`
-      const perPage = `per_page=${this.perPage}`
-      const queryParams = `?${startDate}&${endDate}&${perPage}`
+      const params = {
+        start_date: this.startDate,
+        end_date: this.endDate,
+        per_page: this.perPage
+      }
 
       try {
-        const response = await this.$axios.$get(`/v1/events${queryParams}`)
+        const response = await this.$axios.$get('/v1/events', { params })
         this.events = response.data
         this.fetchState.pending = false
       } catch (error) {

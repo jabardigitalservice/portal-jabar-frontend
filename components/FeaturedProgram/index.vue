@@ -1,7 +1,7 @@
 <template>
   <section class="w-full bg-gray-200">
     <BaseContainer class="relative -top-24 z-20">
-      <div class="py-8 px-10 rounded-xl bg-white">
+      <div class="wrapper py-8 px-10 rounded-xl bg-white">
         <div class="p-4">
           <!-- Search and Filter -->
           <section class="flex w-full justify-end mb-8">
@@ -72,16 +72,26 @@ export default {
      * @returns {Boolean}
      */
     isSearchEmpty () {
-      return !this.$fetchState.pending && this.programList.length === 0
+      return this.isSearchActive && this.programList.length === 0
+    },
+    /**
+     * Check whether search should be active or not
+     * based on `searchValue` value
+     * @returns {Boolean}
+     */
+    isSearchActive () {
+      return !!this.searchValue
     }
   },
   watch: {
     searchValue: {
       handler () {
-        if (!this.$fetchState.pending) {
+        if (this.isSearchActive) {
           this.programList = this.data.filter(
             item => item.title.toLowerCase().includes(this.searchValue.toLowerCase())
           )
+        } else {
+          this.programList = this.data
         }
       }
     }
@@ -107,3 +117,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.wrapper {
+  min-height: calc(166px * 9);
+}
+</style>

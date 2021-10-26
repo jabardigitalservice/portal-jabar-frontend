@@ -1,5 +1,6 @@
 import {
   add,
+  differenceInCalendarISOWeeks,
   differenceInCalendarMonths,
   differenceInDays,
   differenceInHours,
@@ -12,6 +13,8 @@ import {
   getDay,
   getWeekOfMonth,
   isSameHour,
+  isThisWeek,
+  isThisMonth,
   isToday,
   startOfMonth,
   startOfWeek
@@ -37,6 +40,10 @@ export function daysDifference (current, previous = new Date()) {
   return differenceInDays(new Date(previous), new Date(current))
 }
 
+export function weeksDifference (week, current = new Date()) {
+  return differenceInCalendarISOWeeks(new Date(week), new Date(current))
+}
+
 export function monthsDifference (current, previous = new Date()) {
   return differenceInCalendarMonths(new Date(current), new Date(previous))
 }
@@ -45,11 +52,11 @@ export function getDayOfWeek (date) {
   return getDay(new Date(date))
 }
 
-export function getFirstDayOfWeek (weekStartOn = 1, date = new Date()) {
+export function getFirstDayOfWeek (date = new Date(), weekStartOn = 1) {
   return startOfWeek(new Date(date), { weekStartsOn: weekStartOn })
 }
 
-export function getLastDayOfWeek (weekStartOn = 1, date = new Date()) {
+export function getLastDayOfWeek (date = new Date(), weekStartOn = 1) {
   return endOfWeek(new Date(date), { weekStartsOn: weekStartOn })
 }
 
@@ -61,7 +68,7 @@ export function getLastDayOfMonth (date = new Date()) {
   return endOfMonth(new Date(date))
 }
 
-export function getCurrentWeek (weekStartOn = 1, date = new Date()) {
+export function getCurrentWeek (date = new Date(), weekStartOn = 1) {
   return getWeekOfMonth(new Date(date), { weekStartsOn: weekStartOn })
 }
 
@@ -77,12 +84,28 @@ export function addDay (date, days) {
   return add(new Date(date), { days })
 }
 
+export function addWeek (date, weeks) {
+  return add(new Date(date), { weeks })
+}
+
+export function addMonth (date, months) {
+  return add(new Date(date), { months })
+}
+
 export function isCurrentHour (current, previous = new Date()) {
   return isSameHour(new Date(current), new Date(previous))
 }
 
 export function isCurrentDay (date) {
   return isToday(new Date(date))
+}
+
+export function isCurrentWeek (date) {
+  return isThisWeek(new Date(date), { weekStartsOn: 1 })
+}
+
+export function isCurrentMonth (date) {
+  return isThisMonth(new Date(date))
 }
 
 export function relativeTime (time) {

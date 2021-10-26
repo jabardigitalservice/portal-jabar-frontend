@@ -1,47 +1,32 @@
 <template>
-  <div class="flex flex-col gap-9">
-    <div class="flex justify-between items-center">
-      <div class="flex justify-between items-center gap-5">
-        <div class="flex gap-4">
-          <Icon
-            name="chevron-left"
-            class="text-green-800 cursor-pointer"
-            size="18px"
-            @click="prevMonth"
-          />
-          <Icon
-            name="chevron-right"
-            class="text-green-800 cursor-pointer"
-            size="18px"
-            @click="nextMonth"
-          />
-        </div>
-        <p class="font-roboto font-bold text-3xl">
-          {{ month }}
-          <span class="font-medium text-gray-500">{{ year }}</span>
-        </p>
-      </div>
-      <Select
-        label="Tampilkan dalam"
-        :options="[{ value: 'month', label: 'Bulan' }, { value: 'week', label: 'Minggu' }]"
-        value="month"
-      />
-    </div>
-    <FullCalendar ref="fullCalendar" :options="calendarOptions" />
-  </div>
+  <FullCalendar v-if="isMonthView" ref="fullCalendar" :options="calendarOptions" />
 </template>
 
 <script>
 import FullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
 import idLocale from '@fullcalendar/core/locales/id'
-import { format, formatISODate } from '~/utils/date'
+import { formatISODate } from '~/utils/date'
 
 export default {
   components: {
     FullCalendar
   },
   props: {
+    calendarApi: {
+      type: Object,
+      required: false,
+      default: null
+    },
+    agendaView: {
+      type: String,
+      required: true
+    },
+    eachDayOfWeek: {
+      type: Array,
+      required: true
+    },
     selectedDate: {
       type: Date,
       required: true
@@ -49,9 +34,8 @@ export default {
   },
   data () {
     return {
-      calendarApi: null,
       calendarOptions: {
-        plugins: [dayGridPlugin],
+        plugins: [dayGridPlugin, interactionPlugin],
         initialView: 'dayGridMonth',
         initialDate: this.selectedDate,
         locale: idLocale,
@@ -62,36 +46,20 @@ export default {
         dayMaxEvents: 0,
         moreLinkContent (args) {
           return args.num + ' Kegiatan'
-        }
+        },
+        dateClick: this.handleDateClick
       }
     }
   },
   computed: {
-    date () {
-      return this.calendarApi ? this.calendarApi.getDate() : new Date()
-    },
-    month () {
-      return format(this.date, { month: 'long' })
-    },
-    year () {
-      return format(this.date, { year: 'numeric' })
-    }
-  },
-  watch: {
-    selectedDate (date) {
-      this.calendarApi.gotoDate(date)
+    isMonthView () {
+      return this.agendaView === 'month'
     }
   },
   mounted () {
-    this.calendarApi = this.$refs.fullCalendar.getApi()
+    this.$emit('update:calendar-api', this.$refs.fullCalendar.getApi())
   },
   methods: {
-    nextMonth () {
-      this.calendarApi.next()
-    },
-    prevMonth () {
-      this.calendarApi.prev()
-    },
     dayCellClassNames ({ date }) {
       const currentDate = formatISODate(date)
       const selectedDate = formatISODate(this.selectedDate)
@@ -133,6 +101,15 @@ export default {
         // silent error
         return []
       }
+    },
+    /**
+     * Emit event when date is clicked
+     * @param {Object} dateInfo - Object containing information about clicked date
+     * * See {@link https://fullcalendar.io/docs/dateClick} for more information
+     * @return {Event}
+     */
+    handleDateClick (dateInfo) {
+      this.$emit('change', dateInfo.date)
     }
   }
 }
@@ -170,6 +147,18 @@ export default {
  */
 .fc-daygrid-day.fc-day.fc-day-sun {
   color: red !important;
+}
+/**
+ * Cursor pointer on day grid
+ */
+.fc-daygrid-day {
+  cursor: pointer !important;
+}
+/**
+ * Change backgound color on non active day grid
+ */
+.fc-daygrid-day.not-active:hover {
+  background: #F1FAF4 !important;
 }
 /**
  *  Change text color to white for sunday if the current day is active
