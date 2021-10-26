@@ -19,6 +19,14 @@
             />
           </section>
 
+          <!-- Featured Program Counter -->
+          <section class="flex w-full justify-start mb-8">
+            <FeaturedProgramCounter
+              :counter="programLength"
+              :loading="$fetchState.pending"
+            />
+          </section>
+
           <!-- Featured Program Card -->
           <section class="grid grid-cols-3 gap-8">
             <BaseCard
@@ -81,6 +89,9 @@ export default {
      */
     isSearchActive () {
       return !!this.searchValue
+    },
+    programLength () {
+      return this.data.length
     }
   },
   watch: {
