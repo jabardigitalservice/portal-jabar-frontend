@@ -9,7 +9,7 @@
           :selected-date="selectedDate"
           @change="setSelectedDate"
         />
-        <section :style="{minHeight:'600px'}">
+        <section v-if="isMonthView" :style="{ minHeight:'600px' }">
           <AgendaCalendar
             :calendar-api.sync="calendarApi"
             :agenda-view="agendaView"
@@ -53,6 +53,9 @@ export default {
     },
     eachDayOfWeek () {
       return getEachDay({ start: this.startDate, end: this.endDate })
+    },
+    isMonthView () {
+      return this.agendaView === 'month'
     }
   },
   deactivated () {
