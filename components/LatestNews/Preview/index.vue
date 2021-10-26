@@ -12,7 +12,7 @@
           <div class="flex flex-col h-full">
             <div class="flex-grow">
               <p class="font-roboto text-sm uppercase leading-relaxed tracking-wider opacity-80 mb-1">
-                {{ item.category.title }}
+                {{ item.category }}
               </p>
               <h3 class="line-clamp-2 font-lora font-bold text-3xl leading-normal mb-3">
                 {{ item.title }}
