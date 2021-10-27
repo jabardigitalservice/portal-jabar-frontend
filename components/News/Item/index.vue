@@ -25,7 +25,7 @@
     </div>
     <div class="w-full flex flex-col items-start justify-center">
       <!-- skeleton -->
-      <div v-if="loading" ref="news-item-skeletons">
+      <div v-if="loading" ref="news-item-skeletons" class="w-full">
         <div class="w-3/4 h-5 bg-gray-200 animate-pulse rounded-md mb-3" />
         <div class="w-1/2 h-4 bg-gray-200 animate-pulse rounded-md mb-2" />
       </div>
