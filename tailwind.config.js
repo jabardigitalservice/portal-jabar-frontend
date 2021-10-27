@@ -17,6 +17,11 @@ module.exports = {
       boxShadow: {
         DEFAULT: '0px 6px 22px rgba(2, 43, 85, 0.08)'
       },
+      gridTemplateColumns: {
+        'news-container': '60% auto',
+        'news-large': '200px auto',
+        'news-small': '72px auto'
+      },
       colors: {
         green: {
           50: '#E6F6EC',
