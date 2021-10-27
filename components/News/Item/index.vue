@@ -11,7 +11,7 @@
       class="cursor-pointer overflow-hidden rounded-lg transition-transform duration-300 ease-in-out"
       :class="loading ? 'bg-gray-200 animate-pulse' : ''"
       :style="imageSize"
-      @click="$emit('open-news', { id: item.id, slug: item.slug })"
+      @click="$emit('clicked', { id: item.id, slug: item.slug })"
     >
       <img
         v-show="!loading"
@@ -35,7 +35,7 @@
           class="cursor-pointer font-lato font-medium text-blue-gray-800 mb-2
           group-hover:text-green-800 line-clamp-2"
           :class="small ? 'text-base leading-6' : 'text-lg leading-7'"
-          @click="$emit('open-news', { id: item.id, slug: item.slug })"
+          @click="$emit('clicked', { id: item.id, slug: item.slug })"
         >
           {{ item.title }}
         </h2>
