@@ -12,7 +12,7 @@ beforeEach(() => {
         image: 'https://via.placeholder.com/100',
         title: 'Testing News Component',
         category: 'My Category',
-        date: new Date('10/01/2021')
+        date: new Date('2021-09-22T22:55:29Z')
       },
       small: false,
       loading: false
@@ -50,7 +50,8 @@ describe('NewsItem Component', () => {
     const meta = wrapper.findComponent({ ref: 'news-item-meta' })
 
     expect(title.text()).toMatch(/testing news component/i)
-    expect(meta.text()).toMatch(/my category | 1 oktober 2021/i)
+    expect(meta.text()).toMatch(/my category/i)
+    expect(meta.text()).toMatch(/23 september 2021/i)
   })
 
   test('should render `small` variant', async () => {
@@ -61,5 +62,18 @@ describe('NewsItem Component', () => {
     const container = wrapper.findComponent({ ref: 'news-item' })
 
     expect(container.classes()).toContain('grid-cols-news-small')
+  })
+
+  test('should emit `clicked` event when image and title clicked', async () => {
+    const title = wrapper.findComponent({ ref: 'news-item-title' })
+    const image = wrapper.findComponent({ ref: 'news-item-image' })
+
+    await title.trigger('click')
+
+    expect(wrapper.emitted().clicked[0]).toStrictEqual([{ id: 1, slug: 'dummy-slug' }])
+
+    await image.trigger('click')
+
+    expect(wrapper.emitted().clicked[0]).toStrictEqual([{ id: 1, slug: 'dummy-slug' }])
   })
 })
