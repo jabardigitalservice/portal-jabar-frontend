@@ -2,7 +2,7 @@
   <div
     ref="slider"
     class="w-full h-full relative overflow-hidden group"
-    @mouseover="setPause(true)"
+    @mouseover="setPause(pauseOnHover)"
     @mouseout="setPause(false)"
   >
     <div
@@ -45,6 +45,11 @@ export default {
       default: 3000
     },
     hover: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    pauseOnHover: {
       type: Boolean,
       required: false,
       default: true
@@ -92,7 +97,9 @@ export default {
     },
     setPause (active) {
       this.pause = active
-      this.setInterval()
+      if (this.pauseOnHover) {
+        this.setInterval()
+      }
     }
   }
 }

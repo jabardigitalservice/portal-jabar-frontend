@@ -15,6 +15,7 @@
         :duration="10000"
         :speed="1000"
         :hover="false"
+        :pause-on-hover="false"
       >
         <template #filter>
           <div
