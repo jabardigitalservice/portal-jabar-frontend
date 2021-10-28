@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="flex justify-between items-center">
-              <Link :link="`/informasi-dan-berita/berita/${getSlug(slider)}`">
+              <Link :link="`/berita/${getSlug(slider)}`">
                 <button type="button" class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg">
                   Baca Selengkapnya
                 </button>

@@ -7,7 +7,7 @@
       <div class="flex-1 flex justify-center flex-col text-center">
         <div class="border-b border-gray-300" />
       </div>
-      <Link link="/informasi-dan-berita/berita" tabindex="-1">
+      <Link link="/berita" tabindex="-1">
         <Button type="button" variant="secondary">
           Lihat Semua Berita
           <Icon name="open-new-tab" size="14px" />
