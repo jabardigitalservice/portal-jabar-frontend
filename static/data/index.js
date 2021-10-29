@@ -394,3 +394,5 @@ export const socialMediaSites = [
     link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
   }
 ]
+
+export const newsCategories = ['ekonomi', 'politik', 'pemerintahan', 'infrastruktur', 'sosial', 'kesehatan', 'pendidikan', 'pariwisata', 'lainnya']
