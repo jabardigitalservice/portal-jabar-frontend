@@ -17,7 +17,7 @@
       group-hover:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg px-8 py-6 text-white"
     >
       <div class="flex flex-col h-full">
-        <div v-if="loading" class="flex-grow mb-4 opacity-70">
+        <div v-if="loading" ref="news-highlight-skeletons" class="flex-grow mb-4 opacity-70">
           <div class="w-1/3 h-4 bg-gray-200 animate-pulse rounded-lg mb-6" />
           <div class="w-11/12 h-5 bg-gray-200 animate-pulse rounded-lg mb-4" />
           <div class="w-1/2 h-5 bg-gray-200 animate-pulse rounded-lg mb-6" />
