@@ -51,7 +51,7 @@ export const navigationMenu = [
         title: 'Perizinan',
         description: 'Berikan kemudahan perizinan berbagai kebutuhan.',
         icon: '/icons/layanan-publik/perizinan.svg',
-        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline',
         items: []
       },
       {
@@ -189,7 +189,7 @@ export const mostPopularServicesMenu = [
         id: 3,
         title: 'Perizinan Bangunan',
         description: 'Layanan informasi tentang syarat dan cara melakukan pembayaran Pajak Bumi dan Bangunan (PBB).',
-        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline',
         icon: '/icons/layanan-terpopuler/perizinan-bangunan.svg'
       }
     ]
@@ -203,7 +203,7 @@ export const mostPopularServicesMenu = [
         id: 4,
         title: 'Perizinan Industri Rumah Tangga (PIRT)',
         description: 'Temukan informasi dan layanan mengenai Perizinan Industri Rumah Tangga (PIRT) di sini.',
-        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline',
         icon: '/icons/layanan-terpopuler/perizinan-industri-rumah-tangga.svg'
       },
       {
@@ -349,7 +349,7 @@ export const publicServiceMenu = [
   {
     id: 3,
     title: 'Perizinan',
-    link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline'
+    link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline'
   },
   {
     id: 4,
