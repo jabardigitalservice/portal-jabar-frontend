@@ -1,7 +1,8 @@
 <template>
   <main>
-    <!-- for preview purposes, please remove this section later -->
-    <section class="bg-blue-500 w-full h-screen mb-6" />
+    <section class="relative">
+      <NewsHeader />
+    </section>
 
     <!-- News Section -->
     <BaseContainer class="mx-auto grid grid-cols-news-container gap-8">

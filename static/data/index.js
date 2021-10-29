@@ -98,7 +98,7 @@ export const navigationMenu = [
         title: 'Berita',
         description: null,
         icon: null,
-        link: 'http://humas.jabarprov.go.id/',
+        link: '/berita',
         items: []
       }
     ]
