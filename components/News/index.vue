@@ -3,11 +3,17 @@
     <section class="relative">
       <NewsHeader />
     </section>
-
+    <section class="news__categories py-4 border-b border-gray-200 overflow-hidden overflow-x-scroll mb-6">
+      <NewsCategory
+        :categories="categories"
+        :current-category="currentCategory"
+        @click="setCurrentCategory"
+      />
+    </section>
     <!-- News Section -->
     <BaseContainer class="mx-auto grid grid-cols-news-container gap-8">
       <section class="w-full flex flex-col">
-        <NewsHighlight :item="highlight" />
+        <NewsHighlight />
         <NewsList :items="news" :loading="loadingNews">
           <template #footer>
             <!-- TODO: add pagination here -->
@@ -22,9 +28,11 @@
 </template>
 
 <script>
+import { newsCategories } from '~/static/data'
 export default {
   data () {
     return {
+      categories: newsCategories,
       currentCategory: 'ekonomi',
       news: []
     }
@@ -48,6 +56,24 @@ export default {
     loadingNews () {
       return this.$fetchState.pending || this.news.length === 0
     }
+  },
+  methods: {
+    setCurrentCategory (category) {
+      this.currentCategory = category
+    }
   }
 }
 </script>
+
+<style scoped>
+/* Hide scrollbar for Chrome, Safari and Opera */
+.news__categories::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.news__categories {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
