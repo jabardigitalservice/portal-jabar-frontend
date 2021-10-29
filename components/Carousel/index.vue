@@ -2,7 +2,7 @@
   <div
     ref="slider"
     class="w-full h-full relative overflow-hidden group"
-    @mouseover="setPause(true)"
+    @mouseover="setPause(pauseOnHover)"
     @mouseout="setPause(false)"
   >
     <div
@@ -13,10 +13,12 @@
     >
       <div class="keen-slider__slide w-full h-full relative">
         <img
-          class="w-full h-full object-cover object-center transition duration-500 ease-in-out group-hover:transform group-hover:scale-110"
+          class="w-full h-full object-cover object-center transition duration-500 ease-in-out"
+          :class="{ 'group-hover:transform group-hover:scale-110': hover }"
           :src="item.image"
           :alt="item.title"
         >
+        <slot name="filter" />
         <slot :item="item" :index="index" :slider="slider" />
       </div>
     </div>
@@ -41,6 +43,16 @@ export default {
       type: Number,
       required: false,
       default: 3000
+    },
+    hover: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    pauseOnHover: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   data () {
@@ -85,7 +97,9 @@ export default {
     },
     setPause (active) {
       this.pause = active
-      this.setInterval()
+      if (this.pauseOnHover) {
+        this.setInterval()
+      }
     }
   }
 }
