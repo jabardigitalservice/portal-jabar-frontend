@@ -25,7 +25,7 @@
 export default {
   data () {
     return {
-      activeCategory: 'nasional',
+      currentCategory: 'ekonomi',
       news: []
     }
   },
@@ -33,7 +33,7 @@ export default {
     const params = {
       page: 1,
       per_page: 5,
-      cat: this.activeCategory,
+      cat: this.currentCategory,
       sort_order: 'desc'
     }
 
