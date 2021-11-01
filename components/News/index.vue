@@ -13,7 +13,7 @@
     <!-- News Section -->
     <BaseContainer class="mx-auto grid grid-cols-news-container gap-8">
       <section class="w-full flex flex-col">
-        <NewsHighlight />
+        <NewsHeadline />
         <NewsList :items="news" :loading="loadingNews">
           <template #footer>
             <!-- TODO: add pagination here -->
