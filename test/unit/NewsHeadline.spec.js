@@ -15,7 +15,7 @@ afterEach(() => {
   wrapper.destroy()
 })
 
-describe('NewsHighlight Component', () => {
+describe('NewsHeadline Component', () => {
   test('should render skeleton when `item` props is empty', async () => {
     const skeletons = wrapper.findComponent({ ref: 'news-headline-skeletons' })
     await wrapper.setData({
