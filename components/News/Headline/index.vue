@@ -6,10 +6,11 @@
   >
     <div
       ref="news-headline-image"
-      class="w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out
+      class="cursor-pointer w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out
       group-hover:transform group-hover:scale-110"
       :class="loading ?'bg-gray-200 animate-pulse' : ''"
       :style="`background-image: url('${item.image}')`"
+      @click="onHeadlineClick"
     />
     <div
       ref="news-headline-meta"
@@ -53,13 +54,13 @@
           </div>
         </template>
         <div class="flex justify-between items-center">
-          <Link
+          <button
             ref="news-headline-button"
             class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg"
-            :link="`/berita/${item.slug}`"
+            @click="onHeadlineClick"
           >
             Baca Selengkapnya
-          </Link>
+          </button>
         </div>
       </div>
     </div>
@@ -120,6 +121,9 @@ export default {
       }
 
       return relativeTime(date)
+    },
+    onHeadlineClick () {
+      this.$router.push(`/berita/${this.item.slug}`)
     }
   }
 }
