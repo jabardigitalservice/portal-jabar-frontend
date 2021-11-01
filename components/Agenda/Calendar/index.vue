@@ -88,9 +88,9 @@ export default {
       }
 
       try {
-        const response = await this.$axios.get('v1/events', { params })
+        const response = await this.$axios.get('v1/events/calendar', { params })
 
-        const { data } = response.data
+        const data = response.data
 
         return data.map(event => ({
           id: event.id,
