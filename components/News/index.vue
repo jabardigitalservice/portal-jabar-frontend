@@ -11,10 +11,10 @@
       />
     </section>
     <!-- News Section -->
-    <BaseContainer class="mx-auto grid grid-cols-news-container gap-8">
+    <BaseContainer class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-news-container">
       <section class="w-full flex flex-col">
-        <NewsHighlight />
-        <NewsList :items="mainNews" :loading="loading">
+        <NewsHighlight class="mb-6" />
+        <NewsList :items="mainNews" :loading="loading" class="mb-6">
           <template #footer>
             <!-- TODO: add pagination here -->
           </template>
@@ -24,14 +24,14 @@
         <!-- Latest News -->
         <NewsList :items="latestNews" small :loading="loading">
           <template #header>
-            <NewsListHeader label="Berita Terbaru" :category="currentCategory" class="mb-6" />
+            <NewsListHeader label="Berita Terbaru" :category="currentCategory" class="mb-2" />
           </template>
         </NewsList>
 
         <!-- Popular News -->
         <NewsList :items="popularNews" small :loading="loading">
           <template #header>
-            <NewsListHeader label="Berita Terpopuler" :category="currentCategory" class="mb-6" />
+            <NewsListHeader label="Berita Terpopuler" :category="currentCategory" class="mb-2" />
           </template>
         </NewsList>
       </section>
