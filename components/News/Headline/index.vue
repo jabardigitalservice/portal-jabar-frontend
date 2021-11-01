@@ -1,23 +1,24 @@
 <template>
   <section
-    ref="news-highlight"
+    ref="news-headline"
     class="relative rounded-xl overflow-hidden group"
     style="height: 450px"
   >
     <div
-      ref="news-highlight-image"
-      class="w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out
+      ref="news-headline-image"
+      class="cursor-pointer w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out
       group-hover:transform group-hover:scale-110"
       :class="loading ?'bg-gray-200 animate-pulse' : ''"
       :style="`background-image: url('${item.image}')`"
+      @click="onHeadlineClick"
     />
     <div
-      ref="news-highlight-meta"
+      ref="news-headline-meta"
       class="absolute bottom-0 w-full bg-black bg-opacity-50 transition duration-500 ease-in-out
       group-hover:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg px-8 py-6 text-white"
     >
       <div class="flex flex-col h-full">
-        <div v-if="loading" ref="news-highlight-skeletons" class="flex-grow mb-4 opacity-70">
+        <div v-if="loading" ref="news-headline-skeletons" class="flex-grow mb-4 opacity-70">
           <div class="w-1/3 h-4 bg-gray-200 animate-pulse rounded-lg mb-6" />
           <div class="w-11/12 h-5 bg-gray-200 animate-pulse rounded-lg mb-4" />
           <div class="w-1/2 h-5 bg-gray-200 animate-pulse rounded-lg mb-6" />
@@ -29,21 +30,21 @@
         <template v-else>
           <div class="flex-grow mb-4">
             <p
-              ref="news-highlight-category"
+              ref="news-headline-category"
               class="font-roboto text-sm font-medium uppercase leading-relaxed tracking-wider opacity-80 mb-1"
             >
               Topik Hangat di {{ item.category }}
             </p>
-            <h3 ref="news-highlight-title" class="line-clamp-2 font-lora font-bold text-3xl leading-normal mb-3">
+            <h3 ref="news-headline-title" class="line-clamp-2 font-lora font-bold text-3xl leading-normal mb-3">
               {{ item.title }}
             </h3>
             <div class="flex gap-2 opacity-60 text-xs">
-              <div ref="news-highlight-date" class="flex items-center gap-2">
+              <div ref="news-headline-date" class="flex items-center gap-2">
                 <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
                 <p>{{ formatDate(item.created_at) }}</p>
               </div>
               <div>|</div>
-              <div ref="news-highlight-author" class="flex items-center gap-2">
+              <div ref="news-headline-author" class="flex items-center gap-2">
                 <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
                 <p class="capitalize">
                   Penulis: {{ author }}
@@ -53,13 +54,13 @@
           </div>
         </template>
         <div class="flex justify-between items-center">
-          <Link
-            ref="news-highlight-button"
+          <button
+            ref="news-headline-button"
             class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg"
-            :link="`/berita/${item.slug}`"
+            @click="onHeadlineClick"
           >
             Baca Selengkapnya
-          </Link>
+          </button>
         </div>
       </div>
     </div>
@@ -120,6 +121,9 @@ export default {
       }
 
       return relativeTime(date)
+    },
+    onHeadlineClick () {
+      this.$router.push(`/berita/${this.item.slug}`)
     }
   }
 }

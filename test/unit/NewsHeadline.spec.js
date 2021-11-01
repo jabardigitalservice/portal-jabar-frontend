@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
-import NewsHighlight from '@/components/News/Highlight'
+import NewsHeadline from '@/components/News/Headline'
 
 let wrapper
 
 beforeEach(() => {
-  wrapper = mount(NewsHighlight, {
+  wrapper = mount(NewsHeadline, {
     mocks: {
       $fetchState: { pending: false, error: false, timestamp: Date.now() }
     }
@@ -15,9 +15,9 @@ afterEach(() => {
   wrapper.destroy()
 })
 
-describe('NewsHighlight Component', () => {
+describe('NewsHeadline Component', () => {
   test('should render skeleton when `item` props is empty', async () => {
-    const skeletons = wrapper.findComponent({ ref: 'news-highlight-skeletons' })
+    const skeletons = wrapper.findComponent({ ref: 'news-headline-skeletons' })
     await wrapper.setData({
       item: []
     })
@@ -31,7 +31,7 @@ describe('NewsHighlight Component', () => {
       }
     })
 
-    const image = wrapper.findComponent({ ref: 'news-highlight-image' })
+    const image = wrapper.findComponent({ ref: 'news-headline-image' })
 
     expect(image.attributes('style')).toContain('background-image: url(test-image.jpg)')
   })
@@ -51,10 +51,10 @@ describe('NewsHighlight Component', () => {
       }
     })
 
-    const category = wrapper.findComponent({ ref: 'news-highlight-category' })
-    const title = wrapper.findComponent({ ref: 'news-highlight-title' })
-    const date = wrapper.findComponent({ ref: 'news-highlight-date' })
-    const author = wrapper.findComponent({ ref: 'news-highlight-author' })
+    const category = wrapper.findComponent({ ref: 'news-headline-category' })
+    const title = wrapper.findComponent({ ref: 'news-headline-title' })
+    const date = wrapper.findComponent({ ref: 'news-headline-date' })
+    const author = wrapper.findComponent({ ref: 'news-headline-author' })
 
     expect(title.text()).toMatch(/my dummy news/i)
     expect(category.text()).toMatch(/my category/i)
