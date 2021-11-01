@@ -27,6 +27,13 @@
             <NewsListHeader label="Berita Terbaru" :category="currentCategory" class="mb-6" />
           </template>
         </NewsList>
+
+        <!-- Popular News -->
+        <NewsList :items="popularNews" small :loading="loading">
+          <template #header>
+            <NewsListHeader label="Berita Terpopuler" :category="currentCategory" class="mb-6" />
+          </template>
+        </NewsList>
       </section>
     </BaseContainer>
   </main>
@@ -40,7 +47,8 @@ export default {
       categories: newsCategories,
       currentCategory: 'ekonomi',
       mainNews: [],
-      latestNews: []
+      latestNews: [],
+      popularNews: []
     }
   },
   async fetch () {
@@ -58,16 +66,19 @@ export default {
       sort_order: 'desc'
     }
 
-    const [main, latest] = await Promise.all([
+    const [main, latest, popular] = await Promise.all([
       this.$axios.get('/v1/news', { params: { ...params, ...pagination } }),
-      this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } })
+      this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
+      this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } })
     ])
 
     const { data: mainNews } = await main.data
     const { data: latestNews } = await latest.data
+    const { data: popularNews } = await popular.data
 
     this.mainNews = this.mapItems(mainNews)
     this.latestNews = this.mapItems(latestNews)
+    this.popularNews = this.mapItems(popularNews)
   },
   computed: {
     loading () {
