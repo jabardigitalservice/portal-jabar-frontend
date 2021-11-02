@@ -13,7 +13,7 @@
     <!-- News Section -->
     <BaseContainer class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-news-container">
       <section class="w-full flex flex-col">
-        <NewsHighlight class="mb-6" />
+        <NewsHeadline class="mb-6" />
         <NewsList :items="mainNews" :loading="loading" class="mb-6">
           <template #footer>
             <!-- TODO: add pagination here -->
@@ -66,19 +66,23 @@ export default {
       sort_order: 'desc'
     }
 
-    const [main, latest, popular] = await Promise.all([
-      this.$axios.get('/v1/news', { params: { ...params, ...pagination } }),
-      this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
-      this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } })
-    ])
+    try {
+      const [main, latest, popular] = await Promise.all([
+        this.$axios.get('/v1/news', { params: { ...params, ...pagination } }),
+        this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
+        this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } })
+      ])
 
-    const { data: mainNews } = await main.data
-    const { data: latestNews } = await latest.data
-    const { data: popularNews } = await popular.data
+      const { data: mainNews } = await main.data
+      const { data: latestNews } = await latest.data
+      const { data: popularNews } = await popular.data
 
-    this.mainNews = this.mapItems(mainNews)
-    this.latestNews = this.mapItems(latestNews)
-    this.popularNews = this.mapItems(popularNews)
+      this.mainNews = this.mapItems(mainNews)
+      this.latestNews = this.mapItems(latestNews)
+      this.popularNews = this.mapItems(popularNews)
+    } catch (error) {
+      // silent error
+    }
   },
   computed: {
     loading () {
