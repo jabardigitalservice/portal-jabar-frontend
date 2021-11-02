@@ -11,17 +11,29 @@
       />
     </section>
     <!-- News Section -->
-    <BaseContainer class="mx-auto grid grid-cols-news-container gap-8">
+    <BaseContainer class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-news-container">
       <section class="w-full flex flex-col">
-        <NewsHeadline />
-        <NewsList :items="news" :loading="loadingNews">
+        <NewsHighlight class="mb-6" />
+        <NewsList :items="mainNews" :loading="loading" class="mb-6">
           <template #footer>
             <!-- TODO: add pagination here -->
           </template>
         </NewsList>
       </section>
-      <section class="w-full flex flex-col">
-        <!-- TODO: add newest and popular news -->
+      <section class="w-full flex flex-col gap-14">
+        <!-- Latest News -->
+        <NewsList :items="latestNews" small :loading="loading">
+          <template #header>
+            <NewsListHeader label="Berita Terbaru" :category="currentCategory" class="mb-2" />
+          </template>
+        </NewsList>
+
+        <!-- Popular News -->
+        <NewsList :items="popularNews" small :loading="loading">
+          <template #header>
+            <NewsListHeader label="Berita Terpopuler" :category="currentCategory" class="mb-2" />
+          </template>
+        </NewsList>
       </section>
     </BaseContainer>
   </main>
@@ -34,32 +46,59 @@ export default {
     return {
       categories: newsCategories,
       currentCategory: 'ekonomi',
-      news: []
+      mainNews: [],
+      latestNews: [],
+      popularNews: []
     }
   },
   async fetch () {
-    const params = {
+    /**
+     * FIXME: this object should be dynamic based on
+     * pagination values
+     */
+    const pagination = {
       page: 1,
-      per_page: 5,
+      per_page: 5
+    }
+
+    const params = {
       cat: this.currentCategory,
       sort_order: 'desc'
     }
 
-    const response = await this.$axios.get('/v1/news', { params })
-    const { data } = response.data
-    this.news = data.map(item => ({
-      ...item,
-      date: new Date(item.created_at)
-    }))
+    const [main, latest, popular] = await Promise.all([
+      this.$axios.get('/v1/news', { params: { ...params, ...pagination } }),
+      this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
+      this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } })
+    ])
+
+    const { data: mainNews } = await main.data
+    const { data: latestNews } = await latest.data
+    const { data: popularNews } = await popular.data
+
+    this.mainNews = this.mapItems(mainNews)
+    this.latestNews = this.mapItems(latestNews)
+    this.popularNews = this.mapItems(popularNews)
   },
   computed: {
-    loadingNews () {
-      return this.$fetchState.pending || this.news.length === 0
+    loading () {
+      return this.$fetchState.pending
+    }
+  },
+  watch: {
+    currentCategory () {
+      this.$fetch()
     }
   },
   methods: {
     setCurrentCategory (category) {
       this.currentCategory = category
+    },
+    mapItems (items) {
+      return items.map(item => ({
+        ...item,
+        date: new Date(item.created_at)
+      }))
     }
   }
 }

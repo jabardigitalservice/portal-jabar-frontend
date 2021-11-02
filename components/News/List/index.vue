@@ -1,5 +1,5 @@
 <template>
-  <div ref="news-list" class="py-8">
+  <div ref="news-list">
     <div ref="news-list-header">
       <slot name="header" />
     </div>

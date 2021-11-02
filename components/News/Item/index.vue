@@ -2,7 +2,7 @@
   <article
     ref="news-item"
     class="overflow-hidden grid w-full gap-4 border-4 border-transparent rounded-xl group
-    hover:bg-green-50 hover:border-green-50"
+    hover:bg-gray-100 hover:border-gray-100"
     :class="small ? 'grid-cols-news-small p-1' : 'grid-cols-news-large'"
     :style="wrapperHeight"
   >
