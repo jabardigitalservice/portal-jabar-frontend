@@ -1,5 +1,55 @@
 <template>
-  <FullCalendar v-if="isMonthView" ref="fullCalendar" :options="calendarOptions" />
+  <div>
+    <FullCalendar v-if="isMonthView" ref="fullCalendar" :options="calendarOptions" />
+    <BaseModal :show="showModal" button-label="Tutup" @close="toggleModal">
+      <template #header>
+        <AgendaListHeader
+          class="mx-0 mt-0"
+          agenda-view="month"
+          :each-day-of-week="eachDayOfWeek"
+          :selected-day="selectedDay"
+          @change="$emit('change', $event)"
+        />
+      </template>
+      <div v-show="loadingEvents">
+        <AgendaCalendarEventsSkeleton />
+      </div>
+      <div v-show="!loadingEvents && !events.length">
+        <AgendaCalendarEventsEmptyState />
+      </div>
+      <div v-show="!loadingEvents && events.length">
+        <div class="px-4">
+          <p class="font-robobo text-sm leading-6 text-blue-gray-200">
+            Terdapat <strong class="text-blue-gray-700">{{ events.length }} Kegiatan</strong>
+          </p>
+        </div>
+        <section class="w-full h-full grid grid-cols-2 gap-4 p-4 md:w-[800px] md:h-[360px]">
+          <div class="h-full mb-10 pr-4 overflow-auto">
+            <AgendaCalendarEvents
+              with-time
+              :start-date="selectedDay"
+              :end-date="selectedDay"
+              :per-page="10"
+              :currently-active="currentlyActive"
+              @update:events="setDayEvents"
+              @open-detail="showDetail"
+              @loading="setLoadingEvents"
+            />
+          </div>
+          <div v-if="eventDetail" class="w-full h-full flex items-center justify-center bg-gray-50 rounded-lg">
+            <AgendaCalendarEventsDetail :event="eventDetail" />
+          </div>
+          <div v-else class="w-full h-full flex flex-col items-center justify-center bg-gray-50 rounded-lg gap-4">
+            <img src="/icons/empty-search.svg" width="120" height="120" alt="agenda illustration">
+            <p class="w-full text-center font-lato text-xs leading-6 text-gray-800">
+              <strong>Klik</strong> daftar agenda disebelah kiri <br>
+              untuk dapat melihat detail agenda
+            </p>
+          </div>
+        </section>
+      </div>
+    </BaseModal>
+  </div>
 </template>
 
 <script>
@@ -34,6 +84,10 @@ export default {
   },
   data () {
     return {
+      showModal: false,
+      eventDetail: null,
+      events: [],
+      loadingEvents: true,
       calendarOptions: {
         plugins: [dayGridPlugin, interactionPlugin],
         initialView: 'dayGridMonth',
@@ -47,13 +101,27 @@ export default {
         moreLinkContent (args) {
           return args.num + ' Kegiatan'
         },
-        dateClick: this.handleDateClick
+        moreLinkClick: this.toggleModal
       }
     }
   },
   computed: {
     isMonthView () {
       return this.agendaView === 'month'
+    },
+    selectedDay () {
+      return formatISODate(this.selectedDate)
+    },
+    currentlyActive () {
+      if (this.eventDetail) {
+        return this.eventDetail.id
+      }
+      return null
+    }
+  },
+  watch: {
+    selectedDate () {
+      this.eventDetail = null
     }
   },
   mounted () {
@@ -102,14 +170,20 @@ export default {
         return []
       }
     },
-    /**
-     * Emit event when date is clicked
-     * @param {Object} dateInfo - Object containing information about clicked date
-     * * See {@link https://fullcalendar.io/docs/dateClick} for more information
-     * @return {Event}
-     */
-    handleDateClick (dateInfo) {
-      this.$emit('change', dateInfo.date)
+    toggleModal (dateInfo = null) {
+      if (dateInfo) {
+        this.$emit('change', dateInfo.date)
+      }
+      this.showModal = !this.showModal
+    },
+    showDetail (event) {
+      this.eventDetail = { ...event }
+    },
+    setLoadingEvents (bool) {
+      this.loadingEvents = bool
+    },
+    setDayEvents (events) {
+      this.events = events
     }
   }
 }
@@ -217,7 +291,6 @@ export default {
   font-size: 14px !important;
   line-height: 23px !important;
   border-radius: 6px !important;
-  pointer-events: none;
 }
 /**
  *  Default style for today and future events
@@ -233,5 +306,11 @@ export default {
 .active .fc-daygrid-more-link{
   background: #008444 !important;
   color: #fff !important;
+}
+/*
+ *  Force fullcalendar to hide event popup
+ */
+.fc-popover {
+  visibility: hidden !important;
 }
 </style>

@@ -1,25 +1,23 @@
 <template>
-  <div>
-    <div class="bg-white flex flex-col overflow-hidden">
-      <div class="flex flex-col">
-        <AgendaCalendarEventsItem
-          v-for="event in events"
-          :id="event.id"
-          :key="event.id"
-          :with-time="withTime"
-          :title="event.title"
-          :date="event.date"
-          :category="event.category.title"
-          :type="event.type"
-          :url="event.url"
-          :address="event.address"
-          :start-hour="event.start_hour"
-          :end-hour="event.end_hour"
-          :fetch-state="fetchState"
-          :active="isActive(event.id)"
-          @open-detail="$emit('open-detail', $event)"
-        />
-      </div>
+  <div class="bg-white flex flex-col overflow-hidden">
+    <div class="flex flex-col">
+      <AgendaCalendarEventsItem
+        v-for="event in events"
+        :id="event.id"
+        :key="event.id"
+        :with-time="withTime"
+        :title="event.title"
+        :date="event.date"
+        :category="event.category.title"
+        :type="event.type"
+        :url="event.url"
+        :address="event.address"
+        :start-hour="event.start_hour"
+        :end-hour="event.end_hour"
+        :fetch-state="fetchState"
+        :active="isActive(event.id)"
+        @open-detail="$emit('open-detail', $event)"
+      />
     </div>
   </div>
 </template>
@@ -84,6 +82,7 @@ export default {
   methods: {
     async getEvents () {
       this.fetchState.pending = true
+      this.$emit('loading', true)
       const params = {
         start_date: this.startDate,
         end_date: this.endDate,
@@ -95,6 +94,7 @@ export default {
         this.events = response.data
         this.fetchState.pending = false
         this.$emit('update:events', this.events)
+        this.$emit('loading', false)
       } catch (error) {
         this.fetchState.error = true
         this.fetchState.pending = false
