@@ -19,7 +19,7 @@
           />
         </section>
         <AgendaList
-          v-if="agendaView !== 'month'"
+          v-if="agendaView === 'week'"
           :agenda-view="agendaView"
           :each-day-of-week="eachDayOfWeek"
           :selected-date="selectedDate"
