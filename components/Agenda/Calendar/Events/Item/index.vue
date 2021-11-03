@@ -1,5 +1,4 @@
 <template>
-  <!-- <AgendaWidgetListItemSkeleton v-if="fetchState.pending" :with-time="withTime" /> -->
   <div class="flex gap-4">
     <div
       v-if="withTime"
@@ -129,10 +128,6 @@ export default {
         const pattern = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
         return pattern.test(value)
       }
-    },
-    fetchState: {
-      type: Object,
-      required: true
     },
     active: {
       type: Boolean,

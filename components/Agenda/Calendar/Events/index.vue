@@ -14,7 +14,6 @@
         :address="event.address"
         :start-hour="event.start_hour"
         :end-hour="event.end_hour"
-        :fetch-state="fetchState"
         :active="isActive(event.id)"
         @open-detail="$emit('open-detail', $event)"
       />
@@ -53,11 +52,7 @@ export default {
   },
   data () {
     return {
-      events: [],
-      fetchState: {
-        pending: false,
-        error: false
-      }
+      events: []
     }
   },
   computed: {
@@ -81,7 +76,6 @@ export default {
   },
   methods: {
     async getEvents () {
-      this.fetchState.pending = true
       this.$emit('loading', true)
       const params = {
         start_date: this.startDate,
@@ -92,12 +86,13 @@ export default {
       try {
         const response = await this.$axios.$get('/v1/events', { params })
         this.events = response.data
-        this.fetchState.pending = false
+
         this.$emit('update:events', this.events)
-        this.$emit('loading', false)
       } catch (error) {
-        this.fetchState.error = true
-        this.fetchState.pending = false
+        // silent error
+        return []
+      } finally {
+        this.$emit('loading', false)
       }
     },
     isActive (id) {
