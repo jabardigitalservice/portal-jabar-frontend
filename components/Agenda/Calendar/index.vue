@@ -4,7 +4,7 @@
     <BaseModal :show="showModal" button-label="Tutup" @close="toggleModal">
       <template #header>
         <AgendaListHeader
-          class="mx-0 mt-0"
+          class="!mx-0 !mt-0"
           agenda-view="month"
           :each-day-of-week="eachDayOfWeek"
           :selected-day="selectedDay"
