@@ -1,7 +1,8 @@
 <template>
   <div
     ref="slider"
-    class="w-full h-full relative overflow-hidden group"
+    class="w-full h-full relative overflow-hidden"
+    :class="{'group': hover}"
     @mouseover="setPause(pauseOnHover)"
     @mouseout="setPause(false)"
   >

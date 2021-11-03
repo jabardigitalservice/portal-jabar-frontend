@@ -5,7 +5,7 @@
         <Breadcrumb class="mb-6" />
       </BaseContainer>
     </div>
-    <div style="height: calc(100vh - 100px);">
+    <div style="height: 625px;">
       <div
         class="w-full absolute top-0 h-full"
         style="background: linear-gradient(100deg, rgba(0,40,19,0.9) 0%, rgba(0,32,39,0.8) 55%);"
@@ -25,8 +25,8 @@
         </template>
         <template #default="{ item, index, slider }">
           <div class="absolute bottom-0 w-full text-white">
-            <BaseContainer class="grid grid-cols-1 lg:grid-cols-7">
-              <div class="flex flex-col justify-end h-full lg:col-span-5 lg:pr-40 pb-8">
+            <BaseContainer class="grid grid-cols-1 lg:grid-cols-9">
+              <div class="flex flex-col justify-end h-full lg:col-span-6 lg:pr-20 xl:pr-32 pb-10">
                 <div>
                   <p class="font-roboto uppercase leading-relaxed tracking-wider opacity-80 mb-1">
                     {{ item.category }}
@@ -44,7 +44,7 @@
                     </div>
                     <div class="hidden sm:flex sm:items-center sm:gap-2">
                       <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-                      <p>Penulis: {{ item.created_by }}</p>
+                      <p>Penulis: {{ item.author.name }}</p>
                     </div>
                   </div>
                 </div>
@@ -67,6 +67,39 @@
                   </div>
                 </div>
               </div>
+              <div class="hidden lg:block col-span-3 p-4 rounded-tl-xl rounded-tr-xl bg-white bg-opacity-5 backdrop-filter backdrop-blur-xl border-l border-t border-white border-opacity-10">
+                <p class="p-2 uppercase mb-1 font-bold">
+                  Berita Terkait
+                </p>
+                <div class="flex flex-col gap-2">
+                  <Link v-for="(news, idx) of item.related_news" :key="news.id" :link="`/berita/${getRelatedNewsSlug(slider, idx)}`">
+                    <div class="flex gap-4 p-2 bg-white bg-opacity-0 rounded-xl">
+                      <div class="flex-shrink-0 overflow-hidden rounded-xl" style="width: 92px; height: 92px;">
+                        <img
+                          :src="news.image"
+                          width="92"
+                          height="92"
+                          class="flex-shrink-0 object-cover w-full h-full"
+                        >
+                      </div>
+                      <div class="flex flex-col gap-1">
+                        <p class="text-xs font-medium uppercase opacity-50">
+                          {{ news.category }}
+                        </p>
+                        <p class="line-clamp-2 text-sm leading-relaxed">
+                          {{ news.title }}
+                        </p>
+                        <div class="flex gap-2">
+                          <Icon src="/icons/calendar.svg" size="14px" alt="Diterbitkan" class="opacity-50" />
+                          <p class="text-xs opacity-50">
+                            {{ formatDate(news.created_at) }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
             </BaseContainer>
           </div>
         </template>
@@ -81,61 +114,23 @@ import { format, daysDifference, relativeTime } from '~/utils/date'
 export default {
   data () {
     return {
-      /**
-       *  TODO: replace this data with data from api
-       */
-      items: [
-        {
-          id: 1,
-          title: 'Pemprov Jabar Matangkan Rencana Pembangunan Etalase Citarum',
-          category: 'Pemerintahan',
-          image: 'https://i.ytimg.com/vi/DLLn7hm1JpU/maxresdefault.jpg',
-          slug: 'penanganan-covid-19-di-jabar-membaik-ridwan-kamil-minta-vaksinasi-dipercepat-40c0aaee7bd',
-          created_at: '2021-10-26T04:34:11Z',
-          created_by: 'Admin',
-          related_news: []
-        },
-        {
-          id: 2,
-          title: 'Penanganan Covid-19 di Jabar Membaik, Ridwan Kamil Minta Vaksinasi Dipercepat',
-          category: 'Sosial',
-          image: 'https://www.radarcirebon.com/wp-content/uploads/2021/01/3-RIDWAN-KAMIL-RAPAT.jpeg',
-          slug: 'penanganan-covid-19-di-jabar-membaik-ridwan-kamil-minta-vaksinasi-dipercepat-40c0aaee7bd',
-          created_at: '2021-10-26T04:34:11Z',
-          created_by: 'Admin',
-          related_news: []
-        },
-        {
-          id: 3,
-          title: 'Jabar Terus Tingkatkan Vaksinasi bagi Pelajar dan Lansia',
-          category: 'Kesehatan',
-          image: 'https://bp2mi.go.id/uploads/berita/images/Kolaborasi_Pemprov._Jabar,_BP2MI_Sosialisasi__UU_No._18_2017_tentang_Pelindungan_Pekerja_Migran_Indonesia_IMG-20210407-WA0114.jpg',
-          slug: 'jabar-terus-tingkatkan-vaksinasi-bagi-pelajar-dan-lansia-40c0aaee7bd',
-          created_at: '2021-10-26T04:34:11Z',
-          created_by: 'Admin',
-          related_news: []
-        },
-        {
-          id: 4,
-          title: 'Gubernur Jabar Melepas 200 Pemuda Agri Mandiri',
-          category: 'Politik',
-          image: 'https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/01/09/3294711490.jpg',
-          slug: 'gubernur-jabar-melepas-200-pemuda-agri-mandiri-40c0aaee7bd',
-          created_at: '2021-10-26T04:34:11Z',
-          created_by: 'Admin',
-          related_news: []
-        },
-        {
-          id: 5,
-          title: 'Wagub Ajak Pemuda Satukan Visi Membangun',
-          category: 'Pendidikan',
-          image: 'https://disk.mediaindonesia.com/thumbs/1800x1200/news/2020/08/4021dfdcb2e8cb7ec36e8196f6a2814e.jpeg',
-          slug: 'wagub-ajak-pemuda-satukan-visi-membangun-40c0aaee7bd',
-          created_at: '2021-10-26T04:34:11Z',
-          created_by: 'Admin',
-          related_news: []
-        }
-      ]
+      items: []
+    }
+  },
+  async fetch () {
+    try {
+      const response = await this.$axios.$get('/v1/news/banner')
+      this.items = response.data
+    } catch (error) {
+      this.items = []
+    }
+  },
+  activated () {
+    /**
+     *  Call fetch again if last fetch more than a minute ago
+     */
+    if (this.$fetchState.timestamp <= Date.now() - 60000) {
+      this.$fetch()
     }
   },
   methods: {
@@ -149,9 +144,19 @@ export default {
       return relativeTime(date)
     },
     getSlug (slider) {
-      const index = slider?.details().relativeSlide || 0
+      const relativeSlide = slider?.details().relativeSlide || 0
 
-      return this.items[index].slug
+      return this.items[relativeSlide].slug
+    },
+    getRelatedNewsSlug (slider, index) {
+      const relativeSlide = slider?.details().relativeSlide || 0
+      let list = index
+
+      if (!list) {
+        list = 0
+      }
+
+      return this.items[relativeSlide].related_news[list].slug
     }
   }
 }
