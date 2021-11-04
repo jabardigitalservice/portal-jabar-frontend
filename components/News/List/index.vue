@@ -1,11 +1,11 @@
 <template>
-  <div ref="news-list">
+  <div ref="news-list" class="flex flex-col">
     <div ref="news-list-header">
       <slot name="header" />
     </div>
     <div
       ref="news-list-body"
-      class="w-full flex flex-col"
+      class="flex-auto w-full flex flex-col"
       :class="small ? 'gap-5' : 'gap-6'"
     >
       <NewsItem
@@ -17,7 +17,7 @@
         @clicked="onNewsClick"
       />
     </div>
-    <div ref="news-list-footer">
+    <div ref="news-list-footer" class="w-full">
       <slot name="footer" />
     </div>
   </div>
