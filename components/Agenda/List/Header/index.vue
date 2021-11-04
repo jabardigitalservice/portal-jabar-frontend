@@ -74,6 +74,10 @@ export default {
     selectedDay: {
       type: String,
       required: true
+    },
+    navigate: {
+      type: String,
+      required: true
     }
   },
   data () {
@@ -93,6 +97,11 @@ export default {
     },
     isMonthView () {
       return this.agendaView === 'month'
+    }
+  },
+  watch: {
+    navigate () {
+      this.getWeeklyAgendaAvailability()
     }
   },
   mounted () {

@@ -8,6 +8,7 @@
           :each-day-of-week="eachDayOfWeek"
           :selected-date="selectedDate"
           @change="setSelectedDate"
+          @change:navigate="setNavigate"
         />
         <section v-if="isMonthView" :style="{ minHeight:'600px' }">
           <AgendaCalendar
@@ -22,6 +23,7 @@
           :agenda-view="agendaView"
           :each-day-of-week="eachDayOfWeek"
           :selected-date="selectedDate"
+          :navigate="navigate"
           @change="setSelectedDate"
         />
       </div>
@@ -37,7 +39,8 @@ export default {
     return {
       calendarApi: null,
       selectedDate: new Date(),
-      agendaView: 'month'
+      agendaView: 'month',
+      navigate: ''
     }
   },
   computed: {
@@ -64,6 +67,9 @@ export default {
   methods: {
     setSelectedDate (date) {
       this.selectedDate = new Date(date)
+    },
+    setNavigate (data) {
+      this.navigate = data
     }
   }
 }
