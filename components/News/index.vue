@@ -192,6 +192,19 @@ export default {
 
       this.pagination = JSON.parse(JSON.stringify(paginationObj))
 
+      /**
+       *  NOTE:
+       *  `jds-pagination` emits `page-change` and `per-page-change` events
+       *  whenever user changes per page value.
+       *
+       *  To avoid double fetch, we immediately stop this function on
+       *  `per-page-change` event and let `page-change` event to
+       *  fetch data from API
+       */
+      if (action === 'per-page-change') {
+        return
+      }
+
       this.fetchMainNews()
     },
     resetPagination () {
