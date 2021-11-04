@@ -13,7 +13,7 @@
     <!-- News Section -->
     <BaseContainer class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-news-container">
       <section class="w-full flex flex-col">
-        <NewsHeadline class="mb-6" />
+        <NewsHeadline :item="headline" :loading="loading" class="mb-6" />
         <NewsList :items="mainNews" :loading="loading" class="mb-6">
           <template #footer>
             <!-- TODO: add pagination here -->
@@ -48,7 +48,8 @@ export default {
       currentCategory: 'ekonomi',
       mainNews: [],
       latestNews: [],
-      popularNews: []
+      popularNews: [],
+      headlineNews: []
     }
   },
   async fetch () {
@@ -80,6 +81,16 @@ export default {
       this.mainNews = this.mapItems(mainNews)
       this.latestNews = this.mapItems(latestNews)
       this.popularNews = this.mapItems(popularNews)
+
+      /**
+       *  Only fetch headlines the first time the page loads
+       *  or after the `headlineNews` data is cleared (after 10 minutes or so)
+       */
+      if (Array.isArray(this.headlineNews) && !this.headlineNews.length) {
+        const response = await this.$axios.get('/v1/news/headline')
+        const { data } = response.data
+        this.headlineNews = data
+      }
     } catch (error) {
       // silent error
     }
@@ -87,10 +98,24 @@ export default {
   computed: {
     loading () {
       return this.$fetchState.pending
+    },
+    headline () {
+      const news = this.headlineNews.filter(news => news.category === this.currentCategory)
+      // return the first index of filtered news
+      return news[0]
     }
   },
   watch: {
     currentCategory () {
+      this.$fetch()
+    }
+  },
+  activated () {
+    /**
+     *  Call fetch again if last fetch more than ten minutes ago
+     */
+    if (this.$fetchState.timestamp <= Date.now() - 600000) {
+      this.headlineNews = [] // clear headline news
       this.$fetch()
     }
   },
