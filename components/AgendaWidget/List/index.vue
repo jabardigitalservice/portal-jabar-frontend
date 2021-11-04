@@ -8,8 +8,8 @@
       <!--
         TODO: Show a placeholder if an error occur
       -->
-      <div v-if="!hasEvents" class="h-full" :class="{'pb-12' : !hasHeaderSlot}">
-        <AgendaWidgetListEmptyState />
+      <div v-if="!hasEvents" class="h-full px-4" :class="{'pb-12' : !hasHeaderSlot}">
+        <AgendaEmptyState />
       </div>
       <div v-else class="flex flex-col" :class="{ 'overflow-y-scroll': hasHeight }">
         <AgendaWidgetListItem

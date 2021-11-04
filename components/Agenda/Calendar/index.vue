@@ -14,8 +14,8 @@
       <div v-show="loadingEvents">
         <AgendaCalendarEventsSkeleton />
       </div>
-      <div v-show="!loadingEvents && !events.length">
-        <AgendaCalendarEventsEmptyState />
+      <div v-show="!loadingEvents && !events.length" class="md:w-[800px] md:h-[380px]">
+        <AgendaEmptyState />
       </div>
       <div v-show="!loadingEvents && events.length">
         <div class="px-4">
