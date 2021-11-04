@@ -18,11 +18,12 @@
           :items="mainNews"
           :loading="mainNewsLoading"
           :max-item="pagination.itemsPerPage"
-          class="mb-6 min-h-[850px]"
+          class="mb-6"
+          :class="mainNews.length ? 'min-h-[850px]' : ''"
         >
           <!-- Main News Pagination -->
           <template #footer>
-            <section class="max-h-10 mt-6">
+            <section v-show="mainNews.length" class="max-h-10 mt-6">
               <Pagination
                 v-bind="pagination"
                 @previous-page="onPaginationChange('prev-page', $event)"
