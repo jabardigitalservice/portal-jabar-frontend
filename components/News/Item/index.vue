@@ -40,7 +40,7 @@
           {{ item.title }}
         </h2>
         <p ref="news-item-meta" class="font-normal text-xs leading-5 text-gray-700">
-          <span class="group-hover:text-blue-gray-800">{{ item.category }}</span> | {{ formatDate(item.date) }}
+          <span class="group-hover:text-blue-gray-800 capitalize">{{ item.category }}</span> | {{ formatDate(item.date) }}
         </p>
       </template>
     </div>

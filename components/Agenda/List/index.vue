@@ -12,6 +12,7 @@
             :agenda-view="agendaView"
             :each-day-of-week="eachDayOfWeek"
             :selected-day="selectedDay"
+            :navigate="navigate"
             @change="setSelectedDate"
           />
         </template>
@@ -41,6 +42,10 @@ export default {
     selectedDate: {
       type: Date,
       default: () => new Date()
+    },
+    navigate: {
+      type: String,
+      required: true
     }
   },
   computed: {

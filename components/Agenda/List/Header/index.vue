@@ -42,11 +42,15 @@
             {{ getNumericDay(eachDay) }}
           </p>
           <p
-            class="font-roboto text-xs uppercase"
+            class="font-roboto text-xs uppercase mb-2"
             :class="[isSelected(eachDay) ? 'text-white font-bold': 'text-blue-gray-300']"
           >
             {{ getLongWeekday(eachDay) }}
           </p>
+          <div
+            class="rounded-full w-2 h-2"
+            :class="[hasEvents(eachDay) ? isSelected(eachDay) ? 'bg-yellow-300' : 'bg-green-800' : 'bg-transparent']"
+          />
         </div>
       </div>
     </div>
@@ -54,6 +58,7 @@
 </template>
 
 <script>
+import uniqBy from 'lodash/uniqBy'
 import { addDay, format, formatISODate, isCurrentDay } from '~/utils/date'
 
 export default {
@@ -69,6 +74,15 @@ export default {
     selectedDay: {
       type: String,
       required: true
+    },
+    navigate: {
+      type: String,
+      required: true
+    }
+  },
+  data () {
+    return {
+      weeklyAgendaAvailability: []
     }
   },
   computed: {
@@ -85,7 +99,33 @@ export default {
       return this.agendaView === 'month'
     }
   },
+  watch: {
+    navigate () {
+      this.getWeeklyAgendaAvailability()
+    }
+  },
+  mounted () {
+    this.getWeeklyAgendaAvailability()
+  },
   methods: {
+    async getWeeklyAgendaAvailability () {
+      const firstDayOfWeek = formatISODate(this.eachDayOfWeek[0])
+      const lastDayOfWeek = formatISODate(this.eachDayOfWeek[this.eachDayOfWeek.length - 1])
+
+      const params = {
+        start_date: formatISODate(firstDayOfWeek),
+        end_date: formatISODate(lastDayOfWeek)
+      }
+
+      try {
+        const response = await this.$axios.get('v1/events/calendar', { params })
+        const data = response.data.map(item => formatISODate(item.date))
+
+        this.weeklyAgendaAvailability = uniqBy(data)
+      } catch (error) {
+        this.weeklyAgendaAvailability = []
+      }
+    },
     prevDay () {
       this.$emit('change', addDay(this.selectedDay, -1))
     },
@@ -109,6 +149,11 @@ export default {
     },
     isSunday (day) {
       return format(day, { weekday: 'long' }) === 'Minggu'
+    },
+    hasEvents (date) {
+      const currentDate = formatISODate(date)
+
+      return this.weeklyAgendaAvailability.includes(currentDate)
     }
   }
 }
