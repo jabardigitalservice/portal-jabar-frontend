@@ -17,7 +17,7 @@
     "@fullcalendar/daygrid": "^5.9.0",
     "@fullcalendar/interaction": "^5.9.0",
     "@fullcalendar/vue": "^5.9.0",
-    "@jabardigitalservice/jds-design-system": "0.0.3-beta.5",
+    "@jabardigitalservice/jds-design-system": "0.0.3-beta.11",
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
     "date-fns": "^2.23.0",
