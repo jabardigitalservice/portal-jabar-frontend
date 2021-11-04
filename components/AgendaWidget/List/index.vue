@@ -5,16 +5,13 @@
       class="bg-white flex flex-col overflow-hidden"
       :style="{ 'height': height, 'max-height': maxHeight }"
     >
-      <div
-        class="flex flex-col"
-        :class="{ 'overflow-y-scroll': hasHeight }"
-      >
-        <!--
-          TODO: Show a placeholder if an error occur
-        -->
-        <!--
-          TODO: Show a placeholder if no data
-        -->
+      <!--
+        TODO: Show a placeholder if an error occur
+      -->
+      <div v-if="!hasEvents" class="h-full" :class="{'pb-12' : !hasHeaderSlot}">
+        <AgendaWidgetListEmptyState />
+      </div>
+      <div v-else class="flex flex-col" :class="{ 'overflow-y-scroll': hasHeight }">
         <AgendaWidgetListItem
           v-for="event in events"
           :id="event.id"
@@ -98,6 +95,9 @@ export default {
     },
     hasHeight () {
       return !!this.height || !!this.maxHeight
+    },
+    hasHeaderSlot () {
+      return !!this.$slots.header
     }
   },
   watch: {
