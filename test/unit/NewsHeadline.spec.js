@@ -16,10 +16,10 @@ afterEach(() => {
 })
 
 describe('NewsHeadline Component', () => {
-  test('should render skeleton when `item` props is empty', async () => {
+  test('should render skeleton when loading props is true', async () => {
     const skeletons = wrapper.findComponent({ ref: 'news-headline-skeletons' })
     await wrapper.setData({
-      item: []
+      loading: true
     })
     expect(skeletons.exists()).toBe(true)
   })
