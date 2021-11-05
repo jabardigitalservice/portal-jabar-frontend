@@ -36,3 +36,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.jds-input-text__input-wrapper {
+  height: 36px !important;
+}
+.jds-options__filter {
+  width: 100% !important;
+}
+</style>
