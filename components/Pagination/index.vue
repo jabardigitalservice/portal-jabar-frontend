@@ -44,4 +44,7 @@ export default {
 .jds-options__filter {
   width: 100% !important;
 }
+.jds-popover__content {
+  z-index: 2 !important;
+}
 </style>
