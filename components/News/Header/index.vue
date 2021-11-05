@@ -67,7 +67,7 @@
                 </p>
                 <div class="flex flex-col gap-2">
                   <Link v-for="news of item.related_news.slice(0, 4)" :key="news.id" :link="`/berita/${news.slug}`" class="group">
-                    <div class="flex newss-center gap-4 p-2 bg-white bg-opacity-0 group-hover:bg-opacity-5 rounded-xl">
+                    <div class="flex gap-4 p-2 bg-white bg-opacity-0 group-hover:bg-opacity-5 rounded-xl">
                       <div class="flex-shrink-0 overflow-hidden rounded-xl" style="width: 92px; height: 92px;">
                         <img
                           :src="news.image"
