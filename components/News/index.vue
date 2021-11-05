@@ -11,12 +11,27 @@
       />
     </section>
     <!-- News Section -->
-    <BaseContainer class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-news-container">
+    <BaseContainer class="mx-auto grid grid-cols-1 gap-10 md:grid-cols-news-container md:gap-20">
       <section class="w-full flex flex-col">
         <NewsHeadline :item="headline" :loading="loading" class="mb-6" />
-        <NewsList :items="mainNews" :loading="loading" class="mb-6">
+        <NewsList
+          :items="mainNews"
+          :loading="mainNewsLoading"
+          :max-item="pagination.itemsPerPage"
+          class="mb-6"
+          :class="mainNews.length ? 'min-h-[850px]' : ''"
+        >
+          <!-- Main News Pagination -->
           <template #footer>
-            <!-- TODO: add pagination here -->
+            <section v-show="mainNews.length" class="max-h-10 mt-6">
+              <Pagination
+                v-bind="pagination"
+                @previous-page="onPaginationChange('prev-page', $event)"
+                @next-page="onPaginationChange('next-page', $event)"
+                @page-change="onPaginationChange('page-change', $event)"
+                @per-page-change="onPaginationChange('per-page-change', $event)"
+              />
+            </section>
           </template>
         </NewsList>
       </section>
@@ -49,36 +64,32 @@ export default {
       mainNews: [],
       latestNews: [],
       popularNews: [],
-      headlineNews: []
+      headlineNews: [],
+      pagination: {
+        currentPage: 1,
+        itemsPerPage: 5,
+        totalRows: 0
+      },
+      mainNewsLoading: false
     }
   },
   async fetch () {
-    /**
-     * FIXME: this object should be dynamic based on
-     * pagination values
-     */
-    const pagination = {
-      page: 1,
-      per_page: 5
-    }
-
     const params = {
       cat: this.currentCategory,
       sort_order: 'desc'
     }
 
     try {
-      const [main, latest, popular] = await Promise.all([
-        this.$axios.get('/v1/news', { params: { ...params, ...pagination } }),
+      await this.fetchMainNews()
+
+      const [latest, popular] = await Promise.all([
         this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
         this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } })
       ])
 
-      const { data: mainNews } = await main.data
       const { data: latestNews } = await latest.data
       const { data: popularNews } = await popular.data
 
-      this.mainNews = this.mapItems(mainNews)
       this.latestNews = this.mapItems(latestNews)
       this.popularNews = this.mapItems(popularNews)
 
@@ -107,6 +118,7 @@ export default {
   },
   watch: {
     currentCategory () {
+      this.resetPagination()
       this.$fetch()
     }
   },
@@ -128,6 +140,79 @@ export default {
         ...item,
         date: new Date(item.created_at)
       }))
+    },
+    async fetchMainNews () {
+      const params = {
+        page: this.pagination.currentPage,
+        sort_order: 'desc',
+        per_page: this.pagination.itemsPerPage,
+        cat: this.currentCategory
+      }
+
+      try {
+        this.mainNewsLoading = true
+
+        const response = await this.$axios.get('/v1/news', { params })
+        const { data, meta } = response.data
+
+        this.mainNews = this.mapItems(data)
+
+        const paginationObj = {
+          currentPage: meta.current_page,
+          itemsPerPage: meta.per_page,
+          totalRows: meta.total_count
+        }
+
+        this.pagination = JSON.parse(JSON.stringify(paginationObj))
+      } catch (error) {
+        // silent error
+      } finally {
+        this.mainNewsLoading = false
+      }
+    },
+    onPaginationChange (action, value) {
+      const paginationObj = { ...this.pagination }
+
+      switch (action) {
+        case 'prev-page':
+          paginationObj.currentPage = this.pagination.currentPage - 1
+          break
+        case 'next-page':
+          paginationObj.currentPage = this.pagination.currentPage + 1
+          break
+        case 'page-change':
+          paginationObj.currentPage = value
+          break
+        case 'per-page-change':
+          paginationObj.itemsPerPage = value
+          break
+        default:
+          break
+      }
+
+      this.pagination = JSON.parse(JSON.stringify(paginationObj))
+
+      /**
+       *  NOTE:
+       *  `jds-pagination` emits `page-change` and `per-page-change` events
+       *  whenever user changes per page value.
+       *
+       *  To avoid double fetch, we immediately stop this function on
+       *  `per-page-change` event and let `page-change` event to
+       *  fetch data from API
+       */
+      if (action === 'per-page-change') {
+        return
+      }
+
+      this.fetchMainNews()
+    },
+    resetPagination () {
+      this.pagination = {
+        currentPage: 1,
+        itemsPerPage: 5,
+        totalRows: 0
+      }
     }
   }
 }
