@@ -5,25 +5,19 @@
         <Breadcrumb class="mb-6" />
       </BaseContainer>
     </div>
-    <div style="height: 625px;">
+    <div class="w-full" style="height: 625px;">
       <div
         class="w-full absolute top-0 h-full"
         style="background: linear-gradient(100deg, rgba(0,40,19,0.9) 0%, rgba(0,32,39,0.8) 55%);"
       />
-      <Carousel
-        :items="items"
-        :duration="10000"
-        :speed="1000"
-        :hover="false"
-        :pause-on-hover="false"
-      >
+      <Carousel :items="items" :duration="10000" pause-on-hover>
         <template #filter>
           <div
-            class="w-full absolute top-0 h-full"
+            class="w-full h-full absolute top-0"
             style="background: radial-gradient(circle, rgba(0,23,28,0.08) 0%, rgba(0,11,14,0.59) 50%, rgba(0,11,14,0.82) 100%);"
           />
         </template>
-        <template #default="{ item, index, slider }">
+        <template #content="{ item, currentIndex, prev, next }">
           <div class="absolute bottom-0 w-full text-white">
             <BaseContainer class="grid grid-cols-1 lg:grid-cols-9">
               <div class="flex flex-col justify-end h-full lg:col-span-6 lg:pr-20 xl:pr-32 pb-10">
@@ -49,19 +43,19 @@
                   </div>
                 </div>
                 <div class="flex justify-between items-center">
-                  <Link :link="`/berita/${getSlug(slider)}`">
+                  <Link :link="`/berita/${item.slug}`">
                     <button type="button" class="border border-white border-opacity-30 px-4 py-2 rounded-lg">
                       Baca Selengkapnya
                     </button>
                   </Link>
                   <div class="flex items-center gap-4">
-                    <div class="cursor-pointer" @click="slider.prev()">
+                    <div class="cursor-pointer" @click="prev">
                       <Icon name="chevron-left" size="10px" />
                     </div>
                     <p class="text-gray-500">
-                      <span class="font-bold text-white mr-1">{{ index + 1 }}</span>dari {{ items.length }}
+                      <span class="font-bold text-white mr-1">{{ currentIndex + 1 }}</span>dari {{ items.length }}
                     </p>
-                    <div class="cursor-pointer" @click="slider.next()">
+                    <div class="cursor-pointer" @click="next">
                       <Icon name="chevron-right" size="10px" />
                     </div>
                   </div>
@@ -72,26 +66,26 @@
                   Berita Terkait
                 </p>
                 <div class="flex flex-col gap-2">
-                  <Link v-for="(news, idx) of item.related_news" :key="news.id" :link="`/berita/${getRelatedNewsSlug(slider, idx)}`">
-                    <div class="flex gap-4 p-2 bg-white bg-opacity-0 rounded-xl">
+                  <Link v-for="news of item.related_news.slice(0, 4)" :key="news.id" :link="`/berita/${news.slug}`" class="group">
+                    <div class="flex newss-center gap-4 p-2 bg-white bg-opacity-0 group-hover:bg-opacity-5 rounded-xl">
                       <div class="flex-shrink-0 overflow-hidden rounded-xl" style="width: 92px; height: 92px;">
                         <img
                           :src="news.image"
                           width="92"
                           height="92"
-                          class="flex-shrink-0 object-cover w-full h-full"
+                          class="flex-shrink-0 object-cover w-full h-full group-hover:transform group-hover:scale-110 transition duration-500 ease-in-out"
                         >
                       </div>
                       <div class="flex flex-col gap-1">
-                        <p class="text-xs font-medium uppercase opacity-50">
+                        <p class="text-xs font-medium uppercase opacity-50 group-hover:opacity-100">
                           {{ news.category }}
                         </p>
                         <p class="line-clamp-2 text-sm leading-relaxed">
                           {{ news.title }}
                         </p>
                         <div class="flex gap-2">
-                          <Icon src="/icons/calendar.svg" size="14px" alt="Diterbitkan" class="opacity-50" />
-                          <p class="text-xs opacity-50">
+                          <Icon src="/icons/calendar.svg" size="14px" alt="Diterbitkan" class="opacity-50 group-hover:opacity-100" />
+                          <p class="text-xs opacity-50 group-hover:opacity-100">
                             {{ formatDate(news.created_at) }}
                           </p>
                         </div>

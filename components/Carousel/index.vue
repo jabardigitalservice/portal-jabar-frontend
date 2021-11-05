@@ -1,34 +1,34 @@
 <template>
   <div
-    ref="slider"
-    class="w-full h-full relative overflow-hidden"
+    class="w-full h-full overflow-hidden relative"
     :class="{'group': hover}"
     @mouseover="setPause(pauseOnHover)"
     @mouseout="setPause(false)"
   >
-    <div
-      v-for="(item, index) in items"
-      :key="index"
-      class="w-full h-full absolute top-0"
-      :style="{ opacity: opacities[index] }"
-    >
-      <div class="keen-slider__slide w-full h-full relative">
-        <img
-          class="w-full h-full object-cover object-center transition duration-500 ease-in-out"
-          :class="{ 'group-hover:transform group-hover:scale-110': hover }"
-          :src="item.image"
-          :alt="item.title"
-        >
-        <slot name="filter" />
-        <slot :item="item" :index="index" :slider="slider" />
-      </div>
-    </div>
+    <template v-for="(item, index) in items">
+      <transition :key="index" name="fade" tag="div" mode="out-in">
+        <div v-show="index === currentIndex" class="w-full h-full">
+          <img
+            :src="item.image"
+            class="object-cover object-center w-full h-full"
+            :class="{ 'transition duration-500 ease-in-out group-hover:transform group-hover:scale-110': hover }"
+          >
+          <slot name="filter" />
+          <slot
+            name="content"
+            :item="item"
+            :index="index"
+            :current-index="currentIndex"
+            :prev="prev"
+            :next="next"
+          />
+        </div>
+      </transition>
+    </template>
   </div>
 </template>
 
 <script>
-import KeenSlider from 'keen-slider'
-
 export default {
   props: {
     items: {
@@ -40,56 +40,34 @@ export default {
       required: false,
       default: 3000
     },
-    speed: {
-      type: Number,
-      required: false,
-      default: 3000
-    },
     hover: {
       type: Boolean,
       required: false,
-      default: true
+      default: false
     },
     pauseOnHover: {
       type: Boolean,
       required: false,
-      default: true
+      default: false
     }
   },
   data () {
     return {
-      opacities: [],
-      slider: null,
-      interval: null
+      interval: null,
+      currentIndex: 0,
+      pause: false
     }
   },
   mounted () {
-    this.slider = new KeenSlider(this.$refs.slider, {
-      pause: false,
-      slides: this.items.length,
-      loop: true,
-      duration: this.speed,
-      move: (s) => {
-        const opacities = s.details().positions.map(slide => slide.portion)
-        this.setOpacities(opacities)
-      }
-    })
-    this.setInterval()
+    this.startSlide()
   },
-  beforeDestroy () {
-    if (this.slider) {
-      this.slider.destroy()
-    }
-  },
+
   methods: {
-    setOpacities (opacities) {
-      this.opacities = opacities
-    },
-    setInterval () {
+    startSlide () {
       this.resetInterval()
       this.interval = setInterval(() => {
         if (!this.pause) {
-          this.slider.next()
+          this.next()
         }
       }, this.duration)
     },
@@ -99,9 +77,40 @@ export default {
     setPause (active) {
       this.pause = active
       if (this.pauseOnHover) {
-        this.setInterval()
+        this.startSlide()
+      }
+    },
+    next () {
+      if (this.currentIndex >= this.items.length - 1) {
+        this.currentIndex = 0
+      } else {
+        this.currentIndex += 1
+      }
+    },
+    prev () {
+      if (this.currentIndex <= 0) {
+        this.currentIndex = this.items.length - 1
+      } else {
+        this.currentIndex -= 1
       }
     }
   }
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.9s ease;
+  overflow: hidden;
+  visibility: visible;
+  position: absolute;
+  opacity: 1;
+}
+
+.fade-enter,
+.fade-leave-to {
+  visibility: hidden;
+  opacity: 0;
+}
+</style>
