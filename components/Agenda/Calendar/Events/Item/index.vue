@@ -1,7 +1,6 @@
 <template>
   <div class="flex gap-4">
     <div
-      v-if="withTime"
       class="flex relative left-0 text-sm"
       :class="active ? 'text-green-800 font-bold' : 'text-blue-gray-200'"
     >
@@ -73,10 +72,6 @@ import { format, getEachHour, hoursDifference, isCurrentHour, minutesDifference 
 
 export default {
   props: {
-    withTime: {
-      type: Boolean,
-      required: true
-    },
     id: {
       type: Number,
       required: true

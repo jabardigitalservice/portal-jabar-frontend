@@ -20,7 +20,7 @@
       <div v-show="!loadingEvents && events.length">
         <div class="px-4">
           <p class="font-robobo text-sm leading-6 text-blue-gray-200">
-            Terdapat <strong class="text-blue-gray-700">{{ events.length }} Kegiatan</strong>
+            Terdapat <strong class="text-blue-gray-700">{{ totalEvents }} Kegiatan</strong>
           </p>
         </div>
         <section class="w-full h-full grid grid-cols-2 gap-4 p-4 md:w-[800px] md:h-[360px]">
@@ -31,7 +31,7 @@
               :end-date="selectedDay"
               :per-page="10"
               :currently-active="currentlyActive"
-              @update:events="setDayEvents"
+              @update:events="onEventsUpdate"
               @open-detail="showDetail"
               @loading="setLoadingEvents"
             />
@@ -87,6 +87,7 @@ export default {
       showModal: false,
       eventDetail: null,
       events: [],
+      totalEvents: null,
       loadingEvents: true,
       calendarOptions: {
         plugins: [dayGridPlugin, interactionPlugin],
@@ -182,8 +183,9 @@ export default {
     setLoadingEvents (bool) {
       this.loadingEvents = bool
     },
-    setDayEvents (events) {
+    onEventsUpdate (events, totalEvents) {
       this.events = events
+      this.totalEvents = totalEvents
     }
   }
 }

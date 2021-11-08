@@ -22,8 +22,7 @@ export default {
   },
   methods: {
     intersected () {
-      this.page++
-      this.$emit('refetch', this.page)
+      this.$emit('refetch')
     }
   }
 }

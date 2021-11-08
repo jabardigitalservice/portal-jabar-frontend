@@ -18,23 +18,30 @@
         <div v-else-if="!hasEvents" class="h-full px-4">
           <AgendaEmptyState />
         </div>
-        <div v-else class="flex flex-col overflow-y-scroll">
-          <InfiniteScroll :items="events" @refetch="getEvents">
-            <template #default="{ item }">
-              <AgendaListItem
-                :id="item.id"
-                :title="item.title"
-                :date="item.date"
-                :category="item.category"
-                :type="item.type"
-                :url="item.url"
-                :address="item.address"
-                :start-hour="item.start_hour"
-                :end-hour="item.end_hour"
-              />
-            </template>
-          </InfiniteScroll>
-        </div>
+        <template v-else>
+          <div class="mb-4">
+            <p class="font-robobo text-sm leading-6 text-blue-gray-200">
+              Terdapat <strong class="text-blue-gray-700">{{ totalEvents }} Kegiatan</strong>
+            </p>
+          </div>
+          <div class="flex flex-col overflow-y-scroll">
+            <InfiniteScroll :items="events" @refetch="getEvents">
+              <template #default="{ item }">
+                <AgendaListItem
+                  :id="item.id"
+                  :title="item.title"
+                  :date="item.date"
+                  :category="item.category"
+                  :type="item.type"
+                  :url="item.url"
+                  :address="item.address"
+                  :start-hour="item.start_hour"
+                  :end-hour="item.end_hour"
+                />
+              </template>
+            </InfiniteScroll>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -65,10 +72,12 @@ export default {
   data () {
     return {
       events: [],
+      totalEvents: null,
       fetchState: {
         pending: false,
         error: false
       },
+      page: 1,
       totalPage: 1,
       perPage: 10
     }
@@ -84,6 +93,7 @@ export default {
   watch: {
     selectedDay () {
       this.events = []
+      this.page = 1
       this.getEvents()
     }
   },
@@ -97,8 +107,8 @@ export default {
     setSelectedDate (date) {
       this.$emit('change', date)
     },
-    async getEvents (page = 1) {
-      if (page > this.totalPage) { return }
+    async getEvents () {
+      if (this.page > this.totalPage) { return }
 
       if (!this.events.length) {
         this.fetchState.pending = true
@@ -108,14 +118,16 @@ export default {
         start_date: this.selectedDay,
         end_date: this.selectedDay,
         per_page: this.perPage,
-        page
+        page: this.page
       }
 
       try {
         const response = await this.$axios.$get('/v1/events', { params })
+
         this.events.push(...response.data)
         this.totalPage = response.meta.total_page || 1
-
+        this.totalEvents = response.meta.total_count
+        this.page++
         this.fetchState.pending = false
       } catch (error) {
         this.fetchState.error = true

@@ -1,22 +1,23 @@
 <template>
   <div class="bg-white flex flex-col overflow-hidden">
     <div class="flex flex-col">
-      <AgendaCalendarEventsItem
-        v-for="event in events"
-        :id="event.id"
-        :key="event.id"
-        :with-time="withTime"
-        :title="event.title"
-        :date="event.date"
-        :category="event.category.title"
-        :type="event.type"
-        :url="event.url"
-        :address="event.address"
-        :start-hour="event.start_hour"
-        :end-hour="event.end_hour"
-        :active="isActive(event.id)"
-        @open-detail="$emit('open-detail', $event)"
-      />
+      <InfiniteScroll :items="events" @refetch="getEvents">
+        <template #default="{ item }">
+          <AgendaCalendarEventsItem
+            :id="item.id"
+            :title="item.title"
+            :date="item.date"
+            :category="item.category.title"
+            :type="item.type"
+            :url="item.url"
+            :address="item.address"
+            :start-hour="item.start_hour"
+            :end-hour="item.end_hour"
+            :active="isActive(item.id)"
+            @open-detail="$emit('open-detail', $event)"
+          />
+        </template>
+      </InfiniteScroll>
     </div>
   </div>
 </template>
@@ -26,11 +27,6 @@ import { format } from '~/utils/date'
 
 export default {
   props: {
-    withTime: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
     startDate: {
       type: String,
       required: true
@@ -52,7 +48,9 @@ export default {
   },
   data () {
     return {
-      events: []
+      events: [],
+      page: 1,
+      totalPage: 1
     }
   },
   computed: {
@@ -68,6 +66,8 @@ export default {
   },
   watch: {
     startDate () {
+      this.events = []
+      this.page = 1
       this.getEvents()
     }
   },
@@ -76,18 +76,27 @@ export default {
   },
   methods: {
     async getEvents () {
-      this.$emit('loading', true)
+      if (this.page > this.totalPage) { return }
+
+      if (!this.events.length) {
+        this.$emit('loading', true)
+      }
+
       const params = {
         start_date: this.startDate,
         end_date: this.endDate,
-        per_page: this.perPage
+        per_page: this.perPage,
+        page: this.page
       }
 
       try {
         const response = await this.$axios.$get('/v1/events', { params })
-        this.events = response.data
+        this.events.push(...response.data)
+        this.totalPage = response.meta.total_page || 1
+        const totalEvents = response.meta.total_count
 
-        this.$emit('update:events', this.events)
+        this.page++
+        this.$emit('update:events', this.events, totalEvents)
       } catch (error) {
         // silent error
         return []
