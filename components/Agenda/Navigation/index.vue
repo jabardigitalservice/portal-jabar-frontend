@@ -65,7 +65,9 @@ export default {
       return format(lastDayOfWeek, { month: 'long' })
     },
     year () {
-      return format(this.date, { year: 'numeric' })
+      const lastDayOfWeek = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1])
+
+      return format(lastDayOfWeek, { year: 'numeric' })
     },
     isMonthView () {
       return this.agendaView === 'month'
