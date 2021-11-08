@@ -8,7 +8,7 @@
         :with-time="withTime"
         :title="event.title"
         :date="event.date"
-        :category="event.category.title"
+        :category="event.category"
         :type="event.type"
         :url="event.url"
         :address="event.address"
