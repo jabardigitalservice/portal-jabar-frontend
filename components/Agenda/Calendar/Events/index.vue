@@ -7,7 +7,7 @@
             :id="item.id"
             :title="item.title"
             :date="item.date"
-            :category="item.category.title"
+            :category="item.category"
             :type="item.type"
             :url="item.url"
             :address="item.address"
