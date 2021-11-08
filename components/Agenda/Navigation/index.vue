@@ -60,7 +60,9 @@ export default {
       return this.isMonthView ? '' : `${this.firstDayOfWeek} - ${this.lastDayOfWeek}`
     },
     month () {
-      return format(this.date, { month: 'long' })
+      const lastDayOfWeek = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1])
+
+      return format(lastDayOfWeek, { month: 'long' })
     },
     year () {
       return format(this.date, { year: 'numeric' })
