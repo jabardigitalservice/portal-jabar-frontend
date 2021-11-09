@@ -7,7 +7,7 @@
   >
     <article
       ref="news-video-wrapper"
-      class="relative w-full h-full max-h-[456px] bg-gray-200 rounded-xl overflow-hidden group"
+      class="relative w-full min-h-[207px] bg-gray-200 rounded-lg overflow-hidden group md:h-[436px] md:rounded-xl"
     >
       <div
         ref="news-video-background"
@@ -26,7 +26,7 @@
           src="/icons/play-button.svg"
           alt="play button icon"
           size="60px"
-          class="mb-4"
+          class="mb-4 hidden md:block"
         />
         <p
           ref="news-video-category"
@@ -36,7 +36,8 @@
         </p>
         <h2
           ref="news-video-title"
-          class="font-lora font-bold text-3xl leading-normal text-white text-center mb-2 line-clamp-2"
+          class="font-lora font-bold text-base leading-6 text-white text-center mb-2 line-clamp-2
+          md:text-3xl md:leading-normal"
         >
           {{ title }}
         </h2>
