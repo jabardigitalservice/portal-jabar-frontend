@@ -12,7 +12,7 @@ describe('Component: NewsVideoHeadline', () => {
         link: 'https://mock-link.com',
         thumbnail: 'mock-image.jpg',
         category: 'Mock Category',
-        date: '2021-08-19T04:58:24Z'
+        date: '2021-08-19T04:58:24Z' //
       },
       stubs: ['Icon']
     })
@@ -34,6 +34,11 @@ describe('Component: NewsVideoHeadline', () => {
 
     expect(category.text()).toMatch(/mock category/i)
     expect(title.text()).toMatch(/my mock title/i)
+  })
+
+  test('should render date and time', () => {
+    const date = wrapper.findComponent({ ref: 'news-video-date' })
+    expect(date.text()).toMatch(/Kamis, 19 Agustus 2021 - 11.58 WIB/i)
   })
 
   test('should navigate to `link` props when clicked', () => {
