@@ -1,5 +1,10 @@
 <template>
-  <a :href="link" rel="noopener noreferrer" target="_blank">
+  <a
+    ref="news-video"
+    :href="link"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
     <article
       ref="news-video-wrapper"
       class="relative w-full h-full max-h-[456px] bg-gray-200 rounded-xl overflow-hidden group"
@@ -30,7 +35,7 @@
           {{ category }}
         </p>
         <h2
-          ref="news-video-category"
+          ref="news-video-title"
           class="font-lora font-bold text-3xl leading-normal text-white text-center mb-2 line-clamp-2"
         >
           {{ title }}
