@@ -90,7 +90,7 @@ export default {
       const [latest, popular, video] = await Promise.all([
         this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
         this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } }),
-        this.$axios.get('/v1/news', { params: { ...params, type: 'video' } })
+        this.$axios.get('/v1/news', { params: { ...params, per_page: 5, type: 'video' } })
       ])
 
       const { data: latestNews } = await latest.data
