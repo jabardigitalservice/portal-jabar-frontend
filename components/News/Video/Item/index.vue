@@ -5,7 +5,10 @@
     target="_blank"
     rel="noopener noreferrer"
   >
-    <article ref="news-video-wrapper" class="relative w-full h-full rounded-lg overflow-hidden bg-gray-200 group">
+    <article
+      ref="news-video-wrapper"
+      class="relative w-full h-full min-h-[207px] rounded-lg overflow-hidden bg-gray-200 group"
+    >
       <div
         ref="news-video-background"
         class="absolute inset-0 transition-transform bg-cover bg-no-repeat bg-center duration-300 ease-in-out
