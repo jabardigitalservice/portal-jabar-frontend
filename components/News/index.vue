@@ -51,6 +51,10 @@
         </NewsList>
       </section>
     </BaseContainer>
+
+    <section class="w-full h-full py-8 bg-[#FCF6F0]">
+      <NewsVideo :category="currentCategory" :items="videoNews" :loading="loading" />
+    </section>
   </main>
 </template>
 
@@ -65,6 +69,7 @@ export default {
       latestNews: [],
       popularNews: [],
       headlineNews: [],
+      videoNews: [],
       pagination: {
         currentPage: 1,
         itemsPerPage: 5,
@@ -82,16 +87,19 @@ export default {
     try {
       await this.fetchMainNews()
 
-      const [latest, popular] = await Promise.all([
+      const [latest, popular, video] = await Promise.all([
         this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
-        this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } })
+        this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } }),
+        this.$axios.get('/v1/news', { params: { ...params, per_page: 5, type: 'video' } })
       ])
 
       const { data: latestNews } = await latest.data
       const { data: popularNews } = await popular.data
+      const { data: videoNews } = await video.data
 
       this.latestNews = this.mapItems(latestNews)
       this.popularNews = this.mapItems(popularNews)
+      this.videoNews = this.mapItems(videoNews)
 
       /**
        *  Only fetch headlines the first time the page loads
