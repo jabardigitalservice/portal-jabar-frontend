@@ -30,7 +30,7 @@
         />
         <p
           ref="news-video-category"
-          class="font-sans text-sm font-semibold uppercase text-white leading-4 mb-2"
+          class="font-opensans text-sm font-semibold uppercase text-white leading-4 mb-2"
         >
           {{ category }}
         </p>
