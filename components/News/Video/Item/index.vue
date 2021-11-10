@@ -35,16 +35,29 @@
           </h2>
         </div>
         <div class="flex w-full items-center justify-between">
-          <div class="flex items-center gap-[10px]">
-            <Icon
-              src="/icons/calendar.svg"
-              alt="calendar icon"
-              size="20px"
-              class="text-[#D7D6D6]"
-            />
-            <p ref="news-video-date" class="text-xs leading-4 font-sans text-[#D7D6D6]">
-              {{ formattedDate }}
-            </p>
+          <div class="flex flex-col gap-[6px]">
+            <div class="flex items-center gap-[10px]">
+              <Icon
+                src="/icons/calendar.svg"
+                alt="calendar icon"
+                size="16px"
+                class="text-[#D7D6D6]"
+              />
+              <p ref="news-video-date" class="text-xs leading-4 font-sans text-[#D7D6D6]">
+                {{ formattedDate }}
+              </p>
+            </div>
+            <div class="flex items-center gap-[10px]">
+              <Icon
+                src="/icons/pen.svg"
+                alt="calendar icon"
+                size="16px"
+                class="text-[#D7D6D6]"
+              />
+              <p ref="news-video-author" class="text-xs leading-4 font-sans text-[#D7D6D6] capitalize">
+                Penulis : {{ author }}
+              </p>
+            </div>
           </div>
           <Icon
             src="/icons/play-button.svg"
@@ -75,6 +88,10 @@ export default {
       required: true
     },
     title: {
+      type: String,
+      required: true
+    },
+    author: {
       type: String,
       required: true
     },

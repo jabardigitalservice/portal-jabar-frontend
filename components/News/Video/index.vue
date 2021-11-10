@@ -56,6 +56,7 @@
             :link="item.source"
             :category="category"
             :date="item.date"
+            :author="getAuthorName(item)"
           />
         </template>
       </div>
