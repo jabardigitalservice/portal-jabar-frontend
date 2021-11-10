@@ -7,7 +7,7 @@
   >
     <article
       ref="news-video-wrapper"
-      class="relative w-full h-full min-h-[207px] rounded-lg overflow-hidden bg-gray-200 group"
+      class="relative w-full h-full min-h-[205px] rounded-lg overflow-hidden bg-gray-200 group"
     >
       <div
         ref="news-video-background"
