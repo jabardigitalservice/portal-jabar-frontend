@@ -50,7 +50,7 @@
             <div class="flex items-center gap-[10px]">
               <Icon
                 src="/icons/pen.svg"
-                alt="calendar icon"
+                alt="author icon"
                 size="16px"
                 class="text-[#D7D6D6]"
               />
