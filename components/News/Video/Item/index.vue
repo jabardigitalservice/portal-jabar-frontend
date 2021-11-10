@@ -18,20 +18,22 @@
       <div
         ref="news-video-detail"
         class="absolute flex flex-col w-full h-3/4 px-6 py-4 bottom-0 bg-gradient-to-b from-transparent to-[#1F1F1F]
-        transition-all duration-300 ease-in-out group-hover:bg-[#1F1F1F] group-hover:bg-opacity-20"
+        transition-all duration-300 ease-in-out group-hover:bg-[#1F1F1F] group-hover:bg-opacity-30"
       >
-        <p
-          ref="news-video-category"
-          class="font-opensans text-xs font-medium uppercase text-white leading-4 mb-2"
-        >
-          {{ category }}
-        </p>
-        <h2
-          ref="news-video-title"
-          class="flex-auto font-lora font-bold text-base leading-6 text-white mb-2 line-clamp-2"
-        >
-          {{ title }}
-        </h2>
+        <div class="flex-auto">
+          <p
+            ref="news-video-category"
+            class="font-opensans text-xs font-medium uppercase text-white leading-4 mb-2"
+          >
+            {{ category }}
+          </p>
+          <h2
+            ref="news-video-title"
+            class="font-lora font-bold text-base leading-6 text-white mb-2 line-clamp-2"
+          >
+            {{ title }}
+          </h2>
+        </div>
         <div class="flex w-full items-center justify-between">
           <div class="flex items-center gap-[10px]">
             <Icon
