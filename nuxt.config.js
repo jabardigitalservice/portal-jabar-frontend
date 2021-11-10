@@ -49,7 +49,8 @@ export default {
     families: {
       Lato: [400, 500, 600, 700],
       Roboto: [400, 500, 600, 700],
-      Lora: [400, 500, 600, 700]
+      Lora: [400, 500, 600, 700],
+      'Open Sans': [400, 500, 600, 700]
     },
     display: 'swap'
   },
