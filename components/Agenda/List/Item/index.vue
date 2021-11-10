@@ -1,14 +1,6 @@
 <template>
   <div class="flex gap-4">
-    <div
-      class="flex relative left-0 text-sm"
-      :class="active ? 'text-green-800 font-bold' : 'text-blue-gray-200'"
-    >
-      <div class="w-5">
-        <div v-show="active" class="text-green-800 text-md leading-none">
-          &#9658;
-        </div>
-      </div>
+    <div class="relative left-0 text-sm text-blue-gray-200">
       {{ startTime }}
     </div>
     <div class="flex gap-4 mb-4 w-full relative cursor-pointer">
@@ -32,7 +24,7 @@
       <div
         class="flex gap-2 w-full px-3 py-2 rounded-lg"
         :class="cardClass"
-        @click="$emit('open-detail', detail)"
+        @click="toggleEventDetail"
       >
         <div class="flex flex-col gap-2 w-full justify-center">
           <p
@@ -64,6 +56,94 @@
         </div>
       </div>
     </div>
+    <Modal
+      :show="isEventDetailOpen"
+      :header="title"
+      :close-button="false"
+      @close="toggleEventDetail"
+    >
+      <div class="p-6 flex flex-col gap-6">
+        <div class="flex gap-6">
+          <div class="flex items-start gap-4">
+            <Icon src="/icons/agenda/category.svg" size="20px" />
+            <div class="flex flex-col gap-2">
+              <p class="text-xs text-blue-gray-200">
+                Kategori Acara
+              </p>
+              <p class="text-sm text-green-800 bg-green-50 px-2 py-1 rounded-md whitespace-nowrap">
+                {{ category }}
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <p class="text-xs text-blue-gray-200">
+              Tipe Acara
+            </p>
+            <p
+              class="text-sm px-2 py-1 rounded-md whitespace-nowrap capitalize"
+              :class="[ isOnline ? 'text-red-600 bg-red-100 ' : 'text-gray-600 bg-gray-100 ' ]"
+            >
+              {{ type }}
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex items-start gap-4">
+            <Icon src="/icons/agenda/calendar.svg" size="20px" />
+            <div class="flex flex-col gap-2">
+              <p class="text-xs text-blue-gray-200">
+                Tanggal
+              </p>
+              <p class="text-sm text-gray-800 whitespace-nowrap">
+                {{ formattedDate }}
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <p class="text-xs text-blue-gray-200">
+              Waktu
+            </p>
+            <p class="text-sm text-gray-800 whitespace-nowrap">
+              {{ time }}
+            </p>
+          </div>
+          <div class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap self-end">
+            {{ status }}
+          </div>
+        </div>
+        <div v-if="isOnline" class="flex gap-6">
+          <div class="flex items-start gap-4">
+            <Icon src="/icons/agenda/url.svg" size="20px" />
+            <div class="flex flex-col gap-2">
+              <p class="text-xs text-blue-gray-200">
+                Link Kegiatan
+              </p>
+              <Link :link="url" class="text-sm text-blue-600 underline">
+                {{ url }}
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div v-else class="flex gap-6">
+          <div class="flex items-start gap-4">
+            <Icon src="/icons/agenda/location.svg" size="20px" />
+            <div class="flex flex-col gap-2">
+              <p class="text-xs text-blue-gray-200">
+                Tempat Pelaksanaan
+              </p>
+              <p class="text-sm text-gray-800">
+                {{ address }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-50 py-4 flex justify-center items-center">
+        <div @click="toggleEventDetail">
+          <Button>Tutup</Button>
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -123,28 +203,14 @@ export default {
         const pattern = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
         return pattern.test(value)
       }
-    },
-    active: {
-      type: Boolean,
-      required: false,
-      default: false
+    }
+  },
+  data () {
+    return {
+      isEventDetailOpen: false
     }
   },
   computed: {
-    detail () {
-      return {
-        id: this.id,
-        title: this.title,
-        time: this.time,
-        status: this.status,
-        date: this.formattedDate,
-        address: this.address,
-        isOnline: this.type === 'online',
-        category: this.category,
-        type: this.type,
-        url: this.url || ''
-      }
-    },
     startTime () {
       return this.startHour.substring(0, 5)
     },
@@ -243,6 +309,11 @@ export default {
         'text-green-800': this.done,
         'text-white': this.ongoing
       }
+    }
+  },
+  methods: {
+    toggleEventDetail () {
+      this.isEventDetailOpen = !this.isEventDetailOpen
     }
   }
 }
