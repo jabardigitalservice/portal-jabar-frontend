@@ -8,11 +8,11 @@
     <template v-for="(item, index) in items">
       <transition :key="index" name="fade" tag="div" mode="out-in">
         <div v-show="index === currentIndex" class="w-full h-full">
-          <img
-            :src="item.image"
-            class="object-cover object-center w-full h-full"
+          <div
+            class="bg-no-repeat bg-cover bg-center w-full h-full"
             :class="{ 'transition duration-500 ease-in-out group-hover:transform group-hover:scale-110': hover }"
-          >
+            :style="{backgroundImage: `url('${item.image}')`}"
+          />
           <slot name="filter" />
           <slot
             name="content"
