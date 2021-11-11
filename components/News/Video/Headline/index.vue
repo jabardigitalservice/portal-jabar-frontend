@@ -7,7 +7,7 @@
   >
     <article
       ref="news-video-wrapper"
-      class="relative w-full min-h-[207px] bg-gray-200 rounded-lg overflow-hidden group md:h-[436px] md:rounded-xl"
+      class="relative w-full min-h-[205px] bg-gray-200 rounded-lg overflow-hidden group md:h-[436px] md:rounded-xl"
     >
       <div
         ref="news-video-background"
@@ -30,7 +30,7 @@
         />
         <p
           ref="news-video-category"
-          class="font-sans text-sm font-semibold uppercase text-white leading-4 mb-2"
+          class="font-opensans text-sm font-semibold uppercase text-white leading-4 mb-2"
         >
           {{ category }}
         </p>
@@ -41,15 +41,29 @@
         >
           {{ title }}
         </h2>
-        <div class="flex items-center gap-[10px]">
-          <Icon
-            src="/icons/calendar.svg"
-            alt="calendar icon"
-            size="20px"
-            class="text-[#D7D6D6]"
-          />
-          <p ref="news-video-date" class="text-xs leading-4 font-sans text-[#D7D6D6]">
+        <div class="flex items-center justify-center gap-3 text-xs leading-4 font-sans text-[#D7D6D6] capitalize">
+          <p ref="news-video-date" class="inline-flex items-center gap-[10px]">
+            <span>
+              <Icon
+                src="/icons/calendar.svg"
+                alt="calendar icon"
+                size="16px"
+                class="text-[#D7D6D6]"
+              />
+            </span>
             {{ datetime }}
+          </p>
+          <p>|</p>
+          <p ref="news-video-author" class="inline-flex items-center gap-[10px]">
+            <span>
+              <Icon
+                src="/icons/pen.svg"
+                alt="author icon"
+                size="16px"
+                class="text-[#D7D6D6]"
+              />
+            </span>
+            Penulis : {{ author }}
           </p>
         </div>
       </div>
@@ -75,6 +89,10 @@ export default {
       required: true
     },
     title: {
+      type: String,
+      required: true
+    },
+    author: {
       type: String,
       required: true
     },

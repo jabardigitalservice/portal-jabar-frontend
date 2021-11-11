@@ -7,7 +7,7 @@
   >
     <article
       ref="news-video-wrapper"
-      class="relative w-full h-full min-h-[207px] rounded-lg overflow-hidden bg-gray-200 group"
+      class="relative w-full h-full min-h-[205px] rounded-lg overflow-hidden bg-gray-200 group"
     >
       <div
         ref="news-video-background"
@@ -18,31 +18,46 @@
       <div
         ref="news-video-detail"
         class="absolute flex flex-col w-full h-3/4 px-6 py-4 bottom-0 bg-gradient-to-b from-transparent to-[#1F1F1F]
-        transition-all duration-300 ease-in-out group-hover:bg-[#1F1F1F] group-hover:bg-opacity-20"
+        transition-all duration-300 ease-in-out group-hover:bg-[#1F1F1F] group-hover:bg-opacity-30"
       >
-        <p
-          ref="news-video-category"
-          class="font-sans text-xs font-medium uppercase text-white leading-4 mb-2"
-        >
-          {{ category }}
-        </p>
-        <h2
-          ref="news-video-title"
-          class="flex-auto font-lora font-bold text-base leading-6 text-white mb-2 line-clamp-2"
-        >
-          {{ title }}
-        </h2>
+        <div class="flex-auto">
+          <p
+            ref="news-video-category"
+            class="font-opensans text-xs font-medium uppercase text-white leading-4 mb-2"
+          >
+            {{ category }}
+          </p>
+          <h2
+            ref="news-video-title"
+            class="font-lora font-bold text-base leading-6 text-white mb-2 line-clamp-2"
+          >
+            {{ title }}
+          </h2>
+        </div>
         <div class="flex w-full items-center justify-between">
-          <div class="flex items-center gap-[10px]">
-            <Icon
-              src="/icons/calendar.svg"
-              alt="calendar icon"
-              size="20px"
-              class="text-[#D7D6D6]"
-            />
-            <p ref="news-video-date" class="text-xs leading-4 font-sans text-[#D7D6D6]">
-              {{ formattedDate }}
-            </p>
+          <div class="flex flex-col gap-[6px]">
+            <div class="flex items-center gap-[10px]">
+              <Icon
+                src="/icons/calendar.svg"
+                alt="calendar icon"
+                size="16px"
+                class="text-[#D7D6D6]"
+              />
+              <p ref="news-video-date" class="text-xs leading-4 font-sans text-[#D7D6D6]">
+                {{ formattedDate }}
+              </p>
+            </div>
+            <div class="flex items-center gap-[10px]">
+              <Icon
+                src="/icons/pen.svg"
+                alt="author icon"
+                size="16px"
+                class="text-[#D7D6D6]"
+              />
+              <p ref="news-video-author" class="text-xs leading-4 font-sans text-[#D7D6D6] capitalize">
+                Penulis : {{ author }}
+              </p>
+            </div>
           </div>
           <Icon
             src="/icons/play-button.svg"
@@ -73,6 +88,10 @@ export default {
       required: true
     },
     title: {
+      type: String,
+      required: true
+    },
+    author: {
       type: String,
       required: true
     },

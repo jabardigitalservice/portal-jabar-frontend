@@ -13,7 +13,8 @@ module.exports = {
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
-        lora: ['Lora', 'serif']
+        lora: ['Lora', 'serif'],
+        opensans: ['Open Sans', 'sans-serif']
       },
       boxShadow: {
         DEFAULT: '0px 6px 22px rgba(2, 43, 85, 0.08)'

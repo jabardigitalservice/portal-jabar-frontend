@@ -35,6 +35,7 @@
         :link="headline.source"
         :category="category"
         :date="headline.date"
+        :author="getAuthorName(headline)"
       />
 
       <div class="w-full h-full grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2">
@@ -55,6 +56,7 @@
             :link="item.source"
             :category="category"
             :date="item.date"
+            :author="getAuthorName(item)"
           />
         </template>
       </div>
@@ -100,6 +102,11 @@ export default {
       }
 
       return false
+    }
+  },
+  methods: {
+    getAuthorName (item) {
+      return item.author?.name || '-'
     }
   }
 }
