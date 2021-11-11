@@ -45,6 +45,6 @@ export default {
   width: 100% !important;
 }
 .jds-popover__content {
-  z-index: 2 !important;
+  z-index: 20 !important;
 }
 </style>
