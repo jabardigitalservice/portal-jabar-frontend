@@ -8,7 +8,7 @@
         </p>
         <div class="flex justify-between items-center">
           <div class="flex gap-2 text-xs">
-            <p class="text-gray-700 group-hover:text-blue-gray-800">
+            <p class="text-gray-700 group-hover:text-blue-gray-800 capitalize">
               {{ category }}
             </p>
             <div class="text-gray-700 group-hover:text-blue-gray-800">

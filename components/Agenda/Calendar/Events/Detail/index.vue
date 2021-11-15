@@ -28,7 +28,7 @@
           <p class="text-xs text-blue-gray-200">
             Kategori Event
           </p>
-          <p class="text-sm text-green-800 bg-green-50 px-2 py-1 rounded-md whitespace-nowrap">
+          <p class="text-sm text-green-800 bg-green-50 px-2 py-1 rounded-md whitespace-nowrap capitalize">
             {{ event.category }}
           </p>
         </div>
