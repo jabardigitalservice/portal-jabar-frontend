@@ -34,7 +34,7 @@
             {{ title }}
           </p>
           <p
-            class="line-clamp-1 text-xs px-2 py-1 rounded-md self-start"
+            class="line-clamp-1 text-xs px-2 py-1 rounded-md self-start capitalize"
             :class="categoryClass"
           >
             {{ category }}
