@@ -1,5 +1,5 @@
 <template>
-  <ul class="absolute h-screen top-0 right-6 flex flex-col justify-center gap-6">
+  <ul class="absolute h-[700px] top-0 right-6 flex flex-col justify-center gap-6">
     <li
       v-for="socialMediaSite in socialMediaSites"
       :key="socialMediaSite.id"
