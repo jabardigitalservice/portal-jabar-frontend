@@ -22,7 +22,7 @@
       </div>
     </template>
     <template v-else>
-      <nuxt-link :to="`/berita/${item.slug}`">
+      <nuxt-link :to="`/berita/${item.slug}`" :aria-label="item.title">
         <div
           ref="news-headline-image"
           class="cursor-pointer w-full h-full bg-cover bg-no-repeat bg-center transition-transform
@@ -66,6 +66,7 @@
               ref="news-headline-button"
               class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg"
               :to="`/berita/${item.slug}`"
+              :aria-label="item.title"
             >
               Baca Selengkapnya
             </nuxt-link>
