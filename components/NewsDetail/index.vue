@@ -10,7 +10,7 @@
           <div class="w-[400px] h-full">
             <NewsList :items="relatedNews" small :loading="loading">
               <template #header>
-                <NewsListHeader label="Berita Terkait" category="test" class="mb-2" />
+                <NewsListHeader label="Berita Terkait" class="mb-2" />
               </template>
             </NewsList>
             <div class="w-full">
@@ -34,8 +34,7 @@ export default {
   data () {
     return {
       news: {},
-      relatedNews: [],
-      category: null
+      relatedNews: []
     }
   },
   async fetch () {
@@ -69,7 +68,8 @@ export default {
         const params = {
           sort_order: 'desc',
           per_page: 5,
-          cat: this.category
+          cat: this.news.category,
+          exclude: this.news.id
         }
 
         const response = await this.$axios.get('/v1/news', { params })
