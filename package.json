@@ -27,7 +27,8 @@
     "keen-slider": "^5.5.1",
     "lodash": "^4.17.21",
     "nuxt": "^2.15.7",
-    "portal-vue": "^2.1.7"
+    "portal-vue": "^2.1.7",
+    "vue-social-sharing": "^3.0.8"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
