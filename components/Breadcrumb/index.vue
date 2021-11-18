@@ -10,7 +10,7 @@
           items.length ? '' : 'capitalize'
         ]"
       >
-        {{ item.label }}
+        {{ truncate(item.label) }}
       </nuxt-link>
     </template>
   </section>
@@ -84,6 +84,15 @@ export default {
   methods: {
     isActive (path) {
       return path === this.$route.path
+    },
+    truncate (item) {
+      const a = item.split(' ').slice(0, 6)
+
+      if (a.length >= 6) {
+        return a.join(' ') + '...'
+      }
+
+      return a.join(' ')
     }
   }
 }
