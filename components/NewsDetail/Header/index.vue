@@ -74,7 +74,7 @@ export default {
       return format(this.news.created_at, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
     },
     author () {
-      return this.news.author?.name
+      return this.news.author?.name || ''
     }
   },
   methods: {
