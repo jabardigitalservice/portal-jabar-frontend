@@ -3,20 +3,26 @@
     <article class="article h-full">
       <!-- TODO: Remove this dummy header -->
       <div class="h-[400px] w-full bg-gray-200" />
-      <BaseContainer class="mt-12 mx-auto">
+      <BaseContainer class="mt-12 mb-12 mx-auto">
         <section class="h-full grid grid-cols-1 gap-8 md:grid-cols-news-container md:gap-[72px]">
           <!-- Article Body -->
-          <div class="article__body w-full min-h-screen" v-html="content" />
-          <div class="w-[400px] h-full">
-            <NewsList :items="relatedNews" small :loading="loading">
-              <template #header>
-                <NewsListHeader label="Berita Terkait" class="mb-2" />
-              </template>
-            </NewsList>
-            <div class="w-full">
-              <!-- TODO: Add social share buttons -->
-            </div>
+          <div class="flex flex-col gap-7">
+            <div class="article__body w-full min-h-screen" v-html="content" />
+            <NewsDetailTags :tags="tags" />
           </div>
+          <!-- Related News and Share Buttons -->
+          <section class="w-[400px] h-full">
+            <div class="flex flex-col gap-7">
+              <NewsList :items="relatedNews" small :loading="loading">
+                <template #header>
+                  <NewsListHeader label="Berita Terkait" class="mb-2" />
+                </template>
+              </NewsList>
+              <div class="w-full">
+              <!-- TODO: Add social share buttons -->
+              </div>
+            </div>
+          </section>
         </section>
       </BaseContainer>
     </article>
@@ -60,6 +66,12 @@ export default {
     },
     content () {
       return this.news.content ?? ''
+    },
+    tags () {
+      if (Array.isArray(this.news.tag) && this.news.tag.length) {
+        return this.news.tag
+      }
+      return []
     }
   },
   methods: {
