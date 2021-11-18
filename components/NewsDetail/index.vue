@@ -68,8 +68,8 @@ export default {
       return this.news.content ?? ''
     },
     tags () {
-      if (Array.isArray(this.news.tag) && this.news.tag.length) {
-        return this.news.tag
+      if (Array.isArray(this.news.tags) && this.news.tags.length) {
+        return this.news.tags
       }
       return []
     }
