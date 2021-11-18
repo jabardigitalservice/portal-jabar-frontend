@@ -4,7 +4,7 @@
     :style="{ backgroundImage: `url('${news.image}')` }"
   >
     <div
-      class="absolute top-0 right-0 bottom-0 left-0"
+      class="absolute inset-0"
       style="background: linear-gradient(90deg, rgba(0,35,25,0.9) 5%, rgba(0,11,14,0.5) 50%, rgba(0,23,28,0) 100%);"
     />
     <BaseContainer class="relative pt-24 pb-9 z-10 ">
