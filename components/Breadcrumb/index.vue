@@ -6,7 +6,7 @@
         :to="item.path"
         class="breadcrumb__item font-roboto text-sm flex items-center"
         :class="[
-          item.path === activeRoute ? 'font-bold text-white' : 'text-blue-400',
+          item.active || isActive(item.path) ? 'font-bold text-white' : 'text-blue-400',
           items.length ? '' : 'capitalize'
         ]"
       >
@@ -79,10 +79,11 @@ export default {
       }
 
       return crumbs
-    },
-
-    activeRoute () {
-      return this.$route.path
+    }
+  },
+  methods: {
+    isActive (path) {
+      return path === this.$route.path
     }
   }
 }
