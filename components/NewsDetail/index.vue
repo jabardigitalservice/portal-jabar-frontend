@@ -1,8 +1,7 @@
 <template>
   <main>
     <article class="article h-full">
-      <!-- TODO: Remove this dummy header -->
-      <div class="h-[400px] w-full bg-gray-200" />
+      <NewsDetailHeader :news="news" />
       <BaseContainer class="mt-12 mb-12 mx-auto">
         <section class="h-full grid grid-cols-1 gap-8 md:grid-cols-news-container md:gap-[72px]">
           <!-- Article Body -->
@@ -55,6 +54,23 @@ export default {
       await this.fetchRelatedNews()
     } catch (error) {
       this.news = {}
+    }
+  },
+  head () {
+    return {
+      title: this.news.title,
+      meta: [
+        {
+          hid: 'title',
+          name: 'title',
+          content: this.news.title
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.news.excerpt
+        }
+      ]
     }
   },
   computed: {
