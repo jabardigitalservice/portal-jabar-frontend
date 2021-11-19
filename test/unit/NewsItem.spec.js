@@ -63,17 +63,4 @@ describe('NewsItem Component', () => {
 
     expect(container.classes()).toContain('grid-cols-news-small')
   })
-
-  test('should emit `clicked` event when image and title clicked', async () => {
-    const title = wrapper.findComponent({ ref: 'news-item-title' })
-    const image = wrapper.findComponent({ ref: 'news-item-image' })
-
-    await title.trigger('click')
-
-    expect(wrapper.emitted().clicked[0]).toStrictEqual([{ id: 1, slug: 'dummy-slug' }])
-
-    await image.trigger('click')
-
-    expect(wrapper.emitted().clicked[0]).toStrictEqual([{ id: 1, slug: 'dummy-slug' }])
-  })
 })

@@ -14,7 +14,6 @@
         :item="item"
         :small="small"
         :loading="loading"
-        @clicked="onNewsClick"
       />
     </div>
     <div ref="news-list-footer" class="w-full">
@@ -44,11 +43,6 @@ export default {
       type: Boolean,
       required: false,
       default: false
-    }
-  },
-  methods: {
-    onNewsClick ({ id, slug }) {
-      this.$router.push(`/berita/${slug}`)
     }
   }
 }
