@@ -8,7 +8,7 @@
       style="background: linear-gradient(90deg, rgba(0,35,25,0.9) 5%, rgba(0,11,14,0.5) 50%, rgba(0,23,28,0) 100%);"
     />
     <BaseContainer class="relative pt-24 pb-9 z-10 ">
-      <Breadcrumb class="mb-6" />
+      <Breadcrumb :items="breadcrumbItems" class="mb-6" />
       <div class="flex flex-col text-blue-gray-100 gap-6">
         <h1 class="font-lora font-bold text-[34px] leading-[48px] text-white mb-2 max-w-3xl">
           {{ news.title }}
@@ -70,6 +70,22 @@ export default {
     }
   },
   computed: {
+    breadcrumbItems () {
+      return [
+        {
+          path: '/',
+          label: 'Beranda'
+        },
+        {
+          path: '/berita',
+          label: 'Berita'
+        },
+        {
+          path: this.$route.path,
+          label: this.news.category
+        }
+      ]
+    },
     published () {
       return format(this.news.created_at, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
     },
@@ -81,7 +97,7 @@ export default {
     getViewsText (number) {
       return new Intl.NumberFormat('id-ID', {
         notation: 'compact',
-        compactDisplay: 'long'
+        compactDisplay: 'short'
       }).format(number)
     }
   }
