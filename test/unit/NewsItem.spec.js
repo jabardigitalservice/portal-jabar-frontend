@@ -16,7 +16,8 @@ beforeEach(() => {
       },
       small: false,
       loading: false
-    }
+    },
+    stubs: ['Link']
   })
 })
 
