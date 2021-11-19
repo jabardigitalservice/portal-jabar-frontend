@@ -7,10 +7,10 @@
         class="breadcrumb__item font-roboto text-sm flex items-center"
         :class="[
           item.active || isActive(item.path) ? 'font-bold text-white' : 'text-blue-400',
-          items.length ? '' : 'capitalize'
+          { 'capitalize': capitalize }
         ]"
       >
-        {{ truncate(item.label) }}
+        {{ item.label }}
       </nuxt-link>
     </template>
   </section>
@@ -34,6 +34,10 @@ export default {
     hideItems: {
       type: Array,
       default: () => []
+    },
+    capitalize: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -84,22 +88,12 @@ export default {
   methods: {
     isActive (path) {
       return path === this.$route.path
-    },
-    truncate (item) {
-      const a = item.split(' ').slice(0, 6)
-
-      if (a.length >= 6) {
-        return a.join(' ') + '...'
-      }
-
-      return a.join(' ')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
 .breadcrumb {
   &__item + &__item::before {
     content: '';
