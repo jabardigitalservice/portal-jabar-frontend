@@ -88,7 +88,7 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.news.description
+          content: this.news.excerpt
         },
         {
           hid: 'og:url',
@@ -104,7 +104,7 @@ export default {
         {
           hid: 'twitter:description',
           property: 'twitter:description',
-          content: this.news.description
+          content: this.news.excerpt
         },
         {
           hid: 'twitter:image',
