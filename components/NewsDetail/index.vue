@@ -44,13 +44,9 @@ export default {
   },
   async fetch () {
     try {
-      /**
-       * this API call is for demo purposes
-       * TODO: change this API call with real slug data
-       */
-      const response = await this.$axios.get('/v1/news/1')
+      const response = await this.$axios.get(`/v1/news/slug/${this.slug}`)
       const { data } = response.data
-      this.news = data[0]
+      this.news = data
       await this.fetchRelatedNews()
     } catch (error) {
       this.news = {}
