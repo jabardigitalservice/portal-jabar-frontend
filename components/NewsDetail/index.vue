@@ -17,8 +17,17 @@
                   <NewsListHeader label="Berita Terkait" class="mb-2" />
                 </template>
               </NewsList>
-              <div class="w-full">
-              <!-- TODO: Add social share buttons -->
+              <div class="flex flex-col gap-3 w-full">
+                <p class="inline-flex gap-3 font-lato text-xs text-blue-gray-200 leading-5">
+                  <Icon
+                    src="/icons/share.svg"
+                    alt="Bagikan berita"
+                    size="16px"
+                    class="text-green-600"
+                  />
+                  Bagikan Berita Via
+                </p>
+                <NewsDetailShare v-bind="shareButtons" />
               </div>
             </div>
           </section>
@@ -65,11 +74,66 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.news.excerpt
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.news.title
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.news.image
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.news.description
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: this.articleUrl
+        },
+        // Twitter Meta
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: this.news.title
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: this.news.description
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: this.news.image
+        },
+        {
+          hid: 'twitter:url',
+          property: 'twitter:url',
+          content: this.articleUrl
+        },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary'
         }
       ]
     }
   },
   computed: {
+    articleUrl () {
+      const publicUrl = process.env.NUXT_ENV_PUBLIC_URL
+      const fullPath = `berita/${this.news.slug}`
+
+      if (publicUrl && fullPath) {
+        return `${publicUrl}/${fullPath}`
+      }
+      return ''
+    },
     loading () {
       if (Array.isArray(this.relatedNews) && this.relatedNews.length) {
         return false
@@ -84,6 +148,14 @@ export default {
         return this.news.tags
       }
       return []
+    },
+    shareButtons () {
+      return {
+        networks: ['facebook', 'twitter', 'whatsapp', 'email'],
+        url: this.articleUrl,
+        title: this.news?.title || '',
+        description: this.news?.excerpt || ''
+      }
     }
   },
   methods: {
