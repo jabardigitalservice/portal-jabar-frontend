@@ -6,11 +6,11 @@
         :to="item.path"
         class="breadcrumb__item font-roboto text-sm flex items-center"
         :class="[
-          item.path === activeRoute ? 'font-bold text-white' : 'text-blue-400',
+          item.active || isActive(item.path) ? 'font-bold text-white' : 'text-blue-400',
           items.length ? '' : 'capitalize'
         ]"
       >
-        {{ item.label }}
+        {{ truncate(item.label) }}
       </nuxt-link>
     </template>
   </section>
@@ -79,10 +79,20 @@ export default {
       }
 
       return crumbs
+    }
+  },
+  methods: {
+    isActive (path) {
+      return path === this.$route.path
     },
+    truncate (item) {
+      const a = item.split(' ').slice(0, 6)
 
-    activeRoute () {
-      return this.$route.path
+      if (a.length >= 6) {
+        return a.join(' ') + '...'
+      }
+
+      return a.join(' ')
     }
   }
 }

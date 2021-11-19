@@ -71,6 +71,7 @@
                       <div class="flex-shrink-0 overflow-hidden rounded-xl" style="width: 92px; height: 92px;">
                         <img
                           :src="news.image"
+                          :alt="news.title"
                           width="92"
                           height="92"
                           class="flex-shrink-0 object-cover w-full h-full group-hover:transform group-hover:scale-110 transition duration-500 ease-in-out"
