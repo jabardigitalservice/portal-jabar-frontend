@@ -7,11 +7,11 @@
     <!-- TODO: change the link to actual route -->
     <nuxt-link
       v-for="tag in tags"
-      :key="tag"
+      :key="tag.tags_name"
       to="#"
       class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase"
     >
-      {{ tag }}
+      {{ tag.tags_name }}
     </nuxt-link>
   </section>
 </template>
