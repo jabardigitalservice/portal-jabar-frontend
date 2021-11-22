@@ -12,7 +12,7 @@
             <!--
               TODO: replace this component with JdsSearch small variant
               -->
-            <Search
+            <InputSearch
               v-model="searchValue"
               placeholder="Cari Program"
               small

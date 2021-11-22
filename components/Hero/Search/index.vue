@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-2xl w-full">
     <div class="relative">
-      <Search v-model.trim="inputValue" @submit="goToSearchPage" />
+      <InputSearch v-model.trim="inputValue" @submit="goToSearchPage" />
       <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
         <Options
           class="w-full"
