@@ -9,7 +9,7 @@
       v-for="tag in tags"
       :key="tag.tags_name"
       to="#"
-      class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase"
+      class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase cursor-pointer"
     >
       {{ tag.tags_name }}
     </nuxt-link>
