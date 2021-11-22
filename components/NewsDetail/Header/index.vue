@@ -49,13 +49,51 @@
               </div>
             </div>
           </div>
-          <Button>
-            Bagikan Berita
-            <Icon name="share" size="16px" />
-          </Button>
+          <div @click="setOpenShareModal(true)">
+            <Button>
+              Bagikan Berita
+              <Icon name="share" size="16px" />
+            </Button>
+          </div>
         </div>
       </div>
     </BaseContainer>
+    <Modal :show="openShareModal">
+      <div class="grid grid-cols-2 w-full px-6 gap-y-5">
+        <h1 class="font-medium text-2xl text-green-700 leading-relaxed">
+          Bagikan Berita
+        </h1>
+
+        <section class="col-span-2 flex gap-4">
+          <Icon src="/icons/info-circle-outline.svg" size="16px" class="self-start text-green-600" />
+          <div>
+            <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
+              Judul Berita
+            </h2>
+            <p class="text-gray-800 font-bold leading-relaxed">
+              {{ news.title }}
+            </p>
+          </div>
+        </section>
+
+        <section class="col-span-2 flex gap-4">
+          <Icon src="/icons/share.svg" size="16px" class="self-start text-green-600" />
+          <div>
+            <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
+              Bagikan Via
+            </h2>
+            <NewsDetailShare v-bind="shareButtons" />
+          </div>
+        </section>
+
+        <section
+          class="col-span-2 flex justify-center mb-4"
+          @click="setOpenShareModal(false)"
+        >
+          <Button>Tutup</Button>
+        </section>
+      </div>
+    </Modal>
   </section>
 </template>
 
@@ -67,6 +105,11 @@ export default {
     news: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      openShareModal: false
     }
   },
   computed: {
@@ -91,6 +134,23 @@ export default {
     },
     author () {
       return this.news.author?.name || ''
+    },
+    articleUrl () {
+      const publicUrl = process.env.NUXT_ENV_PUBLIC_URL
+      const fullPath = `berita/${this.news.slug}`
+
+      if (publicUrl && fullPath) {
+        return `${publicUrl}/${fullPath}`
+      }
+      return ''
+    },
+    shareButtons () {
+      return {
+        networks: ['facebook', 'twitter', 'whatsapp', 'email'],
+        url: this.articleUrl,
+        title: this.news?.title || '',
+        description: this.news?.excerpt || ''
+      }
     }
   },
   methods: {
@@ -99,6 +159,9 @@ export default {
         notation: 'compact',
         compactDisplay: 'short'
       }).format(number)
+    },
+    setOpenShareModal (value) {
+      this.openShareModal = value
     }
   }
 }
