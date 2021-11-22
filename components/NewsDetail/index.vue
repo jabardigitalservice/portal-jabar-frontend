@@ -203,13 +203,6 @@ export default {
       @apply text-lg leading-7 mb-7
     }
 
-    p:nth-child(1) {
-      &::before {
-        content: 'PORTALJABAR, BANDUNG - ';
-        font-weight: bold;
-      }
-    }
-
     img {
       @apply w-full h-auto
     }
