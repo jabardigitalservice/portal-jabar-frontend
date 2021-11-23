@@ -22,7 +22,8 @@ module.exports = {
       gridTemplateColumns: {
         'news-container': '60% auto',
         'news-large': '200px auto',
-        'news-small': '72px auto'
+        'news-small': '72px auto',
+        'search-container': '300px auto'
       },
       colors: {
         green: {
