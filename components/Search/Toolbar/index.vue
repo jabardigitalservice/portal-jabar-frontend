@@ -14,7 +14,7 @@
         </p>
         <button
           class="w-6 h-6 flex items-center justify-center"
-          title="Tampilan Grid"
+          title="Tampilan List"
           @click="$emit('update:listView', 'list')"
         >
           <Icon
