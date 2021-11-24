@@ -1,11 +1,13 @@
 <template>
-  <jds-pagination
-    v-bind="$props"
-    @previous-page="$emit('previous-page', $event)"
-    @next-page="$emit('next-page', $event)"
-    @page-change="$emit('page-change', $event)"
-    @per-page-change="$emit('per-page-change', $event)"
-  />
+  <div class="max-h-[44px] overflow-hidden">
+    <jds-pagination
+      v-bind="$props"
+      @previous-page="$emit('previous-page', $event)"
+      @next-page="$emit('next-page', $event)"
+      @page-change="$emit('page-change', $event)"
+      @per-page-change="$emit('per-page-change', $event)"
+    />
+  </div>
 </template>
 
 <script>
