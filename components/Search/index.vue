@@ -5,6 +5,7 @@
         <!-- TODO: Remove this dummy sidebar -->
         <section class="w-full h-full bg-gray-200" />
         <section>
+          <SearchToolbar class="mb-8" :list-view.sync="listView" />
           <SearchList :list-view="listView" :loading="loading" />
         </section>
       </div>
