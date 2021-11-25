@@ -3,7 +3,7 @@
   <article
     class="w-full flex p-3 group rounded-xl cursor-pointer border border-transparent
     transition-all duration-150 ease-out hover:border-[#E9EDF4] hover:shadow-md"
-    :class="view === 'list' ? 'gap-6 items-center justify-center' : 'flex-col'"
+    :class="view === 'list' ? 'gap-6 items-center' : 'flex-col'"
   >
     <img
       src="https://picsum.photos/200"
