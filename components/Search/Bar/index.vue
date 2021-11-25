@@ -29,7 +29,13 @@ export default {
       return this.inputValue !== ''
     },
     hasSuggestions () {
-      return !!this.suggestions.length
+      const isArray = Array.isArray(this.suggestions)
+
+      if (isArray) {
+        return !!this.suggestions.length
+      }
+
+      return false
     }
   },
   watch: {
