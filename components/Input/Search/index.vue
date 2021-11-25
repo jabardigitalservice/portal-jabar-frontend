@@ -51,6 +51,10 @@ export default {
     placeholder: {
       type: [String, Number],
       default: 'Cari disini'
+    },
+    clear: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -62,7 +66,9 @@ export default {
     submitFormData () {
       if (this.hasValue) {
         this.$emit('submit', this.value)
-        this.clearInputValue()
+        if (this.clear) {
+          this.clearInputValue()
+        }
       }
     },
     setInputValue (event) {
