@@ -3,9 +3,8 @@
     TODO: Replace search input with search component from jabar design system
   -->
   <form
-    class="flex items-center gap-2 rounded-lg bg-white"
-    :class="small ? 'inline-flex border border-blue-gray-50' : 'w-full'"
-    :style="small ? 'padding: 12px 9px' : 'padding: 6px 8px'"
+    class="flex items-center gap-2 rounded-lg bg-white border border-blue-gray-50 px-[9px]"
+    :class="small ? 'inline-flex py-[12px]' : 'w-full py-[6px]'"
     @submit.prevent="submitFormData"
   >
     <template v-if="small">
@@ -52,6 +51,10 @@ export default {
     placeholder: {
       type: [String, Number],
       default: 'Cari disini'
+    },
+    clear: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -63,7 +66,9 @@ export default {
     submitFormData () {
       if (this.hasValue) {
         this.$emit('submit', this.value)
-        this.clearInputValue()
+        if (this.clear) {
+          this.clearInputValue()
+        }
       }
     },
     setInputValue (event) {

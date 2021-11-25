@@ -1,6 +1,7 @@
 <template>
   <BaseContainer class="relative -top-24 z-20">
     <div class="py-8 px-10 rounded-xl bg-white min-h-screen shadow">
+      <SearchBar class="mb-6" />
       <div class="w-full h-full grid grid-cols-search-container gap-6">
         <section>
           <SearchSidebar />
