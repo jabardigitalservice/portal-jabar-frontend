@@ -2,8 +2,9 @@
   <BaseContainer class="relative -top-24 z-20">
     <div class="py-8 px-10 rounded-xl bg-white min-h-screen shadow">
       <div class="w-full h-full grid grid-cols-search-container gap-6">
-        <!-- TODO: Remove this dummy sidebar -->
-        <section class="w-full h-full bg-gray-200" />
+        <section>
+          <SearchSidebar />
+        </section>
         <section class="w-full h-full flex flex-col gap-8">
           <SearchToolbar :list-view.sync="listView" />
           <SearchList :list-view="listView" :loading="loading" />
