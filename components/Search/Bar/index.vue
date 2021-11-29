@@ -58,17 +58,27 @@ export default {
   methods: {
     getSuggestions: debounce(async function () {
       if (this.hasValue) {
-        const response = await this.$axios.$get(`/v1/search?q=${this.inputValue}&per_page=5`)
-        this.suggestions = response.data.map(item => ({ label: item.title, value: item.title }))
+        try {
+          const response = await this.$axios.$get(`/v1/search?q=${this.inputValue}&per_page=5`)
+          if (response) {
+            this.suggestions = response.data.map(item => ({ label: item.title, value: item.title }))
+          }
+        } catch (error) {
+          // silent error
+        }
       } else {
         this.suggestions = []
       }
     }, 500),
     getData (data) {
-      // TODO: Add action to get data
+      this.$emit('search', data)
+      // clear the suggestions to close the dropdown
+      this.suggestions = []
     },
     suggestionClicked ({ value }) {
-      // TODO: Add action to get data
+      this.$emit('search', value)
+      // clear the suggestions to close the dropdown
+      this.suggestions = []
     }
   }
 }
