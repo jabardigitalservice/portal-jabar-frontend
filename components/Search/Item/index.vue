@@ -86,7 +86,7 @@ export default {
       return this.item?.excerpt || '-'
     },
     date () {
-      return this.item?.created_at ? this.formatDate(this.item?.created_at) : '-'
+      return this.item?.created_at ? this.formatDate(new Date(this.item.created_at)) : '-'
     },
     link () {
       return `/${this.item?.slug}` || '#'

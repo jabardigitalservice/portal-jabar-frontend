@@ -1,7 +1,7 @@
 <template>
   <div
     class="rounded-xl w-full flex p-3 bg-gray-50"
-    :class="view === 'list' ? 'gap-6 h-[144px]' : 'flex-col h-[290px]'"
+    :class="view === 'list' ? 'gap-6 h-[147px]' : 'flex-col h-[289px]'"
   >
     <div
       class="bg-gray-200 rounded-lg animate-pulse"
