@@ -71,13 +71,25 @@ export default {
       }
     }, 500),
     getData (data) {
-      this.$emit('search', data)
-      // clear the suggestions to close the dropdown
-      this.suggestions = []
+      /**
+       * Change the route query params on button click or form submit
+       */
+      this.$router.push({
+        path: this.$route.path,
+        query: { ...this.$route.query, q: data }
+      })
     },
     suggestionClicked ({ value }) {
-      this.$emit('search', value)
-      // clear the suggestions to close the dropdown
+      /**
+       * Change the route query params on suggestion click
+       *
+       * FIXME: Close the suggestion dropdown box when
+       * user click the suggestion list
+       */
+      this.$router.push({
+        path: this.$route.path,
+        query: { ...this.$route.query, q: value }
+      })
       this.suggestions = []
     }
   }
