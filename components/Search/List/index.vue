@@ -4,7 +4,7 @@
       <SearchItemSkeleton v-for="item in 5" :key="item" :view="listView" />
     </template>
     <template v-else>
-      <SearchItem v-for="item in 5" :key="item" :view="listView" />
+      <SearchItem v-for="item in items" :key="item.id" :view="listView" :item="item" />
     </template>
   </div>
 </template>
@@ -12,6 +12,10 @@
 <script>
 export default {
   props: {
+    items: {
+      type: Array,
+      required: true
+    },
     listView: {
       type: String,
       default: 'list',
