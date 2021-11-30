@@ -86,6 +86,8 @@ export default {
         path: this.$route.path,
         query: { ...this.$route.query, q: data }
       })
+
+      this.suggestions = []
     },
     suggestionClicked ({ value }) {
       /**
@@ -95,6 +97,8 @@ export default {
         path: this.$route.path,
         query: { ...this.$route.query, q: value }
       })
+
+      this.suggestions = []
     },
     setFocus (bool) {
       this.isFocused = bool
