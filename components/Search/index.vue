@@ -9,7 +9,7 @@
         <section
           class="w-full h-full min-h-screen flex flex-col gap-8"
         >
-          <SearchToolbar :list-view.sync="listView" />
+          <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" />
           <SearchList :list-view="listView" :loading="loading" :items="searchData" />
           <Pagination
             v-bind="pagination"
@@ -38,7 +38,7 @@ export default {
       },
       searchKeyword: null,
       searchData: [],
-      searchMeta: []
+      searchMeta: {}
     }
   },
   watch: {
@@ -117,7 +117,7 @@ export default {
       } catch (error) {
         // silent error
         this.searchData = []
-        this.searchMeta = []
+        this.searchMeta = {}
       } finally {
         this.loading = false
       }
