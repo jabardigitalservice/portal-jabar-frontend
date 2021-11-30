@@ -48,12 +48,6 @@ export default {
     }
   },
   computed: {
-    hasSuggestions () {
-      if (Array.isArray(this.suggestions) && this.suggestions.length) {
-        return true
-      }
-      return false
-    },
     hasRecommendations () {
       if (Array.isArray(this.recommendations) && this.recommendations.length) {
         return true
