@@ -1,7 +1,14 @@
 <template>
   <div class="w-full">
     <div class="relative">
-      <InputSearch id="searchBar" v-model.trim="inputValue" :clear="false" @submit="getData" />
+      <InputSearch
+        id="searchBar"
+        v-model.trim="inputValue"
+        :clear="false"
+        @submit="getData"
+        @focus="setFocus(true)"
+        @blur="setFocus(false)"
+      />
       <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
         <Options
           class="w-full"
@@ -21,7 +28,8 @@ export default {
   data () {
     return {
       inputValue: this.$route.query.q || '',
-      suggestions: []
+      suggestions: [],
+      isFocused: false
     }
   },
   computed: {
@@ -82,22 +90,14 @@ export default {
     suggestionClicked ({ value }) {
       /**
        * Change the route query params on suggestion click
-       *
-       * FIXME: Close the suggestion dropdown box when
-       * user click the suggestion list
        */
       this.$router.push({
         path: this.$route.path,
         query: { ...this.$route.query, q: value }
       })
-      this.suggestions = []
     },
-    /**
-     *  Check whether search input is currently focused
-     */
-    isFocused () {
-      const searchInput = document.querySelector('#searchBar').getElementsByTagName('input')
-      return document.activeElement === searchInput
+    setFocus (bool) {
+      this.isFocused = bool
     }
   }
 }
