@@ -1,7 +1,14 @@
 <template>
   <div class="w-full">
     <div class="relative">
-      <InputSearch v-model.trim="inputValue" :clear="false" @submit="getData" />
+      <InputSearch
+        id="searchBar"
+        v-model.trim="inputValue"
+        :clear="false"
+        @submit="getData"
+        @focus="setFocus(true)"
+        @blur="setFocus(false)"
+      />
       <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
         <Options
           class="w-full"
@@ -21,7 +28,8 @@ export default {
   data () {
     return {
       inputValue: this.$route.query.q || '',
-      suggestions: []
+      suggestions: [],
+      isFocused: false
     }
   },
   computed: {
@@ -40,7 +48,7 @@ export default {
   },
   watch: {
     inputValue () {
-      if (this.hasValue) {
+      if (this.hasValue && this.isFocused) {
         this.getSuggestions()
       } else {
         this.suggestions = []
@@ -58,17 +66,42 @@ export default {
   methods: {
     getSuggestions: debounce(async function () {
       if (this.hasValue) {
-        const response = await this.$axios.$get(`/v1/search?q=${this.inputValue}&per_page=5`)
-        this.suggestions = response.data.map(item => ({ label: item.title, value: item.title }))
+        try {
+          const response = await this.$axios.$get(`/v1/search?q=${this.inputValue}&per_page=5`)
+          if (response) {
+            this.suggestions = response.data.map(item => ({ label: item.title, value: item.title }))
+          }
+        } catch (error) {
+          // silent error
+        }
       } else {
         this.suggestions = []
       }
     }, 500),
     getData (data) {
-      // TODO: Add action to get data
+      /**
+       * Change the route query params on button click or form submit
+       */
+      this.$router.push({
+        path: this.$route.path,
+        query: { ...this.$route.query, q: data }
+      })
+
+      this.suggestions = []
     },
     suggestionClicked ({ value }) {
-      // TODO: Add action to get data
+      /**
+       * Change the route query params on suggestion click
+       */
+      this.$router.push({
+        path: this.$route.path,
+        query: { ...this.$route.query, q: value }
+      })
+
+      this.suggestions = []
+    },
+    setFocus (bool) {
+      this.isFocused = bool
     }
   }
 }

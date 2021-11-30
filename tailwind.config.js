@@ -23,7 +23,8 @@ module.exports = {
         'news-container': '60% auto',
         'news-large': '200px auto',
         'news-small': '72px auto',
-        'search-container': '300px auto'
+        'search-container': '300px auto',
+        'search-item': '120px auto'
       },
       colors: {
         green: {

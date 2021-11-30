@@ -3,7 +3,7 @@
     <!-- Results Counter -->
     <div class="flex w-max items-center">
       <p class="font-roboto text-base leading-5 text-blue-gray-300">
-        Menampilkan <strong class="text-blue-gray-600">24 hasil pencarian</strong>
+        Menampilkan <strong class="text-blue-gray-600">{{ totalCount }} hasil pencarian</strong>
       </p>
     </div>
     <div class="flex w-max gap-4">
@@ -63,6 +63,11 @@ export default {
       validator (value) {
         return ['list', 'grid'].includes(value)
       }
+    },
+    totalCount: {
+      type: [String, Number],
+      required: false,
+      default: 0
     }
   },
   data () {

@@ -26,6 +26,8 @@
         class="placeholder-gray-600 border-none flex-grow focus:outline-none"
         :placeholder="placeholder"
         @input="setInputValue"
+        @focus="$emit('focus')"
+        @blur="$emit('blur')"
       >
       <button v-show="hasValue" type="button" class="text-gray-500" @click="clearInputValue">
         <Icon name="times-circle" size="16px" />

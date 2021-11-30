@@ -6,9 +6,11 @@
         <section>
           <SearchSidebar />
         </section>
-        <section class="w-full h-full flex flex-col gap-8">
-          <SearchToolbar :list-view.sync="listView" />
-          <SearchList :list-view="listView" :loading="loading" />
+        <section
+          class="w-full h-full min-h-screen flex flex-col gap-8"
+        >
+          <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" />
+          <SearchList :list-view="listView" :loading="loading" :items="searchData" />
           <Pagination
             v-bind="pagination"
             @previous-page="onPaginationChange('prev-page', $event)"
@@ -33,12 +35,92 @@ export default {
         itemsPerPage: 5,
         totalRows: 0,
         itemsPerPageOptions: [5, 10, 15]
-      }
+      },
+      searchKeyword: null,
+      searchData: [],
+      searchMeta: {}
+    }
+  },
+  watch: {
+    // watch `q` query param changes on the address bar
+    '$route.query.q': {
+      handler () {
+        if (this.$route.query.q) {
+          this.searchKeyword = this.$route.query.q
+          this.fetchSearchResults()
+        }
+      },
+      immediate: true
     }
   },
   methods: {
-    onPaginationChange (action) {
-      // TODO: Add action on pagination change
+    onPaginationChange (action, value) {
+      const paginationObj = { ...this.pagination }
+
+      switch (action) {
+        case 'prev-page':
+          paginationObj.currentPage = this.pagination.currentPage - 1
+          break
+        case 'next-page':
+          paginationObj.currentPage = this.pagination.currentPage + 1
+          break
+        case 'page-change':
+          paginationObj.currentPage = value
+          break
+        case 'per-page-change':
+          paginationObj.itemsPerPage = value
+          break
+        default:
+          break
+      }
+
+      this.pagination = JSON.parse(JSON.stringify(paginationObj))
+
+      /**
+       *  NOTE:
+       *  `jds-pagination` emits `page-change` and `per-page-change` events
+       *  whenever user changes per page value.
+       *
+       *  To avoid double fetch, we immediately stop this function on
+       *  `per-page-change` event and let `page-change` event to
+       *  fetch data from API
+       */
+      if (action === 'per-page-change') {
+        return
+      }
+
+      this.fetchSearchResults()
+    },
+    async fetchSearchResults () {
+      // TODO: Add search filter by category and sort by
+      const params = {
+        q: this.searchKeyword,
+        per_page: this.pagination.itemsPerPage,
+        page: this.pagination.currentPage,
+        sort_order: 'desc'
+      }
+
+      try {
+        this.loading = true
+        const response = await this.$axios.get('/v1/search', { params })
+        const { data, meta } = response.data
+        this.searchData = data
+        this.searchMeta = meta
+
+        const paginationObj = {
+          currentPage: this.searchMeta.current_page,
+          itemsPerPage: this.searchMeta.per_page,
+          totalRows: this.searchMeta.total_count
+        }
+
+        this.pagination = JSON.parse(JSON.stringify(paginationObj))
+      } catch (error) {
+        // silent error
+        this.searchData = []
+        this.searchMeta = {}
+      } finally {
+        this.loading = false
+      }
     }
   }
 }
