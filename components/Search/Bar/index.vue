@@ -5,6 +5,7 @@
         id="searchBar"
         v-model.trim="inputValue"
         :clear="false"
+        placeholder="Masukkan kata kunci pencarian"
         @submit="getData"
         @focus="setFocus(true)"
         @blur="setFocus(false)"

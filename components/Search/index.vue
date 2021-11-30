@@ -6,25 +6,37 @@
         <section>
           <SearchSidebar />
         </section>
-        <section
-          class="w-full h-full min-h-screen flex flex-col gap-8"
-        >
-          <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" />
-          <SearchList :list-view="listView" :loading="loading" :items="searchData" />
-          <Pagination
-            v-bind="pagination"
-            @previous-page="onPaginationChange('prev-page', $event)"
-            @next-page="onPaginationChange('next-page', $event)"
-            @page-change="onPaginationChange('page-change', $event)"
-            @per-page-change="onPaginationChange('per-page-change', $event)"
-          />
-        </section>
+        <!-- Initial State will be displayed when user
+        visits `/pencarian` page without query parameter  -->
+        <template v-if="!loading && isInitialState">
+          <!-- TODO: Add search recommendations -->
+          <SearchInitialState />
+        </template>
+        <template v-else-if="!loading && !hasSearchResults">
+          <!-- TODO: Add search recommendations -->
+          <SearchEmptyState :keyword="searchKeyword" />
+        </template>
+        <template v-else>
+          <section class="w-full h-full min-h-screen flex flex-col gap-8">
+            <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" />
+            <SearchList :list-view="listView" :loading="loading" :items="searchData" />
+            <Pagination
+              v-bind="pagination"
+              @previous-page="onPaginationChange('prev-page', $event)"
+              @next-page="onPaginationChange('next-page', $event)"
+              @page-change="onPaginationChange('page-change', $event)"
+              @per-page-change="onPaginationChange('per-page-change', $event)"
+            />
+          </section>
+        </template>
       </div>
     </div>
   </BaseContainer>
 </template>
 
 <script>
+import isEmpty from 'lodash/isEmpty'
+
 export default {
   data () {
     return {
@@ -34,11 +46,25 @@ export default {
         currentPage: 1,
         itemsPerPage: 5,
         totalRows: 0,
-        itemsPerPageOptions: [5, 10, 15]
+        itemPerPageOptions: [5, 10, 15]
       },
       searchKeyword: null,
       searchData: [],
       searchMeta: {}
+    }
+  },
+  computed: {
+    hasSearchResults () {
+      if ('total_count' in this.searchMeta && this.searchMeta.total_count !== 0) {
+        return true
+      }
+      return false
+    },
+    isInitialState () {
+      if (isEmpty(this.searchMeta)) {
+        return true
+      }
+      return false
     }
   },
   watch: {
