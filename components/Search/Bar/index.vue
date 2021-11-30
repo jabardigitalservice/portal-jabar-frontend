@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="relative">
-      <InputSearch v-model.trim="inputValue" :clear="false" @submit="getData" />
+      <InputSearch id="searchBar" v-model.trim="inputValue" :clear="false" @submit="getData" />
       <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
         <Options
           class="w-full"
@@ -40,7 +40,7 @@ export default {
   },
   watch: {
     inputValue () {
-      if (this.hasValue) {
+      if (this.hasValue && this.isFocused) {
         this.getSuggestions()
       } else {
         this.suggestions = []
@@ -91,6 +91,13 @@ export default {
         query: { ...this.$route.query, q: value }
       })
       this.suggestions = []
+    },
+    /**
+     *  Check whether search input is currently focused
+     */
+    isFocused () {
+      const searchInput = document.querySelector('#searchBar').getElementsByTagName('input')
+      return document.activeElement === searchInput
     }
   }
 }
