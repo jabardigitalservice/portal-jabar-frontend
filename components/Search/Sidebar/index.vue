@@ -95,7 +95,7 @@ export default {
       this.$emit('checked', checked)
     },
     getDomainCount (category) {
-      return this.meta.aggregations?.domain[category]
+      return this.meta.aggregations?.domain[category] || 0
     }
   }
 }

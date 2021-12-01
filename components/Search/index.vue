@@ -52,7 +52,7 @@ export default {
       searchKeyword: null,
       searchData: [],
       searchMeta: {},
-      totalCount: null,
+      totalCount: 0,
       domain: Object.keys(searchDomains)
     }
   },
