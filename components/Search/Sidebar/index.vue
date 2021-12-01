@@ -10,7 +10,7 @@
         :indeterminate="isIndeterminate"
       />
       <p class="text-sm text-gray-500">
-        20
+        {{ totalCount }}
       </p>
     </div>
     <div class="pl-7 flex flex-col gap-6">
@@ -23,7 +23,7 @@
             @change="setSelectedCategory(category.value)"
           />
           <p class="text-sm text-gray-500">
-            4
+            {{ getDomainCount(category.value) }}
           </p>
         </div>
       </template>
@@ -32,38 +32,33 @@
 </template>
 
 <script>
+import { searchDomains } from '~/static/data'
+
 export default {
-  data () {
-    return {
-      categories: [
-        {
-          label: 'Layanan Publik',
-          value: 'public-service'
-        },
-        {
-          label: 'Berita',
-          value: 'news'
-        },
-        {
-          label: 'Informasi',
-          value: 'information'
-        },
-        {
-          label: 'Pengumuman',
-          value: 'announcement'
-        },
-        {
-          label: 'Tentang Jawa Barat',
-          value: 'about'
-        }
-      ],
-      checked: []
+  props: {
+    domain: {
+      type: Array,
+      required: true
+    },
+    meta: {
+      type: Object,
+      required: true
+    },
+    totalCount: {
+      type: Number,
+      required: true
     }
   },
   computed: {
+    categories () {
+      return Object.keys(searchDomains).map(key => ({
+        label: searchDomains[key],
+        value: key
+      }))
+    },
     checkAll: {
       get () {
-        return this.categories.length === this.checked.length
+        return this.categories.length === this.domain.length
       },
       set (value) {
         const checked = []
@@ -72,27 +67,35 @@ export default {
             checked.push(category.value)
           })
         }
-        this.checked = checked
+
+        this.$emit('checked', checked)
       }
     },
     isIndeterminate () {
-      const hasItems = !!this.checked.length
-      const isAllItemsChecked = this.checked.length === this.categories.length
+      const hasItems = !!this.domain.length
+      const isAllItemsChecked = this.domain.length === this.categories.length
 
       return hasItems && !isAllItemsChecked
     }
   },
   methods: {
     isSelected (value) {
-      return this.checked.includes(value)
+      return this.domain.includes(value)
     },
     setSelectedCategory (value) {
-      const exist = this.checked.includes(value)
+      const exist = this.domain.includes(value)
+      let checked
+
       if (exist) {
-        this.checked = this.checked.filter(item => item !== value)
+        checked = this.domain.filter(item => item !== value)
       } else {
-        this.checked.push(value)
+        checked = [...this.domain, value]
       }
+
+      this.$emit('checked', checked)
+    },
+    getDomainCount (category) {
+      return this.meta.aggregations?.domain[category] || 0
     }
   }
 }
