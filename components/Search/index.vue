@@ -44,9 +44,9 @@ export default {
       loading: false,
       pagination: {
         currentPage: 1,
-        itemsPerPage: 5,
+        itemsPerPage: 6,
         totalRows: 0,
-        itemPerPageOptions: [5, 10, 15]
+        itemsPerPageOptions: [6, 9, 15]
       },
       searchKeyword: null,
       searchData: [],
@@ -134,6 +134,7 @@ export default {
         this.searchMeta = meta
 
         const paginationObj = {
+          ...this.pagination,
           currentPage: this.searchMeta.current_page,
           itemsPerPage: this.searchMeta.per_page,
           totalRows: this.searchMeta.total_count
