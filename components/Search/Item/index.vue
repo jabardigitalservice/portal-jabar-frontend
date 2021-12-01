@@ -5,7 +5,7 @@
     transition-all duration-150 ease-out hover:border-[#E9EDF4] hover:shadow-md"
     :class="view === 'list' ? 'grid-cols-search-item gap-6 items-center' : 'grid-cols-1'"
   >
-    <Link :link="link">
+    <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
       <img
         :src="image"
         :alt="title"
@@ -14,7 +14,7 @@
         class="self-start object-cover object-center rounded-lg "
         :class=" view === 'list' ? 'w-[120px] h-[120px]' : 'w-full h-[120px] mb-6'"
       >
-    </Link>
+    </a>
     <div class="w-full flex flex-col">
       <span
         class="bg-gray-100 px-2 py-1 rounded-[4px] mb-2 w-max font-lato text-xs leading-5 text-[#8D8D8D]
@@ -22,14 +22,14 @@
       >
         {{ domain.label }}
       </span>
-      <Link :link="link">
+      <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
         <h1
           class="font-lato font-medium text-lg leading-7 text-blue-gray-800 mb-[6px] group-hover:text-green-700"
           :class="view === 'list' ? ' line-clamp-1' : 'line-clamp-2'"
         >
           {{ title }}
         </h1>
-      </Link>
+      </a>
       <template v-if="domain.type === 'news'">
         <p class="font-normal text-xs leading-5 text-gray-700">
           <span class="group-hover:text-blue-gray-800 capitalize">{{ category }}</span> | {{ date }}
@@ -89,7 +89,17 @@ export default {
       return this.item?.created_at ? this.formatDate(new Date(this.item.created_at)) : '-'
     },
     link () {
-      return `/${this.item?.slug}` || '#'
+      const domain = this.item?.domain || null
+      const slug = this.item?.slug || '#'
+      const url = this.item?.url || '#'
+
+      // TODO: Define what links to use on other types of domains
+      switch (domain) {
+        case 'news':
+          return `/berita/${slug}`
+        default:
+          return url
+      }
     }
   },
   methods: {
