@@ -4,7 +4,7 @@
       <SearchBar class="mb-6" />
       <div class="w-full h-full grid grid-cols-search-container gap-6">
         <section>
-          <SearchSidebar />
+          <SearchSidebar :domain="domain" :meta="searchMeta" :total-count="totalCount" @checked="setSelectedDomain" />
         </section>
         <!-- Initial State will be displayed when user
         visits `/pencarian` page without query parameter  -->
@@ -36,6 +36,7 @@
 
 <script>
 import isEmpty from 'lodash/isEmpty'
+import { searchDomains } from '~/static/data'
 
 export default {
   data () {
@@ -50,7 +51,9 @@ export default {
       },
       searchKeyword: null,
       searchData: [],
-      searchMeta: {}
+      searchMeta: {},
+      totalCount: null,
+      domain: Object.keys(searchDomains)
     }
   },
   computed: {
@@ -123,6 +126,7 @@ export default {
         q: this.searchKeyword,
         per_page: this.pagination.itemsPerPage,
         page: this.pagination.currentPage,
+        domain: this.domain,
         sort_order: 'desc'
       }
 
@@ -132,6 +136,9 @@ export default {
         const { data, meta } = response.data
         this.searchData = data
         this.searchMeta = meta
+        this.totalCount = Object.keys(meta.aggregations.domain).reduce((previous, key) => {
+          return previous + meta.aggregations.domain[key]
+        }, 0)
 
         const paginationObj = {
           currentPage: this.searchMeta.current_page,
@@ -147,6 +154,11 @@ export default {
       } finally {
         this.loading = false
       }
+    },
+    setSelectedDomain (data) {
+      this.domain = data
+      if (!this.domain.length) { return }
+      this.fetchSearchResults()
     }
   }
 }
