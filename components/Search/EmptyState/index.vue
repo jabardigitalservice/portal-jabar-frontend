@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full min-h-screen h-full flex flex-col items-center justify-center gap-8">
+  <section class="w-full h-full flex flex-col items-center justify-center gap-8 py-8">
     <h1 class="text-center font-lora text-[21px] leading-[34px] text-blue-gray-700 font-bold">
       Mohon maaf, pencarian dengan kata kunci <br>
       <span class="text-green-800">{{ keyword }}</span>
