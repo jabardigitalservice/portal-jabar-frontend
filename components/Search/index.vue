@@ -173,6 +173,13 @@ export default {
 
       if (newSortOrder && newSortOrder !== oldSortOrder) {
         this.sortOrder = newSortOrder
+
+        // set pagination back to first page
+        this.pagination = {
+          ...this.pagination,
+          currentPage: 1
+        }
+
         this.fetchSearchResults()
       }
     }
