@@ -60,14 +60,10 @@ export default {
       return this.isMonthView ? '' : `${this.firstDayOfWeek} - ${this.lastDayOfWeek}`
     },
     month () {
-      const lastDayOfWeek = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1])
-
-      return format(lastDayOfWeek, { month: 'long' })
+      return format(this.initialDate, { month: 'long' })
     },
     year () {
-      const lastDayOfWeek = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1])
-
-      return format(lastDayOfWeek, { year: 'numeric' })
+      return format(this.initialDate, { year: 'numeric' })
     },
     isMonthView () {
       return this.agendaView === 'month'
@@ -77,6 +73,18 @@ export default {
     },
     lastDayOfWeek () {
       return new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1]).getDate()
+    },
+    initialDate () {
+      let date = this.selectedDate
+
+      if (!this.isMonthView) {
+        /**
+         *  If not a month view, the initial date is the end of the week
+         */
+        date = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1])
+      }
+
+      return date
     }
   },
   watch: {
