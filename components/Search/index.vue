@@ -19,7 +19,12 @@
         <template v-else>
           <section class="w-full h-full min-h-screen flex flex-col gap-8">
             <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" />
-            <SearchList :list-view="listView" :loading="loading" :items="searchData" />
+            <SearchList
+              :list-view="listView"
+              :loading="loading"
+              :items="searchData"
+              :max-length="pagination.itemsPerPage"
+            />
             <Pagination
               v-bind="pagination"
               @previous-page="onPaginationChange('prev-page', $event)"
