@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full h-full min-h-screen flex flex-col items-center justify-center gap-8">
+  <section class="w-full h-full flex flex-col items-center justify-center gap-8 py-8">
     <!-- Illustration -->
     <img
       src="/images/search/initial-state.svg"

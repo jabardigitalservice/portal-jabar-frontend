@@ -10,7 +10,7 @@
       <!-- List and Grid View -->
       <div class="flex gap-4 items-center ">
         <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500">
-          Tipe tampilan :
+          Tipe Tampilan :
         </p>
         <button
           class="w-6 h-6 flex items-center justify-center"
@@ -42,7 +42,7 @@
       <!-- Sort Dropdown -->
       <div class="flex gap-4 items-center h-full overflow-hidden">
         <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500">
-          Urutkan Berdasarkan :
+          Urut Berdasarkan :
         </p>
         <Select
           class="gap-0"
