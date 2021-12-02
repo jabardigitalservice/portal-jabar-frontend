@@ -47,7 +47,8 @@
         <Select
           class="gap-0"
           :options="sortOptions"
-          value="1"
+          value="desc"
+          @click="onChangeSort"
         />
       </div>
     </div>
@@ -74,14 +75,19 @@ export default {
     return {
       sortOptions: [
         {
-          value: '1',
+          value: 'desc',
           label: 'Terbaru'
         },
         {
-          value: '2',
-          label: 'Terpopuler'
+          value: 'asc',
+          label: 'Terlama'
         }
       ]
+    }
+  },
+  methods: {
+    onChangeSort (value) {
+      this.$emit('change:sort', value)
     }
   }
 }

@@ -18,7 +18,7 @@
         </template>
         <template v-else>
           <section class="w-full h-full min-h-screen flex flex-col gap-8">
-            <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" />
+            <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" @change:sort="setSortOrder" />
             <SearchList
               :list-view="listView"
               :loading="loading"
@@ -58,7 +58,8 @@ export default {
       searchData: [],
       searchMeta: {},
       totalCount: 0,
-      domain: Object.keys(searchDomains)
+      domain: Object.keys(searchDomains),
+      sortOrder: 'desc'
     }
   },
   computed: {
@@ -132,7 +133,7 @@ export default {
         per_page: this.pagination.itemsPerPage,
         page: this.pagination.currentPage,
         domain: this.domain,
-        sort_order: 'desc'
+        sort_order: this.sortOrder
       }
 
       try {
@@ -165,6 +166,15 @@ export default {
       this.domain = data
       if (!this.domain.length) { return }
       this.fetchSearchResults()
+    },
+    setSortOrder (value) {
+      const oldSortOrder = this.sortOrder
+      const newSortOrder = value
+
+      if (newSortOrder && newSortOrder !== oldSortOrder) {
+        this.sortOrder = newSortOrder
+        this.fetchSearchResults()
+      }
     }
   }
 }
