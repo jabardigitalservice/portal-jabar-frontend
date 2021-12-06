@@ -4,17 +4,29 @@
       <slot name="header" />
     </div>
     <div
-      ref="news-list-body"
-      class="flex-auto w-full flex flex-col"
-      :class="small ? 'gap-5' : 'gap-6'"
+      :class="{
+        'w-full min-h-[138px]' : true,
+        'min-h-[88px]' : small
+      }"
+      :style="maxHeight ? {
+        maxHeight: maxHeight + 'px',
+        paddingRight: '16px',
+        overflowY: 'auto'
+      } : null"
     >
-      <NewsItem
-        v-for="item in items.slice(0, maxItem)"
-        :key="item.id"
-        :item="item"
-        :small="small"
-        :loading="loading"
-      />
+      <div
+        ref="news-list-body"
+        class="flex-auto w-full flex flex-col"
+        :class="small ? 'gap-5' : 'gap-6'"
+      >
+        <NewsItem
+          v-for="item in items.slice(0, maxItem)"
+          :key="item.id"
+          :item="item"
+          :small="small"
+          :loading="loading"
+        />
+      </div>
     </div>
     <div ref="news-list-footer" class="w-full">
       <slot name="footer" />
@@ -43,6 +55,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    maxHeight: {
+      type: [String, Number],
+      required: false,
+      default: null
     }
   }
 }

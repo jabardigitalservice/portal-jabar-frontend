@@ -11,8 +11,8 @@
           </div>
           <!-- Related News and Share Buttons -->
           <section class="w-[400px] h-full">
-            <div class="flex flex-col gap-7">
-              <NewsList :items="relatedNews" small :loading="loading">
+            <div class="flex flex-col gap-7 md:sticky md:top-[88px]">
+              <NewsList :items="relatedNews" small :loading="loading" :max-height="maxHeight">
                 <template #header>
                   <NewsListHeader label="Berita Terkait" class="mb-2" />
                 </template>
@@ -48,7 +48,8 @@ export default {
   data () {
     return {
       news: {},
-      relatedNews: []
+      relatedNews: [],
+      maxHeight: null
     }
   },
   async fetch () {
@@ -157,6 +158,14 @@ export default {
         description: this.news?.excerpt || ''
       }
     }
+  },
+  mounted () {
+    const viewportHeight = document.documentElement.clientHeight
+    /**
+     *  `300px` is the estimated total height of the navbar,
+     *  social media share buttons, and the gap between components
+     */
+    this.maxHeight = Math.floor(viewportHeight - 300)
   },
   methods: {
     async fetchRelatedNews () {
