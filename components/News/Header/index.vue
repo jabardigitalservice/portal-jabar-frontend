@@ -43,11 +43,11 @@
                   </div>
                 </div>
                 <div class="flex justify-between items-center">
-                  <Link :link="`/berita/${item.slug}`">
+                  <a :href="`/berita/${item.slug}`">
                     <button type="button" class="border border-white border-opacity-30 px-4 py-2 rounded-lg">
                       Baca Selengkapnya
                     </button>
-                  </Link>
+                  </a>
                   <div class="flex items-center gap-4">
                     <div class="cursor-pointer" @click="prev">
                       <Icon name="chevron-left" size="10px" />
@@ -66,7 +66,14 @@
                   Berita Terkait
                 </p>
                 <div class="flex flex-col gap-2">
-                  <Link v-for="news of item.related_news.slice(0, 4)" :key="news.id" :link="`/berita/${news.slug}`" class="group">
+                  <a
+                    v-for="news of item.related_news.slice(0, 4)"
+                    :key="news.id"
+                    :href="`/berita/${news.slug}`"
+                    :aria-label="news.title"
+                    :title="news.title"
+                    class="group"
+                  >
                     <div class="flex gap-4 p-2 bg-white bg-opacity-0 group-hover:bg-opacity-5 rounded-xl">
                       <div class="flex-shrink-0 overflow-hidden rounded-xl" style="width: 92px; height: 92px;">
                         <img
@@ -92,7 +99,7 @@
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </BaseContainer>

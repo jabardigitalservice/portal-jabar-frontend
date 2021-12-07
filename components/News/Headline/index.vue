@@ -22,7 +22,7 @@
       </div>
     </template>
     <template v-else>
-      <nuxt-link :to="`/berita/${item.slug}`" :aria-label="item.title">
+      <a :href="`/berita/${item.slug}`" :aria-label="item.title" :title="item.title">
         <div
           ref="news-headline-image"
           class="cursor-pointer w-full h-full bg-cover bg-no-repeat bg-center transition-transform
@@ -30,7 +30,7 @@
           :class="loading ?'bg-gray-200 animate-pulse' : ''"
           :style="`background-image: url('${item.image}')`"
         />
-      </nuxt-link>
+      </a>
       <div
         ref="news-headline-meta"
         class="absolute bottom-0 w-full bg-black bg-opacity-50 transition duration-500 ease-in-out
@@ -62,14 +62,14 @@
             </div>
           </div>
           <div class="flex justify-between items-center">
-            <nuxt-link
+            <a
               ref="news-headline-button"
               class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg"
-              :to="`/berita/${item.slug}`"
+              :href="`/berita/${item.slug}`"
               :aria-label="item.title"
             >
               Baca Selengkapnya
-            </nuxt-link>
+            </a>
           </div>
         </div>
       </div>

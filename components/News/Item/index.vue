@@ -12,7 +12,7 @@
       :class="loading ? 'bg-gray-200 animate-pulse' : ''"
       :style="imageSize"
     >
-      <Link :link="`/berita/${item.slug}`">
+      <a :href="`/berita/${item.slug}`" :aria-label="item.title" :title="item.title">
         <img
           v-show="!loading"
           ref="news-item-image"
@@ -22,7 +22,7 @@
           group-hover:transform group-hover:scale-125"
           :style="imageSize"
         >
-      </Link>
+      </a>
     </div>
     <div class="w-full flex flex-col items-start justify-center">
       <!-- skeleton -->
@@ -31,7 +31,7 @@
         <div class="w-1/2 h-4 bg-gray-200 animate-pulse rounded-md mb-2" />
       </div>
       <template v-else>
-        <Link :link="`/berita/${item.slug}`">
+        <a :href="`/berita/${item.slug}`" :aria-label="item.title" :title="item.title">
           <h2
             ref="news-item-title"
             class="cursor-pointer font-lato font-medium text-blue-gray-800 mb-2
@@ -40,7 +40,7 @@
           >
             {{ item.title }}
           </h2>
-        </Link>
+        </a>
         <p ref="news-item-meta" class="font-normal text-xs leading-5 text-gray-700">
           <span class="group-hover:text-blue-gray-800 capitalize">{{ item.category }}</span> | {{ formatDate(item.date) }}
         </p>
