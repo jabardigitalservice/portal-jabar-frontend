@@ -54,8 +54,8 @@ export default {
     },
     getSuggestions: debounce(async function () {
       if (this.hasValue) {
-        const response = await this.$axios.$get(`/v1/search?q=${this.inputValue}&per_page=5`)
-        this.suggestions = response.data.map(item => ({ label: item.title, value: item.title }))
+        const response = await this.$axios.$get(`/v1/search/suggest?q=${this.inputValue}&per_page=5`)
+        this.suggestions = response.map(item => ({ label: item.value, value: item.value }))
       } else {
         this.suggestions = []
       }
