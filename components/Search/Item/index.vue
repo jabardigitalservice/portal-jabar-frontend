@@ -6,14 +6,18 @@
     :class="view === 'list' ? 'grid-cols-search-item gap-6 items-center' : 'grid-cols-1'"
   >
     <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
-      <img
-        :src="image"
-        :alt="title"
-        width="120px"
-        height="120px"
-        class="self-start object-cover object-center rounded-lg "
+      <div
+        class="self-start rounded-lg overflow-hidden"
         :class=" view === 'list' ? 'w-[120px] h-[120px]' : 'w-full h-[120px] mb-6'"
       >
+        <img
+          :src="image"
+          :alt="title"
+          width="120px"
+          height="120px"
+          class="w-full h-full object-cover object-center group-hover:scale-110 transition-all ease-in duration-150"
+        >
+      </div>
     </a>
     <div class="w-full flex flex-col">
       <span
