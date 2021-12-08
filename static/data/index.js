@@ -354,7 +354,7 @@ export const publicServiceMenu = [
   {
     id: 4,
     title: 'Pariwisata dan Ekonomi Kreatif',
-    link: 'http://www.disparbud.jabarprov.go.id/applications/frontend/index.php'
+    link: 'http://disparbud.jabarprov.go.id/applications/frontend/index.php'
   },
   {
     id: 5,
