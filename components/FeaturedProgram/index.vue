@@ -30,12 +30,13 @@
 
           <!-- Featured Program Card -->
           <section class="grid grid-cols-3 gap-8">
-            <BaseCard
+            <FeaturedProgramItem
               v-for="item in programList"
               :key="item.id"
               :title="item.title"
               :description="item.excerpt || '-'"
               :icon="item.logo || '/icons/program-unggulan/logo-placeholder.svg'"
+              :categories="item.categories"
               @click="showDetail(item)"
             />
             <FeaturedProgramEmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
