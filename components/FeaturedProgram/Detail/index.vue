@@ -21,9 +21,11 @@
         <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
           Deskripsi Program
         </h2>
-        <p class="text-gray-800 font-normal text-sm leading-relaxed">
-          {{ programDetail.description || '-' }}
-        </p>
+        <div class="w-full max-h-[116px] overflow-y-auto overscroll-y-contain pr-4">
+          <p class="text-gray-800 font-normal text-sm leading-relaxed mb-4">
+            {{ programDetail.description || '-' }}
+          </p>
+        </div>
       </div>
     </section>
 
@@ -46,18 +48,15 @@
           Kategori
         </h2>
         <template v-if="hasCategory">
-          <p
-            v-for="(category, index) in programDetail.categories"
-            :key="index"
-            class="text-gray-800 font-normal capitalize text-sm leading-relaxed"
-          >
-            {{ category }}
-          </p>
-        </template>
-        <template v-else>
-          <p class="text-gray-800 font-normal text-sm leading-relaxed">
-            -
-          </p>
+          <ul class="w-full flex flex-wrap gap-2 gap-y-1">
+            <li
+              v-for="category in programDetail.categories"
+              :key="category"
+              class="break-words min-w-0 capitalize font-lato text-xs text-gray-700 bg-gray-100 px-2 py-1 rounded-sm leading-5"
+            >
+              {{ category }}
+            </li>
+          </ul>
         </template>
       </div>
     </section>
