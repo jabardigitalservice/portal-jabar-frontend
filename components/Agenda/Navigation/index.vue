@@ -57,19 +57,34 @@ export default {
       return this.calendarApi ? this.calendarApi.getDate() : new Date()
     },
     day () {
-      const firstDayOfWeek = new Date(this.eachDayOfWeek[0]).getDate()
-      const lastDayOfWeek = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1]).getDate()
-
-      return this.isMonthView ? '' : `${firstDayOfWeek} - ${lastDayOfWeek}`
+      return this.isMonthView ? '' : `${this.firstDayOfWeek} - ${this.lastDayOfWeek}`
     },
     month () {
-      return format(this.date, { month: 'long' })
+      return format(this.initialDate, { month: 'long' })
     },
     year () {
-      return format(this.date, { year: 'numeric' })
+      return format(this.initialDate, { year: 'numeric' })
     },
     isMonthView () {
       return this.agendaView === 'month'
+    },
+    firstDayOfWeek () {
+      return new Date(this.eachDayOfWeek[0]).getDate()
+    },
+    lastDayOfWeek () {
+      return new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1]).getDate()
+    },
+    initialDate () {
+      let date = this.selectedDate
+
+      if (!this.isMonthView) {
+        /**
+         *  If not a month view, the initial date is the end of the week
+         */
+        date = new Date(this.eachDayOfWeek[this.eachDayOfWeek.length - 1])
+      }
+
+      return date
     }
   },
   watch: {
@@ -82,11 +97,13 @@ export default {
       const next = this.isMonthView ? 'nextMonth' : 'nextWeek'
 
       this.changeSelectedDate(next)
+      this.$emit('change:navigate', this.firstDayOfWeek)
     },
     prev () {
       const prev = this.isMonthView ? 'prevMonth' : 'prevWeek'
 
       this.changeSelectedDate(prev)
+      this.$emit('change:navigate', this.lastDayOfWeek)
     },
     /**
      * change `selectedDate` based on action

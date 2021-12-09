@@ -11,6 +11,8 @@
         v-if="icon"
         :src="icon"
         :alt="title"
+        width="32px"
+        height="32px"
         class="w-full h-full object-center object-contain"
       >
     </figure>

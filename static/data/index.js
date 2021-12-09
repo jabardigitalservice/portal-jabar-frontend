@@ -51,7 +51,7 @@ export const navigationMenu = [
         title: 'Perizinan',
         description: 'Berikan kemudahan perizinan berbagai kebutuhan.',
         icon: '/icons/layanan-publik/perizinan.svg',
-        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline',
         items: []
       },
       {
@@ -98,7 +98,7 @@ export const navigationMenu = [
         title: 'Berita',
         description: null,
         icon: null,
-        link: 'http://humas.jabarprov.go.id/',
+        link: '/berita',
         items: []
       }
     ]
@@ -189,7 +189,7 @@ export const mostPopularServicesMenu = [
         id: 3,
         title: 'Perizinan Bangunan',
         description: 'Layanan informasi tentang syarat dan cara melakukan pembayaran Pajak Bumi dan Bangunan (PBB).',
-        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline',
         icon: '/icons/layanan-terpopuler/perizinan-bangunan.svg'
       }
     ]
@@ -203,7 +203,7 @@ export const mostPopularServicesMenu = [
         id: 4,
         title: 'Perizinan Industri Rumah Tangga (PIRT)',
         description: 'Temukan informasi dan layanan mengenai Perizinan Industri Rumah Tangga (PIRT) di sini.',
-        link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline',
+        link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline',
         icon: '/icons/layanan-terpopuler/perizinan-industri-rumah-tangga.svg'
       },
       {
@@ -349,12 +349,12 @@ export const publicServiceMenu = [
   {
     id: 3,
     title: 'Perizinan',
-    link: 'https://dpmptsp.jabarprov.go.id/sicantik/main/pendaftaranbaru/perizinanonline'
+    link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline'
   },
   {
     id: 4,
     title: 'Pariwisata dan Ekonomi Kreatif',
-    link: 'http://www.disparbud.jabarprov.go.id/applications/frontend/index.php'
+    link: 'http://disparbud.jabarprov.go.id/applications/frontend/index.php'
   },
   {
     id: 5,
@@ -394,3 +394,13 @@ export const socialMediaSites = [
     link: 'https://www.youtube.com/channel/UCiDN1p49p87vtkhMC5BhdXA'
   }
 ]
+
+export const newsCategories = ['ekonomi', 'politik', 'pemerintahan', 'infrastruktur', 'sosial', 'kesehatan', 'pendidikan', 'pariwisata', 'lainnya']
+
+export const searchDomains = {
+  news: 'Berita Jawa Barat',
+  information: 'Informasi',
+  public_service: 'Layanan Publik',
+  announcement: 'Pengumuman',
+  about: 'Tentang Jawa Barat'
+}

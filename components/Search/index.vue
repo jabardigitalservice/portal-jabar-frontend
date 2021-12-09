@@ -1,83 +1,188 @@
 <template>
-  <!--
-    TODO: Replace search input with search component from jabar design system
-  -->
-  <form
-    class="flex items-center gap-2 rounded-lg bg-white"
-    :class="small ? 'inline-flex border border-blue-gray-50' : 'w-full'"
-    :style="small ? 'padding: 12px 9px' : 'padding: 6px 8px'"
-    @submit.prevent="submitFormData"
-  >
-    <template v-if="small">
-      <Icon name="magnifier" size="16px" class="text-gray-400" />
-      <input
-        :value="value"
-        type="text"
-        class="font-lato text-gray-600 focus:outline-none leading-4"
-        :placeholder="placeholder"
-        @input="setInputValue"
-      >
-    </template>
-
-    <template v-else>
-      <Icon name="magnifier" size="16px" class="text-gray-400" />
-      <input
-        :value="value"
-        type="text"
-        class="placeholder-gray-600 border-none flex-grow focus:outline-none"
-        :placeholder="placeholder"
-        @input="setInputValue"
-      >
-      <button v-show="hasValue" type="button" class="text-gray-500" @click="clearInputValue">
-        <Icon name="times-circle" size="16px" />
-      </button>
-      <Button type="submit" class="bg-green-800 rounded-lg text-white text-sm font-bold">
-        Cari
-      </Button>
-    </template>
-  </form>
+  <BaseContainer class="relative -top-24 z-20">
+    <div class="py-8 px-10 rounded-xl bg-white min-h-screen shadow">
+      <SearchBar class="mb-6" />
+      <div class="w-full h-full grid grid-cols-search-container gap-6">
+        <section>
+          <SearchSidebar :domain="domain" :meta="searchMeta" :total-count="totalCount" @checked="setSelectedDomain" />
+        </section>
+        <!-- Initial State will be displayed when user
+        visits `/pencarian` page without query parameter  -->
+        <template v-if="!loading && isInitialState">
+          <!-- TODO: Add search recommendations -->
+          <SearchInitialState />
+        </template>
+        <template v-else-if="!loading && !hasSearchResults">
+          <!-- TODO: Add search recommendations -->
+          <SearchEmptyState :keyword="searchKeyword" />
+        </template>
+        <template v-else>
+          <section class="w-full h-full min-h-screen flex flex-col gap-8">
+            <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" @change:sort="setSortOrder" />
+            <SearchList
+              :list-view="listView"
+              :loading="loading"
+              :items="searchData"
+              :max-length="pagination.itemsPerPage"
+            />
+            <Pagination
+              v-bind="pagination"
+              @previous-page="onPaginationChange('prev-page', $event)"
+              @next-page="onPaginationChange('next-page', $event)"
+              @page-change="onPaginationChange('page-change', $event)"
+              @per-page-change="onPaginationChange('per-page-change', $event)"
+            />
+          </section>
+        </template>
+      </div>
+    </div>
+  </BaseContainer>
 </template>
 
 <script>
+import isEmpty from 'lodash/isEmpty'
+import { searchDomains } from '~/static/data'
+
 export default {
-  props: {
-    value: {
-      type: String,
-      required: true
-    },
-    small: {
-      type: Boolean,
-      default: false
-    },
-    placeholder: {
-      type: [String, Number],
-      default: 'Cari disini'
+  data () {
+    return {
+      listView: 'list',
+      loading: false,
+      pagination: {
+        currentPage: 1,
+        itemsPerPage: 6,
+        totalRows: 0,
+        itemsPerPageOptions: [6, 9, 15]
+      },
+      searchKeyword: null,
+      searchData: [],
+      searchMeta: {},
+      totalCount: 0,
+      domain: Object.keys(searchDomains),
+      sortOrder: 'desc'
     }
   },
   computed: {
-    hasValue () {
-      return this.value !== ''
+    hasSearchResults () {
+      if ('total_count' in this.searchMeta && this.searchMeta.total_count !== 0) {
+        return true
+      }
+      return false
+    },
+    isInitialState () {
+      if (isEmpty(this.searchMeta)) {
+        return true
+      }
+      return false
+    }
+  },
+  watch: {
+    // watch `q` query param changes on the address bar
+    '$route.query.q': {
+      handler () {
+        if (this.$route.query.q) {
+          this.searchKeyword = this.$route.query.q
+          this.fetchSearchResults()
+        }
+      },
+      immediate: true
     }
   },
   methods: {
-    submitFormData () {
-      if (this.hasValue) {
-        this.$emit('submit', this.value)
-        this.clearInputValue()
+    onPaginationChange (action, value) {
+      const paginationObj = { ...this.pagination }
+
+      switch (action) {
+        case 'prev-page':
+          paginationObj.currentPage = this.pagination.currentPage - 1
+          break
+        case 'next-page':
+          paginationObj.currentPage = this.pagination.currentPage + 1
+          break
+        case 'page-change':
+          paginationObj.currentPage = value
+          break
+        case 'per-page-change':
+          paginationObj.itemsPerPage = value
+          break
+        default:
+          break
+      }
+
+      this.pagination = JSON.parse(JSON.stringify(paginationObj))
+
+      /**
+       *  NOTE:
+       *  `jds-pagination` emits `page-change` and `per-page-change` events
+       *  whenever user changes per page value.
+       *
+       *  To avoid double fetch, we immediately stop this function on
+       *  `per-page-change` event and let `page-change` event to
+       *  fetch data from API
+       */
+      if (action === 'per-page-change') {
+        return
+      }
+
+      this.fetchSearchResults()
+    },
+    async fetchSearchResults () {
+      // TODO: Add search filter by category and sort by
+      const params = {
+        q: this.searchKeyword,
+        per_page: this.pagination.itemsPerPage,
+        page: this.pagination.currentPage,
+        domain: this.domain,
+        sort_order: this.sortOrder
+      }
+
+      try {
+        this.loading = true
+        const response = await this.$axios.get('/v1/search', { params })
+        const { data, meta } = response.data
+        this.searchData = data
+        this.searchMeta = meta
+        this.totalCount = Object.keys(meta.aggregations.domain).reduce((previous, key) => {
+          return previous + meta.aggregations.domain[key]
+        }, 0)
+
+        const paginationObj = {
+          ...this.pagination,
+          currentPage: this.searchMeta.current_page,
+          itemsPerPage: this.searchMeta.per_page,
+          totalRows: this.searchMeta.total_count
+        }
+
+        this.pagination = JSON.parse(JSON.stringify(paginationObj))
+      } catch (error) {
+        // silent error
+        this.searchData = []
+        this.searchMeta = {}
+      } finally {
+        this.loading = false
       }
     },
-    setInputValue (event) {
-      this.$emit('input', event.target.value)
+    setSelectedDomain (data) {
+      this.domain = data
+      if (!this.domain.length) { return }
+      this.fetchSearchResults()
     },
-    clearInputValue () {
-      this.$emit('input', '')
+    setSortOrder (value) {
+      const oldSortOrder = this.sortOrder
+      const newSortOrder = value
+
+      if (newSortOrder && newSortOrder !== oldSortOrder) {
+        this.sortOrder = newSortOrder
+
+        // set pagination back to first page
+        this.pagination = {
+          ...this.pagination,
+          currentPage: 1
+        }
+
+        this.fetchSearchResults()
+      }
     }
   }
 }
 </script>
-
-<style scoped>
-form:focus-within {
-  box-shadow: inset 0px 0px 0px 1px #069550, inset 0px 0px 0px 2px #FFC800;
-}
-</style>

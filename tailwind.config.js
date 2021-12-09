@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   purge: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
@@ -12,10 +13,18 @@ module.exports = {
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
-        lora: ['Lora', 'serif']
+        lora: ['Lora', 'serif'],
+        opensans: ['Open Sans', 'sans-serif']
       },
       boxShadow: {
         DEFAULT: '0px 6px 22px rgba(2, 43, 85, 0.08)'
+      },
+      gridTemplateColumns: {
+        'news-container': '60% auto',
+        'news-large': '200px auto',
+        'news-small': '72px auto',
+        'search-container': '300px auto',
+        'search-item': '120px auto'
       },
       colors: {
         green: {

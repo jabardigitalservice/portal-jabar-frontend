@@ -12,12 +12,19 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.min.css' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preload', as: 'image', href: '/images/banners/1.webp' },
       { rel: 'preload', as: 'image', href: '/logo.svg' },
       { rel: 'preload', as: 'image', href: '/images/hero.svg' }
     ]
+  },
+
+  render: {
+    // Setting up cache for 'static' directory - a year in milliseconds
+    // https://web.dev/uses-long-cache-ttl
+    static: {
+      maxAge: 60 * 60 * 24 * 365 * 1000
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -36,7 +43,9 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    // https://sentry.nuxtjs.org/
+    '@nuxtjs/sentry'
   ],
 
   eslint: {
@@ -47,7 +56,8 @@ export default {
     families: {
       Lato: [400, 500, 600, 700],
       Roboto: [400, 500, 600, 700],
-      Lora: [400, 500, 600, 700]
+      Lora: [400, 500, 600, 700],
+      'Open Sans': [400, 500, 600, 700]
     },
     display: 'swap'
   },
@@ -56,12 +66,35 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    'portal-vue/nuxt'
+    'portal-vue/nuxt',
+    // https://www.npmjs.com/package/vue-social-sharing
+    'vue-social-sharing/nuxt'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.API_URL
+  },
+
+  // Sentry configuration https://sentry.nuxtjs.org/sentry/options
+  sentry: {
+    dsn: process.env.SENTRY_DSN,
+    disabled: process.env.SENTRY_DISABLED || false,
+    tracing: {
+      tracesSampleRate: parseFloat(process.env.SENTRY_SAMPLE_RATE),
+      vueOptions: {
+        tracing: true,
+        tracingOptions: {
+          hooks: ['mount', 'update'],
+          timeout: 2000,
+          trackComponents: true
+        }
+      },
+      browserOptions: {}
+    },
+    config: {
+      environment: process.env.APP_ENVIRONMENT
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

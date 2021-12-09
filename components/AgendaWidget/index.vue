@@ -23,8 +23,6 @@
           <AgendaWidgetList
             :start-date="selectedDay"
             :end-date="selectedDay"
-            :per-page="5"
-            height="380px"
           />
         </div>
       </div>

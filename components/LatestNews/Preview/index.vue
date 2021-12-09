@@ -1,10 +1,7 @@
 <template>
   <div class="col-span-5 rounded-lg overflow-hidden">
-    <Carousel
-      :items="items"
-      :speed="1000"
-    >
-      <template #default="{ item, index, slider }">
+    <Carousel :items="items" hover pause-on-hover>
+      <template #content="{ item, currentIndex, prev, next }">
         <div
           class="absolute bottom-0 w-full bg-black bg-opacity-50 transition duration-500 ease-in-out group-hover:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg px-8 py-6 text-white"
           style="height: 47%"
@@ -12,7 +9,7 @@
           <div class="flex flex-col h-full">
             <div class="flex-grow">
               <p class="font-roboto text-sm uppercase leading-relaxed tracking-wider opacity-80 mb-1">
-                {{ item.category.title }}
+                {{ item.category }}
               </p>
               <h3 class="line-clamp-2 font-lora font-bold text-3xl leading-normal mb-3">
                 {{ item.title }}
@@ -23,26 +20,26 @@
                   <p>{{ formatDate(item.created_at) }}</p>
                 </div>
                 <div>|</div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 capitalize">
                   <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-                  <p>Penulis: {{ item.created_by }}</p>
+                  <p>Penulis: {{ item.author.name }}</p>
                 </div>
               </div>
             </div>
             <div class="flex justify-between items-center">
-              <Link :link="`/informasi-dan-berita/berita/${getSlug(slider)}`">
+              <Link :link="`/berita/${item.slug}`">
                 <button type="button" class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg">
                   Baca Selengkapnya
                 </button>
               </Link>
               <div class="flex items-center gap-4">
-                <div class="cursor-pointer" @click="slider.prev()">
+                <div class="cursor-pointer" @click="prev">
                   <Icon name="chevron-left" size="10px" />
                 </div>
                 <p class="text-sm text-gray-500">
-                  <span class="font-bold text-white mr-1">{{ index + 1 }}</span>dari {{ items.length }}
+                  <span class="font-bold text-white mr-1">{{ currentIndex + 1 }}</span>dari {{ items.length }}
                 </p>
-                <div class="cursor-pointer" @click="slider.next()">
+                <div class="cursor-pointer" @click="next">
                   <Icon name="chevron-right" size="10px" />
                 </div>
               </div>
@@ -50,7 +47,7 @@
           </div>
         </div>
       </template>
-    </carousel>
+    </Carousel>
   </div>
 </template>
 

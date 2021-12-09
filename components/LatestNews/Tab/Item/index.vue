@@ -1,15 +1,15 @@
 <template>
   <LatestNewsTabItemSkeleton v-if="fetchState.pending" />
   <li v-else class="hover:bg-green-50 p-3 rounded-lg group">
-    <Link :link="`/informasi-dan-berita/berita/${slug}`">
+    <Link :link="`/berita/${slug}`">
       <div class="flex flex-col gap-3 w-full">
         <p class="line-clamp-2 font-medium leading-7 group-hover:text-green-900">
           {{ title }}
         </p>
         <div class="flex justify-between items-center">
           <div class="flex gap-2 text-xs">
-            <p class="text-gray-700 group-hover:text-blue-gray-800">
-              {{ category.title }}
+            <p class="text-gray-700 group-hover:text-blue-gray-800 capitalize">
+              {{ category }}
             </p>
             <div class="text-gray-700 group-hover:text-blue-gray-800">
               |
@@ -43,7 +43,7 @@ export default {
       required: true
     },
     category: {
-      type: Object,
+      type: String,
       required: true
     },
     fetchState: {

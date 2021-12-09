@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <HeroImage />
-    <section class="flex justify-center items-center h-screen w-full absolute top-0">
+    <section class="flex justify-center items-center w-full absolute top-0 h-[700px]">
       <BaseContainer>
         <div
           class="flex flex-col items-center -mt-20 bg-no-repeat py-3"
