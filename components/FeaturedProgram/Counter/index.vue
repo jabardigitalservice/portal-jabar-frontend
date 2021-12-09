@@ -26,18 +26,19 @@
         {{ counter }} Program
       </strong>
 
-      <!-- Todo: change this label dynamically -->
       <span
         name="fp-counter-update"
         class="text-xs leading-4 italic"
       >
-        (Update per Juni 2021)
+        (Update per {{ date }})
       </span>
     </p>
   </div>
 </template>
 
 <script>
+import { format } from '~/utils/date'
+
 export default {
   props: {
     counter: {
@@ -48,11 +49,21 @@ export default {
       type: Boolean,
       required: false,
       default: true
+    },
+    lastUpdate: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    date () {
+      const options = { month: 'long', year: 'numeric' }
+
+      if (this.lastUpdate) {
+        return format(new Date(this.lastUpdate), options)
+      }
+      return format(new Date(), options)
     }
   }
 }
 </script>
-
-<style>
-
-</style>

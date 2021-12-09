@@ -24,6 +24,7 @@
             <FeaturedProgramCounter
               :counter="programLength"
               :loading="$fetchState.pending"
+              :last-update="meta.last_updated"
             />
           </section>
 
@@ -58,6 +59,7 @@ export default {
   data () {
     return {
       data: [],
+      meta: {},
       programList: [],
       searchValue: '',
       programDetail: {},
@@ -66,11 +68,14 @@ export default {
   },
   async fetch () {
     try {
-      const response = await this.$axios('v1/featured-programs')
-      this.data = response.data.data
+      const response = await this.$axios.get('v1/featured-programs')
+      const { data, meta } = response.data
+      this.data = data
+      this.meta = meta
       this.programList = this.data
     } catch (error) {
       this.programList = []
+      this.meta = {}
       // silent error
     }
   },
