@@ -8,8 +8,9 @@
     <nuxt-link
       v-for="tag in tags"
       :key="tag.tags_name"
-      to="#"
-      class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase cursor-pointer"
+      :to="`/berita/tags/${tag.tags_name}`"
+      class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase cursor-pointer
+      hover:text-green-700 hover:bg-green-50"
     >
       {{ tag.tags_name }}
     </nuxt-link>
