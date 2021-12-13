@@ -1,8 +1,7 @@
 <template>
   <div
     name="fp-counter-wrapper"
-    class="inline-block px-3 py-2 rounded-lg bg-green-700"
-    :style="{ minWidth: '295px' }"
+    class="inline-block px-3 py-2 rounded-lg bg-green-700 min-w-[295px] min-h-[64px]"
   >
     <p
       name="fp-counter-title"
@@ -13,7 +12,7 @@
     <div
       v-if="loading"
       name="fp-counter-skeleton"
-      class="w-3/4 h-5 rounded-lg animate-pulse bg-green-600 opacity-90"
+      class="w-3/4 h-5 mt-1 rounded-sm animate-pulse bg-green-600 opacity-90"
     />
     <p
       v-else
