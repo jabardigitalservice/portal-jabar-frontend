@@ -4,11 +4,8 @@
       <div class="wrapper py-8 px-10 rounded-xl bg-white">
         <div class="p-4">
           <!-- Search and Filter -->
-          <section class="flex w-full justify-end mb-8">
-            <!--
-              TODO: Add category selection here
-            -->
-
+          <section class="flex w-full justify-between mb-8">
+            <FeaturedProgramFilter @change:filter="setFilter" />
             <!--
               TODO: replace this component with JdsSearch small variant
               -->
@@ -64,12 +61,16 @@ export default {
       programList: [],
       searchValue: '',
       programDetail: {},
-      openModal: false
+      openModal: false,
+      filter: null
     }
   },
   async fetch () {
+    const params = {
+      cat: this.filter
+    }
     try {
-      const response = await this.$axios.get('v1/featured-programs')
+      const response = await this.$axios.get('v1/featured-programs', { params })
       const { data, meta } = response.data
       this.data = data
       this.meta = meta
@@ -111,6 +112,9 @@ export default {
           this.programList = this.data
         }
       }
+    },
+    filter () {
+      this.$fetch()
     }
   },
   methods: {
@@ -130,6 +134,14 @@ export default {
     closeDetail () {
       this.openModal = false
       this.programDetail = {}
+    },
+
+    /**
+     * Set filter data props
+     * @params {Array | null} filter
+     */
+    setFilter (filter) {
+      this.filter = filter
     }
   }
 }
