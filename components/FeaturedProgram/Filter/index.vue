@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="featured-program__filter">
     <div class="flex absolute z-20">
       <p class="mr-4 mt-3 align-baseline font-lato text-gray-800">
         Tampilkan
@@ -151,11 +151,12 @@ export default {
 /**
  * Override default jds-input-text styling
  */
-.jds-input-text__input-wrapper {
+.featured-program__filter .jds-input-text__input-wrapper {
   height: auto !important;
-  padding: 10px 8px !important;
-}
-.jds-input-text .jds-input-text__input-wrapper {
   border-color: #E3E7ED !important;
+}
+
+.featured-program__filter .jds-input-text__input-wrapper input {
+  padding: 10px 8px !important;
 }
 </style>
