@@ -404,3 +404,5 @@ export const searchDomains = {
   announcement: 'Pengumuman',
   about: 'Tentang Jawa Barat'
 }
+
+export const featuredProgramCategory = ['pendidikan', 'kesehatan', 'ekonomi', 'pariwisata', 'membangun desa', 'layanan publik', 'infrastruktur', 'keagamaan', 'pesantren juara', 'subsidi gratis', 'kebencanaan', 'pemberdayaan masyarakat', 'pencarian data', 'lingkungan hidup']
