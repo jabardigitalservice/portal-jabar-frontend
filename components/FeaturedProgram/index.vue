@@ -27,8 +27,14 @@
 
           <!-- Featured Program Card -->
           <section class="grid grid-cols-3 gap-8">
+            <FeaturedProgramSkeleton
+              v-for="i in 9"
+              v-show="$fetchState.pending"
+              :key="`skeleton-${i}`"
+            />
             <FeaturedProgramItem
               v-for="item in programList"
+              v-show="!$fetchState.pending"
               :key="item.id"
               :title="item.title"
               :description="item.excerpt || '-'"
