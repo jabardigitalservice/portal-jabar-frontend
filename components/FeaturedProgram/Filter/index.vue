@@ -106,7 +106,11 @@ export default {
      * API call abuse
      */
     selected: debounce(function () {
-      this.$emit('change:filter', this.selected)
+      if (this.isAllSelected) {
+        this.$emit('change:filter', null)
+      } else {
+        this.$emit('change:filter', this.selected)
+      }
     }, 1000)
   },
   methods: {
