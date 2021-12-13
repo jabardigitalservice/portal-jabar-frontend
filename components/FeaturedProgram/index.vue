@@ -1,7 +1,7 @@
 <template>
   <section class="w-full bg-gray-200">
     <BaseContainer class="relative -top-24 z-20">
-      <div class="wrapper py-8 px-10 rounded-xl bg-white">
+      <div class="py-8 px-10 rounded-xl bg-white min-h-screen">
         <div class="p-4">
           <!-- Search and Filter -->
           <section class="flex w-full justify-between mb-8">
@@ -152,9 +152,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.wrapper {
-  min-height: calc(166px * 9);
-}
-</style>
