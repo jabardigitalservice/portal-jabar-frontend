@@ -1,5 +1,5 @@
 <template>
-  <div class="max-h-[44px] overflow-hidden">
+  <div class="pagination max-h-[44px] overflow-hidden">
     <jds-pagination
       v-bind="$props"
       @previous-page="$emit('previous-page', $event)"
@@ -40,13 +40,13 @@ export default {
 </script>
 
 <style>
-.jds-input-text__input-wrapper {
+.pagination .jds-input-text__input-wrapper {
   height: 36px !important;
 }
-.jds-options__filter {
+.pagination .jds-options__filter {
   width: 100% !important;
 }
-.jds-popover__content {
+.pagination .jds-popover__content {
   z-index: 20 !important;
 }
 </style>

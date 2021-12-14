@@ -140,10 +140,10 @@ export default {
 /**
  * Override default jds-popover styling
  */
-.jds-popover__content {
+.featured-program__filter .jds-popover__content {
   margin-top: 8px !important;
 }
-.jds-popover-dropdown__body {
+.featured-program__filter .jds-popover-dropdown__body {
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
