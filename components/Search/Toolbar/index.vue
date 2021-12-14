@@ -1,5 +1,5 @@
 <template>
-  <section class="relative h-[38px] flex justify-between">
+  <section class="toolbar relative h-[38px] flex justify-between">
     <!-- Results Counter -->
     <div class="flex w-max items-center">
       <p class="font-roboto text-base leading-5 text-blue-gray-300">
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style>
-.jds-input-text__input-wrapper {
+.toolbar .jds-input-text__input-wrapper {
   max-width: 124px !important;
 }
 </style>
