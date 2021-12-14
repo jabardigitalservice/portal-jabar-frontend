@@ -1,7 +1,7 @@
 <template>
   <section class="w-full bg-gray-200">
     <BaseContainer class="relative -top-24 z-20">
-      <div class="wrapper py-8 px-10 rounded-xl bg-white">
+      <div class="py-8 px-10 rounded-xl bg-white min-h-screen">
         <div class="p-4">
           <!-- Search and Filter -->
           <section class="flex w-full justify-between mb-8">
@@ -27,8 +27,14 @@
 
           <!-- Featured Program Card -->
           <section class="grid grid-cols-3 gap-8">
+            <FeaturedProgramSkeleton
+              v-for="i in 9"
+              v-show="$fetchState.pending"
+              :key="`skeleton-${i}`"
+            />
             <FeaturedProgramItem
               v-for="item in programList"
+              v-show="!$fetchState.pending"
               :key="item.id"
               :title="item.title"
               :description="item.excerpt || '-'"
@@ -146,9 +152,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.wrapper {
-  min-height: calc(166px * 9);
-}
-</style>
