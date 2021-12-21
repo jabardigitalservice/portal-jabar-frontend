@@ -104,7 +104,7 @@ export default {
       return !!this.searchValue
     },
     programLength () {
-      return this.data.length
+      return this.meta?.total_count || 0
     }
   },
   watch: {
