@@ -405,4 +405,17 @@ export const searchDomains = {
   about: 'Tentang Jawa Barat'
 }
 
-export const featuredProgramCategory = ['pendidikan', 'kesehatan', 'ekonomi', 'pariwisata', 'membangun desa', 'layanan publik', 'infrastruktur', 'keagamaan', 'pesantren juara', 'subsidi gratis', 'kebencanaan', 'pemberdayaan masyarakat', 'pencarian data', 'lingkungan hidup']
+export const featuredProgramCategory = [
+  'pendidikan',
+  'ekonomi',
+  'destinasi dan infrastruktur pariwisata',
+  'membangun desa',
+  'meningkatkan akses pendidikan',
+  'meningkatkan inovasi pelayanan publik',
+  'infrastruktur konektivitas wilayah',
+  'mewujudkan pesantren juara',
+  'memberikan subsidi gratis',
+  'pemberdayaan masyarakat',
+  'revolusi pencarian data',
+  'pelestarian lingkungan hidup'
+]
