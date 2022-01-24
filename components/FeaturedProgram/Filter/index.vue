@@ -10,6 +10,7 @@
             readonly
             :value="inputValue"
             class="cursor-pointer"
+            :title="inputValue"
             @focus="toggleDropdown"
           >
             <template #suffix-icon>
@@ -95,6 +96,10 @@ export default {
     inputValue () {
       if (this.isAllSelected) {
         return 'Semua kategori'
+      }
+
+      if (this.selected.length === 0) {
+        return 'Tidak ada Kategori yang Dipilih'
       }
 
       return `${this.selected.length} kategori`
