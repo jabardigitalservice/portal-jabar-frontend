@@ -99,7 +99,7 @@ export default {
       }
 
       if (this.selected.length === 0) {
-        return 'Tidak ada Kategori yang Dipilih'
+        return 'Tidak ada kategori yang dipilih'
       }
 
       return `${this.selected.length} kategori`
