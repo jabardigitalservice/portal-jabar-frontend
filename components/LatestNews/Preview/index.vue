@@ -68,11 +68,13 @@ export default {
     }
   },
   async fetch () {
-    const perPage = `per_page=${this.perPage}`
-    const filterByHighlightNews = 'highlight=true'
-    const queryParams = `?${filterByHighlightNews}&${perPage}`
+    const params = {
+      per_page: this.perPage,
+      highlight: true,
+      status: 'PUBLISHED'
+    }
 
-    const response = await this.$axios.$get(`/v1/news${queryParams}`)
+    const response = await this.$axios.$get('/v1/news', { params })
     this.items = response.data
   },
   activated () {

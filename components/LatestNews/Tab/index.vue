@@ -47,15 +47,19 @@ export default {
     }
   },
   async fetch () {
-    const perPage = `per_page=${this.perPage}`
-    const sortByMostPopularNews = 'sort_by=views'
-    let queryParams = `?${perPage}`
-
-    if (this.selectedTab === 'terpopuler') {
-      queryParams = `?${sortByMostPopularNews}&${perPage}`
+    let params = {
+      per_page: this.perPage,
+      status: 'PUBLISHED'
     }
 
-    const response = await this.$axios.$get(`/v1/news${queryParams}`)
+    if (this.selectedTab === 'terpopuler') {
+      params = {
+        ...params,
+        sort_by: 'views'
+      }
+    }
+
+    const response = await this.$axios.$get('/v1/news', { params })
     this.items = response.data
   },
   activated () {

@@ -81,7 +81,8 @@ export default {
   async fetch () {
     const params = {
       cat: this.currentCategory,
-      sort_order: 'desc'
+      sort_order: 'desc',
+      status: 'PUBLISHED'
     }
 
     try {
@@ -154,7 +155,8 @@ export default {
         page: this.pagination.currentPage,
         sort_order: 'desc',
         per_page: this.pagination.itemsPerPage,
-        cat: this.currentCategory
+        cat: this.currentCategory,
+        status: 'PUBLISHED'
       }
 
       try {
