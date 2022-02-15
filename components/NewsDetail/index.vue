@@ -174,7 +174,8 @@ export default {
           sort_order: 'desc',
           per_page: 5,
           cat: this.news.category,
-          exclude: this.news.id
+          exclude: this.news.id,
+          status: 'PUBLISHED'
         }
 
         const response = await this.$axios.get('/v1/news', { params })
