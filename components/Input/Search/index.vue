@@ -52,7 +52,7 @@ export default {
     },
     placeholder: {
       type: [String, Number],
-      default: 'Cari disini'
+      default: 'Cari di sini'
     },
     clear: {
       type: Boolean,
