@@ -32,7 +32,7 @@
               cols="30"
               rows="3"
               class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
-              placeholder="Masukkan jawaban Anda disini"
+              placeholder="Masukkan jawaban Anda di sini"
               maxlength="1500"
             />
             <small class="text-gray-600">
@@ -50,7 +50,7 @@
               cols="30"
               rows="3"
               class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
-              placeholder="Masukkan jawaban Anda disini"
+              placeholder="Masukkan jawaban Anda di sini"
               maxlength="1500"
             />
             <small class="text-gray-600">
@@ -68,7 +68,7 @@
               cols="30"
               rows="3"
               class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
-              placeholder="Masukkan jawaban Anda disini"
+              placeholder="Masukkan jawaban Anda di sini"
               maxlength="1500"
             />
             <small class="text-gray-600">
