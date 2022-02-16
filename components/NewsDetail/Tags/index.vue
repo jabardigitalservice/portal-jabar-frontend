@@ -8,11 +8,11 @@
     <nuxt-link
       v-for="tag in tags"
       :key="tag.tags_name"
-      :to="`/berita/tags/${tag.tags_name}`"
+      :to="`/berita/tags/${tag.tag_name}`"
       class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase cursor-pointer
       hover:text-green-700 hover:bg-green-50"
     >
-      {{ tag.tags_name }}
+      {{ tag.tag_name }}
     </nuxt-link>
   </section>
 </template>

@@ -7,7 +7,7 @@
           <!-- Article Body -->
           <div class="flex flex-col gap-7">
             <div class="article__body w-full min-h-screen" v-html="content" />
-            <NewsDetailTags :tags="tags" />
+            <NewsDetailTags v-if="hasTags" :tags="tags" />
           </div>
           <!-- Related News and Share Buttons -->
           <section class="w-[400px] h-full">
@@ -143,6 +143,9 @@ export default {
     },
     content () {
       return this.news.content ?? ''
+    },
+    hasTags () {
+      return this.news.tags && this.news.tags.length
     },
     tags () {
       if (Array.isArray(this.news.tags) && this.news.tags.length) {
