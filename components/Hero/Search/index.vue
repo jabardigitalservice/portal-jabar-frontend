@@ -51,6 +51,9 @@ export default {
       } else {
         this.$router.push(`/pencarian?q=${data}`)
       }
+
+      // Try to log an event when user click search button
+      window.umami.trackEvent('click search button', 'global-search')
     },
     getSuggestions: debounce(async function () {
       if (this.hasValue) {
