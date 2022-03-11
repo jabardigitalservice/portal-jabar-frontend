@@ -16,6 +16,15 @@ export default {
       { rel: 'preload', as: 'image', href: '/images/banners/1.webp' },
       { rel: 'preload', as: 'image', href: '/logo.svg' },
       { rel: 'preload', as: 'image', href: '/images/hero.svg' }
+    ],
+    script: [
+      {
+        hid: 'umami-analytics',
+        src: 'http://umami-analytics.rover.digitalservice.id/umami.js',
+        'data-website-id': 'ca361c1c-a78a-46c5-8930-9a962d765f41',
+        async: true,
+        defer: true
+      }
     ]
   },
 
