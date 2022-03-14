@@ -10,18 +10,53 @@
     <BaseContainer class="relative pt-24 pb-9 z-10 ">
       <Breadcrumb :items="breadcrumbItems" class="mb-6" />
       <div class="flex flex-col text-blue-gray-100 gap-6">
-        <h1 class="font-lora font-bold text-[34px] leading-[48px] text-white mb-2 max-w-3xl">
+        <!-- Title skeleton -->
+        <div
+          v-show="loading"
+          class="w-full h-[96px] flex flex-col gap-4 justify-center mb-2"
+        >
+          <div class="w-3/5 h-[28px] bg-gray-500 opacity-25 rounded-lg animate-pulse" />
+          <div class="w-2/5 h-[28px] bg-gray-500 opacity-25 rounded-lg animate-pulse" />
+        </div>
+        <!-- end of skeleton -->
+        <h1 v-show="!loading" class="font-lora font-bold text-[34px] leading-[48px] text-white mb-2 max-w-3xl">
           {{ news.title }}
         </h1>
         <div class="flex gap-3 text-sm">
           <div class="flex items-center gap-2">
             <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
-            <p>{{ published }}</p>
+            <!-- Date skeleton -->
+            <div
+              v-show="loading"
+              class="w-[132px] h-5 flex items-center"
+            >
+              <div class="w-full h-[14px] bg-gray-500 opacity-25 rounded-md animate-pulse " />
+            </div>
+            <!-- end of skeleton -->
+            <p v-show="!loading">
+              {{ published }}
+            </p>
           </div>
           <div>|</div>
           <div class="flex items-center gap-2 capitalize">
             <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-            <p>Penulis: {{ author }}</p>
+            <p class="flex">
+              Penulis:
+              <!-- Author skeleton -->
+              <span
+                v-show="loading"
+                class="ml-3 w-[132px] h-5 flex items-center"
+              >
+                <div class="w-full h-[14px] bg-gray-500 opacity-25 rounded-md animate-pulse" />
+              </span>
+              <!-- end of skeleton -->
+              <span
+                v-show="!loading"
+                class="ml-3"
+              >
+                {{ author }}
+              </span>
+            </p>
           </div>
         </div>
         <div class="flex justify-between text-white">
@@ -105,6 +140,10 @@ export default {
     news: {
       type: Object,
       required: true
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

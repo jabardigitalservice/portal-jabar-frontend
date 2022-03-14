@@ -1,12 +1,14 @@
 <template>
   <main>
     <article class="article h-full">
-      <NewsDetailHeader :news="news" />
+      <NewsDetailHeader :news="news" :loading="$fetchState.pending" />
       <BaseContainer class="mt-12 mb-12 mx-auto">
         <section class="h-full grid grid-cols-1 gap-8 md:grid-cols-news-container md:gap-[72px]">
-          <!-- Article Body -->
           <div class="flex flex-col gap-7">
-            <div class="article__body w-full min-h-screen" v-html="content" />
+            <!-- Article Skeleton -->
+            <NewsDetailSkeleton v-show="$fetchState.pending" />
+            <!-- Article Body -->
+            <div v-show="!$fetchState.pending" class="article__body w-full min-h-screen" v-html="content" />
             <NewsDetailTags v-if="hasTags" :tags="tags" />
           </div>
           <!-- Related News and Share Buttons -->
