@@ -212,6 +212,30 @@ export default {
       @apply font-lora text-gray-800
     }
 
+    h1 {
+      @apply text-[5.8rem] leading-[8.8rem] font-normal
+    }
+
+    h2 {
+      @apply text-[4rem] leading-[6.5rem] font-bold
+    }
+
+    h3 {
+      @apply text-[3rem] leading-[4.9rem] font-bold
+    }
+
+    h4 {
+      @apply text-[2.3rem] leading-[3.75rem] font-bold
+    }
+
+    h5 {
+      @apply text-[1.75rem] leading-[2.8rem] font-bold
+    }
+
+    h6 {
+      @apply text-[1.3rem] leading-[2.1rem] font-bold
+    }
+
     p {
       @apply text-lg leading-7 mb-7
     }
@@ -220,8 +244,16 @@ export default {
       @apply w-full h-auto
     }
 
+    figure figcaption {
+      @apply text-center leading-7 text-gray-600
+    }
+
     blockquote {
-      @apply border-l-8 border-gray-300 px-6 font-lora text-base leading-6 text-gray-600 italic
+      @apply border-l-8 border-gray-300 px-6
+    }
+
+    blockquote p {
+      @apply font-lora text-base leading-6 text-gray-600 italic
     }
   }
 }
