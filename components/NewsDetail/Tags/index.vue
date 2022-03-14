@@ -1,5 +1,5 @@
 <template>
-  <section class="flex gap-4 items-center">
+  <section class="flex flex-wrap gap-4 items-center">
     <span class="inline-flex items-center font-lato font-bold text-green-800 text-sm leading-6">
       Tags
       <Icon src="/icons/tags.svg" alt="tags" size="19px" class="ml-2" />

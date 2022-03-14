@@ -1,12 +1,14 @@
 <template>
   <main>
     <article class="article h-full">
-      <NewsDetailHeader :news="news" />
+      <NewsDetailHeader :news="news" :loading="$fetchState.pending" />
       <BaseContainer class="mt-12 mb-12 mx-auto">
         <section class="h-full grid grid-cols-1 gap-8 md:grid-cols-news-container md:gap-[72px]">
-          <!-- Article Body -->
           <div class="flex flex-col gap-7">
-            <div class="article__body w-full min-h-screen" v-html="content" />
+            <!-- Article Skeleton -->
+            <NewsDetailSkeleton v-show="$fetchState.pending" />
+            <!-- Article Body -->
+            <div v-show="!$fetchState.pending" class="article__body w-full min-h-screen" v-html="content" />
             <NewsDetailTags v-if="hasTags" :tags="tags" />
           </div>
           <!-- Related News and Share Buttons -->
@@ -208,8 +210,33 @@ export default {
     h4,
     h5,
     h6,
-    p {
+    p,
+    strong {
       @apply font-lora text-gray-800
+    }
+
+    h1 {
+      @apply text-[5.8rem] leading-[8.8rem] font-normal
+    }
+
+    h2 {
+      @apply text-[4rem] leading-[6.5rem] font-bold
+    }
+
+    h3 {
+      @apply text-[3rem] leading-[4.9rem] font-bold
+    }
+
+    h4 {
+      @apply text-[2.3rem] leading-[3.75rem] font-bold
+    }
+
+    h5 {
+      @apply text-[1.75rem] leading-[2.8rem] font-bold
+    }
+
+    h6 {
+      @apply text-[1.3rem] leading-[2.1rem] font-bold
     }
 
     p {
@@ -220,8 +247,16 @@ export default {
       @apply w-full h-auto
     }
 
+    figure figcaption {
+      @apply text-center leading-7 text-gray-600
+    }
+
     blockquote {
-      @apply border-l-8 border-gray-300 px-6 font-lora text-base leading-6 text-gray-600 italic
+      @apply border-l-8 border-gray-300 px-6
+    }
+
+    blockquote p {
+      @apply font-lora text-base leading-6 text-gray-600 italic
     }
   }
 }
