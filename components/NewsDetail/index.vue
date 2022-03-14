@@ -210,7 +210,8 @@ export default {
     h4,
     h5,
     h6,
-    p {
+    p,
+    strong {
       @apply font-lora text-gray-800
     }
 
