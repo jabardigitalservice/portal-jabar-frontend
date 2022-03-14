@@ -19,7 +19,3 @@ export default {
   name: 'NewsDetailSkeleton'
 }
 </script>
-
-<style>
-
-</style>
