@@ -97,7 +97,7 @@ export default {
       return this.item.author?.name || '-'
     },
     date () {
-      return this.formatDate(this.item.created_at)
+      return this.formatDate(this.item.published_at)
     },
     hasNews () {
       return !isEmpty(this.item)
