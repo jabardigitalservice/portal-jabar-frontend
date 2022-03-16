@@ -20,7 +20,7 @@
         :key="item.id"
         :title="item.title"
         :slug="item.slug"
-        :created-at="item.created_at"
+        :published-at="item.published_at"
         :category="item.category"
         :fetch-state="$fetchState"
       />

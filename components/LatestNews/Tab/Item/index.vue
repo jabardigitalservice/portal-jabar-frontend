@@ -38,7 +38,7 @@ export default {
       type: String,
       required: true
     },
-    createdAt: {
+    publishedAt: {
       type: String,
       required: true
     },
@@ -53,13 +53,13 @@ export default {
   },
   computed: {
     date () {
-      const differenceInDays = daysDifference(this.createdAt)
+      const differenceInDays = daysDifference(this.publishedAt)
 
       if (differenceInDays > 0) {
-        return format(this.createdAt, { day: 'numeric', month: 'long', year: 'numeric' })
+        return format(this.publishedAt, { day: 'numeric', month: 'long', year: 'numeric' })
       }
 
-      return relativeTime(this.createdAt)
+      return relativeTime(this.publishedAt)
     }
   }
 }
