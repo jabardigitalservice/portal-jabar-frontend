@@ -81,8 +81,9 @@ export default {
   async fetch () {
     const params = {
       cat: this.currentCategory,
-      sort_order: 'desc',
-      status: 'PUBLISHED'
+      status: 'PUBLISHED',
+      sort_by: 'published_at',
+      sort_order: 'DESC'
     }
 
     try {
@@ -147,13 +148,14 @@ export default {
     mapItems (items) {
       return items.map(item => ({
         ...item,
-        date: new Date(item.created_at)
+        date: new Date(item.published_at)
       }))
     },
     async fetchMainNews () {
       const params = {
         page: this.pagination.currentPage,
-        sort_order: 'desc',
+        sort_by: 'published_at',
+        sort_order: 'DESC',
         per_page: this.pagination.itemsPerPage,
         cat: this.currentCategory,
         status: 'PUBLISHED'
