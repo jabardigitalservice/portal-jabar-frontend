@@ -169,7 +169,7 @@ export default {
       ]
     },
     published () {
-      return format(this.news.created_at, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+      return format(this.news.published_at, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
     },
     author () {
       return this.news.author?.name || ''
