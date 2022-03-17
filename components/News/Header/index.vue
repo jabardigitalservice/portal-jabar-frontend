@@ -31,7 +31,7 @@
                   <div class="flex gap-2 opacity-60 text-sm mb-6">
                     <div class="flex items-center gap-2">
                       <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
-                      <p>{{ formatDate(item.created_at) }}</p>
+                      <p>{{ formatDate(item.published_at) }}</p>
                     </div>
                     <div class="hidden sm:block">
                       |
@@ -87,7 +87,7 @@
                         <div class="flex gap-2">
                           <Icon src="/icons/calendar.svg" size="14px" alt="Diterbitkan" class="opacity-50 group-hover:opacity-100" />
                           <p class="text-xs opacity-50 group-hover:opacity-100">
-                            {{ formatDate(news.created_at) }}
+                            {{ formatDate(news.published_at) }}
                           </p>
                         </div>
                       </div>
