@@ -71,7 +71,9 @@ export default {
     const params = {
       per_page: this.perPage,
       highlight: true,
-      status: 'PUBLISHED'
+      status: 'PUBLISHED',
+      sort_by: 'published_at',
+      sort_order: 'DESC'
     }
 
     const response = await this.$axios.$get('/v1/news', { params })

@@ -176,7 +176,8 @@ export default {
     async fetchRelatedNews () {
       try {
         const params = {
-          sort_order: 'desc',
+          sort_by: 'published_at',
+          sort_order: 'DESC',
           per_page: 5,
           cat: this.news.category,
           exclude: this.news.id,

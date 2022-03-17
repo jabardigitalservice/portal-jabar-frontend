@@ -49,7 +49,9 @@ export default {
   async fetch () {
     let params = {
       per_page: this.perPage,
-      status: 'PUBLISHED'
+      status: 'PUBLISHED',
+      sort_by: 'published_at',
+      sort_order: 'DESC'
     }
 
     if (this.selectedTab === 'terpopuler') {
