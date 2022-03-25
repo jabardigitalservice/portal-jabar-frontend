@@ -28,6 +28,7 @@
     "lodash": "^4.17.21",
     "nuxt": "^2.15.7",
     "portal-vue": "^2.1.7",
+    "vue-gtag": "^1.16.1",
     "vue-social-sharing": "^3.0.8"
   },
   "devDependencies": {

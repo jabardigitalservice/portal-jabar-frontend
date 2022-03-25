@@ -32,10 +32,14 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/jabar-design-system.js'],
+  plugins: ['~/plugins/jabar-design-system.js', '~/plugins/vue-gtag'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
+
+  publicRuntimeConfig: {
+    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
