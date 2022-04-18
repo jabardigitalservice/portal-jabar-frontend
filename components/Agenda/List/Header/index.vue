@@ -119,7 +119,7 @@ export default {
       }
 
       try {
-        const response = await this.$axios.get('v1/events/calendar', { params })
+        const response = await this.$axios.get('v1/public/events/calendar', { params })
         const data = response.data.map(item => formatISODate(item.date))
 
         this.weeklyAgendaAvailability = uniqBy(data)
