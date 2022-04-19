@@ -172,7 +172,7 @@ export default {
       return format(this.news.published_at, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
     },
     author () {
-      return this.news.author?.name || ''
+      return this.news.author || ''
     },
     articleUrl () {
       const publicUrl = process.env.NUXT_ENV_PUBLIC_URL

@@ -56,7 +56,7 @@ export default {
   },
   async fetch () {
     try {
-      const response = await this.$axios.get(`/v1/news/slug/${this.slug}`)
+      const response = await this.$axios.get(`/v1/public/news/slug/${this.slug}`)
       const { data } = response.data
       this.news = data
       await this.fetchRelatedNews()
@@ -180,11 +180,10 @@ export default {
           sort_order: 'DESC',
           per_page: 5,
           cat: this.news.category,
-          exclude: this.news.id,
-          status: 'PUBLISHED'
+          exclude: this.news.id
         }
 
-        const response = await this.$axios.get('/v1/news', { params })
+        const response = await this.$axios.get('/v1/public/news', { params })
         const { data } = response.data
 
         this.relatedNews = this.mapItems(data)
