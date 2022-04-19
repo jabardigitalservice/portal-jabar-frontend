@@ -122,7 +122,7 @@ export default {
       }
 
       try {
-        const response = await this.$axios.$get('/v1/events', { params })
+        const response = await this.$axios.$get('/v1/public/events', { params })
 
         this.events.push(...response.data)
         this.totalPage = response.meta.total_page || 1

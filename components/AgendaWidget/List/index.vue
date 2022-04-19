@@ -83,7 +83,7 @@ export default {
       }
 
       try {
-        const response = await this.$axios.$get('/v1/events', { params })
+        const response = await this.$axios.$get('/v1/public/events', { params })
 
         this.events = response.data
         this.fetchState.pending = false
