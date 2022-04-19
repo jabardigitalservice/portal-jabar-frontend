@@ -81,7 +81,6 @@ export default {
   async fetch () {
     const params = {
       cat: this.currentCategory,
-      status: 'PUBLISHED',
       sort_by: 'published_at',
       sort_order: 'DESC'
     }
@@ -90,9 +89,9 @@ export default {
       await this.fetchMainNews()
 
       const [latest, popular, video] = await Promise.all([
-        this.$axios.get('/v1/news', { params: { ...params, per_page: 5 } }),
-        this.$axios.get('/v1/news', { params: { ...params, per_page: 5, sort_by: 'views' } }),
-        this.$axios.get('/v1/news', { params: { ...params, per_page: 5, type: 'video' } })
+        this.$axios.get('/v1/public/news', { params: { ...params, per_page: 5 } }),
+        this.$axios.get('/v1/public/news', { params: { ...params, per_page: 5, sort_by: 'views' } }),
+        this.$axios.get('/v1/public/news', { params: { ...params, per_page: 5, type: 'video' } })
       ])
 
       const { data: latestNews } = await latest.data
@@ -108,7 +107,7 @@ export default {
        *  or after the `headlineNews` data is cleared (after 10 minutes or so)
        */
       if (Array.isArray(this.headlineNews) && !this.headlineNews.length) {
-        const response = await this.$axios.get('/v1/news/headline')
+        const response = await this.$axios.get('/v1/public/news/headline')
         const { data } = response.data
         this.headlineNews = data
       }
@@ -157,14 +156,13 @@ export default {
         sort_by: 'published_at',
         sort_order: 'DESC',
         per_page: this.pagination.itemsPerPage,
-        cat: this.currentCategory,
-        status: 'PUBLISHED'
+        cat: this.currentCategory
       }
 
       try {
         this.mainNewsLoading = true
 
-        const response = await this.$axios.get('/v1/news', { params })
+        const response = await this.$axios.get('/v1/public/news', { params })
         const { data, meta } = response.data
 
         this.mainNews = this.mapItems(data)

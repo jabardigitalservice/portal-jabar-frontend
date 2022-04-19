@@ -22,7 +22,7 @@
                 <div>|</div>
                 <div class="flex items-center gap-2 capitalize">
                   <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-                  <p>Penulis: {{ item.author.name }}</p>
+                  <p>Penulis: {{ item.author }}</p>
                 </div>
               </div>
             </div>
@@ -71,12 +71,11 @@ export default {
     const params = {
       per_page: this.perPage,
       highlight: true,
-      status: 'PUBLISHED',
       sort_by: 'published_at',
       sort_order: 'DESC'
     }
 
-    const response = await this.$axios.$get('/v1/news', { params })
+    const response = await this.$axios.$get('/v1/public/news', { params })
     this.items = response.data
   },
   activated () {

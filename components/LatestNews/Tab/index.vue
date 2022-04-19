@@ -49,7 +49,6 @@ export default {
   async fetch () {
     let params = {
       per_page: this.perPage,
-      status: 'PUBLISHED',
       sort_by: 'published_at',
       sort_order: 'DESC'
     }
@@ -61,7 +60,7 @@ export default {
       }
     }
 
-    const response = await this.$axios.$get('/v1/news', { params })
+    const response = await this.$axios.$get('/v1/public/news', { params })
     this.items = response.data
   },
   activated () {
