@@ -38,7 +38,7 @@
                     </div>
                     <div class="hidden sm:flex sm:items-center sm:gap-2">
                       <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-                      <p>Penulis: {{ item.author.name }}</p>
+                      <p>Penulis: {{ item.author }}</p>
                     </div>
                   </div>
                 </div>
@@ -114,7 +114,7 @@ export default {
   },
   async fetch () {
     try {
-      const response = await this.$axios.$get('/v1/news/banner')
+      const response = await this.$axios.$get('/v1/public/news/banner')
       this.items = response.data
     } catch (error) {
       this.items = []

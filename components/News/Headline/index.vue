@@ -94,7 +94,7 @@ export default {
   },
   computed: {
     author () {
-      return this.item.author?.name || '-'
+      return this.item.author || '-'
     },
     date () {
       return this.formatDate(this.item.published_at)
