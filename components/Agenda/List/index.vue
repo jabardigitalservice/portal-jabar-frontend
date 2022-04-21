@@ -24,7 +24,7 @@
               Terdapat <strong class="text-blue-gray-700">{{ totalEvents }} Kegiatan</strong>
             </p>
           </div>
-          <div class="flex flex-col overflow-y-scroll">
+          <div class="flex flex-col overflow-y-auto">
             <InfiniteScroll :items="events" @refetch="getEvents">
               <template #default="{ item }">
                 <AgendaListItem
