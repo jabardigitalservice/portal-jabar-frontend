@@ -11,7 +11,7 @@
       <div v-else-if="!hasEvents" class="h-full px-4 pb-12">
         <AgendaWidgetEmptyState />
       </div>
-      <div v-else class="flex flex-col overflow-y-scroll">
+      <div v-else class="flex flex-col overflow-y-auto">
         <AgendaWidgetListItem
           v-for="event in events"
           :id="event.id"
