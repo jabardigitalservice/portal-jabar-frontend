@@ -8,10 +8,10 @@
       <template v-if="fetchState.pending">
         <AgendaWidgetListSkeleton v-for="index in 3" :key="index" />
       </template>
-      <div v-else-if="!hasEvents" class="h-full px-4 pb-12">
+      <div v-else-if="!hasEvents && !fetchState.pending" class="h-full px-4 pb-12">
         <AgendaWidgetEmptyState />
       </div>
-      <div v-else class="flex flex-col overflow-y-auto">
+      <div v-else class="flex flex-col flex-grow overflow-y-auto">
         <AgendaWidgetListItem
           v-for="event in events"
           :id="event.id"
@@ -26,7 +26,7 @@
           :end-hour="event.end_hour"
         />
       </div>
-      <Link v-if="hasEvents" link="/agenda-jawa-barat" class="flex justify-center items-center py-5 border-t border-gray-100">
+      <Link v-if="hasEvents" link="/agenda-jawa-barat" class="flex justify-center py-5 border-t border-gray-100">
         <Button type="button" variant="tertiary-paddingless" tabindex="-1">
           Lihat Semua Agenda
           <Icon name="open-new-tab" size="12px" />
