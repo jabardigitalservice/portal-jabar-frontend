@@ -2,7 +2,7 @@ name: Portal Jabar Release Staging
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ development ]
 
 jobs:
   docker:
