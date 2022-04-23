@@ -139,6 +139,8 @@ export default {
       this.headlineNews = [] // clear headline news
       this.$fetch()
     }
+
+    console.log('TEST CI JOBS')
   },
   methods: {
     setCurrentCategory (category) {
