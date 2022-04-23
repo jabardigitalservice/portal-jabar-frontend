@@ -20,7 +20,7 @@ jobs:
         # Configure Docker with Credentials
       - name: Configure Docker
         run: |
-          docker login ${{ secrets.REGISTRY_URL }} -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
+          docker login ${{ secrets.REGISTRY_URL }} -u ${{ secrets.REGISTRY_USERNAME }} -p '${{ secrets.REGISTRY_PASSWORD }}'
 
         # Set version tag using SHA Hash (short)
       - name: Set version tag
