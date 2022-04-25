@@ -34,3 +34,11 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ secrets.SERVICE_IMAGENAME }}:${{ steps.vars.outputs.sha_short }}
+          secret: |
+            "API_URL=${{ secrets.API_URL_STAGING }}"
+            "APP_ENVIRONMENT=${{ secrets.APP_ENVIRONMENT_STAGING }}"
+            "SENTRY_DSN=${{ secrets.SENTRY_DSN }}"
+            "SENTRY_ENABLED=${{ secrets.SENTRY_ENABLED }}"
+            "SENTRY_SAMPLE_RATE=${{ secrets.SENTRY_SAMPLE_RATE }}"
+            "GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}"
+
