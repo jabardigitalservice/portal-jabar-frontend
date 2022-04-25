@@ -34,7 +34,7 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ secrets.SERVICE_IMAGENAME_STAGING }}:${{ steps.vars.outputs.sha_short }}
-          secret: |
+          secrets: |
             "API_URL=${{ secrets.API_URL_STAGING }}"
             "APP_ENVIRONMENT=${{ secrets.APP_ENVIRONMENT_STAGING }}"
             "SENTRY_DSN=${{ secrets.SENTRY_DSN }}"
