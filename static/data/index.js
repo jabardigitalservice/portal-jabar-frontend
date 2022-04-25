@@ -19,147 +19,113 @@ export const heroImages = [
 export const navigationMenu = [
   {
     id: 1,
+    title: 'Berita Jawa Barat',
+    link: '#',
+    items: [
+      {
+        id: 1,
+        title: 'Ekonomi',
+        description: 'Menyajikan artikel perkembangan ekonomi Jawa Barat terpercaya',
+        icon: '/icons/layanan-publik/kependudukan.svg',
+        link: '#'
+      },
+      {
+        id: 2,
+        title: 'Pemerintahan',
+        description: 'Pembaruan Jawa Barat resmi dari pemerintah',
+        icon: '/icons/layanan-publik/perizinan.svg',
+        link: '#'
+      },
+      {
+        id: 3,
+        title: 'Kesehatan',
+        description: 'Kabar dan situasi kesehatan terkini di Jawa Barat',
+        icon: '/icons/layanan-publik/kepolisian.svg',
+        link: '#'
+      },
+      {
+        id: 4,
+        title: 'Sosial',
+        description: 'Kondisi terbarukan tentang kesejahteraan sosial',
+        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        link: '#'
+      },
+      {
+        id: 5,
+        title: 'Pendidikan',
+        description: 'Informasi terbaru dari dunia pendidikan, dan kebudayaan',
+        icon: '/icons/layanan-publik/pajak.svg',
+        link: '#'
+      }
+    ]
+  },
+  {
+    id: 2,
     title: 'Layanan Publik',
     link: '#',
     items: [
       {
         id: 1,
         title: 'Kependudukan',
-        description: 'Semakin mudah akses layanan urusan identitas hingga akta.',
+        description: 'Urus perizinan kependudukan dan tempat tinggal dengan mudah',
         icon: '/icons/layanan-publik/kependudukan.svg',
-        link: 'http://disdukcapil.jabarprov.go.id/portal',
-        items: []
+        link: '#'
       },
       {
         id: 2,
-        title: 'Kepolisian',
-        description: 'Cari tahu informasi mengenai layanan kepolisian terlengkap.',
-        icon: '/icons/layanan-publik/kepolisian.svg',
-        link: 'https://www.polri.go.id/',
-        items: []
+        title: 'Sosial dan Keluarga',
+        description: 'Akses berbagai layanan bagi anak-anak, perempuan, dan masyarakat',
+        icon: '/icons/layanan-publik/perizinan.svg',
+        link: '#'
       },
       {
         id: 3,
-        title: 'Pajak',
-        description: 'Administrasi perpajakan lebih mudah dan cepat.',
-        icon: '/icons/layanan-publik/pajak.svg',
-        link: 'https://bapenda.jabarprov.go.id/',
-        items: []
+        title: 'Kesehatan',
+        description: 'Cari pelayanan kesehatan terlengkap',
+        icon: '/icons/layanan-publik/kepolisian.svg',
+        link: '#'
       },
       {
         id: 4,
-        title: 'Perizinan',
-        description: 'Berikan kemudahan perizinan berbagai kebutuhan.',
-        icon: '/icons/layanan-publik/perizinan.svg',
-        link: 'https://dpmptsp.jabarprov.go.id/jelita/main/pendaftaranbaru/perizinanonline',
-        items: []
+        title: 'Pendidikan dan Pembelajaran',
+        description: 'Dapatkan informasi program pemerintah bagi siswa dan pelajar ',
+        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        link: '#'
       },
       {
         id: 5,
-        title: 'Pendidikan dan Pembelajaran',
-        description: 'Pemukan secara menyeluruh informasi mengenai pendidikan.',
-        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
-        link: 'http://disdik.jabarprov.go.id/',
-        items: []
-      }
-    ]
-  },
-  {
-    id: 2,
-    title: 'Informasi dan Berita',
-    link: '#',
-    items: [
-      {
-        id: 1,
-        title: 'Informasi',
-        description: null,
-        icon: null,
-        link: '#',
-        items: [
-          {
-            id: 1,
-            title: 'Lowongan Kerja dan Pelatihan',
-            link: '#'
-          },
-          {
-            id: 2,
-            title: 'Informasi Bantuan Pemerintah',
-            link: '#'
-          },
-          {
-            id: 3,
-            title: 'Informasi Relawan',
-            link: '#'
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'Berita',
-        description: null,
-        icon: null,
-        link: '/berita',
-        items: []
+        title: 'Ketenagakerjaan',
+        description: 'Cari lowongan kerja gratis dan terpercaya',
+        icon: '/icons/layanan-publik/pajak.svg',
+        link: '#'
       }
     ]
   },
   {
     id: 3,
-    title: 'Tentang Jawa Barat',
+    title: 'Profil Jawa Barat',
     link: '#',
     items: [
       {
         id: 1,
-        title: null,
-        description: null,
-        icon: null,
-        link: '#',
-        items: [
-          {
-            id: 1,
-            title: 'Visi dan Misi',
-            link: '#'
-          },
-          {
-            id: 2,
-            title: 'Struktur Pemerintahan',
-            link: '#'
-          },
-          {
-            id: 3,
-            title: 'Perangkat Daerah',
-            link: '#'
-          }
-        ]
+        title: 'Selayang Pandang',
+        description: 'Kilas perjalanan Jawa Barat menuju Jabar Juara Lahir Batin',
+        icon: '/icons/layanan-publik/perizinan.svg',
+        link: '#'
       },
       {
         id: 2,
-        title: null,
-        description: null,
-        icon: null,
-        link: '#',
-        items: [
-          {
-            id: 1,
-            title: 'Program Unggulan',
-            link: '/tentang-jawa-barat/program-unggulan'
-          },
-          {
-            id: 2,
-            title: 'Ekosistem Data Jawa Barat',
-            link: '#'
-          },
-          {
-            id: 3,
-            title: 'Informasi Keuangan',
-            link: '#'
-          },
-          {
-            id: 4,
-            title: 'Telusuri Jawa Barat',
-            link: '#'
-          }
-        ]
+        title: 'Tentang Jawa Barat',
+        description: 'Cari tahu sejarah, pimpinan, dan pemerintahan Jawa selengkapnya Barat',
+        icon: '/icons/layanan-publik/perizinan.svg',
+        link: '#'
+      },
+      {
+        id: 3,
+        title: 'Arsip dan Dokumen',
+        description: 'Akses dan unduh dokumen resmi yang dirilis pemerintah Jawa barat',
+        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        link: '#'
       }
     ]
   }
