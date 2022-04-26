@@ -2,7 +2,7 @@
   <section class="min-h-[384px] bg-green-700 rounded-xl grid grid-cols-2 items-center gap-x-14">
     <div class="pl-8 py-4">
       <p class="font-lora font-bold text-[28px] text-white line-clamp-1">
-        Dibalik Layar
+        Di Balik Layar
       </p>
       <h1 class="font-lora font-bold text-[40px] text-white mb-4 leading-[54px] line-clamp-2">
         Provinsi Jawa Barat Yang Responsif
@@ -20,9 +20,16 @@
     <div class="relative w-full h-full px-12 py-14 overflow-hidden">
       <ProfileHighlightBannerBackground />
       <div
-        class="w-full h-full rounded-xl relative ml-4 bg-center bg-no-repeat bg-cover"
-        style="background-image: url('/images/banners/profile-highlight/behind-the-scene.webp')"
-      />
+        class="w-full h-[278px] rounded-xl relative ml-4 overflow-hidden aspect-w-16 aspect-h-9"
+      >
+        <img
+          src="/images/banners/profile-highlight/behind-the-scene.webp"
+          class="object-cover"
+          width="513"
+          height="278"
+          alt="Di balik layar"
+        >
+      </div>
     </div>
   </section>
 </template>
