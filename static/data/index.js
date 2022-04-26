@@ -111,7 +111,7 @@ export const navigationMenu = [
         title: 'Selayang Pandang',
         description: 'Kilas perjalanan Jawa Barat menuju Jabar Juara Lahir Batin',
         icon: '/icons/layanan-publik/perizinan.svg',
-        link: '#'
+        link: '/selayang-pandang'
       },
       {
         id: 2,
