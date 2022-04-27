@@ -22,7 +22,7 @@
         <h1 v-show="!loading" class="font-lora font-bold text-[34px] leading-[48px] text-white mb-2 max-w-3xl">
           {{ news.title }}
         </h1>
-        <div class="flex gap-3 text-sm">
+        <div class="flex flex-col gap-2">
           <div class="flex items-center gap-2">
             <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
             <!-- Date skeleton -->
@@ -37,26 +37,47 @@
               {{ published }}
             </p>
           </div>
-          <div>|</div>
-          <div class="flex items-center gap-2 capitalize">
-            <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-            <p class="flex">
-              Penulis:
-              <!-- Author skeleton -->
-              <span
-                v-show="loading"
-                class="ml-3 w-[132px] h-5 flex items-center"
-              >
-                <div class="w-full h-[14px] bg-gray-500 opacity-25 rounded-md animate-pulse" />
-              </span>
-              <!-- end of skeleton -->
-              <span
-                v-show="!loading"
-                class="ml-3"
-              >
-                {{ author }}
-              </span>
-            </p>
+          <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 capitalize">
+              <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
+              <p class="flex items-center">
+                Penulis:
+                <!-- Author skeleton -->
+                <span
+                  v-if="loading"
+                  class="ml-3 w-[132px] h-5 flex items-center"
+                >
+                  <div class="w-full h-[14px] bg-gray-500 opacity-25 rounded-md animate-pulse" />
+                </span>
+                <!-- end of skeleton -->
+                <span
+                  v-else
+                  class="ml-1"
+                >
+                  {{ author }}
+                </span>
+              </p>
+            </div>
+            <div>|</div>
+            <div class="flex items-center gap-2 capitalize">
+              <p class="flex items-center">
+                Peliput:
+                <!-- Reporter skeleton -->
+                <span
+                  v-if="loading"
+                  class="ml-3 w-[132px] h-5 flex items-center"
+                >
+                  <div class="w-full h-[14px] bg-gray-500 opacity-25 rounded-md animate-pulse" />
+                </span>
+                <!-- end of skeleton -->
+                <span
+                  v-else
+                  class="ml-1"
+                >
+                  {{ reporter }}
+                </span>
+              </p>
+            </div>
           </div>
         </div>
         <div class="flex justify-between text-white">
@@ -173,6 +194,9 @@ export default {
     },
     author () {
       return this.news.author || ''
+    },
+    reporter () {
+      return this.news.reporter || ''
     },
     articleUrl () {
       const publicUrl = process.env.NUXT_ENV_PUBLIC_URL

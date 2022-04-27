@@ -9,6 +9,9 @@
             <NewsDetailSkeleton v-show="$fetchState.pending" />
             <!-- Article Body -->
             <div v-show="!$fetchState.pending" class="article__body w-full min-h-screen" v-html="content" />
+            <p class="font-lora text-gray-800">
+              <b>Editor:</b> {{ editor }}
+            </p>
             <NewsDetailTags v-if="hasTags" :tags="tags" />
           </div>
           <!-- Related News and Share Buttons -->
@@ -154,6 +157,9 @@ export default {
         return this.news.tags
       }
       return []
+    },
+    editor () {
+      return this.news.editor || ''
     },
     shareButtons () {
       return {
