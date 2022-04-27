@@ -5,16 +5,16 @@
         class="flex mx-auto items-start pt-6 pb-10 bg-no-repeat"
         :style="{ backgroundImage: `url('/images/menu.svg')`, backgroundPosition: '100% 100%' }"
       >
-        <div class="flex flex-col gap-6 flex-grow">
+        <div class="flex flex-col gap-8 flex-grow">
           <li>
             <Link :link="link" class="text-white font-roboto font-medium text-3xl leading-10" @click="setActiveMenu">
               {{ title }}
             </Link>
           </li>
           <li>
-            <ul class="flex flex-wrap gap-y-10 gap-x-20">
+            <ul class="grid grid-cols-3 grid-rows-2 grid-flow-col gap-y-6 gap-x-20">
               <li v-for="item in items" :key="item.id">
-                <Link v-if="item.icon" :link="item.link" class="flex gap-4 w-80 items-start" @click="setActiveMenu">
+                <Link v-if="item.icon" :link="item.link" class="flex gap-4 items-start" @click="setActiveMenu">
                   <img class="py-1.5" :src="item.icon">
                   <div>
                     <h4 class="text-lg font-bold text-gray-50 whitespace-nowrap">
