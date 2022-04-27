@@ -39,4 +39,8 @@
   background-color: #FFFFFF;
   color: #069550;
 }
+.banner-button.jds-button--primary:hover {
+  background-color: #FAFAFA;
+  color: #008444;
+}
 </style>
