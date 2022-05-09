@@ -8,9 +8,11 @@
         <p class="font-lora font-bold text-[28px] leading-[40px] mb-4">
           Provinsi Jawa Barat Terhadap Negara
         </p>
-        <p class="text-sm mb-4 leading-[23px]">
+        <p class="text-sm leading-[23px]">
           Jawa Barat merupakan rumah bagi 49,94 juta jiwa, selain itu jawa barat juga memiliki potensi pariwisata dan budaya yang sangat kaya.
-          sumber data: (IKP Diskominfo Jabar, 2022)
+        </p>
+        <p class="text-sm leading-[23px]">
+          Sumber data: (IKP Diskominfo Jabar, 2022)
         </p>
       </div>
       <Link link="/arsip-dan-dokumen" tabindex="-1" class="w-full">
