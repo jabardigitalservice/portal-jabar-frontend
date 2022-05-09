@@ -14,7 +14,12 @@
               placeholder="Cari prestasi jawa barat"
             />
             <SearchToolbar :list-view.sync="listView" total-count="100" />
-            <ProfileJabarAchievementsList :list-view="listView" :items="achievementsData" />
+            <ProfileJabarAchievementsList
+              :list-view="listView"
+              :items="achievementsData"
+              :loading="loading"
+              :items-per-page="pagination.itemsPerPage"
+            />
             <Pagination
               v-bind="pagination"
               @previous-page="onPaginationChange('prev-page', $event)"

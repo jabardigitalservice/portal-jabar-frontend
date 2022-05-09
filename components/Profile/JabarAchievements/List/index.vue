@@ -1,15 +1,24 @@
 <template>
   <ul :class="listView === 'list' ? 'flex flex-col gap-6' : 'grid grid-cols-2 gap-4'">
-    <ProfileJabarAchievementsItem
-      v-for="item in items"
-      :key="item.id"
-      :list-view="listView"
-      :title="item.title"
-      :appreciator="item.appreciator"
-      :category="item.category"
-      :description="item.description"
-      :icon="item.icon"
-    />
+    <template v-if="loading || items.length === 0">
+      <ProfileJabarAchievementsItemSkeleton
+        v-for="i in itemsPerPage"
+        :key="i"
+        :list-view="listView"
+      />
+    </template>
+    <template v-else>
+      <ProfileJabarAchievementsItem
+        v-for="item in items"
+        :key="item.id"
+        :list-view="listView"
+        :title="item.title"
+        :appreciator="item.appreciator"
+        :category="item.category"
+        :description="item.description"
+        :icon="item.icon"
+      />
+    </template>
   </ul>
 </template>
 
