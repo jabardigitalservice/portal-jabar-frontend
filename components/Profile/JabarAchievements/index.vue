@@ -13,7 +13,7 @@
               :clear="false"
               placeholder="Cari prestasi jawa barat"
             />
-            <SearchToolbar :list-view.sync="listView" total-count="100" />
+            <SearchToolbar :list-view.sync="listView" :total-count="pagination.totalRows" />
             <ProfileJabarAchievementsList
               :list-view="listView"
               :items="achievementsData"
