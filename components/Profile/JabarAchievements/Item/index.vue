@@ -4,20 +4,20 @@
     :class="listView === 'list' ? 'gap-6' : 'flex-col gap-2'"
   >
     <img
-      :src="icon"
+      :src="icon || '/icons/selayang-pandang/icon-achievement-placeholder.svg'"
       :alt="title"
       class="w-[60px] h-[60px] object-cover"
       width="60"
       height="60"
     >
     <div>
-      <p class="font-lato font-bold text-sm text-blue-gray-800 leading-6 md:text-base">
+      <p class="font-lato font-bold text-sm text-blue-gray-800 leading-6 md:text-base line-clamp-1">
         {{ title }}
       </p>
-      <p class="font-lato text-xs font-normal text-blue-gray-500 leading-5 mb-3 md:font-medium md:text-sm">
+      <p class="font-lato text-xs font-normal text-blue-gray-500 leading-5 mb-3 line-clamp-1 md:font-medium md:text-sm">
         {{ appreciator }}
       </p>
-      <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-3 mb-3">
+      <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-2 mb-3">
         {{ description }}
       </p>
       <nuxt-link
