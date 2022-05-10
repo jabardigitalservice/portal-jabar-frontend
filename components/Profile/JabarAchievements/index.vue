@@ -12,6 +12,8 @@
               v-model.trim="searchKeyword"
               :clear="false"
               placeholder="Cari prestasi jawa barat"
+              @submit="$fetch"
+              @clear="$fetch"
             />
             <SearchToolbar :list-view.sync="listView" :total-count="pagination.totalRows" />
             <ProfileJabarAchievementsList
