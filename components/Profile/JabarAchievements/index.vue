@@ -3,7 +3,9 @@
     <BaseContainer>
       <div class="bg-white p-10 rounded-xl shadow">
         <div class="grid grid-cols-search-container gap-6">
-          <ProfileJabarAchievementsSidebar />
+          <ProfileJabarAchievementsSidebar
+            @change:filter="onCategoryFilterChange($event)"
+          />
           <div class="w-full min-w-0 flex flex-col gap-6">
             <h1 class="font-bold font-lora text-green-700 text-4xl leading-none">
               Daftar Prestasi Jawa Barat
@@ -15,7 +17,10 @@
               @submit="$fetch"
               @clear="$fetch"
             />
-            <SearchToolbar :list-view.sync="listView" :total-count="pagination.totalRows" />
+            <SearchToolbar
+              :list-view.sync="listView"
+              :total-count="pagination.totalRows"
+            />
             <template v-if="!$fetchState.pending && !hasResults">
               <ProfileJabarAchievementsEmptySearch :keyword="searchKeyword" />
             </template>
@@ -50,6 +55,7 @@ export default {
       searchKeyword: '',
       listView: 'list',
       sortOrder: 'desc',
+      categories: [],
       pagination: {
         currentPage: 1,
         itemsPerPage: 5,
@@ -63,7 +69,7 @@ export default {
       page: this.pagination.currentPage,
       per_page: this.pagination.itemsPerPage,
       q: this.searchKeyword,
-      cat: '',
+      cat: this.categories,
       sort_order: this.sortOrder
     }
 
@@ -128,6 +134,14 @@ export default {
         return
       }
 
+      this.$fetch()
+    },
+    onCategoryFilterChange (categories) {
+      if (Array.isArray(categories) && categories.length > 0) {
+        this.categories = categories
+      } else {
+        this.categories = []
+      }
       this.$fetch()
     }
   }
