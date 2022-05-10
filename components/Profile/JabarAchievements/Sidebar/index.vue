@@ -1,9 +1,9 @@
 <template>
-  <aside class="jabar-achievements__sidebar max-w-[300px] min-w-0 border border-gray-200 rounded-xl py-3 px-4 ">
+  <aside class="jabar-achievements__sidebar max-w-[300px] h-[fit-content] border border-gray-200 rounded-xl py-3 px-4">
     <h2 class="font-roboto font-medium mb-4">
       Kategori
     </h2>
-    <section class="flex flex-col gap-3 ">
+    <section class="flex flex-col gap-3">
       <div>
         <JdsCheckbox
           v-model="checkAll"
