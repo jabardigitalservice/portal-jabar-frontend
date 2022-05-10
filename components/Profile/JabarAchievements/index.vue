@@ -17,7 +17,7 @@
             <ProfileJabarAchievementsList
               :list-view="listView"
               :items="achievementsData"
-              :loading="loading"
+              :loading="$fetchState.pending"
               :items-per-page="pagination.itemsPerPage"
             />
             <Pagination
@@ -40,7 +40,6 @@ export default {
     return {
       achievementsData: [],
       achievementsMeta: {},
-      loading: false,
       searchKeyword: '',
       listView: 'list',
       sortOrder: 'desc',
@@ -52,43 +51,36 @@ export default {
       }
     }
   },
-  mounted () {
-    this.fetchAchievements()
+  async fetch () {
+    const params = {
+      page: this.pagination.currentPage,
+      per_page: this.pagination.itemsPerPage,
+      q: this.searchKeyword,
+      cat: '',
+      sort_order: this.sortOrder
+    }
+
+    try {
+      const response = await this.$axios.get('v1/awards', { params })
+      const { data, meta } = response.data
+
+      this.achievementsData = data
+      this.achievementsMeta = meta
+
+      const paginationObj = {
+        ...this.pagination,
+        currentPage: this.achievementsMeta.current_page,
+        itemsPerPage: this.achievementsMeta.per_page,
+        totalRows: this.achievementsMeta.total_count
+      }
+
+      this.pagination = JSON.parse(JSON.stringify(paginationObj))
+    } catch (error) {
+      this.achievementsData = []
+      this.achievementsMeta = {}
+    }
   },
   methods: {
-    async fetchAchievements () {
-      const params = {
-        page: this.pagination.currentPage,
-        per_page: this.pagination.itemsPerPage,
-        q: this.searchKeyword,
-        cat: '',
-        sort_order: this.sortOrder
-      }
-
-      try {
-        this.loading = true
-
-        const response = await this.$axios.get('v1/awards', { params })
-        const { data, meta } = response.data
-
-        this.achievementsData = data
-        this.achievementsMeta = meta
-
-        const paginationObj = {
-          ...this.pagination,
-          currentPage: this.achievementsMeta.current_page,
-          itemsPerPage: this.achievementsMeta.per_page,
-          totalRows: this.achievementsMeta.total_count
-        }
-
-        this.pagination = JSON.parse(JSON.stringify(paginationObj))
-      } catch (error) {
-        this.achievementsData = []
-        this.achievementsMeta = {}
-      } finally {
-        this.loading = false
-      }
-    },
     onPaginationChange (action, value) {
       const paginationObj = { ...this.pagination }
 
@@ -124,7 +116,7 @@ export default {
         return
       }
 
-      this.fetchAchievements()
+      this.$fetch()
     }
   }
 }
