@@ -126,7 +126,7 @@ export default {
         },
         {
           id: 9,
-          title: 'Pendidikan agama dan tempat ibadah juara',
+          title: 'Pendidikan Agama dan Tempat Ibadah Juara',
           icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
         },
         {
