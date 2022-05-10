@@ -16,19 +16,24 @@
               @clear="$fetch"
             />
             <SearchToolbar :list-view.sync="listView" :total-count="pagination.totalRows" />
-            <ProfileJabarAchievementsList
-              :list-view="listView"
-              :items="achievementsData"
-              :loading="$fetchState.pending"
-              :items-per-page="pagination.itemsPerPage"
-            />
-            <Pagination
-              v-bind="pagination"
-              @previous-page="onPaginationChange('prev-page', $event)"
-              @next-page="onPaginationChange('next-page', $event)"
-              @page-change="onPaginationChange('page-change', $event)"
-              @per-page-change="onPaginationChange('per-page-change', $event)"
-            />
+            <template v-if="!$fetchState.pending && !hasResults">
+              <ProfileJabarAchievementsEmptySearch :keyword="searchKeyword" />
+            </template>
+            <template v-else>
+              <ProfileJabarAchievementsList
+                :list-view="listView"
+                :items="achievementsData"
+                :loading="$fetchState.pending"
+                :items-per-page="pagination.itemsPerPage"
+              />
+              <Pagination
+                v-bind="pagination"
+                @previous-page="onPaginationChange('prev-page', $event)"
+                @next-page="onPaginationChange('next-page', $event)"
+                @page-change="onPaginationChange('page-change', $event)"
+                @per-page-change="onPaginationChange('per-page-change', $event)"
+              />
+            </template>
           </div>
         </div>
       </div>
@@ -80,6 +85,11 @@ export default {
     } catch (error) {
       this.achievementsData = []
       this.achievementsMeta = {}
+    }
+  },
+  computed: {
+    hasResults () {
+      return this.achievementsData.length > 0
     }
   },
   methods: {

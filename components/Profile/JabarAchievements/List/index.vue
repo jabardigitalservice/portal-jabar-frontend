@@ -1,6 +1,6 @@
 <template>
   <ul :class="listView === 'list' ? 'flex flex-col gap-6' : 'grid grid-cols-2 gap-4'">
-    <template v-if="loading || items.length === 0">
+    <template v-if="loading">
       <ProfileJabarAchievementsItemSkeleton
         v-for="i in itemsPerPage"
         :key="i"
