@@ -20,6 +20,7 @@
             <SearchToolbar
               :list-view.sync="listView"
               :total-count="pagination.totalRows"
+              @change:sort="onChangeSort($event)"
             />
             <template v-if="!$fetchState.pending && !hasResults">
               <ProfileJabarAchievementsEmptySearch :keyword="searchKeyword" />
@@ -54,7 +55,7 @@ export default {
       achievementsMeta: {},
       searchKeyword: '',
       listView: 'list',
-      sortOrder: 'desc',
+      sortOrder: 'DESC',
       categories: [],
       pagination: {
         currentPage: 1,
@@ -70,7 +71,8 @@ export default {
       per_page: this.pagination.itemsPerPage,
       q: this.searchKeyword,
       cat: this.categories,
-      sort_order: this.sortOrder
+      sort_order: this.sortOrder,
+      sort_by: 'created_at'
     }
 
     try {
@@ -142,6 +144,11 @@ export default {
       } else {
         this.categories = []
       }
+      this.$fetch()
+    },
+    onChangeSort (sortOrder) {
+      if (!sortOrder || sortOrder.toUpperCase() === this.sortOrder) { return }
+      this.sortOrder = sortOrder.toUpperCase()
       this.$fetch()
     }
   }
