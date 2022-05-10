@@ -63,11 +63,11 @@ export default {
         },
         {
           id: 3,
-          title: 'Penghargaan Abiwada Adara Bidang Kemanusiaan',
+          title: 'Pembangunan Daerah Terbaik II',
           logo: null,
-          appreciator: 'FISIP Universitas Pasundan',
-          description: 'Gubernur Ridwan Kamil menerima penghargaan Abiwada Adara Bidang Kemanusiaan terkait kontribusi nyata dalam penanganan Covid-19 di Jabar.',
-          category: 'Prestasi Gubernur'
+          appreciator: 'Bappenas RI 2021',
+          description: 'Perencanaan pembangunan yang matang serta pencapaian yang telah diraih menuntun Jabar mendapatkan Penghargaan Pembangunan Daerah.',
+          category: 'Pembangunan'
         }
       ]
     }
