@@ -43,13 +43,9 @@
           <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-3 mb-3">
             {{ item.description }}
           </p>
-          <nuxt-link
-            to="#"
-            class="rounded-md px-[10px] py-2 text-xs font-normal text-gray-700 bg-gray-100 cursor-pointer
-          hover:text-green-700 hover:bg-green-50"
-          >
+          <span class="rounded-md px-[10px] py-2 text-xs font-normal text-gray-700 bg-gray-100">
             {{ item.category }}
-          </nuxt-link>
+          </span>
         </div>
       </li>
     </ul>
