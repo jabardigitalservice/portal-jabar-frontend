@@ -101,39 +101,39 @@ export default {
           appreciator: 'Menteri Hukum dan HAM RI',
           category: 'Hukum dan HAM',
           description: 'Jaringan Dokumentasi dan Informasi Hukum (JDIH) Jabar menjadi penyedia layanan publik di bidang dokumentasi dan informasi hukum terbaik di tingkat provinsi.',
-          icon: require('~/static/icons/selayang-pandang/achievement-idc-dx-awards.png')
+          icon: require('~/static/icons/selayang-pandang/icon-achievement-placeholder.svg')
         },
         {
           id: 2,
+          title: 'Best Governor',
+          appreciator: 'People of the Year 2021',
+          category: 'Prestasi Gubernur',
+          description: 'Gubernur Ridwan Kamil dinobatkan sebagai Best Governor untuk dua kategori, Healthcare & Action Against Pandemi dan E-Goverment & Digital Innovation.',
+          icon: require('~/static/icons/selayang-pandang/icon-achievement-placeholder.svg')
+        },
+        {
+          id: 3,
           title: 'Pembangunan Daerah Terbaik II',
-          appreciator: 'Bappenas RI',
+          appreciator: 'Bappenas RI 2021',
           category: 'Pembangunan',
           description: 'Perencanaan pembangunan yang matang serta pencapaian yang telah diraih menuntun Jabar mendapatkan Penghargaan Pembangunan Daerah.',
           icon: require('~/static/icons/selayang-pandang/icon-achievement-placeholder.svg')
         },
         {
-          id: 3,
+          id: 4,
           title: 'Pemerintah Daerah Terpopuler',
           appreciator: 'Anugerah Media Humas (AMH) 2021',
-          category: 'Hukum dan HAM',
-          description: 'Jaringan Dokumentasi dan Informasi Hukum (JDIH) Jabar menjadi penyedia layanan publik di bidang dokumentasi dan informasi hukum terbaik di tingkat provinsi.',
-          icon: require('~/static/icons/selayang-pandang/achievement-idc-dx-awards.png')
-        },
-        {
-          id: 4,
-          title: 'Best Governor',
-          appreciator: 'People Of The Year 2021',
-          category: 'Personal Gubernur',
-          description: 'Gubernur Ridwan Kamil dinobatkan sebagai Best Governor untuk dua kategori, Healthcare & Action Against Pandemi dan E-Goverment & Digital Innovation.',
+          category: 'Kehumasan',
+          description: 'Humas Diskominfo Jabar berhasil menjalankan fungsi kehumasan, terutama dalam menyebarkan informasi akurat kepada masyarakat luas.',
           icon: require('~/static/icons/selayang-pandang/icon-achievement-placeholder.svg')
         },
         {
           id: 5,
           title: 'Penghargaan Sumber Daya Energi & Mineral',
           appreciator: 'Gatra Apresiasi Energi (GAE) 2021',
-          category: 'Sumber Daya Energi dan Mineral',
-          description: 'Jabar menerima apresiasi atas peran pemerintah daerah dalam memberikan dukungan kontinuitas bagi kemajuan usaha energi di lingkup regional',
-          icon: require('~/static/icons/selayang-pandang/achievement-idc-dx-awards.png')
+          category: 'Sumber Daya Energi & Mineral',
+          description: 'Jabar menerima apresiasi atas peran pemerintah daerah dalam memberikan dukungan kontinuitas bagi kemajuan usaha energi di lingkup regional.',
+          icon: require('~/static/icons/selayang-pandang/icon-achievement-placeholder.svg')
         }
       ]
     }
