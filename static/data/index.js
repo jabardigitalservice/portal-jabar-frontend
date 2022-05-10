@@ -385,3 +385,19 @@ export const featuredProgramCategory = [
   'revolusi pencarian data',
   'pelestarian lingkungan hidup'
 ]
+
+export const jabarAchievementsCategory = [
+  'Hukum dan HAM',
+  'Kepegawaian',
+  'Personal Gubernur',
+  'Kehumasan',
+  'Pemberdayaan Masyarakat',
+  'Pembangunan',
+  'Tranparasi Keuangan',
+  'Ketenagakerjaan',
+  'Sumber Daya Energi dan Mineral',
+  'Olahraga',
+  'Inovasi dan Digitalisasi',
+  'Investasi',
+  'Sosial Budaya'
+]
