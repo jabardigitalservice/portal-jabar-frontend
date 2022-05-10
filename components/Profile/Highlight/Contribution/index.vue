@@ -9,7 +9,7 @@
           Provinsi Jawa Barat Terhadap Negara
         </p>
         <p class="text-sm leading-[23px]">
-          Jawa Barat merupakan rumah bagi 49,94 juta jiwa, selain itu jawa barat juga memiliki potensi pariwisata dan budaya yang sangat kaya.
+          Jawa Barat merupakan rumah bagi 49,94 juta jiwa, selain itu Jawa Barat juga memiliki potensi pariwisata dan budaya yang sangat kaya.
         </p>
         <p class="text-sm leading-[23px]">
           Sumber data: (IKP Diskominfo Jabar, 2022)
