@@ -115,17 +115,17 @@ export const navigationMenu = [
       },
       {
         id: 2,
-        title: 'Tentang Jawa Barat',
-        description: 'Cari tahu sejarah, pimpinan, dan pemerintahan Jawa selengkapnya Barat',
-        icon: '/icons/layanan-publik/perizinan.svg',
-        link: '#'
-      },
-      {
-        id: 3,
         title: 'Arsip dan Dokumen',
         description: 'Akses dan unduh dokumen resmi yang dirilis pemerintah Jawa barat',
         icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
         link: '#'
+      },
+      {
+        id: 3,
+        title: 'Tentang Jawa Barat',
+        description: 'Cari tahu sejarah, pimpinan, dan pemerintahan Jawa selengkapnya Barat',
+        icon: '/icons/layanan-publik/perizinan.svg',
+        link: '/tentang-jawa-barat'
       }
     ]
   }
