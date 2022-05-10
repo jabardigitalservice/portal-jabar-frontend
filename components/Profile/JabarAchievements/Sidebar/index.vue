@@ -64,17 +64,6 @@ export default {
       }
 
       return false
-    },
-    inputValue () {
-      if (this.isAllSelected) {
-        return 'Semua kategori'
-      }
-
-      if (this.selected.length === 0) {
-        return 'Tidak ada kategori yang dipilih'
-      }
-
-      return `${this.selected.length} kategori`
     }
   },
   watch: {
