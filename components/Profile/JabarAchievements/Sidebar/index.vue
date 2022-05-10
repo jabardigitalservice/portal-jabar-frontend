@@ -59,11 +59,7 @@ export default {
       return this.selected.length === this.categories.length
     },
     isIndeterminate () {
-      if (this.selected.length && this.selected.length < this.categories.length) {
-        return true
-      }
-
-      return false
+      return this.selected.length > 0 && !this.isAllSelected
     }
   },
   watch: {
