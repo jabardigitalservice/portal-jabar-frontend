@@ -13,8 +13,8 @@
       alt="ilustrasi pencarian tidak ditemukan"
     >
     <!-- Recommendations -->
-    <slot name="recommendations" />
-    <section class="w-full min-w-0 flex flex-col items-center justify-center">
+    <!-- NOTE: Temporary hide recommendation section -->
+    <!-- <section class="w-full min-w-0 flex flex-col items-center justify-center">
       <p class="font-lato font-bold text-sm leading-6 text-gray-800 mb-8">
         Rekomendasi untuk Anda
       </p>
@@ -30,7 +30,7 @@
           :icon="item.icon"
         />
       </div>
-    </section>
+    </section> -->
   </section>
 </template>
 
@@ -44,32 +44,32 @@ export default {
   },
   data () {
     return {
-      recommendations: [
-        {
-          id: 1,
-          title: 'Anggota JDIHN Terbaik Tahun 2021',
-          logo: null,
-          appreciator: 'Menteri Hukum dan HAM RI',
-          description: 'Jaringan Dokumentasi dan Informasi Hukum (JDIH) Jabar menjadi penyedia layanan publik di bidang dokumentasi dan informasi hukum terbaik di tingkat provinsi.',
-          category: 'Hukum dan HAM'
-        },
-        {
-          id: 2,
-          title: 'Best Governor',
-          logo: null,
-          appreciator: 'People of the Year 2021',
-          description: 'Gubernur Ridwan Kamil dinobatkan sebagai Best Governor untuk dua kategori, Healthcare & Action Against Pandemi dan E-Goverment & Digital Innovation.',
-          category: 'Prestasi Gubernur'
-        },
-        {
-          id: 3,
-          title: 'Pembangunan Daerah Terbaik II',
-          logo: null,
-          appreciator: 'Bappenas RI 2021',
-          description: 'Perencanaan pembangunan yang matang serta pencapaian yang telah diraih menuntun Jabar mendapatkan Penghargaan Pembangunan Daerah.',
-          category: 'Pembangunan'
-        }
-      ]
+      // recommendations: [
+      //   {
+      //     id: 1,
+      //     title: 'Anggota JDIHN Terbaik Tahun 2021',
+      //     logo: null,
+      //     appreciator: 'Menteri Hukum dan HAM RI',
+      //     description: 'Jaringan Dokumentasi dan Informasi Hukum (JDIH) Jabar menjadi penyedia layanan publik di bidang dokumentasi dan informasi hukum terbaik di tingkat provinsi.',
+      //     category: 'Hukum dan HAM'
+      //   },
+      //   {
+      //     id: 2,
+      //     title: 'Best Governor',
+      //     logo: null,
+      //     appreciator: 'People of the Year 2021',
+      //     description: 'Gubernur Ridwan Kamil dinobatkan sebagai Best Governor untuk dua kategori, Healthcare & Action Against Pandemi dan E-Goverment & Digital Innovation.',
+      //     category: 'Prestasi Gubernur'
+      //   },
+      //   {
+      //     id: 3,
+      //     title: 'Pembangunan Daerah Terbaik II',
+      //     logo: null,
+      //     appreciator: 'Bappenas RI 2021',
+      //     description: 'Perencanaan pembangunan yang matang serta pencapaian yang telah diraih menuntun Jabar mendapatkan Penghargaan Pembangunan Daerah.',
+      //     category: 'Pembangunan'
+      //   }
+      // ]
     }
   }
 }
