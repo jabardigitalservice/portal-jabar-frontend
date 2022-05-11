@@ -3,7 +3,9 @@
     <BaseContainer>
       <div class="bg-white p-10 rounded-xl shadow">
         <div class="grid grid-cols-search-container gap-6">
-          <ProfileJabarAchievementsSidebar />
+          <ProfileJabarAchievementsSidebar
+            @change:filter="onCategoryFilterChange($event)"
+          />
           <div class="w-full min-w-0 flex flex-col gap-6">
             <h1 class="font-bold font-lora text-green-700 text-4xl leading-none">
               Daftar Prestasi Jawa Barat
@@ -12,21 +14,32 @@
               v-model.trim="searchKeyword"
               :clear="false"
               placeholder="Cari prestasi jawa barat"
+              @submit="$fetch"
+              @clear="$fetch"
             />
-            <SearchToolbar :list-view.sync="listView" :total-count="pagination.totalRows" />
-            <ProfileJabarAchievementsList
-              :list-view="listView"
-              :items="achievementsData"
-              :loading="loading"
-              :items-per-page="pagination.itemsPerPage"
+            <SearchToolbar
+              :list-view.sync="listView"
+              :total-count="pagination.totalRows"
+              @change:sort="onChangeSort($event)"
             />
-            <Pagination
-              v-bind="pagination"
-              @previous-page="onPaginationChange('prev-page', $event)"
-              @next-page="onPaginationChange('next-page', $event)"
-              @page-change="onPaginationChange('page-change', $event)"
-              @per-page-change="onPaginationChange('per-page-change', $event)"
-            />
+            <template v-if="!$fetchState.pending && !hasResults">
+              <ProfileJabarAchievementsEmptySearch :keyword="searchKeyword" />
+            </template>
+            <template v-else>
+              <ProfileJabarAchievementsList
+                :list-view="listView"
+                :items="achievementsData"
+                :loading="$fetchState.pending"
+                :items-per-page="pagination.itemsPerPage"
+              />
+              <Pagination
+                v-bind="pagination"
+                @previous-page="onPaginationChange('prev-page', $event)"
+                @next-page="onPaginationChange('next-page', $event)"
+                @page-change="onPaginationChange('page-change', $event)"
+                @per-page-change="onPaginationChange('per-page-change', $event)"
+              />
+            </template>
           </div>
         </div>
       </div>
@@ -40,10 +53,10 @@ export default {
     return {
       achievementsData: [],
       achievementsMeta: {},
-      loading: false,
       searchKeyword: '',
       listView: 'list',
-      sortOrder: 'desc',
+      sortOrder: 'DESC',
+      categories: [],
       pagination: {
         currentPage: 1,
         itemsPerPage: 5,
@@ -52,43 +65,42 @@ export default {
       }
     }
   },
-  mounted () {
-    this.fetchAchievements()
+  async fetch () {
+    const params = {
+      page: this.pagination.currentPage,
+      per_page: this.pagination.itemsPerPage,
+      q: this.searchKeyword,
+      cat: this.categories,
+      sort_order: this.sortOrder,
+      sort_by: 'created_at'
+    }
+
+    try {
+      const response = await this.$axios.get('v1/awards', { params })
+      const { data, meta } = response.data
+
+      this.achievementsData = data
+      this.achievementsMeta = meta
+
+      const paginationObj = {
+        ...this.pagination,
+        currentPage: this.achievementsMeta.current_page,
+        itemsPerPage: this.achievementsMeta.per_page,
+        totalRows: this.achievementsMeta.total_count
+      }
+
+      this.pagination = JSON.parse(JSON.stringify(paginationObj))
+    } catch (error) {
+      this.achievementsData = []
+      this.achievementsMeta = {}
+    }
+  },
+  computed: {
+    hasResults () {
+      return this.achievementsData.length > 0
+    }
   },
   methods: {
-    async fetchAchievements () {
-      const params = {
-        page: this.pagination.currentPage,
-        per_page: this.pagination.itemsPerPage,
-        q: this.searchKeyword,
-        cat: '',
-        sort_order: this.sortOrder
-      }
-
-      try {
-        this.loading = true
-
-        const response = await this.$axios.get('v1/awards', { params })
-        const { data, meta } = response.data
-
-        this.achievementsData = data
-        this.achievementsMeta = meta
-
-        const paginationObj = {
-          ...this.pagination,
-          currentPage: this.achievementsMeta.current_page,
-          itemsPerPage: this.achievementsMeta.per_page,
-          totalRows: this.achievementsMeta.total_count
-        }
-
-        this.pagination = JSON.parse(JSON.stringify(paginationObj))
-      } catch (error) {
-        this.achievementsData = []
-        this.achievementsMeta = {}
-      } finally {
-        this.loading = false
-      }
-    },
     onPaginationChange (action, value) {
       const paginationObj = { ...this.pagination }
 
@@ -124,7 +136,20 @@ export default {
         return
       }
 
-      this.fetchAchievements()
+      this.$fetch()
+    },
+    onCategoryFilterChange (categories) {
+      if (Array.isArray(categories) && categories.length > 0) {
+        this.categories = categories
+      } else {
+        this.categories = []
+      }
+      this.$fetch()
+    },
+    onChangeSort (sortOrder) {
+      if (!sortOrder || sortOrder.toUpperCase() === this.sortOrder) { return }
+      this.sortOrder = sortOrder.toUpperCase()
+      this.$fetch()
     }
   }
 }
