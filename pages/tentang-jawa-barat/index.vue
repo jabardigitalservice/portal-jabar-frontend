@@ -2,7 +2,7 @@
   <main class="overflow-hidden">
     <Jumbotron v-bind="jumbotron">
       <template #breadcrumb>
-        <Breadcrumb class="mb-6" />
+        <Breadcrumb class="mb-6" :items="breadcrumbItems" />
       </template>
     </Jumbotron>
     <section class="w-full bg-gray-200">
@@ -40,6 +40,17 @@ export default {
         subtitle: 'Ketahui segalanya tentang Jawa Barat mulai dari pemerintahan, program, hingga kondisi terkini.',
         backgroundImageUrl: '/images/jumbotron/default.webp'
       },
+      breadcrumbItems: [
+        {
+          path: '/',
+          label: 'Beranda'
+        },
+        {
+          path: '/tentang-jawa-barat',
+          label: 'Tentang Jawa Barat',
+          active: true
+        }
+      ],
       menus: [
         {
           id: 1,
