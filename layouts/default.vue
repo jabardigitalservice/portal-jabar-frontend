@@ -2,7 +2,10 @@
   <div>
     <PortalTarget name="modal" />
     <Header />
-    <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
+    <div class="relative">
+      <GPRWidget />
+      <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
+    </div>
     <Footer />
   </div>
 </template>
