@@ -7,7 +7,10 @@
       <p class="text-sm leading-6 text-blue-gray-800 mb-8">
         Lambang Jawa Barat secara keseluruhan adalah sebuah perisai berbentuk bulat telur dengan hiasan pita di bagian bawahnya yang berisikan motto Jawa Barat. Bentuk bulat telur pada lambang Jawa Barat berasal dari bentuk perisai sebagai penjagaan diri.
       </p>
-      <img src="/images/about/lambang-dan-moto.png" alt="Lambang dan moto" class="rounded-[18px]" width="908" height="344">
+      <div class="banner">
+        <div class="banner__overlay" />
+        <img class="banner__logo" src="/images/about/logo.svg" width="260" height="268" alt="Logo Jawa Barat">
+      </div>
     </div>
     <div class="mb-16">
       <h3 class="p-6 font-lora font-bold text-[26px] text-blue-gray-700">
@@ -149,6 +152,25 @@ export default {
 </script>
 
 <style scoped>
+.banner {
+  position: relative;
+  width: 100%;
+  height: 344px;
+  border-radius: 18px;
+  background-image: url('/images/about/background.png'); background-position: center top; background-size: cover; background-repeat: no-repeat;
+}
+.banner__overlay {
+  width: 100%;
+  height: 344px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(7, 33, 0, 0.6) 0%, rgba(5, 27, 0, 0.9) 100%);
+}
+.banner__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 @media screen and (min-width: 1024px) {
   .logo-items > li:nth-child(odd) {
     border-right: 1px solid #e5e7eb;
