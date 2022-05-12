@@ -38,7 +38,7 @@
     </div>
     <!-- Social Media -->
     <div class="flex items-start gap-3">
-      <Icon src="/icons/social-media.svg" alt="Lokasi" size="20px" class="py-1" />
+      <Icon src="/icons/network.svg" alt="Lokasi" size="20px" class="py-1" />
       <div class="flex flex-col gap-2">
         <p class="font-bold">
           Media Sosial

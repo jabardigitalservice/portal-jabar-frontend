@@ -1,7 +1,7 @@
 <template>
   <div class="footer-sitemap flex w-full flex-col text-white">
     <div class="flex items-start gap-3">
-      <Icon src="/icons/location.svg" alt="Lokasi" size="18px" class="py-1" />
+      <Icon src="/icons/sitemap.svg" alt="Lokasi" size="18px" class="py-1" />
       <div class="flex w-full flex-col gap-4">
         <h2 class="font-roboto font-bold leading-7">
           Sitemap
