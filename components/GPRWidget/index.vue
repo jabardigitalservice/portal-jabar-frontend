@@ -7,7 +7,7 @@
     <div
       class="gpr-widget__container sticky top-[88px] grid grid-cols-[350px,auto] max-w-max mb-6
       transition-transform ease-in duration-150"
-      :class="isOpen ? 'gpr-widget__container--open' : ''"
+      :class="{ 'gpr-widget__container--open' : isOpen }"
     >
       <div class="w-[350px] py-1 bg-[#262879] rounded-lg overflow-hidden">
         <div
