@@ -64,7 +64,6 @@ export default {
   data () {
     return {
       categories: newsCategories,
-      currentCategory: 'ekonomi',
       mainNews: [],
       latestNews: [],
       popularNews: [],
@@ -123,6 +122,10 @@ export default {
       const news = this.headlineNews.filter(news => news.category === this.currentCategory)
       // return the first index of filtered news
       return news[0]
+    },
+    currentCategory () {
+      const { kategori: category } = this.$route.query
+      return category || this.categories[0]
     }
   },
   watch: {
@@ -142,7 +145,7 @@ export default {
   },
   methods: {
     setCurrentCategory (category) {
-      this.currentCategory = category
+      this.$router.push({ path: this.$route.path, query: { kategori: category } })
     },
     mapItems (items) {
       return items.map(item => ({
