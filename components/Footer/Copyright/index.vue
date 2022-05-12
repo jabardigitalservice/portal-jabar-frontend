@@ -2,7 +2,7 @@
   <div class="w-full py-4 lg:py-6 border-t border-green-500">
     <BaseContainer>
       <div class="flex flex-col items-center md:flex-row-reverse md:justify-between gap-5">
-        <ul class="flex justify-between items-center gap-3 md:gap-4 text-white">
+        <ul class="flex justify-between items-center gap-3 md:gap-4 text-center text-white">
           <li>
             <NuxtLink to="#">
               <a class="text-sm font-normal leading-6">
