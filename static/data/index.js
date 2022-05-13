@@ -31,31 +31,31 @@ export const navigationMenu = [
       },
       {
         id: 2,
-        title: 'Pemerintahan',
-        description: 'Pembaruan Jawa Barat resmi dari pemerintah',
-        icon: '/icons/layanan-publik/perizinan.svg',
-        link: '/berita?kategori=pemerintahan'
-      },
-      {
-        id: 3,
         title: 'Kesehatan',
         description: 'Kabar dan situasi kesehatan terkini di Jawa Barat',
         icon: '/icons/layanan-publik/kepolisian.svg',
         link: '/berita?kategori=kesehatan'
       },
       {
-        id: 4,
-        title: 'Sosial',
-        description: 'Kondisi terbarukan tentang kesejahteraan sosial',
-        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
-        link: '/berita?kategori=sosial'
-      },
-      {
-        id: 5,
+        id: 3,
         title: 'Pendidikan',
         description: 'Informasi terbaru dari dunia pendidikan, dan kebudayaan',
         icon: '/icons/layanan-publik/pajak.svg',
         link: '/berita?kategori=pendidikan'
+      },
+      {
+        id: 4,
+        title: 'Pemerintahan',
+        description: 'Pembaruan Jawa Barat resmi dari pemerintah',
+        icon: '/icons/layanan-publik/perizinan.svg',
+        link: '/berita?kategori=pemerintahan'
+      },
+      {
+        id: 5,
+        title: 'Sosial',
+        description: 'Kondisi terbarukan tentang kesejahteraan sosial',
+        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        link: '/berita?kategori=sosial'
       }
     ]
   },
@@ -73,30 +73,30 @@ export const navigationMenu = [
       },
       {
         id: 2,
-        title: 'Sosial dan Keluarga',
-        description: 'Akses berbagai layanan bagi anak-anak, perempuan, dan masyarakat',
-        icon: '/icons/layanan-publik/perizinan.svg',
-        link: '#'
-      },
-      {
-        id: 3,
         title: 'Kesehatan',
         description: 'Cari pelayanan kesehatan terlengkap',
         icon: '/icons/layanan-publik/kepolisian.svg',
         link: '#'
       },
       {
+        id: 3,
+        title: 'Ketenagakerjaan',
+        description: 'Cari lowongan kerja gratis dan terpercaya',
+        icon: '/icons/layanan-publik/pajak.svg',
+        link: '#'
+      },
+      {
         id: 4,
-        title: 'Pendidikan dan Pembelajaran',
-        description: 'Dapatkan informasi program pemerintah bagi siswa dan pelajar ',
-        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        title: 'Sosial dan Keluarga',
+        description: 'Akses berbagai layanan bagi anak-anak, perempuan, dan masyarakat',
+        icon: '/icons/layanan-publik/perizinan.svg',
         link: '#'
       },
       {
         id: 5,
-        title: 'Ketenagakerjaan',
-        description: 'Cari lowongan kerja gratis dan terpercaya',
-        icon: '/icons/layanan-publik/pajak.svg',
+        title: 'Pendidikan dan Pembelajaran',
+        description: 'Dapatkan informasi program pemerintah bagi siswa dan pelajar ',
+        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
         link: '#'
       }
     ]
