@@ -11,9 +11,9 @@
         <h3 class="font-lora font-bold text-green-700 text-[28px] mb-4">
           Visi
         </h3>
-        <q class="font-bold">Terwujudnya Jawa Barat Juara Lahir Batin Dengan Inovasi dan Kolaborasi</q>
+        <q class="font-bold">Terwujudnya Jawa Barat Juara Lahir Batin dengan Inovasi dan Kolaborasi</q>
         <p class="text-sm">
-          Nilai religius, bahagia, adil, kolaboratif dan inovatif
+          Nilai religius, bahagia, adil, kolaboratif dan inovatif.
         </p>
       </blockquote>
     </div>
