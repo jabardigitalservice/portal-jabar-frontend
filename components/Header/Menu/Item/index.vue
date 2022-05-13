@@ -12,7 +12,10 @@
             </Link>
           </li>
           <li>
-            <ul class="grid grid-cols-3 grid-rows-2 grid-flow-col gap-y-6 gap-x-20">
+            <ul
+              class="grid grid-cols-3 grid-rows-2 gap-y-6 gap-x-20"
+              :class="{ 'grid-flow-col': items.length <= 3}"
+            >
               <li v-for="item in items" :key="item.id">
                 <Link v-if="item.icon" :link="item.link" class="flex gap-4 items-start" @click="setActiveMenu">
                   <img class="py-1.5" :src="item.icon">
