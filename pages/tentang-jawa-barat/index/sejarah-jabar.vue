@@ -65,7 +65,7 @@ export default {
           id: 5,
           year: 'Abad ke-19',
           title: 'Kekuasaan VOC Belanda Semakin Terasa di Jawa Barat',
-          desription: 'VOC mengembangkan wilayah kekuasaannya dengan mendirikan kekuasaannya di wilayah Banten. Upaya pengembangan wilayah kekuasaan tersebut yang tercatat pada tahun 1603 Masehi. Pada masa itu, Banten mengizinkan Kongsi Dangan Belanda, yakni VOC untuk menyandarkan kapal miliknya, mendirikan kantor-kantornya, hingga mengizinkan untuk mendirikan benteng pertahanannya di wilayah Banten tersebut.'
+          desription: 'VOC mengembangkan wilayah kekuasaannya dengan mendirikan kekuasaannya di wilayah Banten. Upaya pengembangan wilayah kekuasaan tersebut yang tercatat pada tahun 1603 Masehi. Pada masa itu, Banten mengizinkan Kongsi dengan Belanda, yakni VOC untuk menyandarkan kapal miliknya, mendirikan kantor-kantornya, hingga mengizinkan untuk mendirikan benteng pertahanannya di wilayah Banten tersebut.'
         },
         {
           id: 6,
@@ -76,7 +76,7 @@ export default {
         {
           id: 7,
           year: 'Agustus 1945',
-          title: 'Jawa Barat Bergabung Dengan Republik Indonesia.',
+          title: 'Jawa Barat Bergabung dengan Republik Indonesia.',
           subtitle: '17 Agustus 1945'
         },
         {
@@ -84,7 +84,7 @@ export default {
           year: 'Agustus 1945',
           title: 'Hari Jadi Pemerintah Provinsi Jawa Barat',
           subtitle: '19 Agustus 1945',
-          desription: 'Sidang Panitia Persiapan Kemerdekaan Indonesia (PPKI) mengumumkan Jawa Barat sebagai salah satu dari 8 Provinsi di Indonesia. Selanjutnya, melalui Perda Nomor 26 Tahun 2010 tentang Hari Jadi Pemerintah Provinsi Jawa Barat, menetapkan tanggal 19 Agustus sebagai Hari Jadi Pemerintah Provinsi Jawa Barat'
+          desription: 'Sidang Panitia Persiapan Kemerdekaan Indonesia (PPKI) mengumumkan Jawa Barat sebagai salah satu dari 8 Provinsi di Indonesia. Selanjutnya, melalui Perda Nomor 26 Tahun 2010 tentang Hari Jadi Pemerintah Provinsi Jawa Barat, menetapkan tanggal 19 Agustus sebagai Hari Jadi Pemerintah Provinsi Jawa Barat.'
         },
         {
           id: 9,
