@@ -61,7 +61,7 @@
             </p>
             <div :class="{'w-full h-0.5 bg-green-700': index !== items.length - 1}" />
           </div>
-          <div class="p-6 rounded-2xl mt-12 flex items-center gap-4 hover:bg-green-50 transition-all ease-out duration-300">
+          <div class="p-6 rounded-2xl mt-4 flex items-center gap-4 hover:bg-green-50 transition-all ease-out duration-300">
             <img :src="item.image" alt="Ahmad Heryawan" width="50" height="50">
             <div>
               <p class="font-lato text-xs text-blue-gray-300">
