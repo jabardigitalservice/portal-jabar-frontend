@@ -65,7 +65,7 @@ export default {
           id: 5,
           year: 'Abad ke-19',
           title: 'Kekuasaan VOC Belanda Semakin Terasa di Jawa Barat',
-          desription: 'VOC mengembangkan wilayah kekuasaannya dengan mendirikan kekuasaannya di wilayah Banten. Upaya pengembangan wilayah kekuasaan tersebut yang tercatat pada tahun 1603 Masehi. Pada masa itu, Banten mengizinkan Kongsi dangan Belanda, yakni VOC untuk menyandarkan kapal miliknya, mendirikan kantor-kantornya, hingga mengizinkan untuk mendirikan benteng pertahanannya di wilayah Banten tersebut.'
+          desription: 'VOC mengembangkan wilayah kekuasaannya dengan mendirikan kekuasaannya di wilayah Banten. Upaya pengembangan wilayah kekuasaan tersebut yang tercatat pada tahun 1603 Masehi. Pada masa itu, Banten mengizinkan Kongsi dengan Belanda, yakni VOC untuk menyandarkan kapal miliknya, mendirikan kantor-kantornya, hingga mengizinkan untuk mendirikan benteng pertahanannya di wilayah Banten tersebut.'
         },
         {
           id: 6,
