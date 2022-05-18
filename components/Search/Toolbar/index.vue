@@ -3,7 +3,9 @@
     <!-- Results Counter -->
     <div class="flex w-max items-center">
       <p class="font-roboto text-base leading-5 text-blue-gray-300">
-        Menampilkan <strong class="text-blue-gray-600">{{ totalCount }} hasil pencarian</strong>
+        <slot name="resultText">
+          Menampilkan <strong class="text-blue-gray-600">{{ totalCount }} hasil pencarian</strong>
+        </slot>
       </p>
     </div>
     <div class="flex w-max gap-4">
@@ -38,9 +40,9 @@
         </button>
       </div>
       <!-- Separator -->
-      <div class="border border-r-[#BDBDBD] my-2" />
+      <div v-if="sortable" class="border border-r-[#BDBDBD] my-2" />
       <!-- Sort Dropdown -->
-      <div class="flex gap-4 items-center h-full overflow-hidden">
+      <div v-if="sortable" class="flex gap-4 items-center h-full overflow-hidden">
         <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500">
           Urut Berdasarkan :
         </p>
@@ -69,6 +71,11 @@ export default {
       type: [String, Number],
       required: false,
       default: 0
+    },
+    sortable: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   data () {
