@@ -18,7 +18,7 @@ export default {
     return {
       jumbotron: {
         title: 'Prestasi Jawa Barat',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mattis massa bibendum lacus dui egestas.'
+        subtitle: 'Beragam apresiasi yang telah diraih Pemerintah Provinsi sebagai tanda dedikasi bagi Jawa Barat.'
       }
     }
   }
