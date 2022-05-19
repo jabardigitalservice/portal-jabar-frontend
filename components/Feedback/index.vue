@@ -1,103 +1,103 @@
 <template>
   <div>
-    <Modal
-      :show="show"
-      header="Seberapa Puas Anda dengan Portal Jabar"
-      @click="closeFeedbackForm"
-    >
-      <form @submit.prevent="submitHandler">
-        <div class="p-6">
-          <div class="flex flex-col mb-5">
-            <label class="text-sm leading-6 text-gray-800 mb-2">
-              Seberapa Puas Anda dengan Portal Jabar
-            </label>
-            <div class="flex gap-7">
-              <JdsRadioButtonGroup
-                :items="ratingOptions"
-                placeholder-key="label"
-                name="radio-button-group"
-                orientation="horizontal"
-                @change="setFormRating"
-              />
-            </div>
-          </div>
-          <div class="flex flex-col mb-5">
-            <label id="compliments" class="text-sm leading-6 text-gray-800 mb-2">
-              Apa yang menurut Anda paling bermanfaat dari Portal Jabar?
-            </label>
-            <textarea
-              id="compliments"
-              v-model="form.compliments"
-              name="compliments"
-              cols="30"
-              rows="3"
-              class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
-              placeholder="Masukkan jawaban Anda di sini"
-              maxlength="1500"
+    <BaseModal :show="show">
+      <!-- Form Header -->
+      <template #header>
+        <h1 class="font-roboto font-medium text-[21px] leading-[34px] text-green-700 px-6 py-2">
+          Seberapa Puas Anda dengan Portal Jabar
+        </h1>
+      </template>
+      <!-- Form Body -->
+      <div class="p-6 overflow-y-auto">
+        <div class="flex flex-col mb-5">
+          <label class="text-sm leading-6 text-gray-800 mb-2">
+            Seberapa Puas Anda dengan Portal Jabar
+          </label>
+          <div class="flex gap-7">
+            <JdsRadioButtonGroup
+              :items="ratingOptions"
+              placeholder-key="label"
+              name="radio-button-group"
+              orientation="horizontal"
+              @change="setFormRating"
             />
-            <small class="text-gray-600">
-              {{ getRemainingCharacters('compliments') }} karakter tersisa
-            </small>
-          </div>
-          <div class="flex flex-col mb-5">
-            <label id="criticism" class="text-sm leading-6 text-gray-800 mb-2">
-              Apa yang perlu diperbaiki dari Portal Jabar?
-            </label>
-            <textarea
-              id="criticism"
-              v-model="form.criticism"
-              name="criticism"
-              cols="30"
-              rows="3"
-              class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
-              placeholder="Masukkan jawaban Anda di sini"
-              maxlength="1500"
-            />
-            <small class="text-gray-600">
-              {{ getRemainingCharacters('criticism') }} karakter tersisa
-            </small>
-          </div>
-          <div class="flex flex-col mb-5">
-            <label id="suggestions" class="text-sm leading-6 text-gray-800 mb-2">
-              Apakah yang perlu Portal Jabar sediakan untuk kebutuhan pengguna?
-            </label>
-            <textarea
-              id="suggestions"
-              v-model="form.suggestions"
-              name="suggestions"
-              cols="30"
-              rows="3"
-              class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
-              placeholder="Masukkan jawaban Anda di sini"
-              maxlength="1500"
-            />
-            <small class="text-gray-600">
-              {{ getRemainingCharacters('suggestions') }} karakter tersisa
-            </small>
           </div>
         </div>
+        <div class="flex flex-col mb-5">
+          <label id="compliments" class="text-sm leading-6 text-gray-800 mb-2">
+            Apa yang menurut Anda paling bermanfaat dari Portal Jabar?
+          </label>
+          <textarea
+            id="compliments"
+            v-model="form.compliments"
+            name="compliments"
+            cols="30"
+            rows="3"
+            class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
+            placeholder="Masukkan jawaban Anda di sini"
+            maxlength="1500"
+          />
+          <small class="text-gray-600">
+            {{ getRemainingCharacters('compliments') }} karakter tersisa
+          </small>
+        </div>
+        <div class="flex flex-col mb-5">
+          <label id="criticism" class="text-sm leading-6 text-gray-800 mb-2">
+            Apa yang perlu diperbaiki dari Portal Jabar?
+          </label>
+          <textarea
+            id="criticism"
+            v-model="form.criticism"
+            name="criticism"
+            cols="30"
+            rows="3"
+            class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
+            placeholder="Masukkan jawaban Anda di sini"
+            maxlength="1500"
+          />
+          <small class="text-gray-600">
+            {{ getRemainingCharacters('criticism') }} karakter tersisa
+          </small>
+        </div>
+        <div class="flex flex-col mb-5">
+          <label id="suggestions" class="text-sm leading-6 text-gray-800 mb-2">
+            Apakah yang perlu Portal Jabar sediakan untuk kebutuhan pengguna?
+          </label>
+          <textarea
+            id="suggestions"
+            v-model="form.suggestions"
+            name="suggestions"
+            cols="30"
+            rows="3"
+            class="bg-gray-50 rounded-lg p-2 text-sm mb-1"
+            placeholder="Masukkan jawaban Anda di sini"
+            maxlength="1500"
+          />
+          <small class="text-gray-600">
+            {{ getRemainingCharacters('suggestions') }} karakter tersisa
+          </small>
+        </div>
+      </div>
+      <!-- Form Footer -->
+      <template #footer>
         <div class="bg-gray-50 py-4 px-6 flex justify-end items-center gap-4">
-          <!--
-            TODO: Replace button with button component from jabar design system
-          -->
-          <button
-            type="button"
-            class="border border-green-700 text-green-700 rounded-lg px-4 py-2 font-bold text-sm leading-4 hover:bg-green-50"
+          <Button
+            type="secondary"
             @click="closeFeedbackForm"
           >
             Tutup
-          </button>
+          </Button>
           <Button
-            type="submit"
             :disabled="!isValid"
             :style="[ !isValid && { backgroundColor: '#E0E0E0', color: '#FFFFFF' } ]"
             :loading="isLoading"
+            @click="submitHandler"
           >
             Kirim Survey
           </Button>
         </div>
-      </form>
-    </Modal>
+      </template>
+    </BaseModal>
     <Modal
       :show="openedModal === 'success'"
       header="Terima kasih"
