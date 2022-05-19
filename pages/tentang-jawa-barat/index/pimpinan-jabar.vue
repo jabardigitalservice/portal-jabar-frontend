@@ -30,7 +30,7 @@
               Dr. H. Moch. Ridwan Kamil
             </p>
             <img class="mb-3" src="/images/about/pimpinan/ridwan-kamil.png" alt="Ridwan Kamil" width="103" height="125">
-            <button class="bg-green-700 py-[10px] text-sm rounded-lg text-white w-full hover:bg-[#008f4a]">
+            <button class="bg-green-700 py-[10px] text-sm rounded-lg text-white w-full hover:bg-[#008f4a]" @click="setSelectedProfile('gubernur')">
               Lihat Profil
             </button>
           </div>
@@ -42,7 +42,7 @@
               H. Uu Ruzhanul Ulum
             </p>
             <img class="mb-3" src="/images/about/pimpinan/ruzhanul-ulum.png" alt="Ruzhanul Ulum" width="103" height="125">
-            <button class="bg-green-700 py-[10px] text-sm rounded-lg text-white w-full hover:bg-[#008f4a]">
+            <button class="bg-green-700 py-[10px] text-sm rounded-lg text-white w-full hover:bg-[#008f4a]" @click="setSelectedProfile('wakil gubernur')">
               Lihat Profil
             </button>
           </div>
@@ -75,6 +75,57 @@
         </li>
       </ul>
     </div>
+    <BaseModal :show="isModalOpen" button-label="Tutup" @close="closeModal">
+      <template #header>
+        <h1 class="font-roboto font-medium text-[21px] leading-[34px] capitalize text-green-700 px-6 py-2">
+          Profil {{ selectedProfile }} Jawa Barat
+        </h1>
+      </template>
+      <section class="rounded-2xl flex max-h-[443px] max-w-[640px]">
+        <img :src="profile[selectedProfile].image" alt="" width="255" height="443" class="flex-shrink-0">
+        <div class="overflow-y-auto px-5 flex flex-col">
+          <h3 class="font-lato text-gray-800 text-sm leading-6 mb-6">
+            {{ profile[selectedProfile].about }}
+          </h3>
+          <h4 class="font-roboto font-medium text-base text-gray-800 leading-[26px]">
+            Nama Lengkap
+          </h4>
+          <p class="font-lato text-sm text-gray-800 leading-6 mb-6">
+            {{ profile[selectedProfile].name }}
+          </p>
+          <h4 class="font-roboto font-medium text-base text-gray-800 leading-[26px]">
+            Tempat Tanggal Lahir
+          </h4>
+          <p class="font-lato text-sm text-gray-800 leading-6 mb-6">
+            {{ profile[selectedProfile].dateOfBirth }}
+          </p>
+          <h4 class="font-roboto font-medium text-base text-gray-800 leading-[26px]">
+            Riwayat Pendidikan
+          </h4>
+          <ul class="mb-6 list-disc">
+            <li v-for="education in profile[selectedProfile].educations" :key="education.id" class="font-lato text-sm text-gray-800 leading-6 ml-6">
+              {{ education.description }}
+            </li>
+          </ul>
+          <h4 class="font-roboto font-medium text-base text-gray-800 leading-[26px]">
+            Karier
+          </h4>
+          <ul class="mb-6 list-disc">
+            <li v-for="career in profile[selectedProfile].careers" :key="career.id" class="font-lato text-sm text-gray-800 leading-6 ml-6">
+              {{ career.description }}
+            </li>
+          </ul>
+          <h4 class="font-roboto font-medium text-base text-gray-800 leading-[26px]">
+            Penghargaan
+          </h4>
+          <ul class="list-disc">
+            <li v-for="award in profile[selectedProfile].awards" :key="award.id" class="font-lato text-sm text-gray-800 leading-6 ml-6">
+              {{ award.description }}
+            </li>
+          </ul>
+        </div>
+      </section>
+    </BaseModal>
   </section>
 </template>
 
@@ -82,6 +133,92 @@
 export default {
   data () {
     return {
+      profile: {
+        gubernur: {
+          name: 'Mochamad Ridwan Kamil, ST.,M.Ud',
+          dateOfBirth: 'Bandung, 4 Oktober 1971',
+          educations: [
+            {
+              id: 1,
+              description: 'S2, Master of Urban Design University of California, Berkeley, AS (1999-2001)'
+            },
+            {
+              id: 2,
+              description: 'S1, Teknik Arsitektur, Institut Teknologi Bandung (1990-1995)'
+            }
+          ],
+          careers: [
+            {
+              id: 1,
+              description: 'Gubernur Jawa Barat (2018-2023)'
+            },
+            {
+              id: 2,
+              description: 'Walikota Bandung (2013-2018)'
+            },
+            {
+              id: 3,
+              description: 'Arsitek'
+            },
+            {
+              id: 4,
+              description: 'Dosen Institut Teknologi Bandung (ITB)'
+            }
+          ],
+          awards: [
+            {
+              id: 1,
+              description: 'Best Governor for Healthcare and Action Against Pandemi dari Indonesia Awards (2021)'
+            },
+            {
+              id: 2,
+              description: 'The Best 7 Asia Governor dari Asia Business Info (2020)'
+            },
+            {
+              id: 3,
+              description: 'Doctor Honoris Kausa Bidang Public Administration di Dong-A University, Busan, Korea Selatan (2019)'
+            }
+          ],
+          about: 'Ridwan Kamil adalah seorang arsitek sekaligus politikus yang kini menjabat sebagai Gubernur Jawa Barat yang ke-14.',
+          image: '/images/about/profil/ridwan-kamil.png'
+        },
+        'wakil gubernur': {
+          name: 'H. Uu Ruzhanul Ulum, SE',
+          dateOfBirth: 'Tasikmalaya, 10 Mei 1969',
+          educations: [
+            {
+              id: 1,
+              description: 'Universitas Siliwangi (1997)'
+            }
+          ],
+          careers: [
+            {
+              id: 1,
+              description: 'Wakil Gubernur Jawa Barat (2018-2023)'
+            },
+            {
+              id: 2,
+              description: 'Bupati Tasikmalaya (2011-2018)'
+            }
+          ],
+          awards: [
+            {
+              id: 1,
+              description: 'Peduli Jurnalis dari Persatuan Wartawan Indonesia (2021)'
+            },
+            {
+              id: 2,
+              description: 'Lencana Adhitya Karya Mahatva Yodha Kategori Pembina Umum Karang Taruna Terbaik (2018)'
+            },
+            {
+              id: 3,
+              description: 'Satya Lencana Jasa Bhakti Koperasi dari Kementrian Koperasi dan Usaha Kecil Menengah Republik Indonesia (2017)'
+            }
+          ],
+          about: 'Memulai karir politiknya sebagai anggota DPRD pada tahun 1999, kini Uu Ruzhanul Ulum resmi memimpin Jawa Barat bersama Ridwan Kamil.',
+          image: '/images/about/profil/uu-ruzhanul-ulum.png'
+        }
+      },
       items: [
         {
           id: 1,
@@ -173,7 +310,21 @@ export default {
           period: '1945 - 1945',
           image: '/images/about/pimpinan/sutardjo.png'
         }
-      ]
+      ],
+      isModalOpen: false,
+      selectedProfile: 'gubernur'
+    }
+  },
+  methods: {
+    showModal () {
+      this.isModalOpen = true
+    },
+    closeModal () {
+      this.isModalOpen = false
+    },
+    setSelectedProfile (selectedProfile) {
+      this.selectedProfile = selectedProfile
+      this.showModal()
     }
   }
 }
