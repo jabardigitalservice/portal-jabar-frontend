@@ -13,7 +13,7 @@
             <InputSearch
               v-model.trim="searchKeyword"
               :clear="false"
-              placeholder="Cari prestasi jawa barat"
+              placeholder="Cari prestasi Jawa Barat"
               @submit="$fetch"
               @clear="$fetch"
             />
