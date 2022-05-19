@@ -5,18 +5,18 @@
     @click.self="toggleOpen"
   >
     <div
-      class="gpr-widget__container sticky top-[88px] grid grid-cols-[350px,auto] max-w-max mb-6
+      class="gpr-widget__container sticky top-[190px] grid grid-cols-[350px,auto] max-w-max mb-6
       transition-transform ease-in duration-150"
       :class="{ 'gpr-widget__container--open' : isOpen }"
     >
       <div class="w-[350px] py-1 bg-[#262879] rounded-lg overflow-hidden">
         <div
           id="gpr-kominfo-widget-container"
-          class="h-[500px] overflow-y-auto pointer-events-auto"
+          class="h-[450px] overflow-y-auto pointer-events-auto"
         />
       </div>
       <div
-        class="self-end relative -left-14 bottom-[50px] bg-[#262879] rounded-br-lg rounded-bl-lg
+        class="self-center relative left-[-55px] bg-[#262879] rounded-br-lg rounded-bl-lg
         text-white pointer-events-auto transform -rotate-90 cursor-pointer"
         @click="toggleOpen"
       >
@@ -61,5 +61,16 @@ export default {
 
 .gpr-widget .gpr-widget__container--open  {
   transform: translateX(0);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#gpr-kominfo-widget-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#gpr-kominfo-widget-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 </style>
