@@ -3,42 +3,55 @@
     <h2 class="font-roboto font-medium mb-4">
       Kategori
     </h2>
-    <section class="flex flex-col gap-3">
-      <div>
+    <section class="flex flex-col gap-5">
+      <JdsCheckbox
+        v-model="checkAll"
+        text="Pilih Semua"
+        :indeterminate="isIndeterminate"
+      />
+      <div
+        v-for="item in categories"
+        :key="item.category"
+        class="pl-7 flex min-w-0 justify-between items-center"
+      >
         <JdsCheckbox
-          v-model="checkAll"
-          text="Pilih Semua"
-          :indeterminate="isIndeterminate"
-        />
-      </div>
-      <div v-for="(category, index) in categories" :key="index" class="pl-7">
-        <JdsCheckbox
-          :text="category"
+          :text="item.category"
+          :title="item.category"
           size="sm"
-          class="capitalize"
-          :checked="isSelected(category)"
-          @change="setSelected(category)"
+          class="capitalize max-w-[75%]"
+          :checked="isSelected(item.category)"
+          @change="setSelected(item.category)"
         />
+        <span class="leading-none text-xs text-gray-500">
+          {{ item.count }}
+        </span>
       </div>
     </section>
   </aside>
 </template>
 
 <script>
-import { jabarAchievementsCategory } from 'static/data/index'
 import debounce from 'lodash/debounce'
 
 export default {
   data () {
     return {
+      categories: [],
       isDropdownOpen: false,
-      selected: [...jabarAchievementsCategory]
+      selected: []
+    }
+  },
+  async fetch () {
+    try {
+      const response = await this.$axios.get('v1/awards/categories')
+      this.categories = response.data
+      this.selected = this.categories.map(item => item.category)
+    } catch (error) {
+      this.categories = []
+      this.selected = []
     }
   },
   computed: {
-    categories () {
-      return jabarAchievementsCategory
-    },
     checkAll: {
       get () {
         return this.selected.length === this.categories.length
@@ -47,8 +60,8 @@ export default {
         const checked = []
 
         if (value) {
-          this.categories.forEach((category) => {
-            checked.push(category)
+          this.categories.forEach((item) => {
+            checked.push(item.category)
           })
         }
 
@@ -100,6 +113,9 @@ export default {
 
 <style>
 .jabar-achievements__sidebar .jds-checkbox__option-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 14px;
   color: #616161;
   line-height: 16px;
