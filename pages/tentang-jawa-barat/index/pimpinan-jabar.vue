@@ -133,7 +133,7 @@
 export default {
   data () {
     return {
-      profile: {
+      profile: Object.freeze({
         gubernur: {
           name: 'Mochamad Ridwan Kamil, ST.,M.Ud',
           dateOfBirth: 'Bandung, 4 Oktober 1971',
@@ -218,7 +218,7 @@ export default {
           about: 'Memulai karir politiknya sebagai anggota DPRD pada tahun 1999, kini Uu Ruzhanul Ulum resmi memimpin Jawa Barat bersama Ridwan Kamil.',
           image: '/images/about/profil/uu-ruzhanul-ulum.png'
         }
-      },
+      }),
       items: [
         {
           id: 1,
@@ -323,6 +323,8 @@ export default {
       this.isModalOpen = false
     },
     setSelectedProfile (selectedProfile) {
+      if (!['gubernur', 'wakil gubernur'].includes(selectedProfile)) { return }
+
       this.selectedProfile = selectedProfile
       this.showModal()
     }
