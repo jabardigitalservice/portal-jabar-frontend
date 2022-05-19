@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Feedback Form -->
     <BaseModal :show="show">
       <!-- Form Header -->
       <template #header>
@@ -82,7 +83,7 @@
       <template #footer>
         <div class="bg-gray-50 py-4 px-6 flex justify-end items-center gap-4">
           <Button
-            type="secondary"
+            variant="secondary"
             @click="closeFeedbackForm"
           >
             Tutup
@@ -98,27 +99,24 @@
         </div>
       </template>
     </BaseModal>
-    <Modal
-      :show="openedModal === 'success'"
-      header="Terima kasih"
-      body="Feedback Anda telah kami terima. Masukan Anda akan menjadi acuan kami untuk pengembangan Portal Jabar ke arah yang lebih baik."
-      label="OK"
-      @click="closeModal"
-    />
-    <Modal
-      :show="openedModal === 'not-allowed'"
-      header="Mohon Maaf"
-      body="Kami melihat bahwa Anda telah mengirimkan feedback baru-baru ini. Silakan kembali untuk mecoba mengirimkan feedback dalam kurun waktu 1 Jam (60 menit)."
-      label="OK, saya mengerti"
-      @click="closeModal"
-    />
-    <Modal
-      :show="openedModal === 'error'"
-      header="Mohon Maaf"
-      body="Terjadi kesalahan pada sistem kami. Silakan coba kembali beberapa saat lagi."
-      label="OK, saya mengerti"
-      @click="closeModal"
-    />
+
+    <!-- Dialog -->
+    <BaseModal
+      :show="dialog.open"
+      :button-label="dialog.buttonLabel"
+      @close="closeModal"
+    >
+      <template #header>
+        <h1 class="font-roboto font-medium text-[21px] leading-[34px] text-green-700 px-6 py-2">
+          {{ dialog.title }}
+        </h1>
+      </template>
+      <div class="max-w-[500px] py-4 px-6">
+        <p class="text-sm text-gray-800">
+          {{ dialog.body }}
+        </p>
+      </div>
+    </BaseModal>
   </div>
 </template>
 
@@ -149,7 +147,12 @@ export default {
         { label: '4', value: 4 },
         { label: '5', value: 5 }
       ],
-      openedModal: ''
+      dialog: {
+        open: false,
+        title: '',
+        body: '',
+        buttonLabel: ''
+      }
     }
   },
   computed: {
@@ -179,6 +182,7 @@ export default {
     closeModal () {
       this.closeFeedbackForm()
       this.resetFormInput()
+      this.resetDialog()
       this.openedModal = ''
     },
     resetFormInput () {
@@ -187,6 +191,14 @@ export default {
         compliments: '',
         criticism: '',
         suggestions: ''
+      }
+    },
+    resetDialog () {
+      this.dialog = {
+        open: false,
+        title: '',
+        body: '',
+        buttonLabel: ''
       }
     },
     isAllowed () {
@@ -206,7 +218,12 @@ export default {
     },
     async submitHandler () {
       if (!this.isAllowed()) {
-        this.openedModal = 'not-allowed'
+        this.dialog = {
+          open: true,
+          title: 'Mohon Maaf',
+          body: 'Kami melihat bahwa Anda telah mengirimkan feedback baru-baru ini. Silakan kembali untuk mecoba mengirimkan feedback dalam kurun waktu 1 Jam (60 menit).',
+          buttonLabel: 'OK, saya mengerti'
+        }
       } else {
         const form = {
           rating: this.form.rating,
@@ -218,11 +235,21 @@ export default {
           this.isLoading = true
           await this.$axios.$post('/v1/feedback', form)
           this.isLoading = false
-          this.openedModal = 'success'
+          this.dialog = {
+            open: true,
+            title: 'Terima kasih',
+            body: 'Feedback Anda telah kami terima. Masukan Anda akan menjadi acuan kami untuk pengembangan Portal Jabar ke arah yang lebih baik.',
+            buttonLabel: 'OK'
+          }
           this.setLocalStorage('feedback', new Date())
         } catch (error) {
           this.isLoading = false
-          this.openedModal = 'error'
+          this.dialog = {
+            open: true,
+            title: 'Mohon Maaf',
+            body: 'Terjadi kesalahan pada sistem kami. Silakan coba kembali beberapa saat lagi.',
+            buttonLabel: 'OK, saya mengerti'
+          }
         }
       }
     }
