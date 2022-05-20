@@ -22,11 +22,9 @@
           </summary>
           <ul class="grid grid-cols-1 md:grid-cols-2 mt-2 gap-2">
             <li v-for="item in navigation.items" :key="item.id">
-              <NuxtLink :to="item.link">
-                <a class="text-sm font-normal leading-6">
-                  {{ item.title }}
-                </a>
-              </NuxtLink>
+              <Link :link="item.link" class="text-sm font-normal leading-6">
+                {{ item.title }}
+              </Link>
             </li>
           </ul>
         </details>
@@ -42,11 +40,9 @@
             </h3>
             <ul class="grid grid-rows-4 grid-flow-col-dense gap-x-8 gap-y-2">
               <li v-for="item in navigation.items" :key="item.id" class="min-w-[95px]">
-                <NuxtLink :to="item.link">
-                  <a class="text-sm font-normal leading-6 whitespace-nowrap">
-                    {{ item.title }}
-                  </a>
-                </NuxtLink>
+                <Link :link="item.link" class="text-sm font-normal leading-6 whitespace-nowrap">
+                  {{ item.title }}
+                </Link>
               </li>
             </ul>
           </div>
