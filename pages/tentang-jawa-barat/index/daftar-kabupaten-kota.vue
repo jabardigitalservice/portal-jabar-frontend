@@ -192,7 +192,7 @@ export default {
         return
       }
 
-      this.fetchMainNews()
+      this.$fetch()
     }
   }
 }
