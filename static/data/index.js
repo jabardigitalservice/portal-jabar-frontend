@@ -87,10 +87,10 @@ export const navigationMenu = [
       },
       {
         id: 2,
-        title: 'Kependudukan',
+        title: 'Kependudukan dan Tempat Tinggal',
         description: 'Urus Perizinan kependudukan dan tempat tinggal dengan mudah',
         icon: '/icons/navigation/kependudukan.svg',
-        link: '#'
+        link: ' '
       },
       {
         id: 3,
@@ -101,7 +101,7 @@ export const navigationMenu = [
       },
       {
         id: 4,
-        title: 'Pendidikan',
+        title: 'Pendidikan dan Pembelajaran',
         description: 'Dapat informasi program pemerintah bagi siswa dan pelajar',
         icon: '/icons/navigation/pendidikan.svg',
         link: '#'
@@ -130,14 +130,14 @@ export const navigationMenu = [
       {
         id: 2,
         title: 'Arsip dan Dokumen',
-        description: 'Akses dan unduh dokumen resmi yang dirilis pemerintah Jawa barat',
+        description: 'Akses dan unduh dokumen resmi yang dirilis pemerintah Jawa Barat',
         icon: '/icons/navigation/arsip-dan-dokumen.svg',
         link: '#'
       },
       {
         id: 3,
         title: 'Tentang Jawa Barat',
-        description: 'Cari tahu sejarah, pimpinan, dan pemerintahan Jawa selengkapnya Barat',
+        description: 'Cari tahu sejarah, pimpinan, dan pemerintahan Jawa Barat selengkapnya',
         icon: '/icons/navigation/tentang-jawa-barat.svg',
         link: '/tentang-jawa-barat'
       }
