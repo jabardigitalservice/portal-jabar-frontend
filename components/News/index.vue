@@ -52,9 +52,10 @@
       </section>
     </BaseContainer>
 
-    <section class="w-full h-full py-8 bg-[#FCF6F0]">
+    <!-- NOTE: Temporary Hide Element -->
+    <!-- <section class="w-full h-full py-8 bg-[#FCF6F0]">
       <NewsVideo :category="currentCategory" :items="videoNews" :loading="loading" />
-    </section>
+    </section> -->
   </main>
 </template>
 
