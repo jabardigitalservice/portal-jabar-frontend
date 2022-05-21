@@ -4,16 +4,14 @@
       Tags
       <Icon src="/icons/tags.svg" alt="tags" size="19px" class="ml-2" />
     </span>
-    <!-- TODO: change the link to actual route -->
-    <nuxt-link
+    <ul
       v-for="tag in tags"
       :key="tag.tags_name"
-      :to="`/berita/tags/${tag.tag_name}`"
-      class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase cursor-pointer
-      hover:text-green-700 hover:bg-green-50"
     >
-      {{ tag.tag_name }}
-    </nuxt-link>
+      <li class="rounded-full px-[10px] py-2 text-sm text-gray-700 bg-gray-200 lowercase">
+        {{ tag.tag_name }}
+      </li>
+    </ul>
   </section>
 </template>
 
