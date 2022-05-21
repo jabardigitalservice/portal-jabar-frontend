@@ -19,12 +19,12 @@
               </a>
             </NuxtLink>
           </li>
-          <li class="h-6 w-1 border-r border-green-500" /> -->
+          <li class="h-6 w-1 border-r border-green-500" />
           <li>
             <Link link="#" class="text-sm font-normal leading-6">
               Kontak Layanan
             </Link>
-          </li>
+          </li> -->
         </ul>
         <p class="font-lato text-sm font-normal leading-6 text-white text-center md:text-left">
           Copyright © {{ year }} <br class="lg:hidden"> Pemerintah Daerah Provinsi Jawa Barat. All Right Reserved
