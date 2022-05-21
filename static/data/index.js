@@ -26,36 +26,50 @@ export const navigationMenu = [
         id: 1,
         title: 'Ekonomi',
         description: 'Menyajikan artikel perkembangan ekonomi Jawa Barat terpercaya',
-        icon: '/icons/layanan-publik/kependudukan.svg',
+        icon: '/icons/navigation/ekonomi.svg',
         link: '/berita?kategori=ekonomi'
       },
       {
         id: 2,
         title: 'Kesehatan',
-        description: 'Kabar dan situasi kesehatan terkini di Jawa Barat',
-        icon: '/icons/layanan-publik/kepolisian.svg',
+        description: 'Kabar dan situasi terkini kesehatan di Jawa Barat',
+        icon: '/icons/navigation/kesehatan.svg',
         link: '/berita?kategori=kesehatan'
       },
       {
         id: 3,
         title: 'Pendidikan',
-        description: 'Informasi terbaru dari dunia pendidikan, dan kebudayaan',
-        icon: '/icons/layanan-publik/pajak.svg',
+        description: 'Informasi terbaru dari dunia pendidikan dan kebudayaan',
+        icon: '/icons/navigation/pendidikan.svg',
         link: '/berita?kategori=pendidikan'
       },
       {
         id: 4,
         title: 'Pemerintahan',
         description: 'Pembaruan Jawa Barat resmi dari pemerintah',
-        icon: '/icons/layanan-publik/perizinan.svg',
+        icon: '/icons/navigation/pemerintahan.svg',
         link: '/berita?kategori=pemerintahan'
       },
       {
         id: 5,
+        title: 'Infrastruktur',
+        description: 'Menyajikan artikel perkembangan infrastruktur di Jawa Barat',
+        icon: '/icons/navigation/infrastruktur.svg',
+        link: '/berita?kategori=infrastruktur'
+      },
+      {
+        id: 6,
         title: 'Sosial',
         description: 'Kondisi terbarukan tentang kesejahteraan sosial',
-        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        icon: '/icons/navigation/sosial.svg',
         link: '/berita?kategori=sosial'
+      },
+      {
+        id: 7,
+        title: 'Teknologi',
+        description: 'Informasi terkait perkembangan teknologi di Jawa Barat',
+        icon: '/icons/navigation/teknologi.svg',
+        link: '/berita?kategori=teknologi'
       }
     ]
   },
@@ -66,37 +80,37 @@ export const navigationMenu = [
     items: [
       {
         id: 1,
-        title: 'Kependudukan',
-        description: 'Urus perizinan kependudukan dan tempat tinggal dengan mudah',
-        icon: '/icons/layanan-publik/kependudukan.svg',
+        title: 'Kesehatan',
+        description: 'Informasi terkait layanan kesehatan terlengkap',
+        icon: '/icons/navigation/kesehatan.svg',
         link: '#'
       },
       {
         id: 2,
-        title: 'Kesehatan',
-        description: 'Cari pelayanan kesehatan terlengkap',
-        icon: '/icons/layanan-publik/kepolisian.svg',
+        title: 'Kependudukan',
+        description: 'Urus Perizinan kependudukan dan tempat tinggal dengan mudah',
+        icon: '/icons/navigation/kependudukan.svg',
         link: '#'
       },
       {
         id: 3,
-        title: 'Ketenagakerjaan',
-        description: 'Cari lowongan kerja gratis dan terpercaya',
-        icon: '/icons/layanan-publik/pajak.svg',
+        title: 'Sosial dan Keluarga',
+        description: 'Akses ke berbagai layanan bagi anak-anak, perempuan dan masyarakat',
+        icon: '/icons/navigation/sosial.svg',
         link: '#'
       },
       {
         id: 4,
-        title: 'Sosial dan Keluarga',
-        description: 'Akses berbagai layanan bagi anak-anak, perempuan, dan masyarakat',
-        icon: '/icons/layanan-publik/perizinan.svg',
+        title: 'Pendidikan',
+        description: 'Dapat informasi program pemerintah bagi siswa dan pelajar',
+        icon: '/icons/navigation/pendidikan.svg',
         link: '#'
       },
       {
         id: 5,
-        title: 'Pendidikan dan Pembelajaran',
-        description: 'Dapatkan informasi program pemerintah bagi siswa dan pelajar ',
-        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        title: 'Ketenagakerjaan',
+        description: 'Cari lowongan kerja gratis dan terpercaya',
+        icon: '/icons/navigation/ketenagakerjaan.svg',
         link: '#'
       }
     ]
@@ -110,21 +124,21 @@ export const navigationMenu = [
         id: 1,
         title: 'Selayang Pandang',
         description: 'Kilas perjalanan Jawa Barat menuju Jabar Juara Lahir Batin',
-        icon: '/icons/layanan-publik/perizinan.svg',
+        icon: '/icons/navigation/selayang-pandang.svg',
         link: '/selayang-pandang'
       },
       {
         id: 2,
         title: 'Arsip dan Dokumen',
         description: 'Akses dan unduh dokumen resmi yang dirilis pemerintah Jawa barat',
-        icon: '/icons/layanan-publik/pendidikan-dan-pembelajaran.svg',
+        icon: '/icons/navigation/arsip-dan-dokumen.svg',
         link: '#'
       },
       {
         id: 3,
         title: 'Tentang Jawa Barat',
         description: 'Cari tahu sejarah, pimpinan, dan pemerintahan Jawa selengkapnya Barat',
-        icon: '/icons/layanan-publik/perizinan.svg',
+        icon: '/icons/navigation/tentang-jawa-barat.svg',
         link: '/tentang-jawa-barat'
       }
     ]
