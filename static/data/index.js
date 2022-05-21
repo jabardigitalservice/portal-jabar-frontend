@@ -361,7 +361,7 @@ export const socialMediaSites = [
   }
 ]
 
-export const newsCategories = ['ekonomi', 'politik', 'pemerintahan', 'infrastruktur', 'sosial', 'kesehatan', 'pendidikan', 'pariwisata']
+export const newsCategories = ['ekonomi', 'kesehatan', 'pendidikan', 'pemerintahan', 'infrastruktur', 'sosial', 'teknologi']
 
 export const searchDomains = {
   news: 'Berita Jawa Barat',
