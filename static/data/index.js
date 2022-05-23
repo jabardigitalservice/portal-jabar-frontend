@@ -83,35 +83,35 @@ export const navigationMenu = [
         title: 'Kesehatan',
         description: 'Informasi terkait layanan kesehatan terlengkap',
         icon: '/icons/navigation/kesehatan.svg',
-        link: '#'
+        link: 'https://bit.ly/legalisirSTR'
       },
       {
         id: 2,
         title: 'Kependudukan dan Tempat Tinggal',
         description: 'Urus Perizinan kependudukan dan tempat tinggal dengan mudah',
         icon: '/icons/navigation/kependudukan.svg',
-        link: ' '
+        link: 'https://disdukcapil.jabarprov.go.id/portal'
       },
       {
         id: 3,
         title: 'Sosial dan Keluarga',
         description: 'Akses ke berbagai layanan bagi anak-anak, perempuan dan masyarakat',
         icon: '/icons/navigation/sosial.svg',
-        link: '#'
+        link: 'https://dinsos.jabarprov.go.id'
       },
       {
         id: 4,
         title: 'Pendidikan dan Pembelajaran',
         description: 'Dapat informasi program pemerintah bagi siswa dan pelajar',
         icon: '/icons/navigation/pendidikan.svg',
-        link: '#'
+        link: 'https://disdik.jabarprov.go.id'
       },
       {
         id: 5,
         title: 'Ketenagakerjaan',
         description: 'Cari lowongan kerja gratis dan terpercaya',
         icon: '/icons/navigation/ketenagakerjaan.svg',
-        link: '#'
+        link: 'https://jabarjawara.id'
       }
     ]
   },
