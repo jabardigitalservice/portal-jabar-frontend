@@ -401,3 +401,11 @@ export const jabarAchievementsCategory = [
   'Investasi',
   'Sosial Budaya'
 ]
+
+export const popularSearchSuggestions = [
+  'Jawa Barat',
+  'Ridwan Kamil',
+  'Covid-19',
+  'G20',
+  'Minyak Goreng'
+]
