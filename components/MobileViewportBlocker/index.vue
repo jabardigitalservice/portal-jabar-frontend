@@ -25,11 +25,33 @@
             pengembangan Portal Jabar yang terbaru.
           </p>
         </div>
+        <div class="w-full flex flex-col gap-8">
+          <Link link="https://www.instagram.com/jabarprovgoid">
+            <div
+              class="h-[52px] border border-gray-300 rounded-md flex justify-center items-center gap-2"
+            >
+              <Icon
+                src="/icons/social-media/instagram-logo.svg"
+                size="18px"
+                alt="Diterbitkan"
+              />
+              Kunjungi Instagram
+            </div>
+          </Link>
+          <Link link="https://twitter.com/jabarprovgoid">
+            <div
+              class="h-[52px] border border-gray-300 rounded-md flex justify-center items-center gap-2"
+            >
+              <Icon
+                src="/icons/social-media/twitter-logo.svg"
+                size="18px"
+                alt="Diterbitkan"
+              />
+              Kunjungi Twitter
+            </div>
+          </Link>
+        </div>
       </section>
     </BaseContainer>
   </div>
 </template>
-
-<script>
-export default {}
-</script>
