@@ -7,5 +7,6 @@
       <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
     </div>
     <Footer />
+    <MobileViewportBlocker />
   </div>
 </template>
