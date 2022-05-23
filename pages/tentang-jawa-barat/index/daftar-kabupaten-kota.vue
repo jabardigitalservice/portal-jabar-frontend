@@ -61,7 +61,7 @@
         >
           <div class="w-[100px] h-[100px] grid place-content-center">
             <img
-              :src="item.logo"
+              :src="item.logo || '/icons/image.svg'"
               :alt="item.name"
               class="h-[80px]"
               height="80"
