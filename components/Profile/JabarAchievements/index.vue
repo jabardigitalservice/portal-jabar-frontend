@@ -14,7 +14,7 @@
               v-model.trim="searchKeyword"
               :clear="false"
               placeholder="Cari prestasi Jawa Barat"
-              @submit="$fetch"
+              @submit="onSubmit"
               @clear="$fetch"
             />
             <SearchToolbar
@@ -150,6 +150,15 @@ export default {
       if (!sortOrder || sortOrder.toUpperCase() === this.sortOrder) { return }
       this.sortOrder = sortOrder.toUpperCase()
       this.$fetch()
+    },
+    onSubmit () {
+      if (this.searchKeyword.length >= 3) {
+        this.pagination = {
+          ...this.pagination,
+          currentPage: 1
+        }
+        this.$fetch()
+      }
     }
   }
 }
