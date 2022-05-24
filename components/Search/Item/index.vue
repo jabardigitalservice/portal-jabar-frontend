@@ -1,21 +1,31 @@
 <template>
-  <!-- TODO: Remove dummy data  -->
   <article
-    class="w-full grid p-3 group rounded-xl cursor-pointer border border-transparent
+    class="min-w-0 w-full p-3 group rounded-xl cursor-pointer border border-transparent
     transition-all duration-150 ease-out hover:border-[#E9EDF4] hover:shadow-md"
-    :class="view === 'list' ? 'grid-cols-search-item gap-6 items-center' : 'grid-cols-1'"
+    :class="view === 'grid' ? 'flex flex-col' : 'flex gap-4'"
   >
     <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
       <div
-        class="self-start rounded-lg overflow-hidden"
-        :class=" view === 'list' ? 'w-[120px] h-[120px]' : 'w-full h-[120px] mb-6'"
+        class="self-start rounded-lg overflow-hidden flex items-center justify-center bg-gray-50"
+        :class="{ 'w-[120px] h-[120px]' : view === 'list',
+                  'w-full h-[120px] mb-6': view === 'grid',
+                  'w-[72px] h-[72px]' : small
+        }"
       >
         <img
+          v-if="image"
           :src="image"
           :alt="title"
-          width="120px"
-          height="120px"
+          width="72"
+          height="72"
           class="w-full h-full object-cover object-center group-hover:scale-110 transition-all ease-in duration-150"
+        >
+        <img
+          v-else
+          src="/icons/program-unggulan/logo-placeholder.svg"
+          alt="gambar tidak ditemukan"
+          width="60"
+          height="60"
         >
       </div>
     </a>
@@ -23,6 +33,7 @@
       <span
         class="bg-gray-100 px-2 py-1 rounded-[4px] mb-2 w-max font-lato text-xs leading-5 text-[#8D8D8D]
       group-hover:bg-green-50 group-hover:text-green-700"
+        :class="small ? 'hidden' : null"
       >
         {{ domain.label }}
       </span>
@@ -34,19 +45,15 @@
           {{ title }}
         </h1>
       </a>
-      <template v-if="domain.type === 'news'">
-        <p class="font-normal text-xs leading-5 text-gray-700">
-          <span class="group-hover:text-blue-gray-800 capitalize">{{ category }}</span> | {{ date }}
-        </p>
-      </template>
-      <template v-else>
-        <p
-          class="font-lato font-normal text-sm leading-6 text-[#717F8C] line-clamp-2
+      <p
+        class="font-lato font-normal text-sm leading-6 text-[#717F8C] line-clamp-2 mb-2
         group-hover:text-blue-gray-600"
-        >
-          {{ description }}
-        </p>
-      </template>
+      >
+        {{ description }}
+      </p>
+      <p v-if="domain.type === 'news'" class="font-normal text-xs leading-5 text-gray-700">
+        <span class="group-hover:text-blue-gray-800 capitalize">{{ category }}</span> | {{ date }}
+      </p>
     </div>
   </article>
 </template>
@@ -67,6 +74,10 @@ export default {
       validator (value) {
         return ['list', 'grid'].includes(value)
       }
+    },
+    small: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -78,7 +89,7 @@ export default {
       }
     },
     image () {
-      return this.item?.thumbnail || null
+      return this.item?.image || null
     },
     title () {
       return this.item?.title || '-'
