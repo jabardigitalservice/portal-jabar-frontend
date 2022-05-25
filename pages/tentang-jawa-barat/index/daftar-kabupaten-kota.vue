@@ -78,7 +78,7 @@
               {{ item.address }}
             </p>
             <a
-              :href="item.website"
+              :href="setValidWebsite(item.website)"
               rel="noopener noreferrer"
               target="_blank"
               class="font-lato text-xs font-normal leading-5 text-[#1976D2] flex items-center gap-2"
@@ -193,6 +193,13 @@ export default {
       }
 
       this.$fetch()
+    },
+    setValidWebsite (website) {
+      if (website.startsWith('http')) {
+        return website
+      }
+
+      return `https://${website}`
     }
   }
 }
