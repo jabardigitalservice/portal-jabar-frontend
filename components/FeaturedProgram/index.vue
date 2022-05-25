@@ -72,6 +72,7 @@ export default {
     }
   },
   async fetch () {
+    const id = this.$route.query.id
     const params = {
       cat: this.filter
     }
@@ -81,6 +82,13 @@ export default {
       this.data = data
       this.meta = meta
       this.programList = this.data
+
+      if (id) {
+        const programDetail = this.filterProgramById(id)
+        if (programDetail.length > 0) {
+          this.showDetail(programDetail[0])
+        }
+      }
     } catch (error) {
       this.programList = []
       this.meta = {}
@@ -148,6 +156,11 @@ export default {
      */
     setFilter (filter) {
       this.filter = filter
+    },
+
+    filterProgramById (id) {
+      const programDetail = this.programList.filter(program => program.id === parseInt(id))
+      return programDetail
     }
   }
 }
