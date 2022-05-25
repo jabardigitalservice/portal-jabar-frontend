@@ -18,7 +18,7 @@
           :text="item.category"
           :title="item.category"
           size="sm"
-          class="capitalize max-w-[75%]"
+          class="max-w-[75%]"
           :checked="isSelected(item.category)"
           @change="setSelected(item.category)"
         />

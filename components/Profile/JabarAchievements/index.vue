@@ -14,12 +14,13 @@
               v-model.trim="searchKeyword"
               :clear="false"
               placeholder="Cari prestasi Jawa Barat"
-              @submit="$fetch"
+              @submit="onSubmit"
               @clear="$fetch"
             />
             <SearchToolbar
               :list-view.sync="listView"
               :total-count="pagination.totalRows"
+              :sort-options="sortOptions"
               @change:sort="onChangeSort($event)"
             />
             <template v-if="!$fetchState.pending && !hasResults">
@@ -55,8 +56,18 @@ export default {
       achievementsMeta: {},
       searchKeyword: '',
       listView: 'list',
-      sortOrder: 'DESC',
+      sortOrder: 'ASC',
       categories: [],
+      sortOptions: [
+        {
+          value: 'ASC',
+          label: 'Judul A - Z'
+        },
+        {
+          value: 'DESC',
+          label: 'Judul Z - A'
+        }
+      ],
       pagination: {
         currentPage: 1,
         itemsPerPage: 5,
@@ -72,7 +83,7 @@ export default {
       q: this.searchKeyword,
       cat: this.categories,
       sort_order: this.sortOrder,
-      sort_by: 'created_at'
+      sort_by: 'title'
     }
 
     try {
@@ -150,6 +161,15 @@ export default {
       if (!sortOrder || sortOrder.toUpperCase() === this.sortOrder) { return }
       this.sortOrder = sortOrder.toUpperCase()
       this.$fetch()
+    },
+    onSubmit () {
+      if (this.searchKeyword.length >= 3) {
+        this.pagination = {
+          ...this.pagination,
+          currentPage: 1
+        }
+        this.$fetch()
+      }
     }
   }
 }

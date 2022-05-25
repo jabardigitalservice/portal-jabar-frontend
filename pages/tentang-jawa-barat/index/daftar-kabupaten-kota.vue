@@ -154,6 +154,10 @@ export default {
     },
     onSubmit () {
       if (this.searchKeyword.length >= 3) {
+        this.pagination = {
+          ...this.pagination,
+          currentPage: 1
+        }
         this.$fetch()
       }
     },

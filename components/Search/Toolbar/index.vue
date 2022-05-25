@@ -1,14 +1,14 @@
 <template>
-  <section class="toolbar relative h-[38px] flex justify-between">
+  <section class="toolbar min-w-0 w-full h-[38px] flex justify-between">
     <!-- Results Counter -->
-    <div class="flex w-max items-center">
+    <div class="min-w-0 flex items-center">
       <p class="font-roboto text-base leading-5 text-blue-gray-300">
         <slot name="resultText">
           Menampilkan <strong class="text-blue-gray-600">{{ totalCount }} hasil pencarian</strong>
         </slot>
       </p>
     </div>
-    <div class="flex w-max gap-4">
+    <div class="min-w-0 flex gap-4 justify-end">
       <!-- List and Grid View -->
       <div class="flex gap-4 items-center ">
         <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500">
@@ -47,9 +47,9 @@
           Urut Berdasarkan :
         </p>
         <Select
-          class="gap-0"
+          class="w-[fit-content] gap-0"
           :options="sortOptions"
-          value="desc"
+          :value="sortValue"
           @click="onChangeSort"
         />
       </div>
@@ -58,6 +58,17 @@
 </template>
 
 <script>
+const defaultSortOptions = [
+  {
+    value: 'DESC',
+    label: 'Terbaru'
+  },
+  {
+    value: 'ASC',
+    label: 'Terlama'
+  }
+]
+
 export default {
   props: {
     listView: {
@@ -76,20 +87,17 @@ export default {
       type: Boolean,
       required: false,
       default: true
-    }
-  },
-  data () {
-    return {
-      sortOptions: [
-        {
-          value: 'desc',
-          label: 'Terbaru'
-        },
-        {
-          value: 'asc',
-          label: 'Terlama'
-        }
-      ]
+    },
+    sortOptions: {
+      type: Array,
+      default: () => [...defaultSortOptions]
+    },
+    sortValue: {
+      type: String,
+      default: 'ASC',
+      validator (value) {
+        return ['ASC', 'DESC'].includes(value)
+      }
     }
   },
   methods: {
