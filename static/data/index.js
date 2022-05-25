@@ -80,34 +80,41 @@ export const navigationMenu = [
     items: [
       {
         id: 1,
-        title: 'Kesehatan',
-        description: 'Informasi terkait layanan kesehatan terlengkap',
-        icon: '/icons/navigation/kesehatan.svg',
-        link: 'https://bit.ly/legalisirSTR'
-      },
-      {
-        id: 2,
         title: 'Kependudukan dan Tempat Tinggal',
         description: 'Urus Perizinan kependudukan dan tempat tinggal dengan mudah',
         icon: '/icons/navigation/kependudukan.svg',
         link: 'https://disdukcapil.jabarprov.go.id/portal'
       },
       {
-        id: 3,
-        title: 'Sosial dan Keluarga',
-        description: 'Akses ke berbagai layanan bagi anak-anak, perempuan dan masyarakat',
-        icon: '/icons/navigation/sosial.svg',
-        link: 'https://dinsos.jabarprov.go.id'
-      },
-      {
-        id: 4,
+        id: 2,
         title: 'Pendidikan dan Pembelajaran',
         description: 'Dapat informasi program pemerintah bagi siswa dan pelajar',
         icon: '/icons/navigation/pendidikan.svg',
         link: 'https://disdik.jabarprov.go.id'
       },
       {
+        id: 3,
+        title: 'Kesehatan',
+        description: 'Informasi terkait layanan kesehatan terlengkap',
+        icon: '/icons/navigation/kesehatan.svg',
+        link: 'https://bit.ly/legalisirSTR'
+      },
+      {
+        id: 4,
+        title: 'Pajak',
+        description: 'Cari semua informasi terkait perpajakan di Jawa Barat',
+        icon: '/icons/navigation/pajak.svg',
+        link: 'https://bapenda.jabarprov.go.id'
+      },
+      {
         id: 5,
+        title: 'Sosial dan Keluarga',
+        description: 'Akses ke berbagai layanan bagi anak-anak, perempuan dan masyarakat',
+        icon: '/icons/navigation/sosial.svg',
+        link: 'https://dinsos.jabarprov.go.id'
+      },
+      {
+        id: 6,
         title: 'Ketenagakerjaan',
         description: 'Cari lowongan kerja gratis dan terpercaya',
         icon: '/icons/navigation/ketenagakerjaan.svg',
