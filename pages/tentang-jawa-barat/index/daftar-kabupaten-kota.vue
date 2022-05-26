@@ -78,7 +78,8 @@
               {{ item.address }}
             </p>
             <a
-              :href="item.website"
+              v-if="item.website"
+              :href="getURL(item.website)"
               rel="noopener noreferrer"
               target="_blank"
               class="font-lato text-xs font-normal leading-5 text-[#1976D2] flex items-center gap-2"
@@ -101,6 +102,8 @@
 </template>
 
 <script>
+import { prependURLProtocol } from '~/utils/url'
+
 export default {
   data () {
     return {
@@ -149,6 +152,9 @@ export default {
     }
   },
   methods: {
+    getURL (url) {
+      return prependURLProtocol(url)
+    },
     onListViewChange (listView) {
       this.listView = listView
     },
