@@ -75,8 +75,8 @@
             <img
               :src="program.icon"
               :alt="program.title"
-              width="32"
-              height="32"
+              width="38"
+              height="38"
             >
           </div>
           <div class="h-[90px] flex items-center justify-center">
