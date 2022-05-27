@@ -15,10 +15,8 @@
       <div
         v-for="(item, index) in items"
         :key="index"
-        class="keen-slider__slide group cursor-pointer flex flex-col justify-center items-center w-12 h-12 rounded flex-shrink-0 flex-grow-0 hover:bg-green-50"
-        :class="{
-          'bg-green-700 hover:bg-green-800' : isSelected(item)
-        }"
+        class="keen-slider__slide group cursor-pointer flex flex-col justify-center items-center w-12 h-12 rounded flex-shrink-0 flex-grow-0"
+        :class="[isSelected(item) ? 'bg-green-700 hover:bg-green-800' : 'hover:bg-green-50']"
         @click="setSelectedDay(item)"
       >
         <div
