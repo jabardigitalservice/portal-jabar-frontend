@@ -1,6 +1,6 @@
 <template>
   <ul class="grid grid-cols-9 grid-rows-2 gap-3 p-8">
-    <li class="col-span-3 row-span-2 bg-green-700 rounded-lg text-white p-4 flex flex-col justify-between">
+    <li class="col-span-3 row-span-2 bg-green-700 rounded-lg text-white p-4 flex flex-col justify-between gap-4">
       <div>
         <p class="font-lora font-bold text-xl mb-2">
           Kontribusi
