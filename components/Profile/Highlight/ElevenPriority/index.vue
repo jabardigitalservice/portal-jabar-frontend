@@ -25,8 +25,8 @@
           <img
             :src="item.icon"
             :alt="item.title"
-            width="32"
-            height="32"
+            width="38"
+            height="38"
           >
         </div>
         <div class="h-[90px] flex items-center justify-center">
@@ -122,22 +122,22 @@ export default {
         {
           id: 8,
           title: 'Gerakan Membangun Desa',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/selayang-pandang/icon-prioritas-membangun-desa.svg')
         },
         {
           id: 9,
           title: 'Pendidikan Agama dan Tempat Ibadah Juara',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pendidikan-agama.svg')
         },
         {
           id: 10,
           title: 'Pengembangan Infrastruktur Konektivitas Wilayah dan Pengelolaan Lingkungan Hidup',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pengembangan-infrastruktur.svg')
         },
         {
           id: 11,
           title: 'Pengembangan Destinasi dan Infrastruktur Pariwisata',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pengembangan-destinasi.svg')
         }
       ]
     }
