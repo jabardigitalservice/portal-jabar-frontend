@@ -10,14 +10,16 @@
         @focus="setFocus(true)"
         @blur="setFocus(false)"
       />
-      <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
-        <Options
-          class="w-full"
-          :options="suggestions"
-          header="Saran pencarian"
-          @click="suggestionClicked"
-        />
-      </div>
+      <template v-if="withSuggestion">
+        <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
+          <Options
+            class="w-full"
+            :options="suggestions"
+            header="Saran pencarian"
+            @click="suggestionClicked"
+          />
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -26,6 +28,12 @@
 import debounce from 'lodash/debounce'
 
 export default {
+  props: {
+    withSuggestion: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       inputValue: this.$route.query.q || '',
@@ -49,7 +57,7 @@ export default {
   },
   watch: {
     inputValue () {
-      if (this.hasValue && this.isFocused) {
+      if (this.withSuggestion && this.hasValue && this.isFocused) {
         this.getSuggestions()
       } else {
         this.suggestions = []
