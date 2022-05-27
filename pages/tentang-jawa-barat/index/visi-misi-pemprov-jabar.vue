@@ -98,47 +98,47 @@ export default {
         {
           id: 1,
           title: 'Meningkatkan akses pendidikan untuk semua',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/pendidikan.svg')
         },
         {
           id: 2,
           title: 'Desentralisasi pelayanan kesehatan',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/kesehatan.svg')
         },
         {
           id: 3,
           title: 'Meningkatkan pertumbuhan ekonomi berbasis inovasi',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/pertumbuhan.svg')
         },
         {
           id: 4,
           title: 'Mengembangkan destinasi dan infrastruktur pariwisata',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/pariwisata.svg')
         },
         {
           id: 5,
           title: 'Mewujudkan pesantren juara',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/pesantren.svg')
         },
         {
           id: 6,
           title: 'Meningkatkan infrastruktur konektifitas wilayah',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/infrastruktur.svg')
         },
         {
           id: 7,
           title: 'Gerakan membangun desa',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/pembangunan.svg')
         },
         {
           id: 8,
           title: 'Memberikan subsidi gratis untuk golongan ekonomi lemah',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/ekonomi.svg')
         },
         {
           id: 9,
           title: 'Meningkatkan inovasi pelayanan publik dan penataan daerah',
-          icon: require('~/static/icons/selayang-pandang/icon-prioritas-pembangunan-kesehatan.svg')
+          icon: require('~/static/icons/program-unggulan/pelayanan.svg')
         }
       ]
     }
