@@ -16,31 +16,37 @@
       </p>
     </div>
     <!-- Recommendations -->
-    <p class="font-lato font-bold text-sm leading-6 text-gray-800">
-      Rekomendasi untuk Anda
-    </p>
-    <div class="w-full grid grid-cols-3 gap-4">
-      <template v-if="hasRecommendations">
-        <SearchItem
-          v-for="item in recommendations"
-          :key="item.id"
-          view="grid"
-        />
-      </template>
-      <template v-else>
-        <SearchItemSkeleton
-          v-for="index in 3"
-          :key="index"
-          view="grid"
-        />
-      </template>
-    </div>
+    <template v-if="withRecommendation">
+      <p class="font-lato font-bold text-sm leading-6 text-gray-800">
+        Rekomendasi untuk Anda
+      </p>
+      <div class="w-full grid grid-cols-3 gap-4">
+        <template v-if="hasRecommendations">
+          <SearchItem
+            v-for="item in recommendations"
+            :key="item.id"
+            view="grid"
+          />
+        </template>
+        <template v-else>
+          <SearchItemSkeleton
+            v-for="index in 3"
+            :key="index"
+            view="grid"
+          />
+        </template>
+      </div>
+    </template>
   </section>
 </template>
 
 <script>
 export default {
   props: {
+    withRecommendation: {
+      type: Boolean,
+      default: false
+    },
     recommendations: {
       type: Array,
       required: false,
