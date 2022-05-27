@@ -24,7 +24,7 @@
     </li>
     <li class="col-span-2 m-h-[152px] rounded-lg border border-gray-200 p-4 flex flex-col justify-between">
       <div class="flex flex-col gap-2">
-        <Icon src="/icons/profile/pdb_nasional.svg" size="24px" />
+        <Icon src="/icons/selayang-pandang/icon-kontribusi-pdb-nasional.svg" size="38px" />
         <p class="text-green-700 font-roboto font-bold text-lg">
           14.33%
         </p>
@@ -35,7 +35,7 @@
     </li>
     <li class="col-span-2 m-h-[152px] rounded-lg border border-gray-200 p-4 flex flex-col justify-between">
       <div class="flex flex-col gap-2">
-        <Icon src="/icons/profile/pdb_manufaktur.svg" size="24px" />
+        <Icon src="/icons/selayang-pandang/icon-kontribusi-pdb-manufaktur.svg" size="38px" />
         <p class="text-green-700 font-roboto font-bold text-lg">
           60%
         </p>
@@ -46,7 +46,7 @@
     </li>
     <li class="col-span-2 m-h-[152px] rounded-lg border border-gray-200 p-4 flex flex-col justify-between">
       <div class="flex flex-col gap-2">
-        <Icon src="/icons/profile/pma.svg" size="24px" />
+        <Icon src="/icons/selayang-pandang/icon-kontribusi-pma.svg" size="38px" />
         <p class="text-green-700 font-roboto font-bold text-lg">
           34.46%
         </p>
@@ -57,7 +57,7 @@
     </li>
     <li class="col-span-3 m-h-[152px] rounded-lg border border-gray-200 p-4 flex flex-col justify-between">
       <div class="flex flex-col gap-2">
-        <Icon src="/icons/profile/beras.svg" size="24px" />
+        <Icon src="/icons/selayang-pandang/icon-kontribusi-beras.svg" size="38px" />
         <p class="text-green-700 font-roboto font-bold text-lg">
           17.76%
         </p>
@@ -68,7 +68,7 @@
     </li>
     <li class="col-span-3 m-h-[152px] rounded-lg border border-gray-200 p-4 flex flex-col justify-between">
       <div class="flex flex-col gap-2">
-        <Icon src="/icons/profile/ekspor.svg" size="24px" />
+        <Icon src="/icons/selayang-pandang/icon-kontribusi-ekspor.svg" size="38px" />
         <p class="text-green-700 font-roboto font-bold text-lg">
           AS 18.4%, Jepang 12.52%
         </p>
