@@ -1,15 +1,16 @@
 <template>
   <article
-    class="min-w-0 w-full p-3 group rounded-xl cursor-pointer border border-transparent
+    class="search-item min-w-0 w-full p-3 group rounded-xl cursor-pointer border border-transparent
     transition-all duration-150 ease-out hover:border-[#E9EDF4] hover:shadow-md"
     :class="view === 'grid' ? 'flex flex-col' : 'flex gap-4'"
   >
     <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
       <div
         class="self-start rounded-lg overflow-hidden flex items-center justify-center bg-gray-50"
-        :class="{ 'w-[120px] h-[120px]' : view === 'list',
-                  'w-full h-[120px] mb-6': view === 'grid',
-                  'w-[72px] h-[72px]' : small
+        :class="{
+          'w-[120px] h-[120px]' : view === 'list',
+          'w-full h-[120px] mb-6': view === 'grid',
+          'w-[72px] h-[72px]' : small
         }"
       >
         <img
@@ -18,7 +19,10 @@
           :alt="title"
           width="72"
           height="72"
-          class="w-full h-full object-cover object-center group-hover:scale-110 transition-all ease-in duration-150"
+          :class="{
+            'group-hover:scale-110 transition-all ease-in duration-150' : true,
+            'w-full h-full object-cover object-center': domain.type !== 'featured_program'
+          }"
         >
         <img
           v-else
@@ -46,11 +50,10 @@
         </h1>
       </a>
       <p
-        class="font-lato font-normal text-sm leading-6 text-[#717F8C] line-clamp-2 mb-2
+        class="search-item__description font-lato font-normal text-sm leading-6 text-[#717F8C] line-clamp-2 mb-2
         group-hover:text-blue-gray-600"
-      >
-        {{ description }}
-      </p>
+        v-html="description"
+      />
       <p v-if="domain.type === 'news'" class="font-normal text-xs leading-5 text-gray-700">
         <span class="group-hover:text-blue-gray-800 capitalize">{{ category }}</span> | {{ date }}
       </p>
@@ -89,7 +92,7 @@ export default {
       }
     },
     image () {
-      return this.item?.image || null
+      return this.item?.thumbnail || null
     },
     title () {
       return this.item?.title || '-'
@@ -98,6 +101,12 @@ export default {
       return this.item?.category || '-'
     },
     description () {
+      const highlight = this.item?.highlight?.content || []
+
+      if (Array.isArray(highlight) && highlight.length > 0) {
+        return highlight[0]
+      }
+
       return this.item?.excerpt || '-'
     },
     date () {
@@ -107,11 +116,15 @@ export default {
       const domain = this.item?.domain || null
       const slug = this.item?.slug || '#'
       const url = this.item?.url || '#'
+      const id = this.item?.id || null
 
-      // TODO: Define what links to use on other types of domains
       switch (domain) {
         case 'news':
           return `/berita/${slug}`
+        case 'public_service':
+          return url
+        case 'featured_program':
+          return `/tentang-jawa-barat/program-unggulan?id=${id}`
         default:
           return url
       }
@@ -130,3 +143,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.search-item .search-item__description > strong {
+  color: #424242;
+}
+</style>
