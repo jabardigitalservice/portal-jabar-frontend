@@ -1,6 +1,6 @@
 <template>
   <article
-    class="min-w-0 w-full p-3 group rounded-xl cursor-pointer border border-transparent
+    class="search-item min-w-0 w-full p-3 group rounded-xl cursor-pointer border border-transparent
     transition-all duration-150 ease-out hover:border-[#E9EDF4] hover:shadow-md"
     :class="view === 'grid' ? 'flex flex-col' : 'flex gap-4'"
   >
@@ -50,11 +50,10 @@
         </h1>
       </a>
       <p
-        class="font-lato font-normal text-sm leading-6 text-[#717F8C] line-clamp-2 mb-2
+        class="search-item__description font-lato font-normal text-sm leading-6 text-[#717F8C] line-clamp-2 mb-2
         group-hover:text-blue-gray-600"
-      >
-        {{ description }}
-      </p>
+        v-html="description"
+      />
       <p v-if="domain.type === 'news'" class="font-normal text-xs leading-5 text-gray-700">
         <span class="group-hover:text-blue-gray-800 capitalize">{{ category }}</span> | {{ date }}
       </p>
@@ -102,6 +101,12 @@ export default {
       return this.item?.category || '-'
     },
     description () {
+      const highlight = this.item?.highlight?.content || []
+
+      if (Array.isArray(highlight) && highlight.length > 0) {
+        return highlight[0]
+      }
+
       return this.item?.excerpt || '-'
     },
     date () {
@@ -138,3 +143,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.search-item .search-item__description > strong {
+  color: #424242;
+}
+</style>
