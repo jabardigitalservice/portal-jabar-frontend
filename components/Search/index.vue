@@ -1,91 +1,113 @@
 <template>
-  <BaseContainer class="relative -top-24 z-20 min-h-screen">
-    <main class="py-8 px-10 rounded-xl bg-white min-h-screen shadow min-w-0 flex flex-col gap-8">
+  <BaseContainer class="relative -top-24 z-20">
+    <main class="py-8 px-10 rounded-xl bg-white min-h-[600px] shadow min-w-0 flex flex-col gap-8">
       <!-- Search Bar -->
-      <section>
-        <SearchBar class="mb-6" />
-        <h2 class="font-lora text-2xl font-bold text-blue-gray-700">
-          Menampilkan hasil pencarian <strong class="text-green-700">{{ searchKeyword }}</strong>
-        </h2>
-      </section>
+      <SearchBar :with-suggestion="false" />
 
-      <!-- Public Services -->
-      <section class="border-b border-gray-300 pb-8">
-        <div class="min-w-0 flex justify-between items-center mb-6">
-          <h3 class="font-roboto font-medium text-[22px] leading-6">
-            Layanan Publik terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
-          </h3>
-          <Link link="#" tabindex="-1">
-            <Button type="button" variant="secondary">
-              Lihat Semua Layanan Publik
-              <Icon name="open-new-tab" size="14px" />
-            </Button>
-          </Link>
-        </div>
-        <SearchList
-          list-view="grid"
-          :loading="false"
-          :items="publicServiceData"
-        />
-      </section>
+      <!-- Search Initial State -->
+      <template v-if="initialState">
+        <SearchInitialState />
+      </template>
 
-      <!-- News -->
-      <section>
-        <div class="min-w-0 flex justify-between items-center mb-6">
-          <h3 class="font-roboto font-medium text-[22px] leading-6">
-            Berita Jawa Barat terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
-          </h3>
-          <Link link="#" tabindex="-1">
-            <Button type="button" variant="secondary">
-              Lihat Semua Berita Jawa Barat
-              <Icon name="open-new-tab" size="14px" />
-            </Button>
-          </Link>
-        </div>
-        <SearchList
-          list-view="grid"
-          :loading="false"
-          :items="newsData"
-        />
-      </section>
+      <!-- Search Empty State -->
+      <template v-else-if="noResult">
+        <SearchEmptyState :keyword="searchKeyword" />
+      </template>
 
-      <!-- Related Search and Popular News -->
-      <div class="min-w-0 grid grid-cols-[55%,35%] justify-between mb-8">
+      <!-- Search Results -->
+      <template v-else>
         <section>
-          <div class="mb-6">
-            <h3 class="font-roboto font-medium text-[22px] leading-6 pb-3 border-b border-gray-300">
-              Hasil Pencarian Lainnya
+          <h2 class="font-lora text-2xl font-bold text-blue-gray-700">
+            Menampilkan hasil pencarian <strong class="text-green-700">{{ searchKeyword }}</strong>
+          </h2>
+        </section>
+
+        <!-- Public Services -->
+        <section
+          v-show="hasData(publicServiceData)"
+          class="border-b border-gray-300 pb-8"
+        >
+          <div class="min-w-0 flex justify-between items-center mb-6">
+            <h3 class="font-roboto font-medium text-[22px] leading-6">
+              Layanan Publik terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
             </h3>
-          </div>
-          <SearchList
-            list-view="list"
-            :loading="false"
-            :items="newsData"
-          />
-          <div class="mt-8 flex justify-center items-center">
-            <Link link="#" tabindex="-1">
+            <Link :link="`/pencarian/layanan-publik?q=${searchKeyword}`" tabindex="-1">
               <Button type="button" variant="secondary">
-                Muat Hasil Lainnya
+                Lihat Semua Layanan Publik
                 <Icon name="open-new-tab" size="14px" />
               </Button>
             </Link>
           </div>
-        </section>
-
-        <section>
-          <div class="mb-6">
-            <h3 class="font-roboto font-medium text-[22px] leading-6 pb-3 border-b border-gray-300">
-              Berita Populer Terkait
-            </h3>
-          </div>
           <SearchList
-            list-view="list"
-            :items="newsData"
-            :loading="false"
-            small
+            list-view="grid"
+            :loading="loading"
+            :items="publicServiceData"
+            :max-length="3"
           />
         </section>
-      </div>
+
+        <!-- News -->
+        <section v-show="hasData(relatedNewsData)">
+          <div class="min-w-0 flex justify-between items-center mb-6">
+            <h3 class="font-roboto font-medium text-[22px] leading-6">
+              Berita Jawa Barat terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
+            </h3>
+            <Link :link="`/pencarian/berita?q=${searchKeyword}`" tabindex="-1">
+              <Button type="button" variant="secondary">
+                Lihat Semua Berita Jawa Barat
+                <Icon name="open-new-tab" size="14px" />
+              </Button>
+            </Link>
+          </div>
+          <SearchList
+            list-view="grid"
+            :loading="loading"
+            :items="relatedNewsData"
+            :max-length="3"
+          />
+        </section>
+
+        <div class="min-w-0 grid grid-cols-[55%,35%] justify-between mb-8">
+          <!-- Related Search -->
+          <section v-show="hasData(relatedSearchData)">
+            <div class="mb-6">
+              <h3 class="font-roboto font-medium text-[22px] leading-6 pb-3 border-b border-gray-300">
+                Hasil Pencarian Lainnya
+              </h3>
+            </div>
+            <SearchList
+              list-view="list"
+              :loading="loading"
+              :items="relatedSearchData"
+              :max-length="5"
+            />
+            <div class="mt-8 flex justify-center items-center">
+              <Link :link="`/pencarian/global?q=${searchKeyword}`" tabindex="-1">
+                <Button type="button" variant="secondary">
+                  Muat Hasil Lainnya
+                  <Icon name="open-new-tab" size="14px" />
+                </Button>
+              </Link>
+            </div>
+          </section>
+
+          <!-- Popular News -->
+          <section v-show="hasData(popularNewsData)">
+            <div class="mb-6">
+              <h3 class="font-roboto font-medium text-[22px] leading-6 pb-3 border-b border-gray-300">
+                Berita Populer Terkait
+              </h3>
+            </div>
+            <SearchList
+              list-view="list"
+              :items="popularNewsData"
+              :loading="loading"
+              :max-length="5"
+              small
+            />
+          </section>
+        </div>
+      </template>
     </main>
   </BaseContainer>
 </template>
@@ -94,114 +116,74 @@
 export default {
   data () {
     return {
-      searchKeyword: 'STNK',
-      // TODO: Change this dummy data with real data from API
-      publicServiceData: [
-        {
-          id: 255,
-          domain: 'public_service',
-          title: 'Samsat Keliling',
-          excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vero suscipit et optio, soluta ex laboriosam reiciendis. Consequatur est et hic sed doloribus voluptatem officia velit consectetur eum a numquam itaque quibusdam omnis, non fuga odit sunt debitis architecto exercitationem commodi dolor amet repellendus eligendi? Fugiat ducimus natus beatae quidem.',
-          slug: 'bangun-kemandirian-wakaf-salman--pt-pelindo-launching-program-urban-farming-di-255',
-          category: 'sosial',
-          image: '',
-          created_at: '2022-01-17T07:02:38Z'
-        },
-        {
-          id: 256,
-          domain: 'public_service',
-          title: 'Samsat Keliling',
-          excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vero suscipit et optio, soluta ex laboriosam reiciendis. Consequatur est et hic sed doloribus voluptatem officia velit consectetur eum a numquam itaque quibusdam omnis, non fuga odit sunt debitis architecto exercitationem commodi dolor amet repellendus eligendi? Fugiat ducimus natus beatae quidem.',
-          slug: 'bangun-kemandirian-wakaf-salman--pt-pelindo-launching-program-urban-farming-di-255',
-          category: 'sosial',
-          image: 'https://picsum.photos/200/300',
-          created_at: '2022-01-17T07:02:38Z'
-        },
-        {
-          id: 257,
-          domain: 'public_service',
-          title: 'Samsat Keliling',
-          excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vero suscipit et optio, soluta ex laboriosam reiciendis. Consequatur est et hic sed doloribus voluptatem officia velit consectetur eum a numquam itaque quibusdam omnis, non fuga odit sunt debitis architecto exercitationem commodi dolor amet repellendus eligendi? Fugiat ducimus natus beatae quidem.',
-          slug: 'bangun-kemandirian-wakaf-salman--pt-pelindo-launching-program-urban-farming-di-255',
-          category: 'sosial',
-          image: '',
-          created_at: '2022-01-17T07:02:38Z'
+      searchKeyword: '',
+      loading: false,
+      publicServiceData: [],
+      relatedNewsData: [],
+      popularNewsData: [],
+      relatedSearchData: []
+    }
+  },
+  async fetch () {
+    const params = {
+      q: this.searchKeyword,
+      per_page: 3,
+      sort_order: 'desc',
+      domain: []
+    }
+
+    try {
+      this.loading = true
+      const [publicService, relatedNews, popularNews, relatedSearch] = await Promise.all([
+        this.$axios.$get('/v1/search', { params: { ...params, domain: ['public_service', 'featured_program'] } }),
+        this.$axios.$get('/v1/search', { params: { ...params, domain: ['news'] } }),
+        this.$axios.$get('/v1/search', { params: { ...params, domain: ['news'], per_page: 5, sort_by: 'views' } }),
+        this.$axios.$get('/v1/search', { params: { ...params, per_page: 5 } })
+      ])
+
+      this.publicServiceData = publicService.data
+      this.relatedNewsData = relatedNews.data
+      this.popularNewsData = popularNews.data
+      this.relatedSearchData = relatedSearch.data
+    } catch (error) {
+      // silent error
+    } finally {
+      this.loading = false
+    }
+  },
+  computed: {
+    initialState () {
+      return !this.searchKeyword
+    },
+    noResult () {
+      const isEmptyResults =
+        !this.hasData(this.publicServiceData) &&
+        !this.hasData(this.relatedNewsData) &&
+        !this.hasData(this.popularNewsData) &&
+        !this.hasData(this.relatedSearchData)
+
+      return this.searchKeyword && !this.loading && isEmptyResults
+    }
+  },
+  watch: {
+    // watch `q` query param changes on the address bar
+    '$route.query.q': {
+      handler () {
+        if (this.$route.query.q) {
+          this.searchKeyword = this.$route.query.q
         }
-      ],
-      newsData: [
-        {
-          id: 260,
-          domain: 'news',
-          title: 'Pimpin Rapat Evaluasi Kinerja Perangkat Daerah, Pak Uu: Fokus Hasil Nyata',
-          excerpt: 'Wakil Gubernur Jawa Barat Uu Ruzhanul Ulum memimpin Rapat Evaluasi Kinerja Perangkat Daerah Tahun 2021 di Lingkup Perekonomian dan Pembangunan via konferensi video dari Rumah Singgah Wakil Gubernur Jabar, Jumat (14/1/2022). ',
-          slug: 'pimpin-rapat-evaluasi-kinerja-perangkat-daerah-pak-uu-fokus-hasil-nyata-260',
-          image: 'https://jabarprov.go.id/assets/images/berita/gambar_45454.jpg',
-          category: 'sosial',
-          author: 'syarif',
-          reporter: '',
-          editor: '',
-          video: '',
-          source: '',
-          tags: [],
-          status: 'PUBLISHED',
-          is_live: 1,
-          created_by: {
-            name: 'john doe',
-            unit_name: 'Dinas Komunikasi dan Informatika'
-          },
-          published_at: '2022-03-06T23:24:25Z',
-          created_at: '2022-01-17T07:02:38Z',
-          updated_at: '2022-01-17T07:02:38Z'
-        },
-        {
-          id: 260,
-          domain: 'news',
-          title: 'Pimpin Rapat Evaluasi Kinerja Perangkat Daerah, Pak Uu: Fokus Hasil Nyata',
-          excerpt: 'Wakil Gubernur Jawa Barat Uu Ruzhanul Ulum memimpin Rapat Evaluasi Kinerja Perangkat Daerah Tahun 2021 di Lingkup Perekonomian dan Pembangunan via konferensi video dari Rumah Singgah Wakil Gubernur Jabar, Jumat (14/1/2022). ',
-          slug: 'pimpin-rapat-evaluasi-kinerja-perangkat-daerah-pak-uu-fokus-hasil-nyata-260',
-          image: '',
-          category: 'sosial',
-          author: 'syarif',
-          reporter: '',
-          editor: '',
-          video: '',
-          source: '',
-          tags: [],
-          status: 'PUBLISHED',
-          is_live: 1,
-          created_by: {
-            name: 'john doe',
-            unit_name: 'Dinas Komunikasi dan Informatika'
-          },
-          published_at: '2022-03-06T23:24:25Z',
-          created_at: '2022-01-17T07:02:38Z',
-          updated_at: '2022-01-17T07:02:38Z'
-        },
-        {
-          id: 260,
-          domain: 'news',
-          title: 'Pimpin Rapat Evaluasi Kinerja Perangkat Daerah, Pak Uu: Fokus Hasil Nyata',
-          excerpt: 'Wakil Gubernur Jawa Barat Uu Ruzhanul Ulum memimpin Rapat Evaluasi Kinerja Perangkat Daerah Tahun 2021 di Lingkup Perekonomian dan Pembangunan via konferensi video dari Rumah Singgah Wakil Gubernur Jabar, Jumat (14/1/2022). ',
-          slug: 'pimpin-rapat-evaluasi-kinerja-perangkat-daerah-pak-uu-fokus-hasil-nyata-260',
-          image: 'https://jabarprov.go.id/assets/images/berita/gambar_45454.jpg',
-          category: 'sosial',
-          author: 'syarif',
-          reporter: '',
-          editor: '',
-          video: '',
-          source: '',
-          tags: [],
-          status: 'PUBLISHED',
-          is_live: 1,
-          created_by: {
-            name: 'john doe',
-            unit_name: 'Dinas Komunikasi dan Informatika'
-          },
-          published_at: '2022-03-06T23:24:25Z',
-          created_at: '2022-01-17T07:02:38Z',
-          updated_at: '2022-01-17T07:02:38Z'
-        }
-      ]
+      },
+      immediate: true
+    },
+    searchKeyword: {
+      handler () {
+        this.$fetch()
+      }
+    }
+  },
+  methods: {
+    hasData (data) {
+      return Array.isArray(data) && data.length > 0
     }
   }
 }
