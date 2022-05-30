@@ -7,9 +7,10 @@
     <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
       <div
         class="self-start rounded-lg overflow-hidden flex items-center justify-center bg-gray-50"
-        :class="{ 'w-[120px] h-[120px]' : view === 'list',
-                  'w-full h-[120px] mb-6': view === 'grid',
-                  'w-[72px] h-[72px]' : small
+        :class="{
+          'w-[120px] h-[120px]' : view === 'list',
+          'w-full h-[120px] mb-6': view === 'grid',
+          'w-[72px] h-[72px]' : small
         }"
       >
         <img
@@ -18,7 +19,10 @@
           :alt="title"
           width="72"
           height="72"
-          class="w-full h-full object-cover object-center group-hover:scale-110 transition-all ease-in duration-150"
+          :class="{
+            'group-hover:scale-110 transition-all ease-in duration-150' : true,
+            'w-full h-full object-cover object-center': domain.type !== 'featured_program'
+          }"
         >
         <img
           v-else
@@ -89,7 +93,7 @@ export default {
       }
     },
     image () {
-      return this.item?.image || null
+      return this.item?.thumbnail || null
     },
     title () {
       return this.item?.title || '-'
@@ -107,11 +111,15 @@ export default {
       const domain = this.item?.domain || null
       const slug = this.item?.slug || '#'
       const url = this.item?.url || '#'
+      const id = this.item?.id || null
 
-      // TODO: Define what links to use on other types of domains
       switch (domain) {
         case 'news':
           return `/berita/${slug}`
+        case 'public_service':
+          return url
+        case 'featured_program':
+          return `/tentang-jawa-barat/program-unggulan?id=${id}`
         default:
           return url
       }
