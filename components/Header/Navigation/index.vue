@@ -1,7 +1,7 @@
 <template>
   <nav class="flex items-center">
     <Link link="/" class="mr-auto">
-      <img src="/logo.svg" width="125" height="38" alt="Beranda">
+      <img src="/logo.png" width="55" height="60" alt="Beranda">
     </Link>
     <HeaderMenu>
       <HeaderMenuList
