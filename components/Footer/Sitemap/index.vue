@@ -33,10 +33,7 @@
         </section>
 
         <!-- Sitemap Details (Large Screen)  -->
-        <section
-          class="min-w-0 w-11/12 hidden divide-x divide-green-500 justify-between
-            lg:flex lg:-ml-8 xl:-ml-16"
-        >
+        <section class="min-w-0 w-full hidden divide-x divide-green-500 justify-between lg:flex lg:-ml-8 xl:-ml-16">
           <div
             v-for="navigation in navigationMenu"
             :key="`details-${navigation.id}`"
@@ -45,7 +42,7 @@
             <h3 class="font-roboto text-base leading-6 font-bold mb-2 whitespace-nowrap">
               {{ navigation.title }}
             </h3>
-            <ul class="grid grid-rows-4 grid-flow-col-dense gap-x-8 gap-y-2">
+            <ul class="grid grid-flow-row gap-x-8 gap-y-2">
               <li v-for="item in navigation.items" :key="item.id" class="min-w-[95px]">
                 <Link :link="item.link" class="text-sm font-normal leading-6 whitespace-nowrap">
                   {{ item.title }}
