@@ -132,28 +132,28 @@ export const navigationMenu = [
         title: 'Kesehatan',
         description: 'Dapatkan informasi kesehatan terutama terkait Covid-19 di Jawa Barat',
         icon: '/icons/navigation/kesehatan.svg',
-        link: '#'
+        link: 'https://dashboard.jabarprov.go.id/id/topic/kesehatan'
       },
       {
         id: 2,
         title: 'Kependudukan',
         description: 'Dapat ragam informasi soal kependudukan di Jawa Barat',
         icon: '/icons/navigation/kependudukan.svg',
-        link: '#'
+        link: 'https://dashboard.jabarprov.go.id/id/topic/kependudukan'
       },
       {
         id: 3,
         title: 'Ekonomi',
         description: 'Dapatkan data ekonomi di Jawa Barat dari UMKM hingga keuangan daerah',
         icon: '/icons/navigation/ekonomi.svg',
-        link: '#'
+        link: 'https://dashboard.jabarprov.go.id/id/topic/ekonomi'
       },
       {
         id: 4,
         title: 'Pendidikan',
         description: 'Dapatkan ragam informasi terkait pendidikan di Jawa Barat',
         icon: '/icons/navigation/pendidikan.svg',
-        link: '#'
+        link: 'https://dashboard.jabarprov.go.id/id/topic/pendidikan'
       }
     ]
   },
