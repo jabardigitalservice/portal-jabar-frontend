@@ -17,7 +17,7 @@
           <h1
             class="mb-2 font-lora font-bold text-xl leading-9 text-green-800 text-center"
           >
-            Perangkat Anda Tidak Mendukung Resolusi Minimum
+            Perangkat Anda Belum Didukung Saat Ini
           </h1>
           <p class="font-lato text-sm leading-6 text-blue-gray-800 text-center">
             Portal Jabar saat ini hanya dapat diakses melalui perangkat Laptop &
