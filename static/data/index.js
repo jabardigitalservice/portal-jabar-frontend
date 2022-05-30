@@ -124,6 +124,41 @@ export const navigationMenu = [
   },
   {
     id: 3,
+    title: 'Dashboard Publik',
+    link: '#',
+    items: [
+      {
+        id: 1,
+        title: 'Kesehatan',
+        description: 'Dapatkan informasi kesehatan terutama terkait Covid-19 di Jawa Barat',
+        icon: '/icons/navigation/kesehatan.svg',
+        link: '#'
+      },
+      {
+        id: 2,
+        title: 'Kependudukan',
+        description: 'Dapat ragam informasi soal kependudukan di Jawa Barat',
+        icon: '/icons/navigation/kependudukan.svg',
+        link: '#'
+      },
+      {
+        id: 3,
+        title: 'Ekonomi',
+        description: 'Dapatkan data ekonomi di Jawa Barat dari UMKM hingga keuangan daerah',
+        icon: '/icons/navigation/ekonomi.svg',
+        link: '#'
+      },
+      {
+        id: 4,
+        title: 'Pendidikan',
+        description: 'Dapatkan ragam informasi terkait pendidikan di Jawa Barat',
+        icon: '/icons/navigation/pendidikan.svg',
+        link: '#'
+      }
+    ]
+  },
+  {
+    id: 4,
     title: 'Profil Jawa Barat',
     link: '#',
     items: [

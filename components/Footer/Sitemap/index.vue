@@ -42,7 +42,7 @@
             :key="`details-${navigation.id}`"
             class="px-8 xl:px-16"
           >
-            <h3 class="font-roboto text-base leading-6 font-bold mb-2">
+            <h3 class="font-roboto text-base leading-6 font-bold mb-2 whitespace-nowrap">
               {{ navigation.title }}
             </h3>
             <ul class="grid grid-rows-4 grid-flow-col-dense gap-x-8 gap-y-2">
