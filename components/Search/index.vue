@@ -31,7 +31,7 @@
             <h3 class="font-roboto font-medium text-[22px] leading-6">
               Layanan Publik terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
             </h3>
-            <Link :link="`/pencarian/layanan-publik?q=${searchKeyword}`" tabindex="-1">
+            <Link :link="`/pencarian/layanan?q=${searchKeyword}`" tabindex="-1">
               <Button type="button" variant="secondary">
                 Lihat Semua Layanan Publik
                 <Icon name="open-new-tab" size="14px" />
