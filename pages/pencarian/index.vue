@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: 'SearchPage',
   data () {
     return {
       jumbotron: {
