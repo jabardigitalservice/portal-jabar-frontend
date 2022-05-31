@@ -137,7 +137,7 @@ export const navigationMenu = [
       {
         id: 2,
         title: 'Kependudukan',
-        description: 'Dapat ragam informasi soal kependudukan di Jawa Barat',
+        description: 'Dapatkan ragam informasi soal kependudukan di Jawa Barat',
         icon: '/icons/navigation/kependudukan.svg',
         link: 'https://dashboard.jabarprov.go.id/id/topic/kependudukan'
       },
