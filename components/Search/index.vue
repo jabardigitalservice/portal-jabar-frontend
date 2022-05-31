@@ -1,79 +1,168 @@
 <template>
   <BaseContainer class="relative -top-24 z-20">
-    <div class="py-8 px-10 rounded-xl bg-white min-h-screen shadow">
-      <SearchBar class="mb-6" />
-      <div class="w-full h-full grid grid-cols-search-container gap-6">
+    <main class="py-8 px-10 rounded-xl bg-white min-h-[600px] shadow min-w-0 flex flex-col gap-8">
+      <!-- Search Bar -->
+      <SearchBar :with-suggestion="false" />
+
+      <!-- Search Initial State -->
+      <template v-if="initialState">
+        <SearchInitialState />
+      </template>
+
+      <!-- Search Empty State -->
+      <template v-else-if="noResult">
+        <SearchEmptyState :keyword="searchKeyword" />
+      </template>
+
+      <!-- Search Results -->
+      <template v-else>
         <section>
-          <SearchSidebar :domain="domain" :meta="searchMeta" :total-count="totalCount" @checked="setSelectedDomain" />
+          <h2 class="font-lora text-2xl font-bold text-blue-gray-700">
+            Menampilkan hasil pencarian <strong class="text-green-700">{{ searchKeyword }}</strong>
+          </h2>
         </section>
-        <!-- Initial State will be displayed when user
-        visits `/pencarian` page without query parameter  -->
-        <template v-if="!loading && isInitialState">
-          <!-- TODO: Add search recommendations -->
-          <SearchInitialState />
-        </template>
-        <template v-else-if="!loading && !hasSearchResults">
-          <!-- TODO: Add search recommendations -->
-          <SearchEmptyState :keyword="searchKeyword" />
-        </template>
-        <template v-else>
-          <section class="w-full h-full min-h-screen flex flex-col gap-8">
-            <SearchToolbar :list-view.sync="listView" :total-count="searchMeta.total_count" @change:sort="setSortOrder" />
+
+        <!-- Public Services -->
+        <section
+          v-show="hasData(publicServiceData)"
+          class="border-b border-gray-300 pb-8"
+        >
+          <div class="min-w-0 flex justify-between items-center mb-6">
+            <h3 class="font-roboto font-medium text-[22px] leading-6">
+              Layanan Publik terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
+            </h3>
+            <Link :link="`/pencarian/layanan?q=${searchKeyword}`" tabindex="-1">
+              <Button type="button" variant="secondary">
+                Lihat Semua Layanan Publik
+                <Icon name="open-new-tab" size="14px" />
+              </Button>
+            </Link>
+          </div>
+          <SearchList
+            list-view="grid"
+            :loading="loading"
+            :items="publicServiceData"
+            :max-length="3"
+          />
+        </section>
+
+        <!-- News -->
+        <section v-show="hasData(relatedNewsData)">
+          <div class="min-w-0 flex justify-between items-center mb-6">
+            <h3 class="font-roboto font-medium text-[22px] leading-6">
+              Berita Jawa Barat terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
+            </h3>
+            <Link :link="`/pencarian/berita?q=${searchKeyword}`" tabindex="-1">
+              <Button type="button" variant="secondary">
+                Lihat Semua Berita Jawa Barat
+                <Icon name="open-new-tab" size="14px" />
+              </Button>
+            </Link>
+          </div>
+          <SearchList
+            list-view="grid"
+            :loading="loading"
+            :items="relatedNewsData"
+            :max-length="3"
+          />
+        </section>
+
+        <div class="min-w-0 grid grid-cols-[55%,35%] justify-between mb-8">
+          <!-- Related Search -->
+          <section v-show="hasData(relatedSearchData)">
+            <div class="mb-6">
+              <h3 class="font-roboto font-medium text-[22px] leading-6 pb-3 border-b border-gray-300">
+                Hasil Pencarian Lainnya
+              </h3>
+            </div>
             <SearchList
-              :list-view="listView"
+              list-view="list"
               :loading="loading"
-              :items="searchData"
-              :max-length="pagination.itemsPerPage"
+              :items="relatedSearchData"
+              :max-length="5"
             />
-            <Pagination
-              v-bind="pagination"
-              @previous-page="onPaginationChange('prev-page', $event)"
-              @next-page="onPaginationChange('next-page', $event)"
-              @page-change="onPaginationChange('page-change', $event)"
-              @per-page-change="onPaginationChange('per-page-change', $event)"
+            <div class="mt-8 flex justify-center items-center">
+              <Link :link="`/pencarian/global?q=${searchKeyword}`" tabindex="-1">
+                <Button type="button" variant="secondary">
+                  Muat Hasil Lainnya
+                  <Icon name="open-new-tab" size="14px" />
+                </Button>
+              </Link>
+            </div>
+          </section>
+
+          <!-- Popular News -->
+          <section v-show="hasData(popularNewsData)">
+            <div class="mb-6">
+              <h3 class="font-roboto font-medium text-[22px] leading-6 pb-3 border-b border-gray-300">
+                Berita Populer Terkait
+              </h3>
+            </div>
+            <SearchList
+              list-view="list"
+              :items="popularNewsData"
+              :loading="loading"
+              :max-length="5"
+              small
             />
           </section>
-        </template>
-      </div>
-    </div>
+        </div>
+      </template>
+    </main>
   </BaseContainer>
 </template>
 
 <script>
-import isEmpty from 'lodash/isEmpty'
-import { searchDomains } from '~/static/data'
-
 export default {
   data () {
     return {
-      listView: 'list',
+      searchKeyword: '',
       loading: false,
-      pagination: {
-        currentPage: 1,
-        itemsPerPage: 6,
-        totalRows: 0,
-        itemsPerPageOptions: [6, 9, 15]
-      },
-      searchKeyword: null,
-      searchData: [],
-      searchMeta: {},
-      totalCount: 0,
-      domain: Object.keys(searchDomains),
-      sortOrder: 'desc'
+      publicServiceData: [],
+      relatedNewsData: [],
+      popularNewsData: [],
+      relatedSearchData: []
+    }
+  },
+  async fetch () {
+    const params = {
+      q: this.searchKeyword,
+      per_page: 3,
+      sort_order: 'desc',
+      domain: []
+    }
+
+    try {
+      this.loading = true
+      const [publicService, relatedNews, popularNews, relatedSearch] = await Promise.all([
+        this.$axios.$get('/v1/search', { params: { ...params, domain: ['public_service', 'featured_program'] } }),
+        this.$axios.$get('/v1/search', { params: { ...params, domain: ['news'] } }),
+        this.$axios.$get('/v1/search', { params: { ...params, domain: ['news'], per_page: 5, sort_by: 'views' } }),
+        this.$axios.$get('/v1/search', { params: { ...params, per_page: 5 } })
+      ])
+
+      this.publicServiceData = publicService.data
+      this.relatedNewsData = relatedNews.data
+      this.popularNewsData = popularNews.data
+      this.relatedSearchData = relatedSearch.data
+    } catch (error) {
+      // silent error
+    } finally {
+      this.loading = false
     }
   },
   computed: {
-    hasSearchResults () {
-      if ('total_count' in this.searchMeta && this.searchMeta.total_count !== 0) {
-        return true
-      }
-      return false
+    initialState () {
+      return !this.searchKeyword
     },
-    isInitialState () {
-      if (isEmpty(this.searchMeta)) {
-        return true
-      }
-      return false
+    noResult () {
+      const isEmptyResults =
+        !this.hasData(this.publicServiceData) &&
+        !this.hasData(this.relatedNewsData) &&
+        !this.hasData(this.popularNewsData) &&
+        !this.hasData(this.relatedSearchData)
+
+      return this.searchKeyword && !this.loading && isEmptyResults
     }
   },
   watch: {
@@ -82,106 +171,19 @@ export default {
       handler () {
         if (this.$route.query.q) {
           this.searchKeyword = this.$route.query.q
-          this.fetchSearchResults()
         }
       },
       immediate: true
+    },
+    searchKeyword: {
+      handler () {
+        this.$fetch()
+      }
     }
   },
   methods: {
-    onPaginationChange (action, value) {
-      const paginationObj = { ...this.pagination }
-
-      switch (action) {
-        case 'prev-page':
-          paginationObj.currentPage = this.pagination.currentPage - 1
-          break
-        case 'next-page':
-          paginationObj.currentPage = this.pagination.currentPage + 1
-          break
-        case 'page-change':
-          paginationObj.currentPage = value
-          break
-        case 'per-page-change':
-          paginationObj.itemsPerPage = value
-          break
-        default:
-          break
-      }
-
-      this.pagination = JSON.parse(JSON.stringify(paginationObj))
-
-      /**
-       *  NOTE:
-       *  `jds-pagination` emits `page-change` and `per-page-change` events
-       *  whenever user changes per page value.
-       *
-       *  To avoid double fetch, we immediately stop this function on
-       *  `per-page-change` event and let `page-change` event to
-       *  fetch data from API
-       */
-      if (action === 'per-page-change') {
-        return
-      }
-
-      this.fetchSearchResults()
-    },
-    async fetchSearchResults () {
-      // TODO: Add search filter by category and sort by
-      const params = {
-        q: this.searchKeyword,
-        per_page: this.pagination.itemsPerPage,
-        page: this.pagination.currentPage,
-        domain: this.domain,
-        sort_order: this.sortOrder
-      }
-
-      try {
-        this.loading = true
-        const response = await this.$axios.get('/v1/search', { params })
-        const { data, meta } = response.data
-        this.searchData = data
-        this.searchMeta = meta
-        this.totalCount = Object.keys(meta.aggregations.domain).reduce((previous, key) => {
-          return previous + meta.aggregations.domain[key]
-        }, 0)
-
-        const paginationObj = {
-          ...this.pagination,
-          currentPage: this.searchMeta.current_page,
-          itemsPerPage: this.searchMeta.per_page,
-          totalRows: this.searchMeta.total_count
-        }
-
-        this.pagination = JSON.parse(JSON.stringify(paginationObj))
-      } catch (error) {
-        // silent error
-        this.searchData = []
-        this.searchMeta = {}
-      } finally {
-        this.loading = false
-      }
-    },
-    setSelectedDomain (data) {
-      this.domain = data
-      if (!this.domain.length) { return }
-      this.fetchSearchResults()
-    },
-    setSortOrder (value) {
-      const oldSortOrder = this.sortOrder
-      const newSortOrder = value
-
-      if (newSortOrder && newSortOrder !== oldSortOrder) {
-        this.sortOrder = newSortOrder
-
-        // set pagination back to first page
-        this.pagination = {
-          ...this.pagination,
-          currentPage: 1
-        }
-
-        this.fetchSearchResults()
-      }
+    hasData (data) {
+      return Array.isArray(data) && data.length > 0
     }
   }
 }

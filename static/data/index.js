@@ -424,7 +424,8 @@ export const searchDomains = {
   information: 'Informasi',
   public_service: 'Layanan Publik',
   announcement: 'Pengumuman',
-  about: 'Tentang Jawa Barat'
+  about: 'Tentang Jawa Barat',
+  featured_program: 'Program Unggulan'
 }
 
 export const featuredProgramCategory = [
