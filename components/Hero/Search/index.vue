@@ -2,15 +2,17 @@
   <div class="max-w-2xl w-full">
     <div class="relative mb-8">
       <InputSearch v-model.trim="inputValue" @submit="goToSearchPage" />
-      <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
+      <!-- NOTE: Temporarily Hide Feature -->
+      <!-- <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
         <Options
           class="w-full"
           :options="suggestions"
           header="Saran pencarian"
           @click="goToSearchPage"
         />
-      </div>
+      </div> -->
     </div>
+
     <!-- Suggestion Card -->
     <section>
       <p class="font-lato font-bold text-base leading-6 text-center text-gray-300 mb-4">
@@ -53,7 +55,8 @@ export default {
   watch: {
     inputValue () {
       if (this.hasValue) {
-        this.getSuggestions()
+        // NOTE: Temporarily disable feature
+        // this.getSuggestions()
       } else {
         this.suggestions = []
       }
