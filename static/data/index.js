@@ -287,7 +287,7 @@ export const featuredProgramMenu = [
     title: 'Desa Digital',
     description: 'Temukan informasi dan akses layanan tentang Organisasi Perangkat Daerah di Jawa Barat',
     icon: '/icons/program-unggulan/desa-digital.svg',
-    link: 'https://digitalservice.jabarprov.go.id/index.php/desa-digital-jabar'
+    link: 'https://desadigital.jabarprov.go.id/'
   },
   {
     id: 3,
@@ -304,7 +304,7 @@ export const quickLinkMenu = [
     title: 'Kependudukan',
     description: 'Ketahui lebih lanjut tentang semua hal hebat yang ditawarkan Jawa Barat.',
     icon: '/icons/akses-cepat/kependudukan.svg',
-    link: 'http://disdukcapil.jabarprov.go.id/portal'
+    link: 'https://disdukcapil.jabarprov.go.id/portal'
   },
   {
     id: 2,
@@ -325,7 +325,7 @@ export const quickLinkMenu = [
     title: 'Info Harga Pangan',
     description: 'Dapatkan info harga rata-rata komoditas harian di daerah sekitar Jawa Barat.',
     icon: '/icons/akses-cepat/info-harga-pangan.svg',
-    link: 'http://priangan.org'
+    link: 'https://disperindag.jabarprov.go.id/hargakomoditi_indag'
   },
   {
     id: 5,
