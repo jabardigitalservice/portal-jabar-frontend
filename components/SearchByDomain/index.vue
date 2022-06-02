@@ -86,9 +86,9 @@ export default {
       sortOrder: 'DESC',
       pagination: {
         currentPage: 1,
-        itemsPerPage: 5,
+        itemsPerPage: 10,
         totalRows: 0,
-        itemsPerPageOptions: [5, 10, 15]
+        itemsPerPageOptions: [10, 20, 30]
       },
       searchData: [],
       searchMeta: {}
