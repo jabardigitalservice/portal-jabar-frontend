@@ -86,7 +86,7 @@ export default {
   // Sentry configuration https://sentry.nuxtjs.org/sentry/options
   sentry: {
     dsn: process.env.SENTRY_DSN,
-    disabled: process.env.SENTRY_DISABLED || false,
+    disabled: parseInt(process.env.SENTRY_DISABLED) || false,
     tracing: {
       tracesSampleRate: parseFloat(process.env.SENTRY_SAMPLE_RATE),
       vueOptions: {
