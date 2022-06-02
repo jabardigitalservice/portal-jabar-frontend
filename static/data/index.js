@@ -95,7 +95,7 @@ export const navigationMenu = [
       {
         id: 3,
         title: 'Kesehatan',
-        description: 'Informasi terkait layanan kesehatan terlengkap',
+        description: 'Akses layanan untuk Legalisir STR dan STRTTK bagi Tenaga Kesehatan di Provinsi Jawa Barat',
         icon: '/icons/navigation/kesehatan.svg',
         link: 'https://bit.ly/legalisirSTR'
       },

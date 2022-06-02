@@ -8,13 +8,12 @@
           style="background-image: url('/images/hero.svg'); background-position: center top;"
         >
           <h1 class="text-white text-[42px] font-lora uppercase leading-normal font-bold text-center mb-12 tracking-wider">
-            Menjawab Kebutuhan Informasi
+            Menjawab Kebutuhan Infomasi Publik
             <br>
-            Layanan Publik Warga Jabar
+            Warga Jawa Barat
           </h1>
           <p class="text-gray-300 font-medium leading-relaxed text-center max-w-2xl mb-7">
-            Temukan informasi layanan terkini dari semua Perangkat Daerah di
-            Lingkungan Pemerintah Daerah Provinsi Jawa Barat.
+            Temukan informasi publik terkini dari Pemerintahan Daerah Provinsi Jawa Barat
           </p>
           <HeroSearch />
         </div>
