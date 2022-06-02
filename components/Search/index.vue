@@ -82,7 +82,7 @@
               :max-length="5"
             />
             <div class="mt-8 flex justify-center items-center">
-              <Link :link="`/pencarian/global?q=${searchKeyword}`" tabindex="-1">
+              <Link :link="`/pencarian/lainnya?q=${searchKeyword}`" tabindex="-1">
                 <Button type="button" variant="secondary">
                   Muat Hasil Lainnya
                   <Icon name="open-new-tab" size="14px" />

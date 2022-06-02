@@ -12,7 +12,7 @@
 </template>
 
 <script>
-const VALID_DOMAIN = ['layanan', 'berita', 'global']
+const VALID_DOMAIN = ['layanan', 'berita', 'lainnya']
 
 export default {
   name: 'SearchByDomainPage',

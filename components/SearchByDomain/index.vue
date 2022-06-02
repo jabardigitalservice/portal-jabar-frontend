@@ -64,7 +64,7 @@
 const DOMAIN_LABEL = {
   layanan: 'Layanan Publik',
   berita: 'Berita Jawa Barat',
-  global: 'Hasil pencarian lainnya'
+  lainnya: 'Hasil pencarian lainnya'
 }
 
 export default {
@@ -110,7 +110,7 @@ export default {
       case 'berita':
         params.domain = ['news']
         break
-      case 'global':
+      case 'lainnya':
         params.domain = []
         break
       default:
