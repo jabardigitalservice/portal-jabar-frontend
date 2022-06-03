@@ -1,0 +1,47 @@
+name: Portal Jabar Release Staging
+
+on:
+  push:
+    branches: [ development ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+        # Configure Docker with Credentials
+      - name: Configure Docker
+        run: |
+          docker login ${{ secrets.REGISTRY_URL }} -u ${{ secrets.REGISTRY_USERNAME }} -p '${{ secrets.REGISTRY_PASSWORD }}'
+
+        # Set version tag using SHA Hash (short)
+      - name: Set version tag
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+        # Build the Docker image
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ${{ secrets.SERVICE_IMAGENAME_STAGING }}:${{ steps.vars.outputs.sha_short }}
+          build-args: |
+            APP_ENVIRONMENT=development
+            NUXT_ENV_PUBLIC_URL=${{ secrets.NUXT_ENV_PUBLIC_URL_STAGING }}
+            API_URL=${{ secrets.API_URL_STAGING }}
+            SENTRY_ENABLED=${{ secrets.SENTRY_ENABLED }}
+            SENTRY_DSN=${{ secrets.SENTRY_DSN }}
+            SENTRY_SAMPLE_RATE=${{ secrets.SENTRY_SAMPLE_RATE }}
+            GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}
+
+

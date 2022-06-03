@@ -8,22 +8,46 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
+    "lint": "npm run lint:js",
+    "lhci": "lhci autorun --collect.settings.preset=desktop",
+    "test": "jest"
   },
   "dependencies": {
+    "@fullcalendar/core": "^5.9.0",
+    "@fullcalendar/daygrid": "^5.9.0",
+    "@fullcalendar/interaction": "^5.9.0",
+    "@fullcalendar/vue": "^5.9.0",
+    "@jabardigitalservice/jds-design-system": "0.0.3-beta.11",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/sentry": "^5.1.4",
+    "@sentry/node": "^6.14.1",
+    "@sentry/tracing": "^6.14.1",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "date-fns": "^2.23.0",
+    "keen-slider": "^5.5.1",
+    "lodash": "^4.17.21",
+    "nuxt": "^2.15.7",
+    "portal-vue": "^2.1.7",
+    "vue-gtag": "^1.16.1",
+    "vue-social-sharing": "^3.0.8"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
+    "@lhci/cli": "^0.8.2",
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/google-fonts": "^1.3.0",
     "@nuxtjs/tailwindcss": "^4.2.0",
+    "@tailwindcss/line-clamp": "^0.2.1",
+    "@vue/test-utils": "^1.2.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^27.3.1",
     "eslint": "^7.29.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
-    "postcss": "^8.3.5"
+    "jest": "^27.3.1",
+    "postcss": "^8.3.5",
+    "vue-jest": "^3.0.7"
   }
 }
