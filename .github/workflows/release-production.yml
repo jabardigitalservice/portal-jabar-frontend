@@ -39,6 +39,7 @@ jobs:
             APP_ENVIRONMENT=production
             NUXT_ENV_PUBLIC_URL=${{ secrets.NUXT_ENV_PUBLIC_URL }}
             API_URL=${{ secrets.API_URL }}
+            SENTRY_ENABLED=${{ secrets.SENTRY_ENABLED }}
             SENTRY_DSN=${{ secrets.SENTRY_DSN }}
             SENTRY_SAMPLE_RATE=${{ secrets.SENTRY_SAMPLE_RATE }}
             GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}
