@@ -174,7 +174,7 @@ export const navigationMenu = [
         title: 'Arsip dan Dokumen',
         description: 'Akses dan unduh dokumen resmi yang dirilis pemerintah Jawa Barat',
         icon: '/icons/navigation/arsip-dan-dokumen.svg',
-        link: '#'
+        link: '/arsip-dan-dokumen'
       },
       {
         id: 3,
