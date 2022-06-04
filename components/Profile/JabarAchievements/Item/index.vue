@@ -20,13 +20,12 @@
       <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-2 mb-3">
         {{ description }}
       </p>
-      <nuxt-link
-        to="#"
-        class="rounded-md px-[10px] py-2 text-xs font-normal text-gray-700 bg-gray-100 cursor-pointer
+      <div
+        class="inline-block rounded-md px-[10px] py-2 text-xs font-normal text-gray-700 bg-gray-100
           hover:text-green-700 hover:bg-green-50"
       >
         {{ category }}
-      </nuxt-link>
+      </div>
     </div>
   </li>
 </template>
