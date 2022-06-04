@@ -61,10 +61,11 @@
         >
           <div class="w-[100px] h-[100px] grid place-content-center">
             <img
-              :src="item.logo || '/icons/image.svg'"
+              :src="item.logo || '/logo.png'"
               :alt="item.name"
               class="h-[80px]"
               height="80"
+              @error="onErrorImage"
             >
           </div>
           <div>
@@ -197,6 +198,9 @@ export default {
       }
 
       this.$fetch()
+    },
+    onErrorImage (event) {
+      event.target.src = '/logo.png'
     }
   }
 }
