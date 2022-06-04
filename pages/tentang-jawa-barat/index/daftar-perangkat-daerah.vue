@@ -79,6 +79,7 @@
               {{ item.address }}
             </p>
             <a
+              v-if="item.website"
               :href="item.website"
               rel="noopener noreferrer"
               target="_blank"
