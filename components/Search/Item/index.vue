@@ -44,13 +44,12 @@
       <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
         <h1
           class="font-lato font-medium text-lg leading-7 text-blue-gray-800 mb-[6px] group-hover:text-green-700"
-          :class="view === 'list' ? ' line-clamp-1' : 'line-clamp-2'"
         >
           {{ title }}
         </h1>
       </a>
       <p
-        class="search-item__description font-lato font-normal text-sm leading-6 text-[#717F8C] line-clamp-2 mb-2
+        class="search-item__description font-lato font-normal text-sm leading-6 text-[#717F8C] mb-2
         group-hover:text-blue-gray-600"
         v-html="description"
       />
