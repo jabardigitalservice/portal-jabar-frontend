@@ -14,6 +14,7 @@
         :quote="quote"
         :hashtags="hastags"
         class="flex flex-col gap-1 w-full h-full items-center justify-center capitalize"
+        @close="$emit('share', id)"
       >
         <!-- NOTE: Make sure the icons are available -->
         <Icon
@@ -31,6 +32,10 @@
 
 export default {
   props: {
+    id: {
+      type: [String, Number],
+      default: ''
+    },
     /**
      * Define what social media will be used to share article
      * values: ['facebook', 'twitter', 'whatsapp', 'email', and more]
