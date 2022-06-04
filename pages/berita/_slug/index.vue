@@ -39,7 +39,7 @@
                   />
                   Bagikan Berita Via
                 </p>
-                <NewsDetailShare v-bind="shareButtons" />
+                <NewsDetailShare v-bind="shareButtons" @share="onShareNews($event)" />
               </div>
             </div>
           </section>
@@ -162,6 +162,7 @@ export default {
     },
     shareButtons () {
       return {
+        id: this.news.id,
         networks: ['facebook', 'twitter', 'whatsapp', 'email'],
         url: this.articleUrl,
         title: this.news?.title || '',
@@ -207,6 +208,13 @@ export default {
         ...item,
         date: new Date(item.created_at)
       }))
+    },
+    async onShareNews (id) {
+      try {
+        await this.$axios.patch(`/v1/news/${id}/share`)
+      } catch (error) {
+        // silent error
+      }
     }
   }
 }
