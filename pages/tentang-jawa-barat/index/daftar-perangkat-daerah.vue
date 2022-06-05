@@ -61,10 +61,11 @@
         >
           <div class="w-[100px] h-[100px] grid place-content-center">
             <img
-              :src="item.logo || '/icons/image.svg'"
+              :src="item.logo || '/logo.png'"
               :alt="item.name"
               class="h-[80px]"
               height="80"
+              @error="onErrorImage"
             >
           </div>
           <div>
@@ -78,6 +79,7 @@
               {{ item.address }}
             </p>
             <a
+              v-if="item.website"
               :href="item.website"
               rel="noopener noreferrer"
               target="_blank"
@@ -197,6 +199,9 @@ export default {
       }
 
       this.$fetch()
+    },
+    onErrorImage (event) {
+      event.target.src = '/logo.png'
     }
   }
 }
