@@ -138,7 +138,7 @@
             <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
               Bagikan Via
             </h2>
-            <NewsDetailShare v-bind="shareButtons" />
+            <NewsDetailShare v-bind="shareButtons" @share="onShareNews($event)" />
           </div>
         </section>
 
@@ -209,6 +209,7 @@ export default {
     },
     shareButtons () {
       return {
+        id: this.news.id,
         networks: ['facebook', 'twitter', 'whatsapp', 'email'],
         url: this.articleUrl,
         title: this.news?.title || '',
@@ -225,6 +226,13 @@ export default {
     },
     setOpenShareModal (value) {
       this.openShareModal = value
+    },
+    async onShareNews (id) {
+      try {
+        await this.$axios.patch(`/v1/news/${id}/share`)
+      } catch (error) {
+        // silent error
+      }
     }
   }
 }
