@@ -18,7 +18,7 @@ export default {
     return {
       jumbotron: {
         title: 'Pencarian Portal Jabar',
-        subtitle: 'Temukan berbagai jenis pelayanan publik di Jawa Barat sesuai dengan kebutuhan.',
+        subtitle: 'Temukan berbagai jenis informasi publik di Jawa Barat sesuai dengan kebutuhan.',
         backgroundImageUrl: '/images/jumbotron/default.webp'
       }
     }

@@ -155,6 +155,10 @@ export default {
       } else {
         this.categories = []
       }
+      this.pagination = {
+        ...this.pagination,
+        currentPage: 1
+      }
       this.$fetch()
     },
     onChangeSort (sortOrder) {
