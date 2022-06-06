@@ -197,7 +197,7 @@ export const mostPopularServicesMenu = [
         id: 1,
         title: 'Layanan Kependudukan',
         description: 'Informasi mengenai syarat dan tata cara mendapatkan layanan kependudukan di seluruh Kabupaten/Kota di Jawa Barat.',
-        link: 'http://disdukcapil.jabarprov.go.id/portal',
+        link: 'https://disdukcapil.jabarprov.go.id/portal',
         icon: '/icons/layanan-terpopuler/layanan-kependudukan.svg'
       },
       {
@@ -253,21 +253,21 @@ export const mostPopularServicesMenu = [
         id: 7,
         title: 'Info Wisata Jabar',
         description: 'Temukan informasi mengenai destinasi wisata yang wajib dikunjungi di Jawa Barat.',
-        link: 'http://disparbud.jabarprov.go.id/wisata/index.php?lang=id',
+        link: 'https://disparbud.jabarprov.go.id',
         icon: '/icons/layanan-terpopuler/info-wisata-jabar.svg'
       },
       {
         id: 8,
         title: 'Hotel Murah di Jawa Barat',
         description: 'Temukan informasi mengenai tempat menginap di Jawa Barat sesuai keinginan.',
-        link: 'http://disparbud.jabarprov.go.id/applications/frontend/index.php?mod=objek-wisata&act=showHotelList',
+        link: 'https://uspar.braga.co.id',
         icon: '/icons/layanan-terpopuler/hotel-murah-di-jawa-barat.svg'
       },
       {
         id: 9,
         title: 'Daerah Wisata Jawa Barat',
         description: 'Temukan informasi mengenai tempat wisata di Jawa Barat yang wajib dikunjungi.',
-        link: 'http://disparbud.jabarprov.go.id/wisata/cat-det.php?id=51&lang=id',
+        link: 'https://disparbud.jabarprov.go.id',
         icon: '/icons/layanan-terpopuler/daerah-wisata-di-jawa-barat.svg'
       }
     ]
