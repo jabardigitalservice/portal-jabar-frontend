@@ -18,7 +18,13 @@ export default {
       { rel: 'preload', as: 'image', href: '/images/hero.svg' }
     ],
     script: [
-      { hid: 'text/javascript"', src: 'https://widget.kominfo.go.id/gpr-widget-kominfo.min.js', defer: true }
+      {
+        hid: 'text/javascript"',
+        src: 'https://widget.kominfo.go.id/gpr-widget-kominfo.min.js',
+        body: true,
+        async: true,
+        crossorigin: 'anonymous'
+      }
     ]
   },
 
@@ -35,7 +41,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/jabar-design-system.js', '~/plugins/vue-gtag'],
+  plugins: ['~/plugins/jabar-design-system.js', '~/plugins/vue-gtag', '~/plugins/vue-awesome-swiper'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
