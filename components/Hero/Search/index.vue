@@ -19,23 +19,31 @@
         Pencarian populer di Jawa Barat
       </p>
       <div class="max-w-2xl">
-        <swiper
-          ref="swiper"
-          :options="swiperOptions"
-          :auto-update="true"
-          :auto-destroy="true"
-          :delete-instance-on-destroy="true"
-          :cleanup-styles-on-destroy="true"
-        >
-          <swiper-slide v-for="(item, index) in popularSearchSuggestions" :key="index">
-            <Link :link="`/pencarian?q=${encodeURI(item)}`" class="min-w-[182px] h-[54px] bg-white rounded-xl px-[14px] flex items-center justify-between">
-              <p class="font-bold text-gray-800 text-base leading-6">
-                {{ item }}
-              </p>
-              <Icon name="open-new-tab" size="14px" class="text-green-800" />
-            </Link>
-          </swiper-slide>
-        </swiper>
+        <client-only>
+          <swiper
+            ref="swiper"
+            :options="swiperOptions"
+            :auto-update="true"
+            :auto-destroy="true"
+            :delete-instance-on-destroy="true"
+            :cleanup-styles-on-destroy="true"
+          >
+            <swiper-slide v-for="(item, index) in popularSearchSuggestions" :key="index">
+              <Link :link="`/pencarian?q=${encodeURI(item)}`" class="min-w-[182px] h-[54px] bg-white rounded-xl px-[14px] flex items-center justify-between">
+                <p class="font-bold text-gray-800 text-base leading-6">
+                  {{ item }}
+                </p>
+                <Icon name="open-new-tab" size="14px" class="text-green-800" />
+              </Link>
+            </swiper-slide>
+          </swiper>
+
+          <template #placeholder>
+            <div class="w-full overflow-hidden flex gap-4">
+              <div v-for="i in 4" :key="i" class="min-w-[182px] h-[54px] rounded-xl bg-gray-300 animate-pulse" />
+            </div>
+          </template>
+        </client-only>
       </div>
     </section>
   </div>
@@ -44,17 +52,8 @@
 <script>
 import debounce from 'lodash/debounce'
 import { popularSearchSuggestions } from 'static/data'
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
 
 export default {
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  directives: {
-    swiper: directive
-  },
   data () {
     return {
       inputValue: '',
