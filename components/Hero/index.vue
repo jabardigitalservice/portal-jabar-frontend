@@ -8,7 +8,7 @@
           style="background-image: url('/images/hero.svg'); background-position: center top;"
         >
           <h1 class="text-white text-[42px] font-lora uppercase leading-normal font-bold text-center mb-12 tracking-wider">
-            Menjawab Kebutuhan Infomasi Publik
+            Menjawab Kebutuhan Informasi Publik
             <br>
             Warga Jawa Barat
           </h1>
