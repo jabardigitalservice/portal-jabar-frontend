@@ -15,68 +15,99 @@
         Ini menjadi pemicu bagi Pemerintah Daerah Provinsi Jawa Barat untuk terus tumbuh dan berikan yang terbaik bagi warga.
       </p>
     </div>
-    <!-- Section Items Slider -->
-    <ul
-      class="achievements__container md:overflow-auto flex gap-4 transition-transform ease-out duration-300 md:transition-none md:!translate-x-0"
-      :style="sliderStyles"
-    >
-      <li
-        v-for="item in items"
-        :key="item.id"
-        class="min-h-[185px] min-w-full p-4 rounded-xl flex flex-col gap-2 border border-[#E9EDF4]
-        md:min-w-[492px] md:max-w-[492px] md:flex-row md:gap-6"
+
+    <!-- Jabar Achievements Slider -->
+    <client-only>
+      <swiper
+        ref="jabarAchievementSwiper"
+        :options="swiperOptions"
+        :auto-update="true"
+        :auto-destroy="true"
+        :delete-instance-on-destroy="true"
+        :cleanup-styles-on-destroy="true"
+        @ready="swiperReady = true"
+        @slide-change="setCurrentSlide"
       >
-        <img
-          :src="item.icon"
-          :alt="item.title"
-          class="w-[60px] h-[60px] object-cover"
-          width="60"
-          height="60"
+        <swiper-slide
+          v-for="item in items"
+          :key="item.id"
+          class="min-h-[185px] md:!w-[492px]"
         >
-        <div>
-          <p class="font-lato font-bold text-sm text-blue-gray-800 leading-6 md:text-base">
-            {{ item.title }}
-          </p>
-          <p class="font-lato text-xs font-normal text-blue-gray-500 leading-5 mb-3 md:font-medium md:text-sm">
-            {{ item.appreciator }}
-          </p>
-          <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-3 mb-3">
-            {{ item.description }}
-          </p>
-          <span class="rounded-md px-[10px] py-2 text-xs font-normal text-gray-700 bg-gray-100">
-            {{ item.category }}
-          </span>
+          <div class="min-h-full min-w-full p-4 rounded-xl flex flex-col gap-2 border border-[#E9EDF4]">
+            <img
+              :src="item.icon"
+              :alt="item.title"
+              class="w-[60px] h-[60px] object-cover"
+              width="60"
+              height="60"
+            >
+            <div>
+              <p class="font-lato font-bold text-sm text-blue-gray-800 leading-6 md:text-base">
+                {{ item.title }}
+              </p>
+              <p class="font-lato text-xs font-normal text-blue-gray-500 leading-5 mb-3 md:font-medium md:text-sm">
+                {{ item.appreciator }}
+              </p>
+              <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-3 mb-3">
+                {{ item.description }}
+              </p>
+              <span class="rounded-md px-[10px] py-2 text-xs font-normal text-gray-700 bg-gray-100">
+                {{ item.category }}
+              </span>
+            </div>
+          </div>
+        </swiper-slide>
+        <template #pagination>
+          <div class="flex justify-between items-center mt-3 md:hidden">
+            <button
+              :disabled="isFirstSlide"
+              class="w-8 h-8 bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
+              @click="prevSlide"
+            >
+              <Icon
+                name="chevron-left"
+                :class="isFirstSlide ? 'text-gray-500' : 'text-white'"
+                size="16px"
+              />
+            </button>
+            <div slot="pagination" class="swiper-pagination !static !w-[fit-content]" />
+            <button
+              :disabled="isLastSlide"
+              class="w-8 h-8 bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
+              @click="nextSlide"
+            >
+              <Icon
+                name="chevron-right"
+                :class="isLastSlide ? 'text-gray-500' : 'text-white'"
+                size="16px"
+              />
+            </button>
+          </div>
+        </template>
+      </swiper>
+
+      <template #placeholder>
+        <!-- Swiper Skeleton -->
+        <div class="w-full h-[254px] overflow-x-hidden flex gap-4">
+          <div
+            v-for="index in 5"
+            :key="`skeleton-${index}`"
+            class="min-w-full h-full p-4 rounded-xl border border-[#E9EDF4] flex flex-col md:min-w-[492px]"
+          >
+            <div class="w-[60px] h-[60px] rounded-full bg-gray-200 mb-2" />
+            <div class="w-5/6 h-5 bg-gray-200 rounded-md mb-6" />
+            <div class="w-full h-4 bg-gray-200 rounded-md mb-2" />
+            <div class="w-5/6 h-4 bg-gray-200 rounded-md mb-5" />
+            <div class="w-28 h-5 bg-gray-200 rounded-md" />
+          </div>
         </div>
-      </li>
-    </ul>
-    <!-- Slider Navigation (Mobile Only) -->
-    <div class="flex justify-between mt-3 md:hidden">
-      <button
-        :disabled="isFirstSlide"
-        class="w-8 h-8 bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
-        @click="prevSlide"
-      >
-        <Icon
-          name="chevron-left"
-          size="16px"
-          :class="isFirstSlide ? 'text-gray-400' : 'text-white'"
-        />
-      </button>
-      <p class="font-lato text-sm leading-6 text-blue-gray-600">
-        {{ currentSlide + 1 }} dari {{ items.length }}
-      </p>
-      <button
-        :disabled="isLastSlide"
-        class="w-8 h-8 bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
-        @click="nextSlide"
-      >
-        <Icon
-          name="chevron-right"
-          size="16px"
-          :class="isLastSlide ? 'text-gray-400' : 'text-white'"
-        />
-      </button>
-    </div>
+        <div class="w-full h-8 flex justify-between mt-3 md:hidden">
+          <div class="w-8 h-8 bg-gray-300 animate-pulse rounded-full" />
+          <div class="w-8 h-8 bg-gray-300 animate-pulse rounded-full" />
+        </div>
+      </template>
+    </client-only>
+
     <div class="flex justify-center mt-8">
       <Link link="/selayang-pandang/prestasi-jawa-barat" tabindex="-1">
         <Button class="max-w-max" type="button" variant="secondary">
@@ -94,6 +125,17 @@ export default {
   data () {
     return {
       currentSlide: 0,
+      swiperReady: false,
+      swiperOptions: Object.freeze({
+        slidesPerView: 'auto',
+        spaceBetween: 16,
+        mousewheel: true,
+        passiveListeners: true,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'fraction'
+        }
+      }),
       items: [
         {
           id: 1,
@@ -139,13 +181,8 @@ export default {
     }
   },
   computed: {
-    sliderStyles () {
-      const index = this.currentSlide
-      const padding = index * 16 // 16px is the padding of the slider container
-
-      return {
-        transform: `translateX(-${index * 100}%) translateX(-${padding}px)`
-      }
+    swiper () {
+      return this.$refs.jabarAchievementSwiper.$swiper
     },
     isFirstSlide () {
       return this.currentSlide === 0
@@ -156,28 +193,14 @@ export default {
   },
   methods: {
     nextSlide () {
-      if (this.currentSlide < this.items.length - 1) {
-        this.currentSlide = this.currentSlide + 1
-      }
+      this.swiperReady && this.swiper.slideNext()
     },
     prevSlide () {
-      if (this.currentSlide > 0) {
-        this.currentSlide = this.currentSlide - 1
-      }
+      this.swiperReady && this.swiper.slidePrev()
+    },
+    setCurrentSlide () {
+      this.currentSlide = this.swiper.activeIndex
     }
   }
 }
 </script>
-
-<style scoped>
-/* Hide scrollbar for Chrome, Safari and Opera */
-.achievements__container::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.achievements__container {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-</style>
