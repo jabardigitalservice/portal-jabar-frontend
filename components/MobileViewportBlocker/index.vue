@@ -14,15 +14,12 @@
           height="162"
         >
         <div>
-          <h1
-            class="mb-2 font-lora font-bold text-xl leading-9 text-green-800 text-center"
-          >
-            Perangkat Anda Belum Didukung Saat Ini
+          <h1 class="mb-2 font-lora font-bold text-xl leading-9 text-green-800 text-center">
+            Perangkat Anda belum didukung
           </h1>
           <p class="font-lato text-sm leading-6 text-blue-gray-800 text-center">
-            Portal Jabar saat ini hanya dapat diakses melalui perangkat Laptop &
-            Tablet. Kunjungi instagram atau twitter kami untuk mengetahui
-            pengembangan Portal Jabar yang terbaru.
+            Saat ini portal jabarprov.go.id hanya bisa diakses melalui PC/Laptop.
+            Nantikan pengembangan versi <i>web mobile</i> dari portal jabarprov.go.id dalam waktu dekat!
           </p>
         </div>
         <div class="w-full flex flex-col gap-8">
