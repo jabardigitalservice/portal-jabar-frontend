@@ -20,7 +20,7 @@
             Perangkat Anda <br class="md:hidden"> Belum Didukung Saat Ini
           </h1>
           <p class="font-lato text-sm leading-6 text-blue-gray-800 text-center">
-            Saat ini portal jabarprov.go.id hanya bisa diakses melalui PC/laptop/tablet.
+            Disclaimer: Saat ini portal jabarprov.go.id hanya bisa diakses melalui PC/laptop.
             Nantikan pengembangan versi web mobile dari portal jabarprov.go.id dalam waktu dekat!
           </p>
         </div>
