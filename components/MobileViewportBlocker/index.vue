@@ -17,16 +17,15 @@
           <h1
             class="mb-2 font-lora font-bold text-xl leading-9 text-green-800 text-center"
           >
-            Perangkat Anda Belum Didukung Saat Ini
+            Perangkat Anda <br class="md:hidden"> Belum Didukung Saat Ini
           </h1>
           <p class="font-lato text-sm leading-6 text-blue-gray-800 text-center">
-            Portal Jabar saat ini hanya dapat diakses melalui perangkat Laptop &
-            Tablet. Kunjungi instagram atau twitter kami untuk mengetahui
-            pengembangan Portal Jabar yang terbaru.
+            Saat ini portal jabarprov.go.id hanya bisa diakses melalui PC/laptop/tablet.
+            Nantikan pengembangan versi web mobile dari portal jabarprov.go.id dalam waktu dekat!
           </p>
         </div>
-        <div class="w-full flex flex-col gap-8">
-          <Link link="https://www.instagram.com/jabarprovgoid">
+        <div class="w-full flex flex-col">
+          <Link link="https://www.instagram.com/jabarprovgoid" class="mb-8">
             <div
               class="h-[52px] border border-gray-300 rounded-md flex justify-center items-center gap-2"
             >
