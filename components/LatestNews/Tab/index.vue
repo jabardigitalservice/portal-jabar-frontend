@@ -47,21 +47,25 @@ export default {
     }
   },
   async fetch () {
-    let params = {
-      per_page: this.perPage,
-      sort_by: 'published_at',
-      sort_order: 'DESC'
-    }
-
-    if (this.selectedTab === 'terpopuler') {
-      params = {
-        ...params,
-        sort_by: 'views'
+    try {
+      let params = {
+        per_page: this.perPage,
+        sort_by: 'published_at',
+        sort_order: 'DESC'
       }
-    }
 
-    const response = await this.$axios.$get('/v1/public/news', { params })
-    this.items = response.data
+      if (this.selectedTab === 'terpopuler') {
+        params = {
+          ...params,
+          sort_by: 'views'
+        }
+      }
+
+      const response = await this.$axios.$get('/v1/public/news', { params })
+      this.items = response.data
+    } catch (error) {
+      this.$sentry.captureException(error)
+    }
   },
   activated () {
     /**
