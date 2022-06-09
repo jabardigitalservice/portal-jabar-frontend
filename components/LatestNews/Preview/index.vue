@@ -68,15 +68,19 @@ export default {
     }
   },
   async fetch () {
-    const params = {
-      per_page: this.perPage,
-      highlight: true,
-      sort_by: 'published_at',
-      sort_order: 'DESC'
-    }
+    try {
+      const params = {
+        per_page: this.perPage,
+        highlight: true,
+        sort_by: 'published_at',
+        sort_order: 'DESC'
+      }
 
-    const response = await this.$axios.$get('/v1/public/news', { params })
-    this.items = response.data
+      const response = await this.$axios.$get('/v1/public/news', { params })
+      this.items = response.data
+    } catch (error) {
+      this.$sentry.captureException(error)
+    }
   },
   activated () {
     /**
