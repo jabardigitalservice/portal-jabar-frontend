@@ -22,8 +22,8 @@
             Nantikan pengembangan versi <i>web mobile</i> dari portal jabarprov.go.id dalam waktu dekat!
           </p>
         </div>
-        <div class="w-full flex flex-col gap-8">
-          <Link link="https://www.instagram.com/jabarprovgoid">
+        <div class="w-full flex flex-col">
+          <Link link="https://www.instagram.com/jabarprovgoid" class="mb-8">
             <div
               class="h-[52px] border border-gray-300 rounded-md flex justify-center items-center gap-2"
             >
