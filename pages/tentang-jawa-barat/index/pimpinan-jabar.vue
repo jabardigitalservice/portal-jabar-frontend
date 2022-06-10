@@ -53,27 +53,47 @@
       <h3 class="font-lora font-bold text-[26px] text-blue-gray-700 mb-7">
         Masa Jabatan Gubernur Sebelumnya
       </h3>
-      <ul class="flex overflow-x-auto relative">
-        <li v-for="(item, index) in items" :key="item.id" class="min-w-[328px]">
-          <div class="flex items-center">
-            <p class="px-4 py-2 bg-green-700 rounded-[42px] font-lato font-bold text-xs text-white whitespace-nowrap">
-              {{ item.period }}
-            </p>
-            <div :class="{'w-full h-0.5 bg-green-700': index !== items.length - 1}" />
-          </div>
-          <div class="p-6 rounded-2xl mt-4 flex items-center gap-4 hover:bg-green-50 transition-all ease-out duration-300">
-            <img :src="item.image" :alt="item.name" width="50" height="50">
-            <div>
-              <p class="font-lato text-xs text-blue-gray-300">
-                Gubernur
+      <swiper
+        v-show="swiperReady"
+        ref="jabarLeaderSwiper"
+        :options="swiperOptions"
+        :auto-update="true"
+        :auto-destroy="true"
+        :delete-instance-on-destroy="true"
+        :cleanup-styles-on-destroy="true"
+        @ready="swiperReady = true"
+      >
+        <swiper-slide
+          v-for="(item, index) in items"
+          :key="item.id"
+          class="!w-[fit-content]"
+        >
+          <div class="min-w-[328px]">
+            <div class="flex items-center">
+              <p class="px-4 py-2 bg-green-700 rounded-[42px] font-lato font-bold text-xs text-white whitespace-nowrap">
+                {{ item.period }}
               </p>
-              <p class="font-lato font-bold text-sm text-blue-gray-700">
-                {{ item.name }}
-              </p>
+              <div :class="{'w-full h-0.5 bg-green-700': index !== items.length - 1}" />
+            </div>
+            <div class="p-6 rounded-2xl mt-4 flex items-center gap-4 hover:bg-green-50 transition-all ease-out duration-300">
+              <img :src="item.image" :alt="item.name" width="50" height="50">
+              <div>
+                <p class="font-lato text-xs text-blue-gray-300">
+                  Gubernur
+                </p>
+                <p class="font-lato font-bold text-sm text-blue-gray-700">
+                  {{ item.name }}
+                </p>
+              </div>
             </div>
           </div>
-        </li>
-      </ul>
+        </swiper-slide>
+      </swiper>
+
+      <!-- Swiper Skeleton -->
+      <div v-show="!swiperReady" class="w-full h-[146px] flex overflow-hidden gap-8">
+        <div v-for="index in 9" :key="index" class="min-w-[328px] h-full bg-gray-200 animate-pulse rounded-xl" />
+      </div>
     </div>
     <BaseModal :show="isModalOpen" button-label="Tutup" @close="closeModal">
       <template #header>
@@ -312,7 +332,12 @@ export default {
         }
       ],
       isModalOpen: false,
-      selectedProfile: 'gubernur'
+      selectedProfile: 'gubernur',
+      swiperReady: false,
+      swiperOptions: Object.freeze({
+        slidesPerView: 'auto',
+        mousewheel: true
+      })
     }
   },
   methods: {
@@ -331,18 +356,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-/* Hide scrollbar for Chrome, Safari and Opera */
-ul::-webkit-scrollbar {
-  display: none;
-}
-/* Hide scrollbar for IE, Edge and Firefox */
-ul {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-.line:nth-of-type() {
-  background-color: red;
-}
-</style>
