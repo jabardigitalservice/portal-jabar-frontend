@@ -1,9 +1,9 @@
 <template>
   <nav class="flex items-center">
-    <Link link="/" class="mr-auto">
+    <Link link="/" class="mr-auto w-8 h-8 lg:w-[60px] lg:h-[60px]">
       <img src="/logo.png" width="55" height="60" alt="Beranda">
     </Link>
-    <HeaderMenu>
+    <HeaderMenu class="hidden lg:flex">
       <HeaderMenuList
         v-for="menu in menus"
         :id="menu.id"
@@ -21,6 +21,7 @@
         />
       </HeaderMenuList>
     </HeaderMenu>
+    <HeaderMenuMobile class="lg:hidden" />
   </nav>
 </template>
 
