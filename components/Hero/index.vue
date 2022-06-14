@@ -5,22 +5,23 @@
       <BaseContainer>
         <div
           class="flex flex-col items-center -mt-20 bg-no-repeat py-3"
-          style="background-image: url('/images/hero.svg'); background-position: center top;"
+          style="background-image: url('/images/hero.svg'); background-position: center top; background-size: contain;"
         >
-          <h1 class="text-white text-[42px] font-lora uppercase leading-normal font-bold text-center mb-12 tracking-wider">
-            Menjawab Kebutuhan Informasi Publik
-            <br>
-            Warga Jawa Barat
+          <h1
+            class="text-white font-lora uppercase leading-normal font-bold text-center tracking-wider max-w-[40ch]
+            mb-4 md:mb-6 lg:mb-12 text-[17px] sm:text-[28px] lg:text-[42px]"
+          >
+            Menjawab Kebutuhan Informasi Publik Warga Jawa Barat
           </h1>
-          <p class="text-gray-300 font-medium leading-relaxed text-center max-w-2xl mb-7">
+          <p class="text-gray-300 font-medium leading-relaxed text-center max-w-2xl mb-4 md:mb-7 text-sm md:text-base">
             Temukan informasi publik terkini dari Pemerintahan Daerah Provinsi Jawa Barat
           </p>
           <HeroSearch />
+          <HeroWidgetFeedback />
+          <HeroWidgetSocialMedia />
         </div>
       </BaseContainer>
     </section>
-    <HeroWidgetFeedback />
-    <HeroWidgetSocialMedia />
     <div class="curved" />
   </div>
 </template>

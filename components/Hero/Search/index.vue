@@ -28,7 +28,7 @@
             :delete-instance-on-destroy="true"
             :cleanup-styles-on-destroy="true"
           >
-            <swiper-slide v-for="(item, index) in popularSearchSuggestions" :key="index">
+            <swiper-slide v-for="(item, index) in popularSearchSuggestions" :key="index" class="!w-[fit-content]">
               <Link :link="`/pencarian?q=${encodeURI(item)}`" class="min-w-[182px] h-[54px] bg-white rounded-xl px-[14px] flex items-center justify-between">
                 <p class="font-bold text-gray-800 text-base leading-6">
                   {{ item }}
@@ -60,7 +60,7 @@ export default {
       suggestions: [],
       popularSearchSuggestions,
       swiperOptions: Object.freeze({
-        slidesPerView: 3.3,
+        slidesPerView: 'auto',
         spaceBetween: 16,
         mousewheel: true
       })
