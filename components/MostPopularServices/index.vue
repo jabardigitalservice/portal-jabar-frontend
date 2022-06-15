@@ -1,5 +1,5 @@
 <template>
-  <section class="relative -top-48 lg:-top-36 z-10 -mb-44">
+  <section class="relative -top-48 lg:-top-36 z-10 -mb-48 lg:-mb-36">
     <BaseContainer>
       <div class="bg-white p-4 pr-0 md:p-8 md:pr-4 lg:p-10 rounded-xl shadow">
         <h2 class="text-2xl md:text-4xl md:text-center lg:text-left font-medium leading-loose mb-8 lg:mb-12">
@@ -55,7 +55,7 @@
               </swiper-slide>
             </swiper>
             <template #placeholder>
-              <div class="overflow-hidden flex gap-4">
+              <div class="overflow-hidden w-[fit-content] flex gap-4">
                 <div v-for="i in 3" :key="i" class="w-[245px] min-h-[174px] rounded-md px-4 py-3 bg-gray-300 animate-pulse" />
               </div>
             </template>
