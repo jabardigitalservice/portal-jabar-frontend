@@ -1,5 +1,5 @@
 <template>
-  <div class="col-span-3 flex flex-col gap-4 h-full">
+  <div class="flex flex-col gap-4 lg:col-span-3">
     <div class="grid grid-cols-2">
       <p
         v-for="(tab, index) in tabs"

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-span-2 rounded-md overflow-hidden flex flex-col">
+  <div class="rounded-md overflow-hidden flex flex-col lg:col-span-3 xl:col-span-2">
     <div class="flex flex-col gap-1 bg-green-800 px-5 pt-3 pb-4 text-white">
       <h4 class="text-xl leading-8 font-bold">
         Agenda Jawa Barat
