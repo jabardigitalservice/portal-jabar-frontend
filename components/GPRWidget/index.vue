@@ -1,6 +1,6 @@
 <template>
   <div
-    class="gpr-widget hidden h-full w-full absolute z-[40] select-none lg:block"
+    class="gpr-widget hidden h-full w-full absolute z-[40] select-none md:block"
     :class="isOpen ? 'pointer-events-auto' : 'pointer-events-none'"
     @click.self="toggleOpen"
   >

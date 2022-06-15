@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl w-full">
+  <div class="max-w-xl lg:max-w-2xl w-full">
     <div class="relative mb-8">
       <InputSearch v-model.trim="inputValue" @submit="goToSearchPage" />
       <!-- NOTE: Temporarily Hide Feature -->
@@ -18,7 +18,7 @@
       <p class="font-lato font-bold text-base leading-6 text-center text-gray-300 mb-4">
         Pencarian populer di Jawa Barat
       </p>
-      <div class="max-w-2xl">
+      <div class="max-w-xl lg:max-w-2xl">
         <client-only>
           <swiper
             ref="swiper"
