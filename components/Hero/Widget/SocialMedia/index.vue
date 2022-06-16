@@ -1,7 +1,7 @@
 <template>
   <ul
-    class="flex mt-4 justify-center gap-6
-    lg:mt-0 lg:absolute lg:h-[740px] lg:top-0 lg:right-6 lg:flex-col"
+    class="flex w-full md:w-[fit-content] max-w-xl mt-4 justify-between md:justify-center gap-6
+    md:mt-0 md:absolute md:h-[740px] md:top-0 md:right-6 md:flex-col"
   >
     <li
       v-for="socialMediaSite in socialMediaSites"
@@ -17,7 +17,7 @@
         <Icon
           :name="socialMediaSite.icon"
           size="18px"
-          class="text-white group-hover:opacity-100 lg:opacity-40"
+          class="text-white group-hover:opacity-100 md:opacity-40"
         />
       </Link>
     </li>

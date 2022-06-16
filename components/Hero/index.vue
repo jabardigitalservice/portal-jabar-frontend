@@ -8,12 +8,12 @@
           style="background-image: url('/images/hero.svg'); background-position: center top; background-size: contain;"
         >
           <h1
-            class="text-white font-lora uppercase leading-normal font-bold text-center tracking-wider max-w-[40ch]
+            class="text-white font-lora uppercase leading-normal font-bold text-center tracking-wider max-w-[25ch] md:max-w-[35ch] lg:max-w-[40ch]
             mb-4 md:mb-6 lg:mb-12 text-[17px] sm:text-[28px] lg:text-[42px]"
           >
             Menjawab Kebutuhan Informasi Publik Warga Jawa Barat
           </h1>
-          <p class="text-gray-300 font-medium leading-relaxed text-center max-w-2xl mb-4 md:mb-7 text-sm md:text-base">
+          <p class="text-gray-300 font-medium leading-relaxed text-center max-w-xl lg:max-w-2xl mb-4 md:mb-7 text-sm md:text-base">
             Temukan informasi publik terkini dari Pemerintahan Daerah Provinsi Jawa Barat
           </p>
           <HeroSearch />
