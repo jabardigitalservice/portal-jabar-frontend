@@ -47,7 +47,7 @@
                     <p class="font-bold text-blue-gray-600 ">
                       {{ item.title }}
                     </p>
-                    <p class="text-xs leading-5 text-blue-gray-300 ">
+                    <p class="text-sm leading-5 text-blue-gray-300 ">
                       {{ item.description }}
                     </p>
                   </a>
@@ -104,7 +104,7 @@
                   <p class="font-bold text-blue-gray-600 group-hover:text-green-800">
                     {{ item.title }}
                   </p>
-                  <p class="text-xs leading-5 text-blue-gray-300 group-hover:text-blue-gray-800">
+                  <p class="text-sm leading-5 text-blue-gray-300 group-hover:text-blue-gray-800">
                     {{ item.description }}
                   </p>
                 </a>
