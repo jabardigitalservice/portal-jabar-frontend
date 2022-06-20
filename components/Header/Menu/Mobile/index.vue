@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="min-w-0 flex gap-4">
-      <Link link="/pencarian" class="w-7 h-7 flex items-center justify-center">
+      <!-- TEMPORARY HIDE SEARCH ICON -->
+      <!-- <Link link="/pencarian" class="w-7 h-7 flex items-center justify-center">
         <Icon src="/icons/search.svg" />
-      </Link>
+      </Link> -->
       <button class="w-7 h-7 flex items-center justify-center" @click="toggleSidebar">
         <Icon v-if="open" key="sidebar-open" src="/icons/close.svg" />
         <Icon v-else key="sidebar-close" src="/icons/hamburger.svg" />
