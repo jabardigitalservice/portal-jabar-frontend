@@ -17,9 +17,9 @@
               <h3>
                 {{ navigation.title }}
               </h3>
-              <button class="h-6 w-6 flex items-center justify-center rounded-full hover:bg-green-600">
+              <div class="navigation__sidebar__button h-6 w-6 flex items-center justify-center rounded-full hover:bg-green-600">
                 <Icon name="chevron-down" size="16px" fill="white" class="cursor-pointer transition-transform ease-in" />
-              </button>
+              </div>
             </summary>
             <ul class="flex flex-col mt-3 gap-6 pl-6 py-3 border-l-2 border-green-500">
               <li v-for="item in navigation.items" :key="item.id">
@@ -118,7 +118,7 @@ export default {
   animation: details-show 300ms ease-in;
 }
 
-.navigation__sidebar__menu[open] button > * {
+.navigation__sidebar__menu[open] .navigation__sidebar__button > * {
   transform: rotate(-180deg);
 }
 
