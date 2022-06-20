@@ -1,7 +1,8 @@
 <template>
   <div
-    class="navigation__sidebar left-0 right-0 bottom-0 fixed bg-green-800 z-50 border-t border-green-500 transition-opacity ease-in duration-150 lg:hidden"
-    :class="open ? 'opacity-100 pointer-events-auto top-12 sm:top-16' : 'opacity-0 pointer-events-none'"
+    class="navigation__sidebar top-12 sm:top-16 left-0 right-0 bottom-0 fixed bg-green-800 z-50 border-t border-green-500
+    transition-opacity ease-brand duration-250 lg:hidden"
+    :class="open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
   >
     <BaseContainer class="h-full">
       <div class="navigation__sidebar__container py-4 w-full h-full flex flex-col overflow-y-auto">
