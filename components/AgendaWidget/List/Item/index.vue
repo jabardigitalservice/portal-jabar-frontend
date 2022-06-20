@@ -60,7 +60,7 @@
       @close="toggleEventDetail"
     >
       <div class="p-6 flex flex-col gap-6">
-        <div class="flex gap-6">
+        <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/category.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -72,7 +72,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 ml-9 md:ml-0">
             <p class="text-xs text-blue-gray-200">
               Tipe Acara
             </p>
@@ -84,7 +84,7 @@
             </p>
           </div>
         </div>
-        <div class="flex gap-6">
+        <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/calendar.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -96,7 +96,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 ml-9 md:ml-0">
             <p class="text-xs text-blue-gray-200">
               Waktu
             </p>
@@ -104,11 +104,11 @@
               {{ time }}
             </p>
           </div>
-          <div class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap self-end">
+          <div class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap self-end ml-9 md:ml-0">
             {{ status }}
           </div>
         </div>
-        <div v-if="isOnline" class="flex gap-6">
+        <div v-if="isOnline" class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/url.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -121,7 +121,7 @@
             </div>
           </div>
         </div>
-        <div v-else class="flex gap-6">
+        <div v-else class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/location.svg" size="20px" />
             <div class="flex flex-col gap-2">
