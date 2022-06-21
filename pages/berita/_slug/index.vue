@@ -1,12 +1,12 @@
 <template>
   <main>
-    <article class="article h-full">
+    <article class="article">
       <!-- News Header -->
       <NewsDetailHeader :news="news" />
 
       <!-- News Content -->
       <BaseContainer class="mt-12 mb-12 mx-auto">
-        <section class="h-full grid grid-cols-1 gap-8 md:grid-cols-news-container md:gap-[72px]">
+        <section class="h-full grid grid-cols-1 gap-8 lg:grid-cols-[60%,auto] md:gap-[72px]">
           <div class="flex flex-col gap-7">
             <!-- Article Body -->
             <div class="article__body w-full min-h-screen" v-html="content" />
@@ -17,7 +17,7 @@
           </div>
 
           <!-- Related News and Share Buttons -->
-          <section class="w-[400px] h-full">
+          <section class="w-full lg:w-[400px] h-full">
             <div class="flex flex-col gap-7 md:sticky md:top-[88px]">
               <NewsList
                 :items="relatedNews"

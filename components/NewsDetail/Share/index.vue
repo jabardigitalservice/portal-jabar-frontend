@@ -3,7 +3,7 @@
     <li
       v-for="network in networks"
       :key="network"
-      class="w-16 h-16 p-2 rounded-lg text-center text-xs text-gray-600 leading-[18px]
+      class="w-12 h-12 md:w-16 md:h-16 p-2 rounded-lg text-center text-xs text-gray-600 leading-[18px]
       hover:bg-gray-100 hover:text-gray-800 transition-colors ease-in-out duration-150"
     >
       <ShareNetwork
