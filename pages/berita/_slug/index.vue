@@ -17,8 +17,8 @@
           </div>
 
           <!-- Related News and Share Buttons -->
-          <section class="w-full lg:w-[400px] h-full">
-            <div class="flex flex-col gap-7 md:sticky md:top-[88px]">
+          <section>
+            <div class="flex flex-col gap-7 lg:sticky lg:top-[88px]">
               <NewsList
                 :items="relatedNews"
                 small
@@ -39,7 +39,10 @@
                   />
                   Bagikan Berita Via
                 </p>
-                <NewsDetailShare v-bind="shareButtons" @share="onShareNews($event)" />
+                <NewsDetailShare
+                  v-bind="shareButtons"
+                  @share="onShareNews($event)"
+                />
               </div>
             </div>
           </section>

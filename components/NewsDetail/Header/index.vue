@@ -140,7 +140,7 @@
 
         <section class="col-span-2 flex gap-4">
           <Icon src="/icons/share.svg" size="16px" class="self-start text-green-600" />
-          <div>
+          <div class="w-full">
             <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
               Bagikan Via
             </h2>
