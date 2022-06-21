@@ -1,11 +1,12 @@
 <template>
   <div
-    class="navigation__sidebar fixed inset-0 top-12 sm:top-16 bg-green-800 z-50 border-t border-green-500 transition-all ease-in duration-150 lg:hidden"
+    class="navigation__sidebar top-12 sm:top-16 left-0 right-0 bottom-0 fixed bg-green-800 z-50 border-t border-green-500
+    transition-opacity ease-brand duration-250 lg:hidden"
     :class="open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
   >
     <BaseContainer class="h-full">
-      <div class="py-4 w-full h-full flex flex-col">
-        <section class="min-w-0 flex-1 flex flex-col overflow-y-hidden">
+      <div class="navigation__sidebar__container py-4 w-full h-full flex flex-col overflow-y-auto">
+        <section class="min-w-0 flex flex-col">
           <details
             v-for="navigation in navigationMenu"
             :id="`sidebar-menu-${navigation.id}`"
@@ -17,8 +18,8 @@
               <h3>
                 {{ navigation.title }}
               </h3>
-              <div class="h-6 w-6 flex items-center justify-center rounded-full hover:bg-green-600 transition-all ease-in duration-150">
-                <Icon name="chevron-down" size="16px" fill="white" class="cursor-pointer" />
+              <div class="navigation__sidebar__button h-6 w-6 flex items-center justify-center rounded-full hover:bg-green-600">
+                <Icon name="chevron-down" size="16px" fill="white" class="cursor-pointer transition-transform ease-in" />
               </div>
             </summary>
             <ul class="flex flex-col mt-3 gap-6 pl-6 py-3 border-l-2 border-green-500">
@@ -30,7 +31,7 @@
             </ul>
           </details>
         </section>
-        <section class="pt-4 border-t border-green-500">
+        <section class="mt-auto pt-4 border-t border-green-500">
           <div class="flex items-start gap-3 mb-4">
             <Icon src="/icons/network.svg" alt="Lokasi" size="20px" class="py-1" />
             <div class="flex-1 flex flex-col gap-2 text-white">
@@ -79,6 +80,15 @@ export default {
       return new Date().getFullYear()
     }
   },
+  watch: {
+    open () {
+      if (this.open) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = 'auto'
+      }
+    }
+  },
   methods: {
     closeOtherMenu (id) {
       // select all sidebar menu except the element with id of `id`
@@ -107,5 +117,20 @@ export default {
 
 .navigation__sidebar__menu[open] summary ~ * {
   animation: details-show 300ms ease-in;
+}
+
+.navigation__sidebar__menu[open] .navigation__sidebar__button > * {
+  transform: rotate(-180deg);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.navigation__sidebar__container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.navigation__sidebar__container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 </style>

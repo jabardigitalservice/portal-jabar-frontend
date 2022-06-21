@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full flex-col text-white">
+  <div class="footer__sitemap flex w-full flex-col text-white">
     <div class="flex items-start gap-3">
       <Icon src="/icons/sitemap.svg" alt="Lokasi" size="18px" class="py-1" />
       <div class="flex w-full min-h-0 flex-col gap-4">
@@ -12,14 +12,14 @@
           <details
             v-for="navigation in navigationMenu"
             :key="`details-${navigation.id}`"
-            class="py-4"
+            class="footer__sitemap__menu py-4"
           >
             <summary class="flex justify-between items-center">
               <h3 class="font-bold">
                 {{ navigation.title }}
               </h3>
-              <div class="h-6 w-6 flex items-center justify-center rounded-full hover:bg-green-600 transition-all ease-in duration-150">
-                <Icon name="chevron-down" size="16px" fill="white" class="cursor-pointer" />
+              <div class="footer__sitemap__button h-6 w-6 flex items-center justify-center rounded-full hover:bg-green-600">
+                <Icon name="chevron-down" size="16px" fill="white" class="cursor-pointer transition-transform ease-in duration-150" />
               </div>
             </summary>
             <ul class="grid grid-cols-1 md:grid-cols-2 mt-2 gap-2">
@@ -67,3 +67,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.footer__sitemap__menu[open] .footer__sitemap__button > * {
+  transform: rotate(-180deg);
+}
+</style>

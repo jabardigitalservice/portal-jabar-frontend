@@ -9,8 +9,8 @@
               <div class="cursor-pointer" @click="prev">
                 <Icon name="chevron-left" size="10px" />
               </div>
-              <p class="text-sm text-gray-500">
-                <span class="font-bold text-white mr-1">{{ currentIndex + 1 }}</span>dari {{ items.length }}
+              <p class="text-sm text-white">
+                <span class="font-bold mr-1">{{ currentIndex + 1 }}</span>dari {{ items.length }}
               </p>
               <div class="cursor-pointer" @click="next">
                 <Icon name="chevron-right" size="10px" />

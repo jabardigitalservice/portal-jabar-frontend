@@ -5,7 +5,7 @@
       ref="modal"
       class="fixed w-full h-full bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm flex justify-center items-center z-[100]"
     >
-      <div class="flex flex-col bg-white rounded-lg overflow-hidden md:max-h-[90%]">
+      <div class="flex flex-col bg-white rounded-lg overflow-hidden max-h-full md:max-h-[90%]">
         <slot name="header" />
         <slot />
         <slot name="footer">
