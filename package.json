@@ -27,6 +27,7 @@
     "date-fns": "^2.23.0",
     "keen-slider": "^5.5.1",
     "lodash": "^4.17.21",
+    "mobile-detect": "^1.4.5",
     "nuxt": "^2.15.7",
     "portal-vue": "^2.1.7",
     "swiper": "^5.4.5",
