@@ -4,10 +4,7 @@
       <slot name="header" />
     </div>
     <div
-      :class="{
-        'w-full min-h-[138px]' : true,
-        'min-h-[88px]' : small
-      }"
+      class="w-full min-h-[540px]"
       :style="maxHeight ? {
         maxHeight: maxHeight + 'px',
         paddingRight: '16px',
@@ -16,7 +13,7 @@
     >
       <div
         ref="news-list-body"
-        class="flex-auto w-full flex flex-col"
+        class="flex-auto w-full flex flex-col gap-5 md:gap-6"
         :class="small ? 'gap-5' : 'gap-6'"
       >
         <NewsItem
