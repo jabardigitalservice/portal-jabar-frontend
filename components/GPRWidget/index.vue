@@ -1,6 +1,6 @@
 <template>
   <div
-    class="gpr-widget hidden h-full w-full absolute z-[40] select-none lg:block"
+    class="gpr-widget h-full w-full absolute z-[40] select-none"
     :class="isOpen ? 'pointer-events-auto' : 'pointer-events-none'"
     @click.self="toggleOpen"
   >
@@ -44,6 +44,17 @@ export default {
   data () {
     return {
       isOpen: false
+    }
+  },
+  head () {
+    return {
+      script: [
+        {
+          hid: 'text/javascript"',
+          src: 'https://widget.kominfo.go.id/gpr-widget-kominfo.min.js',
+          defer: true
+        }
+      ]
     }
   },
   methods: {

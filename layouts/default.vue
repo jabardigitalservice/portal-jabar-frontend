@@ -3,10 +3,20 @@
     <PortalTarget name="modal" />
     <Header />
     <div class="relative">
-      <GPRWidget />
+      <LazyGPRWidget v-if="device.isDesktop" />
       <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
     </div>
     <Footer />
     <!-- <MobileViewportBlocker /> -->
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    device () {
+      return this.$store.state.device.device
+    }
+  }
+}
+</script>

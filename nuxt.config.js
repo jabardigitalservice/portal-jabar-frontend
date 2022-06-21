@@ -16,15 +16,6 @@ export default {
       { rel: 'preload', as: 'image', href: '/images/banners/1.webp' },
       { rel: 'preload', as: 'image', href: '/logo.png' },
       { rel: 'preload', as: 'image', href: '/images/hero.svg' }
-    ],
-    script: [
-      {
-        hid: 'text/javascript"',
-        src: 'https://widget.kominfo.go.id/gpr-widget-kominfo.min.js',
-        body: true,
-        async: true,
-        crossorigin: 'anonymous'
-      }
     ]
   },
 
