@@ -120,13 +120,18 @@
     </BaseContainer>
 
     <!-- News Share Modal -->
-    <Modal :show="openShareModal">
-      <div class="grid grid-cols-2 w-full px-4 md:px-6 gap-y-5">
-        <h1 class="col-span-2 font-medium text-2xl text-green-700 leading-relaxed">
+    <BaseModal
+      :show="openShareModal"
+      button-label="Tutup"
+      @close="setOpenShareModal(false)"
+    >
+      <template #header>
+        <h1 class="px-6 py-2 font-medium text-2xl text-green-700 leading-relaxed">
           Bagikan Berita
         </h1>
-
-        <section class="col-span-2 flex gap-4">
+      </template>
+      <div class="py-4 px-6 max-w-[510px]">
+        <section class="flex gap-4 mb-4">
           <Icon src="/icons/info-circle-outline.svg" size="16px" class="self-start text-green-600" />
           <div>
             <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
@@ -137,8 +142,7 @@
             </p>
           </div>
         </section>
-
-        <section class="col-span-2 flex gap-4">
+        <section class="flex gap-4">
           <Icon src="/icons/share.svg" size="16px" class="self-start text-green-600" />
           <div class="w-full">
             <h2 class="font-lato text-xs text-blue-gray-200 mb-1 leading-5">
@@ -147,15 +151,8 @@
             <NewsDetailShare v-bind="shareButtons" @share="onShareNews($event)" />
           </div>
         </section>
-
-        <section
-          class="col-span-2 flex justify-center mb-4"
-          @click="setOpenShareModal(false)"
-        >
-          <Button>Tutup</Button>
-        </section>
       </div>
-    </Modal>
+    </BaseModal>
   </section>
 </template>
 

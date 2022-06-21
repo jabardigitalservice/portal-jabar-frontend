@@ -139,6 +139,9 @@ export default {
     }
   },
   computed: {
+    device () {
+      return this.$store.state.device.device
+    },
     articleUrl () {
       const publicUrl = process.env.NUXT_ENV_PUBLIC_URL
       const fullPath = `berita/${this.news.slug}`
@@ -181,7 +184,7 @@ export default {
      *  `300px` is the estimated total height of the navbar,
      *  social media share buttons, and the gap between components
      */
-    this.maxHeight = Math.floor(viewportHeight - 300)
+    this.maxHeight = this.device.isDekstop ? Math.floor(viewportHeight - 300) : null
   },
   methods: {
     async fetchRelatedNews () {
