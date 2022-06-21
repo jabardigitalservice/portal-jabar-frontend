@@ -3,7 +3,7 @@
     ref="news-item"
     class="min-h-[88px] flex overflow-hidden w-full gap-4 border-4 border-transparent rounded-xl group
     hover:bg-gray-100 hover:border-gray-100 p-1"
-    :class="small ? '!min-h-[88px]' : null"
+    :class="{ '!min-h-[88px]' : small }"
   >
     <div
       ref="news-item-image-wrapper"
@@ -32,7 +32,7 @@
         v-if="loading"
         ref="news-item-skeletons"
         class="w-full min-h-[72px] md:min-h-[130px]"
-        :class="small ? 'min-h-[88px]' : ''"
+        :class="{ '!min-h-[88px]' : small }"
       >
         <div class="w-3/4 h-5 bg-gray-200 animate-pulse rounded-md mb-3" />
         <div class="w-1/2 h-4 bg-gray-200 animate-pulse rounded-md mb-2" />
@@ -43,7 +43,7 @@
             ref="news-item-title"
             class="text-base md:text-lg cursor-pointer font-lato font-medium text-blue-gray-800 mb-2
           group-hover:text-green-800 line-clamp-2"
-            :class="small ? '!text-base !leading-6' : null"
+            :class="{ '!text-base !leading-6' : small }"
           >
             {{ item.title }}
           </h2>
