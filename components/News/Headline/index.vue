@@ -46,14 +46,16 @@
             <h3 ref="news-headline-title" class="line-clamp-3 md:line-clamp-2 font-lora font-bold text-2xl md:text-3xl !leading-normal mb-3">
               {{ item.title }}
             </h3>
-            <div class="flex gap-2 opacity-60">
+            <div class="flex flex-col md:flex-row gap-2 opacity-60">
               <div ref="news-headline-date" class="flex items-center gap-2">
                 <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
                 <p class="text-sm md:text-xs">
                   {{ date }}
                 </p>
               </div>
-              <div>|</div>
+              <div class="hidden md:block">
+                |
+              </div>
               <div ref="news-headline-author" class="flex items-center gap-2">
                 <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
                 <p class="capitalize text-sm md:text-xs">
