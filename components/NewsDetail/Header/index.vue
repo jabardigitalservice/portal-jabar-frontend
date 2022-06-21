@@ -37,9 +37,14 @@
               {{ published }}
             </p>
           </div>
-          <div class="flex items-center gap-2">
-            <div class="flex items-center gap-2 capitalize text-sm">
-              <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
+          <div class="flex items-start gap-2">
+            <Icon
+              src="/icons/pen.svg"
+              size="16px"
+              alt="Penulis"
+              class="mt-[2px]"
+            />
+            <div class="flex w-full flex-wrap items-center gap-2 capitalize text-sm">
               <p class="flex line-clamp-1 md:line-clamp-none items-center">
                 <span class="hidden md:inline-block">
                   Penulis:
@@ -59,9 +64,7 @@
                   {{ author }}
                 </span>
               </p>
-            </div>
-            <div>|</div>
-            <div class="flex items-center gap-2 capitalize">
+              <div>|</div>
               <p class="flex line-clamp-1 md:line-clamp-none items-center text-sm">
                 <span class="hidden md:inline-block">
                   Peliput:
@@ -76,7 +79,7 @@
                 <!-- end of skeleton -->
                 <span
                   v-else
-                  class="capitalize ml-1 text-sm"
+                  class="capitalize text-sm"
                 >
                   {{ reporter }}
                 </span>
