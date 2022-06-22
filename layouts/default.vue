@@ -3,7 +3,7 @@
     <PortalTarget name="modal" />
     <Header />
     <div class="relative">
-      <LazyGPRWidget v-if="device.isDesktop" />
+      <LazyGPRWidget v-if="!device.isMobile" />
       <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
     </div>
     <Footer />
