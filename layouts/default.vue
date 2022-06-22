@@ -4,7 +4,7 @@
     <Header />
     <div class="relative">
       <LazyGPRWidget v-if="!device.isMobile" />
-      <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
+      <Nuxt keep-alive :keep-alive-props="{ max: 5, exclude: ['pages/index.vue'] }" />
     </div>
     <Footer />
     <!-- <MobileViewportBlocker /> -->
