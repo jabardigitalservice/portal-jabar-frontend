@@ -1,15 +1,15 @@
 <template>
   <div class="relative">
     <HeroImage />
-    <section class="flex justify-center items-center w-full absolute top-0 h-[740px]">
+    <section class="flex justify-center items-center w-full absolute top-0 h-[700px] md:h-[740px]">
       <BaseContainer>
         <div
           class="flex flex-col items-center -mt-20 bg-no-repeat py-3"
           style="background-image: url('/images/hero.svg'); background-position: center top; background-size: contain;"
         >
           <h1
-            class="text-white font-lora uppercase leading-normal font-bold text-center tracking-wider max-w-[25ch] md:max-w-[35ch] lg:max-w-[40ch]
-            mb-4 md:mb-6 lg:mb-12 text-[17px] sm:text-[28px] lg:text-[42px]"
+            class="text-white font-lora uppercase leading-normal font-bold text-center tracking-wider max-w-[40ch] md:max-w-[35ch] lg:max-w-[40ch]
+            mb-4 md:mb-6 lg:mb-12 -ml-2 -mr-2 md:ml-0 md:mr-0 text-[17px] md:text-[28px] lg:text-[42px]"
           >
             Menjawab Kebutuhan Informasi Publik Warga Jawa Barat
           </h1>

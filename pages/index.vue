@@ -3,7 +3,7 @@
     <Hero />
     <MostPopularServices />
     <FeaturedProgramPreview />
-    <section class="pt-6 pb-10">
+    <section class="pb-10">
       <BaseContainer>
         <div class="w-full grid gap-6 lg:grid-cols-7 lg:gap-8">
           <LatestNews />

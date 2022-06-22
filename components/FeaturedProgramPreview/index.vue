@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16">
+  <section class="py-14">
     <BaseContainer>
       <div class="flex flex-col md:flex-row items-center gap-1 md:gap-4 mb-8">
         <h2 class="font-medium text-2xl md:text-4xl leading-loose">
