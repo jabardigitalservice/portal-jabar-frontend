@@ -5,7 +5,9 @@
   >
     <BaseContainer>
       <HeaderNavigation @active="setActiveMenu" />
-      <HeaderSidebar />
+      <transition name="sidebar">
+        <HeaderSidebar v-if="open" key="sidebar" />
+      </transition>
     </BaseContainer>
   </header>
 </template>
@@ -17,11 +19,13 @@ export default {
   data () {
     return {
       windowsHeight: null,
-      activeMenu: null,
-      isSidebarOpen: false
+      activeMenu: null
     }
   },
   computed: {
+    open () {
+      return this.$store.state.sidebar.open
+    },
     hasBackgroundColor () {
       return this.windowsHeight > 600 || !!this.activeMenu
     }
@@ -51,3 +55,16 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+.sidebar-enter-active,
+.sidebar-leave-active {
+  @apply ease-brand;
+  transition: opacity 200ms;
+}
+
+.sidebar-enter,
+.sidebar-leave-to {
+  opacity: 0;
+}
+</style>
