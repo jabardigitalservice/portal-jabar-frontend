@@ -53,13 +53,17 @@
         </div>
       </div>
     </div>
-    <Modal
+    <BaseModal
       :show="isEventDetailOpen"
-      :header="title"
-      :close-button="false"
+      button-label="Tutup"
       @close="toggleEventDetail"
     >
-      <div class="p-6 flex flex-col gap-6">
+      <template #header>
+        <h1 class="font-roboto font-medium text-[21px] leading-[34px] text-green-700 px-6 py-2">
+          {{ title }}
+        </h1>
+      </template>
+      <div class="py-4 px-6 flex flex-col gap-6">
         <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/category.svg" size="20px" />
@@ -135,12 +139,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-gray-50 py-4 flex justify-center items-center">
-        <div @click="toggleEventDetail">
-          <Button>Tutup</Button>
-        </div>
-      </div>
-    </Modal>
+    </BaseModal>
   </div>
 </template>
 
