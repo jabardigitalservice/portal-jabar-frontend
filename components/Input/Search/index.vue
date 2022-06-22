@@ -110,17 +110,6 @@ export default {
       return this.placeholders.length && !this.inputFocus && !this.hasValue
     }
   },
-  watch: {
-    showRunningText: {
-      handler () {
-        if (this.showRunningText) {
-          this.$nextTick(() => {
-            this.swiper.update()
-          })
-        }
-      }
-    }
-  },
   methods: {
     submitFormData () {
       if (this.hasValue) {
