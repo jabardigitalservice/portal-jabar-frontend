@@ -33,12 +33,22 @@ export default {
       default: ''
     }
   },
+  computed: {
+    device () {
+      return this.$store.state.device.device
+    }
+  },
   watch: {
     show () {
       if (this.show) {
-        document.body.style.overflow = 'hidden'
+        document.body.style.position = 'fixed'
+        document.body.style.width = '100%'
+        document.body.style.top = `-${window.scrollY}px`
+        document.body.style.paddingRight = this.device.isDesktop ? '15px' : ''
       } else {
-        document.body.style.overflow = 'auto'
+        document.body.style.position = ''
+        document.body.style.paddingRight = ''
+        document.body.style.top = ''
       }
     }
   }

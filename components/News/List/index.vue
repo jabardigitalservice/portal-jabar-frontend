@@ -4,12 +4,11 @@
       <slot name="header" />
     </div>
     <div
-      class="w-full min-h-[540px]"
-      :style="maxHeight ? {
-        maxHeight: maxHeight + 'px',
-        paddingRight: '16px',
-        overflowY: 'auto'
-      } : null"
+      :class="{
+        'w-full min-h-[540px]': true,
+        'min-h-0 pr-4 overflow-y-auto' : maxHeight
+      }"
+      :style="maxHeight ? { maxHeight: maxHeight + 'px' } : null"
     >
       <div
         ref="news-list-body"

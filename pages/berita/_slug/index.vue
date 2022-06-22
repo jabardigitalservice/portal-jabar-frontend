@@ -1,12 +1,12 @@
 <template>
   <main>
-    <article class="article h-full">
+    <article class="article">
       <!-- News Header -->
       <NewsDetailHeader :news="news" />
 
       <!-- News Content -->
       <BaseContainer class="mt-12 mb-12 mx-auto">
-        <section class="h-full grid grid-cols-1 gap-8 md:grid-cols-news-container md:gap-[72px]">
+        <section class="h-full grid grid-cols-1 gap-8 lg:grid-cols-[60%,auto] md:gap-[72px]">
           <div class="flex flex-col gap-7">
             <!-- Article Body -->
             <div class="article__body w-full min-h-screen" v-html="content" />
@@ -17,8 +17,8 @@
           </div>
 
           <!-- Related News and Share Buttons -->
-          <section class="w-[400px] h-full">
-            <div class="flex flex-col gap-7 md:sticky md:top-[88px]">
+          <section>
+            <div class="flex flex-col gap-7 lg:sticky lg:top-[88px]">
               <NewsList
                 :items="relatedNews"
                 small
@@ -39,7 +39,10 @@
                   />
                   Bagikan Berita Via
                 </p>
-                <NewsDetailShare v-bind="shareButtons" @share="onShareNews($event)" />
+                <NewsDetailShare
+                  v-bind="shareButtons"
+                  @share="onShareNews($event)"
+                />
               </div>
             </div>
           </section>
@@ -136,6 +139,9 @@ export default {
     }
   },
   computed: {
+    device () {
+      return this.$store.state.device.device
+    },
     articleUrl () {
       const publicUrl = process.env.NUXT_ENV_PUBLIC_URL
       const fullPath = `berita/${this.news.slug}`
@@ -178,7 +184,7 @@ export default {
      *  `300px` is the estimated total height of the navbar,
      *  social media share buttons, and the gap between components
      */
-    this.maxHeight = Math.floor(viewportHeight - 300)
+    this.maxHeight = this.device.isDekstop ? Math.floor(viewportHeight - 300) : null
   },
   methods: {
     async fetchRelatedNews () {

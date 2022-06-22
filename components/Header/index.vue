@@ -1,6 +1,6 @@
 <template>
   <header
-    class="flex items-center w-full h-12 fixed top-0 z-50 bg-green-800 sm:h-16 lg:h-20"
+    class="flex items-center w-screen h-12 fixed top-0 z-50 bg-green-800 sm:h-16 lg:h-20"
     :class="[hasBackgroundColor ? 'bg-green-800' : 'lg:bg-black lg:bg-opacity-10 lg:backdrop-filter lg:backdrop-blur-lg lg:hover:bg-green-800']"
   >
     <BaseContainer>
