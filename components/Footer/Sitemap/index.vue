@@ -69,6 +69,11 @@ export default {
 </script>
 
 <style scoped>
+/* Hide default details marker */
+.footer__sitemap__menu summary::-webkit-details-marker {
+  display:none;
+}
+
 .footer__sitemap__menu[open] .footer__sitemap__button > * {
   transform: rotate(-180deg);
 }

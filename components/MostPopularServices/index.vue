@@ -1,5 +1,5 @@
 <template>
-  <section class="relative -top-48 lg:-top-36 z-10 -mb-48 lg:-mb-36">
+  <section class="relative top-[-14rem] lg:-top-36 z-10 mb-[-14rem] lg:-mb-36">
     <BaseContainer>
       <div class="bg-white p-4 pr-0 md:p-8 md:pr-4 lg:p-10 rounded-xl shadow">
         <h2 class="text-2xl md:text-4xl md:text-center lg:text-left font-medium leading-loose mb-8 lg:mb-12">
