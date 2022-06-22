@@ -1,7 +1,11 @@
 <template>
   <div class="max-w-xl lg:max-w-2xl w-full">
     <div class="relative mb-8">
-      <InputSearch v-model.trim="inputValue" @submit="goToSearchPage" />
+      <InputSearch
+        v-model.trim="inputValue"
+        :placeholders="inputPlaceholders"
+        @submit="goToSearchPage"
+      />
       <!-- NOTE: Temporarily Hide Feature -->
       <!-- <div v-show="hasSuggestions" class="absolute w-full mt-2 z-20">
         <Options
@@ -57,6 +61,8 @@ export default {
   data () {
     return {
       inputValue: '',
+      /* FIX ME: Input Placeholders should be dynamic */
+      inputPlaceholders: ['Jawa Barat', 'Ridwan Kamil', 'Covid-19', 'G20', 'Minyak Goreng'],
       suggestions: [],
       popularSearchSuggestions,
       swiperOptions: Object.freeze({
