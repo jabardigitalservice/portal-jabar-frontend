@@ -3,7 +3,7 @@
     <div
       v-if="show"
       ref="modal"
-      class="fixed w-full h-full bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm flex justify-center items-center z-[100]"
+      class="fixed w-full h-full inset-0 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm flex justify-center items-center z-[100]"
     >
       <div class="flex flex-col bg-white rounded-lg overflow-hidden max-h-full md:max-h-[90%]">
         <slot name="header" />
@@ -41,14 +41,17 @@ export default {
   watch: {
     show () {
       if (this.show) {
+        const scrollbarWidth = (window.innerWidth - document.body.clientWidth)
+        document.body.style.top = `-${window.scrollY}px`
         document.body.style.position = 'fixed'
         document.body.style.width = '100%'
-        document.body.style.top = `-${window.scrollY}px`
-        document.body.style.paddingRight = this.device.isDesktop ? '15px' : ''
+        document.body.style.paddingRight = this.device.isDesktop ? `${scrollbarWidth}px` : ''
       } else {
-        document.body.style.position = ''
+        const scrollY = document.body.style.top
         document.body.style.paddingRight = ''
+        document.body.style.position = ''
         document.body.style.top = ''
+        window.scrollTo(0, parseInt(scrollY || '0') * -1)
       }
     }
   }
