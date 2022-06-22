@@ -63,7 +63,7 @@
           {{ title }}
         </h1>
       </template>
-      <div class="py-4 px-6 flex flex-col gap-6">
+      <div class="py-4 px-6 flex flex-col gap-6 max-w-[525px]">
         <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/category.svg" size="20px" />
