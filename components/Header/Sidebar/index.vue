@@ -102,6 +102,11 @@ export default {
 </script>
 
 <style>
+/* Hide default details marker */
+.navigation__sidebar__menu summary::-webkit-details-marker {
+  display:none;
+}
+
 .navigation__sidebar__menu[open] summary {
   font-weight: bold;
 }
