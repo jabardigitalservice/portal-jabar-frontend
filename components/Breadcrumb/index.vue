@@ -4,7 +4,7 @@
       <nuxt-link
         :key="index"
         :to="item.path"
-        class="breadcrumb__item font-roboto text-sm flex items-center"
+        class="breadcrumb__item font-roboto text-sm flex items-center max-w-[140px] line-clamp-1 md:max-w-full md:line-clamp-none"
         :class="[
           item.active || isActive(item.path) ? 'font-bold text-white' : 'text-blue-400',
           { 'capitalize': capitalize }

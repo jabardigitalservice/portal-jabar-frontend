@@ -1,7 +1,7 @@
 <template>
   <div
     name="fp-counter-wrapper"
-    class="inline-block px-3 py-2 rounded-lg bg-green-700 min-w-[295px] min-h-[64px]"
+    class="inline-block px-3 py-2 rounded-lg bg-green-700 w-full md:w-[fit-content] min-h-[64px]"
   >
     <p
       name="fp-counter-title"

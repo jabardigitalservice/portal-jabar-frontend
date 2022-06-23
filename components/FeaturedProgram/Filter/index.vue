@@ -1,10 +1,10 @@
 <template>
   <div class="featured-program__filter">
-    <div class="flex absolute z-20">
-      <p class="mr-4 mt-3 align-baseline font-lato text-gray-800">
+    <div class="md:flex md:absolute md:z-20">
+      <p class="hidden md:block mr-4 mt-3 align-baseline font-lato text-gray-800">
         Tampilkan
       </p>
-      <JdsPopover :value="isDropdownOpen">
+      <JdsPopover :value="isDropdownOpen" :options="popoverOptions">
         <template #activator>
           <JdsInputText
             readonly
@@ -60,7 +60,16 @@ export default {
   data () {
     return {
       isDropdownOpen: false,
-      selected: [...featuredProgramCategory]
+      selected: [...featuredProgramCategory],
+      popoverOptions: {
+        placement: 'bottom-start',
+        modifiers: [
+          {
+            name: 'offset',
+            options: { offset: [0, 8] }
+          }
+        ]
+      }
     }
   },
   computed: {
@@ -141,17 +150,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css">
 /**
  * Override default jds-popover styling
  */
 .featured-program__filter .jds-popover__content {
   margin-top: 8px !important;
+  z-index: 30 !important;
 }
 .featured-program__filter .jds-popover-dropdown__body {
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
+  z-index: 50 !important;
 }
 /**
  * Override default jds-input-text styling
@@ -164,4 +175,15 @@ export default {
 .featured-program__filter .jds-input-text__input-wrapper input {
   padding: 10px 8px !important;
 }
+
+.featured-program__filter .jds-checkbox__option-label {
+  font-size: 14px !important;
+}
+
+.featured-program__filter .jds-popover,
+.featured-program__filter .jds-popover__activator,
+.featured-program__filter .jds-input-text {
+  @apply !w-full md:!w-[fit-content];
+}
+
 </style>
