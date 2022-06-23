@@ -1,10 +1,10 @@
 <template>
   <section class="w-full bg-gray-200">
     <BaseContainer class="relative -top-24 z-20">
-      <div class="py-8 px-10 rounded-xl bg-white min-h-screen">
-        <div class="p-4">
+      <div class="p-3 md:py-8 md:px-10 rounded-xl bg-white min-h-screen">
+        <div>
           <!-- Search and Filter -->
-          <section class="flex w-full justify-between mb-8">
+          <section class="flex flex-col gap-4 md:flex-row w-full justify-between mb-4 md:mb-8">
             <FeaturedProgramFilter @change:filter="setFilter" />
             <!--
               TODO: replace this component with JdsSearch small variant
@@ -26,7 +26,7 @@
           </section>
 
           <!-- Featured Program Card -->
-          <section class="grid grid-cols-3 gap-8">
+          <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <FeaturedProgramSkeleton
               v-for="i in 9"
               v-show="$fetchState.pending"
@@ -45,12 +45,11 @@
             <FeaturedProgramEmptyState v-show="isSearchEmpty" class="col-span-3" :search-value="searchValue" />
           </section>
 
-          <Modal :show="openModal">
-            <FeaturedProgramDetail
-              :program-detail="programDetail"
-              @close="closeDetail"
-            />
-          </Modal>
+          <FeaturedProgramDetail
+            :program-detail="programDetail"
+            :open="openModal"
+            @close="closeDetail"
+          />
         </div>
       </div>
     </BaseContainer>
