@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative w-full bg-blue-800"
+    class="relative w-full bg-gray-800"
     :style="jumbotronStyle"
   >
     <div class="overlay" />
@@ -9,7 +9,7 @@
       <h1 class="font-lora font-bold text-3xl leading-relaxed text-green-500 mb-2">
         {{ title }}
       </h1>
-      <h2 class="font-lato text-sm leading-2 text-white">
+      <h2 class="font-lato text-sm leading-6 text-white">
         {{ subtitle }}
       </h2>
     </BaseContainer>
