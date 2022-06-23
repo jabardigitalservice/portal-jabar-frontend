@@ -30,7 +30,7 @@
             :auto-update="true"
             :auto-destroy="true"
             :delete-instance-on-destroy="true"
-            :cleanup-styles-on-destroy="true"
+            :cleanup-styles-on-destroy="false"
           >
             <swiper-slide v-for="(item, index) in popularSearchSuggestions" :key="index" class="!w-[fit-content]">
               <Link :link="`/pencarian?q=${encodeURI(item)}`" class="min-w-[182px] h-[54px] bg-white rounded-xl px-[14px] flex items-center justify-between">
