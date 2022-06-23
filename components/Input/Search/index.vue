@@ -39,7 +39,7 @@
       <!-- Input Search Running Placeholder -->
       <client-only>
         <swiper
-          v-if="showRunningText"
+          v-if="isRunningTextActive && showRunningText"
           ref="inputSearchSwiper"
           :options="swiperOptions"
           :auto-update="true"
@@ -101,13 +101,26 @@ export default {
   },
   computed: {
     swiper () {
-      return this.$refs.inputSearchSwiper.$swiper
+      if (this.isRunningTextActive) {
+        return this.$refs.inputSearchSwiper.$swiper
+      }
+      return null
     },
     hasValue () {
       return this.value !== ''
     },
     showRunningText () {
-      return this.placeholders.length && !this.inputFocus && !this.hasValue
+      return !this.inputFocus && !this.hasValue
+    },
+    isRunningTextActive () {
+      return this.placeholders.length > 0
+    }
+  },
+  mounted () {
+    if (this.isRunningTextActive) {
+      this.$nextTick(() => {
+        this.swiper.autoplay.start()
+      })
     }
   },
   methods: {
