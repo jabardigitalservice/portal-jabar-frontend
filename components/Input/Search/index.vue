@@ -116,11 +116,10 @@ export default {
       return this.placeholders.length > 0
     }
   },
-  mounted () {
+  async mounted () {
     if (this.isRunningTextActive) {
-      this.$nextTick(() => {
-        this.swiper.autoplay.start()
-      })
+      await this.$nextTick()
+      this.swiper.autoplay.start()
     }
   },
   methods: {
