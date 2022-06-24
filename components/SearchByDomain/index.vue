@@ -1,7 +1,7 @@
 <template>
   <BaseContainer class="relative -top-24 z-20">
-    <div class="py-8 px-10 rounded-xl bg-white min-h-[600px] shadow">
-      <SearchBar class="mb-8" />
+    <div class="p-3 md:p-4 lg:py-8 lg:px-10 rounded-xl bg-white min-h-[600px] shadow">
+      <SearchBar class="mb-6" />
 
       <!-- Search Empty State -->
       <template v-if="noResult">
@@ -10,8 +10,8 @@
 
       <!-- Search Results -->
       <template v-else>
-        <section class="min-0 flex justify-between items-center mb-8">
-          <div class="min-w-0 flex gap-6 items-center">
+        <section class="min-w-0 grid grid-cols-1 lg:grid-cols-2 items-start lg:items-center md:gap-6 mb-8">
+          <div class="min-w-0 w-full flex flex-col lg:flex-row gap-6 items-start lg:items-center">
             <Button
               type="button"
               variant="secondary"
@@ -21,10 +21,10 @@
               Kembali
             </Button>
             <h2 class="font-roboto text-xl font-medium text-blue-gray-700">
-              {{ domainLabel }} terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
+              {{ domainLabel }} terkait <br class="md:hidden"> <strong class="text-green-700">{{ searchKeyword }}</strong>
             </h2>
           </div>
-          <div>
+          <div class="w-full">
             <SearchToolbar
               :list-view.sync="listView"
               :total-count="pagination.totalRows"
@@ -41,10 +41,11 @@
 
         <section>
           <SearchList
-            :list-view="listView"
+            :list-view="device.isMobile ? 'grid' : listView"
             :loading="$fetchState.pending"
             :items="searchData"
             :max-length="pagination.itemsPerPage"
+            class="mb-6"
           />
           <Pagination
             class="mt-auto"
@@ -81,8 +82,8 @@ export default {
   },
   data () {
     return {
-      searchKeyword: this.keyword,
       listView: 'list',
+      searchKeyword: this.keyword,
       sortOrder: 'DESC',
       pagination: {
         currentPage: 1,
@@ -135,10 +136,12 @@ export default {
     }
   },
   computed: {
+    device () {
+      return this.$store.state.device.device
+    },
     domainLabel () {
       return DOMAIN_LABEL[this.domain]
     },
-
     noResult () {
       return !this.$fetchState.pending && this.pagination.totalRows === 0
     }
@@ -166,6 +169,8 @@ export default {
   },
   methods: {
     onPaginationChange (action, value) {
+      this.scrollToTop()
+
       const paginationObj = { ...this.pagination }
 
       switch (action) {
@@ -207,6 +212,10 @@ export default {
       if (!sortOrder || sortOrder === this.sortOrder) { return }
       this.sortOrder = sortOrder
       this.$fetch()
+    },
+
+    scrollToTop () {
+      window.scrollTo({ top: 200 })
     }
   }
 }

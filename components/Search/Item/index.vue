@@ -2,7 +2,7 @@
   <article
     class="search-item min-w-0 w-full p-3 group rounded-xl cursor-pointer border border-transparent
     transition-all duration-150 ease-out hover:border-[#E9EDF4] hover:shadow-md"
-    :class="view === 'grid' ? 'flex flex-col' : 'flex gap-4'"
+    :class="view === 'grid' ? 'flex flex-col min-h-[320px]' : 'flex gap-4 min-h-[147px]'"
   >
     <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
       <div
