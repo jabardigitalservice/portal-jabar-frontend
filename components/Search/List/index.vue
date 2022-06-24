@@ -1,5 +1,5 @@
 <template>
-  <div :class="listView === 'list' ? 'w-full flex flex-col gap-3' : 'w-full grid grid-cols-3 gap-8'">
+  <div :class="listView === 'list' ? 'w-full flex flex-col gap-3' : 'w-full grid grid-cols-1 md:grid-cols-3 gap-8'">
     <template v-if="loading">
       <SearchItemSkeleton v-for="item in maxLength" :key="item" :view="listView" />
     </template>

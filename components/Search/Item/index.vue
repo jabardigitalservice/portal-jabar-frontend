@@ -10,7 +10,7 @@
         :class="{
           'w-[120px] h-[120px]' : view === 'list',
           'w-full h-[120px] mb-6': view === 'grid',
-          'w-[72px] h-[72px]' : small
+          '!w-[72px] !h-[72px]' : small
         }"
       >
         <img
