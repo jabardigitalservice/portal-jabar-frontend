@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-5 z-10">
+  <div class="flex items-center gap-5 z-10 max-h-[38px] overflow-y-hidden">
     <label>{{ label }}</label>
     <JdsSelect :options="options" :value="value" @change="onChange" />
   </div>
