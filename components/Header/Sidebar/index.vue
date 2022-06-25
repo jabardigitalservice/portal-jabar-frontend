@@ -69,20 +69,8 @@ export default {
     }
   },
   computed: {
-    open () {
-      return this.$store.state.sidebar.open
-    },
     year () {
       return new Date().getFullYear()
-    }
-  },
-  watch: {
-    open () {
-      if (this.open) {
-        document.body.style.overflow = 'hidden'
-      } else {
-        document.body.style.overflow = 'auto'
-      }
     }
   },
   methods: {
