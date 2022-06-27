@@ -1,5 +1,5 @@
 <template>
-  <ul class="inline-flex justify-between md:justify-start md:gap-4 w-full">
+  <ul class="inline-flex justify-between lg:justify-start gap-4 w-full">
     <li
       v-for="network in networks"
       :key="network"

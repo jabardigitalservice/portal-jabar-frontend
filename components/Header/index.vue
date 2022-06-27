@@ -33,6 +33,13 @@ export default {
   watch: {
     $route () {
       this.$store.dispatch('sidebar/closeSidebar')
+    },
+    open () {
+      if (this.open) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = 'auto'
+      }
     }
   },
   mounted () {

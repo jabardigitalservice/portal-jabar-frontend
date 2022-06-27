@@ -103,14 +103,12 @@ export default {
 .fade-leave-active {
   transition: all 0.9s ease;
   overflow: hidden;
-  visibility: visible;
   position: absolute;
   opacity: 1;
 }
 
 .fade-enter,
 .fade-leave-to {
-  visibility: hidden;
   opacity: 0;
 }
 </style>

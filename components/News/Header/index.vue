@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="news__header w-full">
     <div class="absolute w-full top-[5rem] md:top-24 lg:top-28 z-10">
       <BaseContainer>
         <Breadcrumb class="mb-6" />
@@ -21,7 +21,7 @@
                   <p class="font-roboto uppercase leading-relaxed tracking-wider opacity-80 mb-1">
                     {{ item.category }}
                   </p>
-                  <h3 class="line-clamp-3 md:line-clamp-2 text-2xl font-lora font-bold md:text-3xl lg:text-4xl leading-9 md:!leading-[48px] mb-6">
+                  <h3 class="news__header__title line-clamp-3 md:line-clamp-2 lg:line-clamp-3 text-[23px] font-lora font-bold md:text-3xl lg:text-4xl leading-9 md:!leading-[48px] mb-6 max-h-[108px] lg:max-h-full">
                     {{ item.title }}
                   </h3>
                   <div class="flex flex-col md:flex-row gap-2 opacity-100 md:opacity-60 text-sm mb-6">
@@ -63,7 +63,7 @@
               </div>
 
               <!-- Related News Swiper (Mobile and Tablet Only) -->
-              <div class="min-h-[153px] md:min-h-[177px] bg-white bg-opacity-5 backdrop-filter backdrop-blur-xl py-3 px-6 rounded-xl border border-white border-opacity-10 mb-6 xl:hidden">
+              <div class="min-h-[153px] md:min-h-[177px] bg-white bg-opacity-5 backdrop-filter backdrop-blur-xl py-3 px-3 md:px-6 rounded-xl border border-white border-opacity-10 mb-6 xl:hidden">
                 <p class="uppercase mb-3 font-bold">
                   Berita Terkait
                 </p>
@@ -78,10 +78,10 @@
                   <swiper-slide
                     v-for="news of item.related_news.slice(0, 4)"
                     :key="news.id"
-                    class="md:!w-[fit-content]"
+                    class="sm:!w-[fit-content]"
                   >
                     <Link :link="`/berita/${news.slug}`" class="group">
-                      <div class="h-full md:w-[380px] flex gap-3 py-2 bg-white bg-opacity-0 rounded-xl">
+                      <div class="h-full sm:min-w-[300px] sm:max-w-[380px] flex gap-3 py-2 bg-white bg-opacity-0 rounded-xl">
                         <div class="flex-shrink-0 overflow-hidden rounded-xl w-16 h-16 md:w-24 md:h-24">
                           <img
                             :src="news.image"
@@ -95,7 +95,7 @@
                           <p class="text-xs font-medium uppercase opacity-50 group-hover:opacity-100">
                             {{ news.category }}
                           </p>
-                          <p class="line-clamp-1 md:line-clamp-2 text-sm leading-relaxed">
+                          <p class="news__header__title line-clamp-1 md:line-clamp-2 text-sm leading-relaxed max-h-6 sm:max-h-12">
                             {{ news.title }}
                           </p>
                           <div class="flex gap-2">
@@ -168,7 +168,8 @@ export default {
         passiveListeners: true,
         breakpoints: {
           420: {
-            slidesPerView: 'auto'
+            slidesPerView: 'auto',
+            spaceBetween: 24
           }
         }
       })
@@ -218,3 +219,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* Fallback style for Safari or browser that doesn't support line-clamp */
+.news__header .news__header__title {
+  overflow: hidden;
+  line-break: after-white-space;
+}
+</style>
