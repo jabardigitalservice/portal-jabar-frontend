@@ -83,7 +83,7 @@
             :href="website"
             rel="noopener noreferrer"
             target="_blank"
-            class="block text-blue-500 text-sm hover:text-blue-700 underline mb-1 leading-relaxed line-clamp-1"
+            class="block text-blue-500 text-sm hover:text-blue-700 underline mb-1 leading-relaxed line-clamp-1 break-all"
           >
             {{ website }}
           </a>
