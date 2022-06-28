@@ -198,6 +198,13 @@ export default {
       isDropdownOpen: false
     }
   },
+  watch: {
+    $route: {
+      handler () {
+        this.closeDropdown()
+      }
+    }
+  },
   methods: {
     toggleDropdown (index) {
       if (this.activeMenuIndex !== index) {
@@ -225,5 +232,9 @@ export default {
 
 .about__jabar .jds-popover-dropdown__body {
   @apply grid grid-cols-1 gap-4;
+}
+
+.about__jabar .jds-popover__content {
+  z-index: 30 !important;
 }
 </style>
