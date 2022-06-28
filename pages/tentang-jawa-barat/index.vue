@@ -8,11 +8,11 @@
     <section class="w-full bg-gray-200">
       <BaseContainer class="relative -top-24 z-20">
         <div class="p-3 md:p-6 lg:py-8 lg:px-10 rounded-xl bg-white min-h-screen">
-          <div class="about__jabar w-full grid grid-cols-1 lg:grid-cols-[268px,auto] gap-6">
+          <div class="about__jabar w-full grid grid-cols-1 xl:grid-cols-[268px,auto] gap-6">
             <!-- Submenu Swiper (Mobile and Tablet Only) -->
             <div
               v-on-clickaway="closeDropdown"
-              class="h-[42px] overflow-hidden lg:hidden"
+              class="h-[42px] overflow-hidden xl:hidden"
             >
               <swiper
                 v-show="isSwiperReady"
@@ -70,7 +70,7 @@
             </div>
 
             <!-- Sidebar menu (Dekstop Only) -->
-            <aside class="hidden lg:block p-4 border border-gray-200 rounded-xl h-[fit-content]">
+            <aside class="hidden xl:block p-4 border border-gray-200 rounded-xl h-[fit-content]">
               <ul v-for="menu in menus" :key="menu.id">
                 <p class="text-sm font-bold text-gray-800 mb-5">
                   {{ menu.title }}

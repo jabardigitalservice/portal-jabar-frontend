@@ -24,11 +24,11 @@
       </blockquote>
     </div>
     <div class="bg-gray-100 p-4 md:p-6 lg:p-8 rounded-2xl mb-8">
-      <div class="flex items-center gap-12 xl:mb-16">
+      <h3 class="font-lora font-bold text-green-700 text-2xl md:text-[28px] mb-4">
+        Misi Pembangunan Jawa Barat
+      </h3>
+      <div class="grid grid-cols-1 lg:grid-cols-[auto,308px] gap-12 md:gap-6 lg:gap-12 md:mb-6 lg:mb-16">
         <div>
-          <h3 class="font-lora font-bold text-green-700 text-2xl md:text-[28px] mb-4">
-            Misi Pembangunan Jawa Barat
-          </h3>
           <ol class="list-decimal">
             <li>
               <strong>Membentuk manusia pancasila yang bertaqwa</strong><br>
@@ -44,13 +44,13 @@
             </li>
           </ol>
         </div>
-        <div class="py-4 overflow-hidden w-full h-[422px] aspect-w-9 aspect-h-16 rounded-xl hidden xl:block">
-          <img src="/images/about/misi.png" alt="Misi Jawa Barat" width="308" height="422" class="object-cover">
+        <div class="py-4 overflow-hidden w-full md:aspect-w-16 md:aspect-h-9 lg:aspect-w-none lg:aspect-h-none rounded-xl hidden md:block">
+          <img src="/images/about/misi.png" alt="Misi Jawa Barat" width="308" height="422" class="h-full w-full object-cover">
         </div>
       </div>
-      <div class="flex items-center gap-12">
-        <div class="py-4 overflow-hidden w-full h-[336px] aspect-w-4 aspect-h-3 rounded-xl hidden xl:block">
-          <img src="/images/about/misi-2.png" alt="Misi Jawa Barat" width="308" height="336" class="object-cover">
+      <div class="grid grid-cols-1 lg:grid-cols-[308px,auto] gap-12 md:gap-6 lg:gap-12">
+        <div class="md:order-last lg:order-none py-4 overflow-hidden w-full md:aspect-w-16 md:aspect-h-9 lg:aspect-w-none lg:aspect-h-none rounded-xl hidden md:block">
+          <img src="/images/about/misi-2.png" alt="Misi Jawa Barat" width="308" height="336" class="h-full w-full object-cover">
         </div>
         <div>
           <ol class="list-decimal start-4">
@@ -268,6 +268,6 @@ ol > li::before {
   padding: 4px;
   background-color: #069550;
   color: #FFFFFF;
-  @apply flex ml-0 mb-4 md:inline-flex md:mb-2 md:ml-[-3em];
+  @apply flex ml-0 mb-4 md:inline-flex md:mb-0 md:ml-[-3em];
 }
 </style>
