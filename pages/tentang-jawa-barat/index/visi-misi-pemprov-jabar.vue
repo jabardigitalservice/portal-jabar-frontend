@@ -72,15 +72,9 @@
         <span class="text-blue-gray-400 text-lg md:text-[22px]">Provinsi Jawa Barat 2018-2023</span>
       </h3>
       <swiper
-        v-show="swiperReady"
         ref="contentSwiper"
         :options="swiperOptions"
-        :auto-update="true"
-        :auto-destroy="true"
-        :delete-instance-on-destroy="true"
-        :cleanup-styles-on-destroy="true"
         class="md:hidden"
-        @ready="swiperReady = true"
         @slide-change="setCurrentSlide"
       >
         <swiper-slide
@@ -164,7 +158,6 @@ export default {
   data () {
     return {
       currentSlide: 0,
-      swiperReady: false,
       swiperOptions: Object.freeze({
         slidesPerView: 1,
         mousewheel: true,
