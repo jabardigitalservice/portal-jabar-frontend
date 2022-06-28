@@ -141,8 +141,7 @@ export default {
               label: 'Pimpinan Jabar',
               link: '/tentang-jawa-barat/pimpinan-jabar'
             }
-          ],
-          open: false
+          ]
         },
         {
           id: 2,
@@ -158,8 +157,7 @@ export default {
               label: 'Daftar Perangkat Daerah',
               link: '/tentang-jawa-barat/daftar-perangkat-daerah'
             }
-          ],
-          open: false
+          ]
         },
         {
           id: 3,
@@ -170,8 +168,7 @@ export default {
               label: 'Daftar Kabupaten / Kota',
               link: '/tentang-jawa-barat/daftar-kabupaten-kota'
             }
-          ],
-          open: false
+          ]
         }
       ],
       popoverOptions: {
