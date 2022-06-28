@@ -1,9 +1,9 @@
 <template>
   <section>
-    <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left mb-8 !leading-[56px]">
+    <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left mb-8 !leading-[56px] max-w-[35ch] px-4 md:px-0">
       Visi Misi Pemerintahan Provinsi Jawa Barat 2018-2023
     </h2>
-    <div class="grid grid-cols-2 items-center px-0 md:px-6 mb-8">
+    <div class="grid grid-cols-2 items-center px-0 md:px-6 lg:px-8 mb-8 md:gap-8 lg:gap-12">
       <div class="hidden md:block overflow-hidden w-full h-[222px] rounded-xl aspect-w-16 aspect-h-9">
         <img
           src="/images/about/visi.png"
@@ -13,7 +13,7 @@
           class="object-cover"
         >
       </div>
-      <blockquote class="p-4 md:p-6 lg:p-8 col-span-2 md:col-span-1">
+      <blockquote class="p-4 md:p-0 col-span-2 md:col-span-1">
         <h3 class="font-lora font-bold text-green-700 text-[28px] mb-4">
           Visi
         </h3>
@@ -104,7 +104,7 @@
           </div>
         </swiper-slide>
         <template #pagination>
-          <div class="flex justify-between my-6">
+          <div class="flex w-full justify-between mt-6 md:my-6">
             <!-- Next Button -->
             <button
               id="custom-button-prev"
@@ -118,7 +118,7 @@
               />
             </button>
             <!-- Pagination -->
-            <div id="custom-pagination" class="flex items-center align-center" />
+            <div id="custom-pagination" class="!w-[fit-content] flex items-center align-center" />
             <!-- Prev Button -->
             <button
               id="custom-button-next"
