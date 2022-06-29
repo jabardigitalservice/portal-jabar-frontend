@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { lockScroll } from '~/utils/browser'
+
 export default {
   props: {
     show: {
@@ -40,19 +42,7 @@ export default {
   },
   watch: {
     show () {
-      if (this.show) {
-        const scrollbarWidth = (window.innerWidth - document.body.clientWidth)
-        document.body.style.top = `-${window.scrollY}px`
-        document.body.style.position = 'fixed'
-        document.body.style.width = '100%'
-        document.body.style.paddingRight = this.device.isDesktop ? `${scrollbarWidth}px` : ''
-      } else {
-        const scrollY = document.body.style.top
-        document.body.style.paddingRight = ''
-        document.body.style.position = ''
-        document.body.style.top = ''
-        window.scrollTo(0, parseInt(scrollY || '0') * -1)
-      }
+      lockScroll(this.show)
     }
   }
 }

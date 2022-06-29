@@ -14,6 +14,7 @@
 
 <script>
 import throttle from 'lodash/throttle'
+import { lockScroll } from '~/utils/browser'
 
 export default {
   data () {
@@ -35,11 +36,7 @@ export default {
       this.$store.dispatch('sidebar/closeSidebar')
     },
     open () {
-      if (this.open) {
-        document.body.style.overflow = 'hidden'
-      } else {
-        document.body.style.overflow = 'auto'
-      }
+      lockScroll(this.open)
     }
   },
   mounted () {
