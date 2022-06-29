@@ -1,28 +1,28 @@
 <template>
   <section class="overflow-hidden">
-    <div class="mb-16">
-      <h2 class="font-lora font-bold text-green-700 text-4xl leading-[56px] mb-4">
+    <div class="mb-12">
+      <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-[56px] mb-4">
         Pimpinan Jawa Barat
       </h2>
       <p class="text-sm leading-6 text-blue-gray-800 mb-8">
         Gubernur Jawa Barat adalah kepala daerah tingkat I yang memegang pemerintahan di Jawa Barat bersama dengan Wakil Gubernur dan 120 anggota Dewan Perwakilan Rakyat Daerah Jawa Barat. Gubernur dan Wakil Gubernur Jawa Barat dipilih melalui pemilihan umum yang dilaksanakan 5 tahun sekali.
       </p>
-      <div class="flex flex-col xl:flex-row gap-8 items-center xl:grid-cols-2 bg-green-700 rounded-[18px] p-6 relative">
-        <div class="absolute left-0 bottom-0">
+      <div class="grid grid:cols-1 lg:grid-cols-[1fr,auto] gap-8 items-center bg-green-700 rounded-[18px] py-4 px-7 md:p-6 relative">
+        <div class="hidden md:block absolute left-0 bottom-0">
           <svg width="117" height="114" viewBox="0 0 117 114" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.62939e-06 0C31.0303 2.6432e-06 60.7897 12.0107 82.7315 33.3898C104.673 54.769 117 83.7653 117 114H79.6837C79.6837 93.4085 71.2885 73.6603 56.3449 59.0999C41.4013 44.5394 21.1334 36.3595 7.62939e-06 36.3595V0Z" fill="#008444" />
           </svg>
         </div>
-        <div>
-          <h3 class="mb-3 font-lora font-bold text-2xl leading-9 text-white text-center xl:text-left">
+        <div class="relative z-10">
+          <h3 class="mb-3 font-lora font-bold text-2xl leading-9 text-white text-center lg:text-left md:mx-auto md:max-w-[25ch] lg:mx-0">
             Gubernur dan Wakil Gubernur Provinsi Jawa Barat
           </h3>
-          <p class="font-lora font-bold text-green-100 text-center xl:text-left">
+          <p class="font-lora font-bold text-green-100 text-center lg:text-left">
             Periode 2018-2023
           </p>
         </div>
-        <div class="flex flex-col lg:flex-row gap-4">
-          <div class="p-4 bg-green-800 rounded-2xl flex flex-col justify-center items-center min-w-[200px]">
+        <div class="min-w-0 flex flex-col md:flex-row md:justify-center w-full lg:flex-row gap-4">
+          <div class="p-4 bg-green-800 rounded-2xl flex flex-col justify-center items-center w-full min-w-[200px] md:max-w-[200px]">
             <p class="font-lato font-bold text-sm leading-6 text-green-300">
               Gubernur
             </p>
@@ -34,7 +34,7 @@
               Lihat Profil
             </button>
           </div>
-          <div class="p-4 bg-green-800 rounded-2xl flex flex-col justify-center items-center min-w-[200px]">
+          <div class="p-4 bg-green-800 rounded-2xl flex flex-col justify-center items-center w-full min-w-[200px] md:max-w-[200px]">
             <p class="font-lato font-bold text-sm leading-6 text-green-300">
               Wakil Gubernur
             </p>
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="relative">
-      <h3 class="font-lora font-bold text-[26px] text-blue-gray-700 mb-7">
+      <h3 class="font-lora font-bold text-2xl md:text-4xl text-center md:text-left text-blue-gray-700 mb-7">
         Masa Jabatan Gubernur Sebelumnya
       </h3>
       <swiper
@@ -62,11 +62,12 @@
         :delete-instance-on-destroy="true"
         :cleanup-styles-on-destroy="true"
         @ready="swiperReady = true"
+        @slide-change="setCurrentSlide"
       >
         <swiper-slide
           v-for="(item, index) in items"
           :key="item.id"
-          class="!w-[fit-content]"
+          class="md:!w-[fit-content]"
         >
           <div class="min-w-[328px]">
             <div class="flex items-center">
@@ -88,6 +89,36 @@
             </div>
           </div>
         </swiper-slide>
+        <template #pagination>
+          <div class="flex w-full justify-between mt-4 md:hidden">
+            <!-- Next Button -->
+            <button
+              id="custom-button-prev"
+              :disabled="isFirstSlide"
+              class="flex-shrink-0 w-[42px] h-[42px] bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
+            >
+              <Icon
+                name="chevron-left"
+                :class="isFirstSlide ? 'text-gray-500' : 'text-white'"
+                size="16px"
+              />
+            </button>
+            <!-- Pagination -->
+            <div id="custom-pagination" class="!w-[fit-content] flex items-center align-center" />
+            <!-- Prev Button -->
+            <button
+              id="custom-button-next"
+              :disabled="isLastSlide"
+              class="flex-shrink-0 w-[42px] h-[42px] bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
+            >
+              <Icon
+                name="chevron-right"
+                :class="isLastSlide ? 'text-gray-500' : 'text-white'"
+                size="16px"
+              />
+            </button>
+          </div>
+        </template>
       </swiper>
 
       <!-- Swiper Skeleton -->
@@ -95,6 +126,8 @@
         <div v-for="index in 9" :key="index" class="min-w-[328px] h-full bg-gray-200 animate-pulse rounded-xl" />
       </div>
     </div>
+
+    <!-- Jabar Leader ModaL -->
     <BaseModal :show="isModalOpen" button-label="Tutup" @close="closeModal">
       <template #header>
         <h1 class="font-roboto font-medium text-[21px] leading-[34px] capitalize text-green-700 px-6 py-2">
@@ -331,13 +364,42 @@ export default {
           image: '/images/about/pimpinan/sutardjo.png'
         }
       ],
+      currentSlide: 0,
       isModalOpen: false,
       selectedProfile: 'gubernur',
       swiperReady: false,
       swiperOptions: Object.freeze({
-        slidesPerView: 'auto',
-        mousewheel: true
+        slidesPerView: 1,
+        mousewheel: true,
+        passiveListeners: true,
+        pagination: {
+          el: '#custom-pagination',
+          type: 'custom',
+          renderCustom (swiper, current, total) {
+            return `<p>${current} dari ${total}</p>`
+          }
+        },
+        navigation: {
+          nextEl: '#custom-button-next',
+          prevEl: '#custom-button-prev'
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 'auto'
+          }
+        }
       })
+    }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.jabarLeaderSwiper.$swiper
+    },
+    isFirstSlide () {
+      return this.currentSlide === 0
+    },
+    isLastSlide () {
+      return this.currentSlide === this.items.length - 1
     }
   },
   methods: {
@@ -352,6 +414,9 @@ export default {
 
       this.selectedProfile = selectedProfile
       this.showModal()
+    },
+    setCurrentSlide () {
+      this.currentSlide = this.swiper.activeIndex
     }
   }
 }

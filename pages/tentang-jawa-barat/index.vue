@@ -7,7 +7,7 @@
     </Jumbotron>
     <section class="w-full bg-gray-200">
       <BaseContainer class="relative -top-24 z-20">
-        <div class="p-3 md:p-6 lg:py-8 lg:px-10 rounded-xl bg-white min-h-screen">
+        <div class="p-3 md:p-6 lg:py-8 lg:px-10 rounded-xl bg-white">
           <div class="about__jabar w-full grid grid-cols-1 xl:grid-cols-[268px,auto] gap-6">
             <!-- Submenu Swiper (Mobile and Tablet Only) -->
             <div
@@ -30,12 +30,12 @@
                 >
                   <div
                     class="relative min-w-[200px] h-[42px] px-4 flex gap-4 items-center justify-between border-b-2"
-                    :class="activeMenuIndex === index ? 'border-green-800' : 'border-transparent'"
+                    :class="activeMenuIndex === index ? 'border-green-700' : 'border-transparent'"
                     @click="toggleDropdown(index)"
                   >
                     <p
                       class="font-bold"
-                      :class="activeMenuIndex === index ? 'text-green-800' : 'text-gray-500'"
+                      :class="activeMenuIndex === index ? 'text-green-700' : 'text-gray-500'"
                     >
                       {{ menu.title }}
                     </p>
@@ -44,7 +44,7 @@
                       size="16px"
                       class="transition-all ease-brand duration-250"
                       :class="[
-                        activeMenuIndex === index ? 'text-green-800' : 'text-gray-500',
+                        activeMenuIndex === index ? 'text-green-700' : 'text-gray-500',
                         activeMenuIndex === index && isDropdownOpen ? '-rotate-180' : 'rotate-0'
                       ]"
                     />
