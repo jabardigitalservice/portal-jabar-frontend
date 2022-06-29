@@ -7,7 +7,7 @@
     </Jumbotron>
     <section class="w-full bg-gray-200">
       <BaseContainer class="relative -top-24 z-20">
-        <div class="p-3 md:p-6 lg:py-8 lg:px-10 rounded-xl bg-white min-h-screen">
+        <div class="p-3 md:p-6 lg:py-8 lg:px-10 rounded-xl bg-white">
           <div class="about__jabar w-full grid grid-cols-1 xl:grid-cols-[268px,auto] gap-6">
             <!-- Submenu Swiper (Mobile and Tablet Only) -->
             <div
