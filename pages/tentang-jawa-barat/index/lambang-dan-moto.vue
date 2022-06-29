@@ -12,7 +12,7 @@
         <img class="banner__logo" src="/images/about/logo.svg" width="260" height="268" alt="Logo Jawa Barat">
       </div>
     </div>
-    <div class="mb-16">
+    <div class="mb-12 lg:mb-16">
       <h3 class="md:p-6 font-lora font-bold text-2xl md:text-[26px] text-center md:text-left text-blue-gray-700 mb-6 md:mb-0">
         Makna Logo
       </h3>
