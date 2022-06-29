@@ -44,8 +44,8 @@
       <h3 class="font-lora font-bold text-[26px] text-center md:text-left text-blue-gray-700 mb-6">
         Makna Warna
       </h3>
-      <ul class="grid gap-4 lg:grid-cols-3">
-        <li v-for="color in colors" :key="color.id" class="p-4 md:p-6 rounded-xl flex flex-col xl:flex-row gap-6 bg-white">
+      <ul class="grid gap-4 md:grid-cols-3">
+        <li v-for="color in colors" :key="color.id" class="p-4 lg:p-6 rounded-xl flex flex-col xl:flex-row gap-6 bg-white">
           <div
             class="w-[26px] h-[26px] rounded-full flex-shrink-0"
             :style="{ backgroundColor: color.hex, border: `1px solid ${color.border}` }"
