@@ -134,8 +134,8 @@
           Profil {{ selectedProfile }} Jawa Barat
         </h1>
       </template>
-      <section class="rounded-2xl flex max-h-[443px] max-w-[640px]">
-        <img :src="profile[selectedProfile].image" alt="" width="255" height="443" class="flex-shrink-0">
+      <section class="flex flex-col overflow-y-auto md:overflow-hidden md:flex-row md:max-h-[443px] md:max-w-[640px]">
+        <img :src="profile[selectedProfile].image" alt="" width="255" height="443" class="hidden md:block flex-shrink-0">
         <div class="overflow-y-auto px-5 flex flex-col">
           <h3 class="font-lato text-gray-800 text-sm leading-6 mb-6">
             {{ profile[selectedProfile].about }}
