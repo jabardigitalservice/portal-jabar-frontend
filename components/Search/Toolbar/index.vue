@@ -2,9 +2,9 @@
   <section class="hidden toolbar min-w-0 w-full h-[38px] md:grid md:grid-cols-1 lg:grid-cols-[auto,1fr]">
     <!-- Results Counter -->
     <div class="min-w-0 flex items-center">
-      <p class="font-roboto text-base leading-5 text-blue-gray-300">
+      <p class="font-roboto text-base leading-5 text-gray-700">
         <slot name="resultText">
-          Menampilkan <strong class="text-blue-gray-600">{{ totalCount }} hasil pencarian</strong>
+          Menampilkan <strong class="text-gray-700">{{ totalCount }} hasil pencarian</strong>
         </slot>
       </p>
     </div>
