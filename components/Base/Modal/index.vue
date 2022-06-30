@@ -3,18 +3,31 @@
     <div
       v-if="show"
       ref="modal"
-      class="fixed w-full h-full inset-0 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm flex justify-center items-center z-[100]"
+      class="fixed w-full h-full inset-0 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm z-[100]"
     >
-      <div class="flex flex-col bg-white rounded-lg overflow-hidden max-h-full md:max-h-[90%]">
-        <slot name="header" />
-        <slot />
-        <slot name="footer">
-          <div class="bg-white flex w-full items-center justify-center py-4 z-[100]" @click="$emit('close')">
-            <Button type="button">
-              {{ buttonLabel }}
-            </Button>
+      <div class="w-full h-full md:flex md:justify-center md:items-center overflow-y-auto md:overflow-hidden">
+        <div
+          class="modal__body relative top-[25%] flex flex-col min-h-[75%] max-h-screen max-w-full bg-white rounded-xl
+          md:static md:min-h-0 md:max-h-[90%] md:max-w-[640px] lg:max-w-[800px] md:overflow-hidden"
+        >
+          <div class="md:hidden absolute w-full flex justify-end px-4 -top-14">
+            <button class="h-10 w-10 bg-green-800 flex items-center justify-center rounded-full" @click="$emit('close')">
+              <Icon name="times" size="16px" class="text-white" />
+            </button>
           </div>
-        </slot>
+          <div class=" md:hidden w-full flex justify-center py-4">
+            <div class="w-24 h-[4px] rounded-full bg-gray-300" />
+          </div>
+          <slot name="header" />
+          <slot />
+          <slot name="footer">
+            <div class="bg-white flex w-full items-center justify-center py-4 z-[100] mt-auto px-6">
+              <Button class="w-full md:w-auto !justify-center" @click="$emit('close')">
+                {{ buttonLabel }}
+              </Button>
+            </div>
+          </slot>
+        </div>
       </div>
     </div>
   </Portal>
@@ -33,11 +46,6 @@ export default {
       type: String,
       required: false,
       default: ''
-    }
-  },
-  computed: {
-    device () {
-      return this.$store.state.device.device
     }
   },
   watch: {
