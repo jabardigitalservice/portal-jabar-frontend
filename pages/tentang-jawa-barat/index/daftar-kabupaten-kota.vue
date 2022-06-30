@@ -28,7 +28,7 @@
 
     <!-- Search results -->
     <section v-else>
-      <p class="text-gray-700 md:hidden mb-6">
+      <p class="text-gray-700 lg:hidden mb-6">
         Terdapat <strong class="text-gray-700">{{ pagination.totalRows }} Kabupaten dan Kota</strong> yang ada di lingkup Jawa Barat
       </p>
       <SearchToolbar
