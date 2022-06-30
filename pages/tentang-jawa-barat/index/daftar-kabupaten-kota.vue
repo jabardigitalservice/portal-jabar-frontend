@@ -1,6 +1,6 @@
 <template>
   <section class="w-full min-w-0 flex flex-col gap-6">
-    <h1 class="font-bold font-lora text-green-700 text-4xl leading-none">
+    <h1 class="font-bold font-lora text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-[56px]">
       Daftar Kabupaten Kota
     </h1>
     <InputSearch
@@ -10,15 +10,7 @@
       @submit="onSubmit"
       @clear="$fetch"
     />
-    <SearchToolbar
-      :list-view.sync="listView"
-      :total-count="pagination.totalRows"
-      :sortable="false"
-    >
-      <template #resultText>
-        Terdapat <strong class="text-blue-gray-600">{{ pagination.totalRows }} Kabupaten dan Kota</strong> yang ada di lingkup Jawa Barat
-      </template>
-    </SearchToolbar>
+
     <!-- No results found placeholder -->
     <div v-if="!$fetchState.pending && !hasResults" class="w-full h-full flex flex-col items-center justify-center gap-8 py-8">
       <h1 class="text-center font-lora text-[21px] leading-[34px] text-blue-gray-700 font-bold">
@@ -33,70 +25,99 @@
         alt="ilustrasi pencarian tidak ditemukan"
       >
     </div>
-    <ul v-else :class="listView === 'list' ? 'flex flex-col gap-6' : 'grid grid-cols-2 gap-4'">
-      <!-- Skeleton -->
-      <template v-if="$fetchState.pending">
-        <li
-          v-for="(item, index) in pagination.itemsPerPage"
-          :key="index"
-          class="min-h-[158px] min-w-0 flex p-4 rounded-xl border border-[#E9EDF4]"
-          :class="listView === 'list' ? 'h-[158px] gap-6' : 'flex-col gap-6'"
-        >
-          <div class="w-[100px] h-[100px] object-cover rounded-xl bg-gray-200 animate-pulse" />
-          <div class="flex-1">
-            <div class="w-3/4 h-4 bg-gray-200 animate-pulse rounded-md mb-3" />
-            <div class="w-1/2 h-4 bg-gray-200 animate-pulse rounded-md mb-6" />
-            <div class="w-4/5 h-4 bg-gray-200 animate-pulse rounded-md mb-3" />
-            <div class="w-1/5 h-4 bg-gray-200 animate-pulse rounded-md" />
-          </div>
-        </li>
-      </template>
-      <!-- List of data -->
-      <template v-else>
-        <li
-          v-for="item in data"
-          :key="item.id"
-          class="min-h-[132px] min-w-full p-4 rounded-xl flex border border-[#E9EDF4]"
-          :class="listView === 'list' ? 'gap-6' : 'flex-col gap-2'"
-        >
-          <div class="w-[100px] h-[100px] grid place-content-center">
-            <img
-              :src="item.logo || '/icons/image.svg'"
-              :alt="item.name"
-              class="h-[80px]"
-              height="80"
-            >
-          </div>
-          <div>
-            <p class="font-roboto font-bold text-blue-gray-800 leading-[26px] line-clamp-1">
-              {{ item.name }}
-            </p>
-            <p class="font-roboto text-sm font-medium text-blue-gray-500 leading-6 line-clamp-1 mb-2">
-              {{ item.chief }}
-            </p>
-            <p class="font-lato text-xs font-normal text-[#717F8C] leading-5 line-clamp-1 mb-1">
-              {{ item.address }}
-            </p>
-            <a
-              :href="setValidWebsite(item.website)"
-              rel="noopener noreferrer"
-              target="_blank"
-              class="font-lato text-xs font-normal leading-5 text-[#1976D2] flex items-center gap-2"
-            >
-              {{ item.website }}
-              <Icon name="open-new-tab" fill="#1976D2" size="14px" />
-            </a>
-          </div>
-        </li>
-      </template>
-    </ul>
-    <Pagination
-      v-bind="pagination"
-      @previous-page="onPaginationChange('prev-page', $event)"
-      @next-page="onPaginationChange('next-page', $event)"
-      @page-change="onPaginationChange('page-change', $event)"
-      @per-page-change="onPaginationChange('per-page-change', $event)"
-    />
+
+    <!-- Search results -->
+    <section v-else>
+      <p class="text-gray-700 md:hidden mb-6">
+        Terdapat <strong class="text-gray-700">{{ pagination.totalRows }} Kabupaten dan Kota</strong> yang ada di lingkup Jawa Barat
+      </p>
+      <SearchToolbar
+        :list-view.sync="listView"
+        :total-count="pagination.totalRows"
+        :sortable="false"
+        class="!hidden lg:!grid mb-6"
+      >
+        <template #resultText>
+          Terdapat <strong class="text-gray-700">{{ pagination.totalRows }} Kabupaten dan Kota</strong> yang ada di lingkup Jawa Barat
+        </template>
+      </SearchToolbar>
+
+      <ul
+        :class="{
+          'flex flex-col gap-6 mb-6': true,
+          'grid grid-cols-1 md:grid-cols-2 gap-4': listView === 'grid',
+        }"
+      >
+        <!-- Skeleton -->
+        <template v-if="$fetchState.pending">
+          <li
+            v-for="(item, index) in pagination.itemsPerPage"
+            :key="index"
+            class="p-4 rounded-xl flex flex-col min-w-0 border border-[#E9EDF4] min-h-[260px] gap-2"
+            :class="{
+              'md:flex-row md:min-h-[136px] md:gap-6': listView === 'list',
+            }"
+          >
+            <div class="w-[100px] h-[100px] flex justify-center items-center">
+              <div class="w-20 h-20 rounded-lg bg-gray-200 animate-pulse" />
+            </div>
+            <div class="flex-1">
+              <div class="w-3/4 h-4 bg-gray-200 animate-pulse rounded-md mb-3" />
+              <div class="w-1/2 h-4 bg-gray-200 animate-pulse rounded-md mb-6" />
+              <div class="w-4/5 h-4 bg-gray-200 animate-pulse rounded-md mb-3" />
+            </div>
+          </li>
+        </template>
+
+        <!-- List of data -->
+        <template v-else>
+          <li
+            v-for="item in data"
+            :key="item.id"
+            class="p-4 rounded-xl flex flex-col min-w-0 border border-[#E9EDF4] min-h-[260px] gap-2"
+            :class="{
+              'md:flex-row md:min-h-[136px] md:gap-6': listView === 'list',
+            }"
+          >
+            <div class="flex-shrink-0 w-[100px] h-[100px] grid place-content-center">
+              <img
+                :src="item.logo || '/icons/image.svg'"
+                :alt="item.name"
+                height="80"
+                width="80"
+              >
+            </div>
+            <div>
+              <p class="font-roboto font-bold text-blue-gray-800 leading-[26px] line-clamp-1">
+                {{ item.name }}
+              </p>
+              <p class="font-roboto text-sm font-medium text-blue-gray-500 leading-6 line-clamp-1 mb-2">
+                {{ item.chief }}
+              </p>
+              <p class="font-lato text-xs font-normal text-[#717F8C] leading-5 line-clamp-1 mb-1">
+                {{ item.address }}
+              </p>
+              <a
+                :href="setValidWebsite(item.website)"
+                rel="noopener noreferrer"
+                target="_blank"
+                class="font-lato text-xs font-normal leading-5 text-[#1976D2] flex items-center gap-2"
+              >
+                {{ item.website }}
+                <Icon name="open-new-tab" fill="#1976D2" size="14px" />
+              </a>
+            </div>
+          </li>
+        </template>
+      </ul>
+      <Pagination
+        v-bind="pagination"
+        @previous-page="onPaginationChange('prev-page', $event)"
+        @next-page="onPaginationChange('next-page', $event)"
+        @page-change="onPaginationChange('page-change', $event)"
+        @per-page-change="onPaginationChange('per-page-change', $event)"
+      />
+    </section>
   </section>
 </template>
 
@@ -162,6 +183,8 @@ export default {
       }
     },
     onPaginationChange (action, value) {
+      this.scrollToTop()
+
       const paginationObj = { ...this.pagination }
 
       switch (action) {
@@ -204,6 +227,9 @@ export default {
       }
 
       return `https://${website}`
+    },
+    scrollToTop () {
+      window.scrollTo({ top: 200 })
     }
   }
 }
