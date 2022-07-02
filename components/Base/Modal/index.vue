@@ -2,14 +2,13 @@
   <Portal to="modal">
     <div
       v-if="show"
-      ref="modal"
       class="fixed w-full h-full inset-0 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm z-[100] md:flex md:justify-center md:items-center"
     >
       <!-- Bottom Sheet (Mobile Only) -->
-      <div
+      <section
         v-if="device.isMobile"
-        class="modal__body relative flex flex-col max-w-full bg-white rounded-xl h-full transition-all ease-brand duration-300"
-        :class="fullScreen ? 'top-0 min-h-full' : 'min-h-[75%] max-h-[75%] top-[25%]'"
+        class="modal__body relative flex flex-col max-w-full bg-white rounded-t-xl h-full transition-all ease-brand duration-300"
+        :class="isFullScreen ? 'top-0 min-h-full' : 'min-h-[75%] max-h-[75%] top-[25%]'"
       >
         <div v-touch:swipe.self="handleSwipe" class="absolute w-full h-20 top-0" />
         <div class="absolute w-full flex justify-end px-4 -top-14">
@@ -21,7 +20,7 @@
           <div class="w-24 h-[4px] rounded-full bg-gray-300 mx-auto" />
         </div>
         <slot name="header" />
-        <slot class="overflow-y-auto" />
+        <slot />
         <slot name="footer">
           <div class="bg-white flex w-full items-center justify-center py-4 z-[100] mt-auto px-6">
             <Button class="w-full !justify-center" @click="closeModal">
@@ -29,10 +28,10 @@
             </Button>
           </div>
         </slot>
-      </div>
+      </section>
 
       <!-- Default Modal (Tablet and Dekstop) -->
-      <div v-else class="modal__body flex flex-col bg-white rounded-lg overflow-hidden max-h-[90%] max-w-[800px]">
+      <section v-else class="modal__body flex flex-col bg-white rounded-lg overflow-hidden max-h-[90%] max-w-[800px]">
         <slot name="header" />
         <slot />
         <slot name="footer">
@@ -42,7 +41,7 @@
             </Button>
           </div>
         </slot>
-      </div>
+      </section>
     </div>
   </Portal>
 </template>
@@ -60,11 +59,20 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    /**
+     * Set Bottom Sheet to Fullscreen
+     * when modal open for the first time
+     */
+    fullScreen: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data () {
     return {
-      fullScreen: false
+      isFullScreen: this.fullScreen
     }
   },
   computed: {
@@ -81,14 +89,14 @@ export default {
     handleSwipe (direction) {
       switch (direction) {
         case 'top':
-          if (!this.fullScreen) {
-            this.fullScreen = true
+          if (!this.isFullScreen) {
+            this.isFullScreen = true
           }
           break
 
         case 'bottom':
-          if (this.fullScreen) {
-            this.fullScreen = false
+          if (this.isFullScreen) {
+            this.isFullScreen = false
           } else {
             this.$emit('close')
           }
@@ -99,7 +107,7 @@ export default {
       }
     },
     closeModal () {
-      this.fullScreen = false
+      this.isFullScreen = false
       this.$emit('close')
     }
   }
