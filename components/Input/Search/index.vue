@@ -42,7 +42,6 @@
           v-if="isRunningTextActive && showRunningText"
           ref="inputSearchSwiper"
           :options="swiperOptions"
-          :auto-update="true"
           class="!absolute !inset-0 !left-[34px] !pointer-events-none"
         >
           <swiper-slide
@@ -92,6 +91,7 @@ export default {
         slidesPerView: 1,
         direction: 'vertical',
         loop: true,
+        passiveListeners: true,
         autoplay: {
           delay: 3000,
           disableOnInteraction: false
@@ -116,10 +116,13 @@ export default {
       return this.placeholders.length > 0
     }
   },
-  async mounted () {
+  activated () {
     if (this.isRunningTextActive) {
-      await this.$nextTick()
-      this.swiper.autoplay.start()
+      this.$nextTick(() => {
+        this.swiper.slideTo(this.swiper.activeIndex + 1)
+        this.swiper.autoplay.stop()
+        this.swiper.autoplay.start()
+      })
     }
   },
   methods: {
