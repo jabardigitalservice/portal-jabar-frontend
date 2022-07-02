@@ -36,6 +36,7 @@ export default {
     '~/plugins/jabar-design-system.js',
     '~/plugins/vue-gtag',
     '~/plugins/vue-awesome-swiper',
+    '~/plugins/vue-touch-events',
     '~/plugins/device.server'
   ],
 

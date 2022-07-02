@@ -33,7 +33,8 @@
     "swiper": "^5.4.5",
     "vue-awesome-swiper": "^4.1.1",
     "vue-gtag": "^1.16.1",
-    "vue-social-sharing": "^3.0.8"
+    "vue-social-sharing": "^3.0.8",
+    "vue2-touch-events": "^3.2.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
