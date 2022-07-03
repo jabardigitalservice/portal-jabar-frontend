@@ -36,7 +36,7 @@ export default {
 <style>
 .modal-enter-active,
 .modal-leave-active {
-  @apply transition-opacity ease-brand duration-250 opacity-100;
+  @apply transition-opacity ease-brand duration-300 opacity-100;
 }
 
 .modal-enter,
@@ -49,8 +49,11 @@ export default {
   @apply transition-transform ease-brand duration-300;
 }
 
-.modal-enter .modal__body,
-.modal-leave-to .modal__body {
+.modal-enter .modal__body {
   transform: translateY(200px);
+}
+
+.modal-leave-to .modal__body {
+  transform: translateY(100%);
 }
 </style>
