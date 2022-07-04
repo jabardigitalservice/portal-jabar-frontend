@@ -1,30 +1,32 @@
 <template>
-  <section class="min-h-[384px] bg-green-700 rounded-xl grid grid-cols-2 items-center gap-x-14">
-    <div class="pl-8 py-4">
-      <p class="font-lora font-bold text-[28px] text-white line-clamp-1">
-        Di Balik Layar
+  <section class="lg:min-h-[311px] xl:min-h-[371px] bg-green-700 rounded-xl grid grid-cols-1 md:grid-cols-2 items-center md:gap-x-0 lg:gap-x-12">
+    <div class="p-4 md:px-6 xl:px-8 xl:py-12">
+      <p class="font-lora font-bold text-2xl md:text-xl xl:text-[28px] text-center md:text-left text-white line-clamp-1 xl:mb-4">
+        Simak Perjalanan
       </p>
-      <h1 class="font-lora font-bold text-[40px] text-white mb-4 leading-[54px] line-clamp-2">
-        Provinsi Jawa Barat Yang Responsif
+      <h1 class="font-lora font-bold text-2xl md:text-xl lg:text-[34px] xl:text-[40px] text-center md:text-left text-white mb-4 lg:leading-[54px] lg:max-w-[20ch] line-clamp-2">
+        Provinsi Jawa Barat Selama Ini
       </h1>
-      <p class="text-white text-sm leading-[23px] mb-4 line-clamp-2">
+      <p class="text-white text-sm leading-[23px] text-center md:text-left mb-4 md:line-clamp-3 lg:max-w-[60ch]">
         Simak siapa saja yang turut andil dalam menjadikan Provinsi Jawa Barat, menjadi Provinsi yang responsif dan Juara Lahir Batin.
       </p>
       <Link link="#" tabindex="-1">
-        <Button class="banner-button" type="button" variant="primary">
-          Lihat di sini
+        <Button
+          class="banner-button w-full md:w-auto"
+          type="button"
+          variant="primary"
+        >
+          Tonton Sekarang
           <Icon name="open-new-tab" size="14px" />
         </Button>
       </Link>
     </div>
-    <div class="relative w-full h-full px-12 py-14 overflow-hidden">
+    <div class="hidden md:flex items-center justify-end relative w-full h-full p-4 md:px-6 xl:px-8 xl:py-12 overflow-hidden">
       <ProfileHighlightBannerBackground />
-      <div
-        class="w-full h-[278px] rounded-xl relative ml-4 overflow-hidden aspect-w-16 aspect-h-9"
-      >
+      <div class="hidden md:block md:aspect-w-16 md:aspect-h-9 w-full rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
         <img
           src="/images/banners/profile-highlight/behind-the-scene.webp"
-          class="object-cover"
+          class="object-cover w-full h-full"
           width="513"
           height="278"
           alt="Di balik layar"
