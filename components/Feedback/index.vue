@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Feedback Form -->
-    <BaseModal :show="show">
+    <BaseModal :show="show" :full-screen="true" @close="closeFeedbackForm">
       <!-- Form Header -->
       <template #header>
         <h1 class="font-roboto font-medium text-[21px] leading-[34px] text-green-700 px-6 py-2">
