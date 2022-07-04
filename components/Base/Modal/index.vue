@@ -2,19 +2,20 @@
   <Portal to="modal">
     <div
       v-if="show"
-      class="fixed w-full h-full inset-0 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm z-[100] md:flex md:justify-center md:items-center"
+      id="modal"
+      class="fixed w-full h-full inset-0 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm z-[100] md:flex md:justify-center md:items-center overflow-hidden"
     >
       <!-- Bottom Sheet (Mobile Only) -->
       <section
         v-if="device.isMobile"
-        class="modal__body absolute bottom-0 flex flex-col max-w-full bg-white rounded-t-xl h-full transition-all ease-brand duration-300"
+        class="modal__body absolute bottom-0 flex flex-col max-w-full min-w-full bg-white rounded-t-xl h-full transition-all ease-brand duration-300"
         :class="isFullScreen ? 'min-h-full max-h-full' : 'min-h-[75%] max-h-[75%]'"
         :style="bottomSheetStyle"
       >
         <div
-          v-touch:moved.self="onTouchMove"
-          v-touch:moving.self="onDragY"
-          v-touch:end.self="calculateBotomSheetPosition"
+          v-touch:moved.stop="onTouchMove"
+          v-touch:moving.stop="onDragY"
+          v-touch:end.stop="calculateBotomSheetPosition"
           class="absolute w-full h-20 top-0"
         />
         <div class="absolute w-full flex justify-end px-4 -top-14">
@@ -26,7 +27,9 @@
           <div class="w-16 h-[4px] rounded-full bg-gray-300 mx-auto" />
         </div>
         <slot name="header" />
-        <slot />
+        <div id="modal-body" class="overflow-y-auto">
+          <slot />
+        </div>
         <slot name="footer">
           <div class="bg-gray-50 flex w-full items-center justify-center py-4 z-[100] mt-auto px-6">
             <Button class="w-full !justify-center" @click="closeModal">
@@ -108,6 +111,7 @@ export default {
       if (this.device.isMobile && this.show) {
         setTimeout(() => {
           this.windowHeight = window.innerHeight
+          this.preventPullToRefresh()
         }, 500)
       }
     }
@@ -143,6 +147,27 @@ export default {
       this.isBeingDragged = false
       this.windowHeight = 0
       this.bottomSheetHeight = 0
+    },
+    preventPullToRefresh () {
+      let prevent = false
+
+      document.querySelector('#modal').addEventListener('touchstart', function (event) {
+        if (event.touches.length !== 1) { return }
+
+        const scrollY = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop
+        prevent = (scrollY === 0)
+      }, { passive: false })
+
+      document.querySelector('#modal').addEventListener('touchmove', function (event) {
+        if (prevent) {
+          prevent = false
+          event.preventDefault()
+        }
+      }, { passive: false })
+
+      document.querySelector('#modal-body').addEventListener('touchmove', function (event) {
+        event.stopPropagation()
+      }, { passive: false })
     }
   }
 }
