@@ -1,6 +1,6 @@
 <template>
-  <section class="lg:min-h-[311px] xl:min-h-[371px] bg-green-700 rounded-xl grid grid-cols-1 md:grid-cols-2 items-center md:gap-x-0 lg:gap-x-12">
-    <div class="p-4 md:px-6 xl:px-8 xl:py-12">
+  <section class="min-h-[288px] lg:min-h-[311px] xl:min-h-[371px] bg-green-700 rounded-xl grid grid-cols-1 md:grid-cols-2 items-center md:gap-x-0 lg:gap-x-12">
+    <div class="h-full p-4 md:px-6 xl:px-8 xl:py-12">
       <p class="font-lora font-bold text-2xl md:text-xl xl:text-[28px] text-center md:text-left text-white line-clamp-1 xl:mb-4">
         Simak Perjalanan
       </p>
