@@ -1,4 +1,4 @@
-FROM node:14.15.4-slim
+FROM registry.digitalservice.id/proxyjds/library/node:14.15.4-slim
 
 WORKDIR /app
 COPY package*.json ./
