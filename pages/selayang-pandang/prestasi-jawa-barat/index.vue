@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen">
+  <main>
     <section>
       <Jumbotron v-bind="jumbotron">
         <template #breadcrumb>
@@ -7,7 +7,7 @@
         </template>
       </Jumbotron>
     </section>
-    <section class="relative -top-24 z-10">
+    <section class="relative -top-24 z-10 min-h-screen">
       <BaseContainer>
         <div class="bg-white p-3 md:p-4 lg:p-6 xl:px-10 xl:py-8 rounded-xl shadow">
           <div class="grid grid-cols-1 xl:grid-cols-search-container gap-6">
