@@ -1,7 +1,7 @@
 <template>
   <li
-    class="min-h-[158px] min-w-full p-4 rounded-xl flex border border-[#E9EDF4]"
-    :class="listView === 'list' ? 'gap-6' : 'flex-col gap-2'"
+    class="min-w-full p-4 rounded-xl flex border border-[#E9EDF4]"
+    :class="listView === 'list' ? 'min-h-[262px] md:min-h-[158px] flex-col gap-2 md:flex-row md:gap-6' : 'min-h-[262px] md:min-h-[242px] flex-col gap-2'"
   >
     <img
       :src="icon || '/icons/selayang-pandang/icon-achievement-placeholder.svg'"
@@ -17,7 +17,7 @@
       <p class="font-lato text-xs font-normal text-blue-gray-500 leading-5 mb-3 line-clamp-1 md:font-medium md:text-sm">
         {{ appreciator }}
       </p>
-      <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-2 mb-3">
+      <p class="font-lato text-xs font-normal text-[#415C84] leading-5 line-clamp-3 md:line-clamp-2 mb-3">
         {{ description }}
       </p>
       <div
