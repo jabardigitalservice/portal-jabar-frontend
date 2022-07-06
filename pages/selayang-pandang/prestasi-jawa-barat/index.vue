@@ -141,6 +141,8 @@ export default {
   },
   methods: {
     onPaginationChange (action, value) {
+      this.scrollToTop()
+
       const paginationObj = { ...this.pagination }
 
       switch (action) {
@@ -202,6 +204,9 @@ export default {
         }
         this.$fetch()
       }
+    },
+    scrollToTop () {
+      window.scrollTo({ top: 200 })
     }
   }
 }

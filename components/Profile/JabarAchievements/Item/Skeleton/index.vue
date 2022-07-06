@@ -1,7 +1,7 @@
 <template>
   <li
-    class="min-h-[158px] min-w-0 flex p-4 rounded-xl border border-[#E9EDF4]"
-    :class="listView === 'list' ? 'h-[158px] gap-6' : 'flex-col gap-2'"
+    class="min-w-0 flex p-4 rounded-xl border border-[#E9EDF4]"
+    :class="listView === 'list' ? 'flex-col gap-2 md:flex-row min-h-[262px] md:min-h-[158px] md:gap-6' : 'min-h-[262px] md:min-h-[242px] flex-col gap-2'"
   >
     <div class="w-[60px] h-[60px] object-cover rounded-full bg-gray-200 animate-pulse" />
     <div class="flex-1">
