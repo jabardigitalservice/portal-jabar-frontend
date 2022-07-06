@@ -13,8 +13,10 @@
             <Icon
               name="chevron-down"
               size="16px"
-              class="text-green-700 transition-all ease-in duration-150"
-              :class="isDropdownOpen ? 'rotate-180' : null"
+              :class="{
+                'text-green-700 transition-all ease-in duration-150' : true,
+                'rotate-180': isDropdownOpen
+              }"
               @click="toggleDropdown"
             />
           </template>
