@@ -82,8 +82,16 @@
               :max-length="5"
             />
             <div class="mt-6 flex justify-center items-center">
-              <Link :link="`/pencarian/lainnya?q=${searchKeyword}`" tabindex="-1">
-                <Button type="button" variant="secondary">
+              <Link
+                :link="`/pencarian/lainnya?q=${searchKeyword}`"
+                tabindex="-1"
+                class="w-full xl:w-auto"
+              >
+                <Button
+                  type="button"
+                  variant="secondary"
+                  class="w-full !justify-center text-center xl:w-auto xl:justify-between"
+                >
                   Muat Hasil Lainnya
                   <Icon name="open-new-tab" size="14px" />
                 </Button>
