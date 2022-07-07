@@ -27,7 +27,7 @@
               <div class="flex flex-col md:flex-row gap-2 opacity-60 text-xs md:divide-x divide-white">
                 <div class="flex items-center gap-2 md:pr-2">
                   <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
-                  <p>{{ formatDate(item.created_at) }}</p>
+                  <p>{{ formatDate(item.published_at) }}</p>
                 </div>
                 <div class="md:pl-2 flex items-center gap-2 capitalize">
                   <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />

@@ -212,7 +212,7 @@ export default {
     mapItems (items) {
       return items.map(item => ({
         ...item,
-        date: new Date(item.created_at)
+        date: new Date(item.published_at)
       }))
     },
     async onShareNews (id) {
