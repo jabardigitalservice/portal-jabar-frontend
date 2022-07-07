@@ -5,7 +5,7 @@
         Agenda Jawa Barat
       </h4>
       <p class="text-xs leading-5">
-        Dapatkan informasi terkait semua kegiatan yang dilakukan di jawa barat.
+        Dapatkan informasi terkait semua kegiatan yang dilakukan di Jawa Barat.
       </p>
     </div>
     <div class="rounded-br-md rounded-bl-md flex-grow bg-white border border-blue-gray-50 overflow-hidden">
