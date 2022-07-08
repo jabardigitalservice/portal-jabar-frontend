@@ -109,7 +109,15 @@ export default {
       return this.item?.excerpt || '-'
     },
     date () {
-      return this.item?.published_at ? this.formatDate(new Date(this.item.published_at)) : '-'
+      if (this.item?.published_at) {
+        return this.formatDate(new Date(this.item.published_at))
+      }
+
+      if (this.item?.created_at) {
+        return this.formatDate(new Date(this.item.created_at))
+      }
+
+      return '-'
     },
     link () {
       const domain = this.item?.domain || null
