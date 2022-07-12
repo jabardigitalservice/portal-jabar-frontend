@@ -1,7 +1,7 @@
 <template>
   <div class="relative -top-24 z-10">
     <BaseContainer>
-      <div class="bg-white py-6 px-3 md:px-4 lg:p-10 rounded-xl shadow flex flex-col gap-7 min-h-screen">
+      <div class="bg-white py-6 px-3 md:px-4 lg:p-10 rounded-xl shadow flex flex-col gap-7">
         <AgendaNavigation
           :calendar-api="calendarApi"
           :agenda-view.sync="agendaView"
