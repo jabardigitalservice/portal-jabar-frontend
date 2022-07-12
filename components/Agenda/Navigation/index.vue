@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between items-center">
+  <div class="agenda-navigation flex justify-between items-center">
     <div class="grid grid-cols-[auto,1fr,auto] md:grid-cols-[auto,auto,1fr] w-full lg:w-[fit-content] justify-between items-center gap-4 md:gap-5">
       <Icon
         name="chevron-left"
@@ -19,7 +19,7 @@
       </p>
     </div>
     <Select
-      class="hidden xl:flex"
+      class="agenda-navigation__view-select hidden xl:flex"
       label="Tampilkan dalam"
       :options="[{ value: 'month', label: 'Bulan' }, { value: 'week', label: 'Minggu' }]"
       :value="agendaView"
@@ -180,3 +180,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.agenda-navigation .agenda-navigation__view-select .jds-input-text__input-wrapper {
+  width: 120px !important;
+}
+</style>
