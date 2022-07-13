@@ -70,7 +70,8 @@ export default {
       Lora: [400, 500, 600, 700],
       'Open Sans': [400, 500, 600, 700]
     },
-    display: 'swap'
+    display: 'swap',
+    preload: true
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
