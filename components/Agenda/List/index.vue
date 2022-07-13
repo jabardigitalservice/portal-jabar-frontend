@@ -1,6 +1,6 @@
 <template>
   <div class="rounded-lg overflow-hidden border border-gray-300">
-    <div class="p-6">
+    <div class="py-6 px-3 md:px-4 lg:px-6">
       <AgendaListHeader
         :agenda-view="agendaView"
         :each-day-of-week="eachDayOfWeek"
@@ -8,14 +8,14 @@
         :navigate="navigate"
         @change="setSelectedDate"
       />
-      <div class="bg-white flex flex-col overflow-hidden h-[700px]">
+      <div class="bg-white flex flex-col overflow-hidden h-[500px] md:h-[700px]">
         <!--
           TODO: Show a placeholder if an error occur
         -->
         <template v-if="fetchState.pending">
           <AgendaListSkeleton v-for="index in 10" :key="index" />
         </template>
-        <div v-else-if="!hasEvents" class="h-full px-4">
+        <div v-else-if="!hasEvents" class="h-full lg:px-4">
           <AgendaEmptyState />
         </div>
         <template v-else>
@@ -24,7 +24,7 @@
               Terdapat <strong class="text-blue-gray-700">{{ totalEvents }} Kegiatan</strong>
             </p>
           </div>
-          <div class="flex flex-col overflow-y-auto">
+          <div class="flex flex-col overflow-y-auto pr-4">
             <InfiniteScroll :items="events" @refetch="getEvents">
               <template #default="{ item }">
                 <AgendaListItem
@@ -65,7 +65,7 @@ export default {
       default: () => new Date()
     },
     navigate: {
-      type: String,
+      type: [String, Number],
       required: true
     }
   },

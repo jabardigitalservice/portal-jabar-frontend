@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-green-50 bg-opacity-50 p-4 -mx-6 -mt-6 mb-6 border-b border-gray-300">
+  <div class="bg-green-50 bg-opacity-50 px-6 py-3 md:py-4 -mx-6 -mt-6 mb-6 border-b border-gray-300">
     <div v-if="isMonthView" class="flex justify-between items-center">
       <div class="flex flex-col gap-1">
         <p class="uppercase font-roboto text-xs text-blue-gray-200">
@@ -24,35 +24,49 @@
         />
       </div>
     </div>
-    <div v-else class="w-full grid grid-cols-7">
-      <div v-for="(eachDay, index) in eachDayOfWeek" :key="index" class="flex justify-center items-center">
-        <div
-          class="flex flex-col justify-center items-center gap-1 px-4 pt-2 pb-3 rounded-xl cursor-pointer"
-          :class="{'bg-green-800': isSelected(eachDay)}"
-          @click="setSelectedDay(eachDay)"
+    <div v-else>
+      <client-only>
+        <swiper
+          :options="swiperOptions"
+          :auto-update="true"
+          :auto-destroy="true"
+          :delete-instance-on-destroy="true"
+          :cleanup-styles-on-destroy="false"
         >
-          <p
-            class="font-roboto font-medium"
-            :class="{
-              'text-blue-gray-300': isSaturday(eachDay) && !isSelected(eachDay),
-              'text-red-600': isSunday(eachDay) && !isSelected(eachDay),
-              'text-white': isSelected(eachDay)
-            }"
+          <swiper-slide
+            v-for="(eachDay, index) in eachDayOfWeek"
+            :key="index"
+            class="flex items-center justify-center"
           >
-            {{ getNumericDay(eachDay) }}
-          </p>
-          <p
-            class="font-roboto text-xs uppercase mb-2"
-            :class="[isSelected(eachDay) ? 'text-white font-bold': 'text-blue-gray-300']"
-          >
-            {{ getLongWeekday(eachDay) }}
-          </p>
-          <div
-            class="rounded-full w-2 h-2"
-            :class="[hasEvents(eachDay) ? isSelected(eachDay) ? 'bg-yellow-300' : 'bg-green-800' : 'bg-transparent']"
-          />
-        </div>
-      </div>
+            <div
+              class="h-full w-[68px] flex flex-col py-1 px-2 pb-2 md:py-2 md:px-3 justify-center items-center gap-1 rounded-xl cursor-pointer"
+              :class="{'bg-green-800': isSelected(eachDay)}"
+              @click="setSelectedDay(eachDay)"
+            >
+              <p
+                class="font-roboto font-medium"
+                :class="{
+                  'text-blue-gray-300': isSaturday(eachDay) && !isSelected(eachDay),
+                  'text-red-600': isSunday(eachDay) && !isSelected(eachDay),
+                  'text-white': isSelected(eachDay)
+                }"
+              >
+                {{ getNumericDay(eachDay) }}
+              </p>
+              <p
+                class="font-roboto text-xs uppercase mb-2"
+                :class="[isSelected(eachDay) ? 'text-white font-bold': 'text-blue-gray-300']"
+              >
+                {{ getLongWeekday(eachDay) }}
+              </p>
+              <div
+                class="rounded-full w-2 h-2"
+                :class="[hasEvents(eachDay) ? isSelected(eachDay) ? 'bg-yellow-300' : 'bg-green-800' : 'bg-transparent']"
+              />
+            </div>
+          </swiper-slide>
+        </swiper>
+      </client-only>
     </div>
   </div>
 </template>
@@ -76,14 +90,25 @@ export default {
       required: true
     },
     navigate: {
-      type: String,
+      type: [String, Number],
       required: false,
       default: ''
     }
   },
   data () {
     return {
-      weeklyAgendaAvailability: []
+      weeklyAgendaAvailability: [],
+      swiperOptions: Object.freeze({
+        slidesPerView: 3,
+        spaceBetween: 24,
+        mousewheel: true,
+        passiveListeners: true,
+        breakpoints: {
+          768: {
+            slidesPerView: 7
+          }
+        }
+      })
     }
   },
   computed: {

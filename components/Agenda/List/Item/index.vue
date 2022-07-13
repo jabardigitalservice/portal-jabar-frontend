@@ -1,9 +1,9 @@
 <template>
-  <div class="flex gap-4">
-    <div class="relative left-0 text-sm text-blue-gray-200">
+  <div class="flex gap-3 lg:gap-4">
+    <div class="hidden md:block relative left-0 text-sm text-blue-gray-200">
       {{ startTime }}
     </div>
-    <div class="flex gap-4 mb-4 w-full relative cursor-pointer">
+    <div class="flex gap-3 lg:gap-4 mb-4 w-full relative cursor-pointer">
       <div>
         <div class="relative pl-1">
           <div
@@ -56,14 +56,18 @@
         </div>
       </div>
     </div>
-    <Modal
+    <BaseModal
       :show="isEventDetailOpen"
-      :header="title"
-      :close-button="false"
+      button-label="Tutup"
       @close="toggleEventDetail"
     >
-      <div class="p-6 flex flex-col gap-6">
-        <div class="flex gap-6">
+      <template #header>
+        <h1 class="font-roboto font-medium text-[21px] leading-[34px] text-green-700 px-6 py-2">
+          {{ title }}
+        </h1>
+      </template>
+      <div class="py-4 px-6 flex flex-col gap-6 max-w-[525px]">
+        <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/category.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -75,7 +79,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 ml-9 md:ml-0">
             <p class="text-xs text-blue-gray-200">
               Tipe Acara
             </p>
@@ -87,7 +91,7 @@
             </p>
           </div>
         </div>
-        <div class="flex gap-6">
+        <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/calendar.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -99,7 +103,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 ml-9 md:ml-0">
             <p class="text-xs text-blue-gray-200">
               Waktu
             </p>
@@ -107,11 +111,11 @@
               {{ time }}
             </p>
           </div>
-          <div class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap self-end">
+          <div class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap self-end ml-9 md:ml-0">
             {{ status }}
           </div>
         </div>
-        <div v-if="isOnline" class="flex gap-6">
+        <div v-if="isOnline" class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/url.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -124,7 +128,7 @@
             </div>
           </div>
         </div>
-        <div v-else class="flex gap-6">
+        <div v-else class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/location.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -138,12 +142,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-gray-50 py-4 flex justify-center items-center">
-        <div @click="toggleEventDetail">
-          <Button>Tutup</Button>
-        </div>
-      </div>
-    </Modal>
+    </BaseModal>
   </div>
 </template>
 
