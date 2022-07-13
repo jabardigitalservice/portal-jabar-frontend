@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full overflow-hidden relative"
+    class="carousel w-full h-full overflow-hidden relative"
     :class="{'group': hover}"
     @mouseover="setPause(pauseOnHover)"
     @mouseout="setPause(false)"
@@ -9,9 +9,9 @@
       <transition :key="index" name="fade" tag="div" mode="out-in">
         <div v-show="index === currentIndex" class="w-full h-full">
           <div
-            class="bg-no-repeat bg-cover bg-center w-full h-full"
+            v-lazy:background-image="item.image"
+            class="carousel-bg bg-no-repeat bg-cover bg-center w-full h-full"
             :class="{ 'transition duration-500 ease-in-out group-hover:transform group-hover:scale-110': hover }"
-            :style="{backgroundImage: `url('${item.image}')`}"
           />
           <slot name="filter" />
           <slot
@@ -99,6 +99,10 @@ export default {
 </script>
 
 <style scoped>
+.carousel .carousel-bg[lazy=loading] {
+  @apply bg-gray-200 animate-pulse
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.9s ease;
