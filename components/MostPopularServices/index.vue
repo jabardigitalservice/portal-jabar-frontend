@@ -31,7 +31,7 @@
                 v-for="(item) in menu.items"
                 :key="item.id"
               >
-                <li class="rounded-md w-full min-h-[130px] flex justify-start items-start p-4 pl-0">
+                <section class="rounded-md w-full min-h-[130px] flex justify-start items-start p-4 pl-0">
                   <a
                     :href="item.link"
                     target="_blank"
@@ -44,14 +44,14 @@
                       :alt="item.title"
                       class="opacity-40 filter grayscale"
                     />
-                    <p class="font-bold text-blue-gray-600 ">
+                    <h3 class="font-bold text-blue-gray-600 ">
                       {{ item.title }}
-                    </p>
+                    </h3>
                     <p class="text-sm leading-5 text-blue-gray-300 ">
                       {{ item.description }}
                     </p>
                   </a>
-                </li>
+                </section>
               </swiper-slide>
             </swiper>
             <template #placeholder>
@@ -101,9 +101,9 @@
                     :alt="item.title"
                     class="opacity-40 filter grayscale group-hover:grayscale-0 group-hover:opacity-100"
                   />
-                  <p class="font-bold text-blue-gray-600 group-hover:text-green-800">
+                  <h3 class="font-bold text-blue-gray-600 group-hover:text-green-800">
                     {{ item.title }}
-                  </p>
+                  </h3>
                   <p class="text-sm leading-5 text-blue-gray-300 group-hover:text-blue-gray-800">
                     {{ item.description }}
                   </p>
