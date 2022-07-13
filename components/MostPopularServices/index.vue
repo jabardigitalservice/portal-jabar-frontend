@@ -128,6 +128,7 @@ export default {
       swiperOptions: Object.freeze({
         slidesPerView: 1.3,
         spaceBetween: 16,
+        mousewheel: true,
         passiveListeners: true,
         breakpoints: {
           768: {

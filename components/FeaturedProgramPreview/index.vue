@@ -21,6 +21,7 @@
         <client-only>
           <swiper
             ref="swiper"
+            :options="swiperOptions"
             :auto-update="true"
             :auto-destroy="true"
             :delete-instance-on-destroy="true"
@@ -97,6 +98,7 @@ export default {
       swiperOptions: Object.freeze({
         slidesPerView: 'auto',
         spaceBetween: 16,
+        mousewheel: true,
         passiveListeners: true
       })
     }

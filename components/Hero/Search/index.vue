@@ -68,7 +68,8 @@ export default {
       swiperOptions: Object.freeze({
         slidesPerView: 'auto',
         spaceBetween: 16,
-        mousewheel: true
+        mousewheel: true,
+        passiveListeners: true
       })
     }
   },
