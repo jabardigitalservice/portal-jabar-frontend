@@ -8,7 +8,7 @@
         <!-- Content Swiper (Mobile & Tablet Only) -->
         <section v-for="menu in menus" :key="menu.id" class="mb-8 lg:hidden">
           <div class="flex items-center gap-6 mb-3">
-            <Icon :src="menu.icon" size="56px" :alt="menu.name" />
+            <LazyImg :src="menu.icon" width="56" height="56" :alt="menu.name" />
             <div>
               <p class="font-roboto font-bold text-sm tracking-wide uppercase text-blue-gray-300 mb-1">
                 Untuk
@@ -70,7 +70,7 @@
               :key="menu.id"
               class="flex items-center gap-6 px-4"
             >
-              <Icon :src="menu.icon" size="56px" :alt="menu.name" />
+              <LazyImg :src="menu.icon" width="56" height="56" :alt="menu.name" />
               <div>
                 <p class="font-roboto font-bold text-sm tracking-wide uppercase text-blue-gray-300 mb-1">
                   Untuk
