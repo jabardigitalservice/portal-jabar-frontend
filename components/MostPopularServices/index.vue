@@ -8,7 +8,7 @@
         <!-- Content Swiper (Mobile & Tablet Only) -->
         <section v-for="menu in menus" :key="menu.id" class="mb-8 lg:hidden">
           <div class="flex items-center gap-6 mb-3">
-            <Icon :src="menu.icon" size="56px" :alt="menu.name" />
+            <LazyImg :src="menu.icon" width="56" height="56" :alt="menu.name" />
             <div>
               <p class="font-roboto font-bold text-sm tracking-wide uppercase text-blue-gray-300 mb-1">
                 Untuk
@@ -31,7 +31,7 @@
                 v-for="(item) in menu.items"
                 :key="item.id"
               >
-                <li class="rounded-md w-full min-h-[130px] flex justify-start items-start p-4 pl-0">
+                <section class="rounded-md w-full min-h-[130px] flex justify-start items-start p-4 pl-0">
                   <a
                     :href="item.link"
                     target="_blank"
@@ -44,14 +44,14 @@
                       :alt="item.title"
                       class="opacity-40 filter grayscale"
                     />
-                    <p class="font-bold text-blue-gray-600 ">
+                    <h3 class="font-bold text-blue-gray-600 ">
                       {{ item.title }}
-                    </p>
+                    </h3>
                     <p class="text-sm leading-5 text-blue-gray-300 ">
                       {{ item.description }}
                     </p>
                   </a>
-                </li>
+                </section>
               </swiper-slide>
             </swiper>
             <template #placeholder>
@@ -70,7 +70,7 @@
               :key="menu.id"
               class="flex items-center gap-6 px-4"
             >
-              <Icon :src="menu.icon" size="56px" :alt="menu.name" />
+              <LazyImg :src="menu.icon" width="56" height="56" :alt="menu.name" />
               <div>
                 <p class="font-roboto font-bold text-sm tracking-wide uppercase text-blue-gray-300 mb-1">
                   Untuk
@@ -101,9 +101,9 @@
                     :alt="item.title"
                     class="opacity-40 filter grayscale group-hover:grayscale-0 group-hover:opacity-100"
                   />
-                  <p class="font-bold text-blue-gray-600 group-hover:text-green-800">
+                  <h3 class="font-bold text-blue-gray-600 group-hover:text-green-800">
                     {{ item.title }}
-                  </p>
+                  </h3>
                   <p class="text-sm leading-5 text-blue-gray-300 group-hover:text-blue-gray-800">
                     {{ item.description }}
                   </p>
@@ -128,6 +128,7 @@ export default {
       swiperOptions: Object.freeze({
         slidesPerView: 1.3,
         spaceBetween: 16,
+        mousewheel: true,
         passiveListeners: true,
         breakpoints: {
           768: {

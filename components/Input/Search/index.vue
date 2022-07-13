@@ -23,6 +23,7 @@
       <input
         :value="value"
         type="text"
+        aria-label="Kolom Pencarian"
         class="min-w-0 placeholder-gray-600 border-none flex-grow focus:outline-none"
         :placeholder="placeholders.length ? null : placeholder"
         @input="setInputValue"

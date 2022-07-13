@@ -21,6 +21,7 @@
         <client-only>
           <swiper
             ref="swiper"
+            :options="swiperOptions"
             :auto-update="true"
             :auto-destroy="true"
             :delete-instance-on-destroy="true"
@@ -36,7 +37,7 @@
                 class="w-[275px] h-[253px] md:w-[400px] md:h-[230px] lg:w-full lg:h-full flex flex-col gap-4 group
               bg-white p-6 rounded-lg border border-white hover:border-blue-gray-50 hover:shadow"
               >
-                <img :src="menu.icon" :alt="menu.title" width="32px" height="32px">
+                <LazyImg :src="menu.icon" :alt="menu.title" width="32" height="32" />
                 <h3 class="font-bold text-xl md:text-2xl leading-normal group-hover:text-green-800">
                   {{ menu.title }}
                 </h3>
@@ -68,7 +69,7 @@
           :key="menu.id"
           class="flex flex-col gap-4 group bg-white p-6 rounded-lg border border-white hover:border-blue-gray-50 hover:shadow"
         >
-          <img :src="menu.icon" :alt="menu.title" width="32px" height="32px">
+          <LazyImg :src="menu.icon" :alt="menu.title" width="32" height="32" />
           <h3 class="font-bold text-2xl leading-normal group-hover:text-green-800">
             {{ menu.title }}
           </h3>
@@ -97,6 +98,7 @@ export default {
       swiperOptions: Object.freeze({
         slidesPerView: 'auto',
         spaceBetween: 16,
+        mousewheel: true,
         passiveListeners: true
       })
     }

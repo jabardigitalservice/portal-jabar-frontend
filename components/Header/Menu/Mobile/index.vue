@@ -5,9 +5,25 @@
       <!-- <Link link="/pencarian" class="w-7 h-7 flex items-center justify-center">
         <Icon src="/icons/search.svg" />
       </Link> -->
-      <button class="w-7 h-7 flex items-center justify-center" @click="toggleSidebar">
-        <Icon v-if="open" key="sidebar-open" src="/icons/close.svg" />
-        <Icon v-else key="sidebar-close" src="/icons/hamburger.svg" />
+      <button
+        class="w-7 h-7 flex items-center justify-center"
+        aria-label="Navigasi Menu"
+        @click="toggleSidebar"
+      >
+        <Icon
+          v-if="open"
+          key="sidebar-close"
+          src="/icons/close.svg"
+          size="24"
+          alt="Tutup Menu"
+        />
+        <Icon
+          v-else
+          key="sidebar-open"
+          src="/icons/hamburger.svg"
+          size="24"
+          alt="Buka Menu"
+        />
       </button>
     </div>
     <slot />
