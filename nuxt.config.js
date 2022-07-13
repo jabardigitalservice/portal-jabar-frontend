@@ -37,6 +37,7 @@ export default {
     '~/plugins/vue-gtag',
     '~/plugins/vue-awesome-swiper',
     '~/plugins/vue-touch-events',
+    '~/plugins/vue-lazy-load',
     '~/plugins/device.server'
   ],
 
