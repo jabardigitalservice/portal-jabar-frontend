@@ -12,17 +12,17 @@
       >
         <Icon
           v-if="open"
-          key="sidebar-open"
+          key="sidebar-close"
           src="/icons/close.svg"
           size="24"
-          alt="Buka Menu"
+          alt="Tutup Menu"
         />
         <Icon
           v-else
-          key="sidebar-close"
+          key="sidebar-open"
           src="/icons/hamburger.svg"
           size="24"
-          alt="Tutup Menu"
+          alt="Buka Menu"
         />
       </button>
     </div>
