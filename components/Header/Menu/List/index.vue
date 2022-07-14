@@ -4,7 +4,6 @@
       <span class="font-roboto font-medium leading-7">{{ title }}</span>
       <Icon name="chevron-down" size="14px" />
     </div>
-    <slot />
   </li>
 </template>
 

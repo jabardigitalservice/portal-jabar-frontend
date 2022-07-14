@@ -10,16 +10,16 @@
         :key="menu.id"
         :title="menu.title"
         @click="setActiveMenu"
-      >
+      />
+      <transition name="fade" mode="out-in">
         <HeaderMenuItem
-          :id="menu.id"
-          :title="menu.title"
-          :link="menu.link"
-          :items="menu.items"
-          :active-menu="activeMenu"
-          @click="setActiveMenu"
+          v-if="activeMenu"
+          :title="menuItems.title"
+          :link="menuItems.link"
+          :items="menuItems.items"
+          @close="setActiveMenu"
         />
-      </HeaderMenuList>
+      </transition>
     </HeaderMenu>
     <HeaderMenuMobile class="lg:hidden" />
   </nav>
@@ -35,6 +35,16 @@ export default {
       activeMenu: null
     }
   },
+  computed: {
+    menuItems () {
+      return this.menus.filter(menu => menu.id === this.activeMenu)[0]
+    }
+  },
+  watch: {
+    $route () {
+      this.setActiveMenu(null)
+    }
+  },
   methods: {
     setActiveMenu (id) {
       this.activeMenu = id
@@ -43,3 +53,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  @apply transition-opacity ease-brand duration-300 opacity-100;
+}
+
+.fade-enter,
+.fade-leave-to {
+  @apply opacity-0;
+}
+</style>
