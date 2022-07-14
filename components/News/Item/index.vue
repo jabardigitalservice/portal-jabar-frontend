@@ -14,7 +14,7 @@
       }"
     >
       <Link :link="`/berita/${item.slug}`">
-        <img
+        <LazyImg
           v-show="!loading"
           ref="news-item-image"
           width="72"
@@ -23,7 +23,7 @@
           :alt="item.title"
           class="w-full h-full block transition-transform object-center object-cover duration-300 ease-in-out
           group-hover:transform group-hover:scale-125"
-        >
+        />
       </Link>
     </div>
     <div class="w-full flex flex-col items-start justify-center">

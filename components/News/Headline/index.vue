@@ -24,10 +24,10 @@
       <nuxt-link :to="`/berita/${item.slug}`" :aria-label="item.title">
         <div
           ref="news-headline-image"
+          v-lazy:background-image="item.image"
           class="cursor-pointer w-full h-full bg-cover bg-no-repeat bg-center transition-transform
           duration-300 ease-in-out group-hover:transform group-hover:scale-110"
           :class="loading ?'bg-gray-200 animate-pulse' : ''"
-          :style="`background-image: url('${item.image}')`"
         />
       </nuxt-link>
       <div
