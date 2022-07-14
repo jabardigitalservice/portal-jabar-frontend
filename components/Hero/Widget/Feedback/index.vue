@@ -7,7 +7,7 @@
       <div class="group cursor-pointer md:relative md:top-[225px] md:transform md:-rotate-90">
         <div
           class="bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm flex justify-center items-center gap-4 pl-3 pr-4 py-3 rounded-lg border-l border-b border-transparent
-          md:rounded-tr-none md:rounded-tl-none hover:bg-opacity-10 hover:border-white hover:border-opacity-10"
+          md:rounded-tr-none md:rounded-tl-none hover:bg-opacity-10 hover:border-white hover:border-opacity-10 transition-all ease-brand duration-250"
         >
           <Icon
             src="/icons/feedback.svg"

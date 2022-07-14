@@ -6,8 +6,8 @@
     <li
       v-for="socialMediaSite in socialMediaSites"
       :key="socialMediaSite.id"
-      class="bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg group cursor-pointer border-l border-t border-transparent
-      hover:bg-opacity-10 hover:border-white hover:border-opacity-10"
+      class="group bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg group cursor-pointer border-l border-t border-transparent
+      hover:bg-opacity-10 hover:border-white hover:border-opacity-10 transition-all ease-brand duration-250"
     >
       <Link
         :link="socialMediaSite.link"

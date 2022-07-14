@@ -31,13 +31,18 @@
             :auto-destroy="true"
             :delete-instance-on-destroy="true"
             :cleanup-styles-on-destroy="false"
+            class="rounded-xl overflow-hidden"
           >
             <swiper-slide v-for="(item, index) in popularSearchSuggestions" :key="index" class="!w-[fit-content]">
-              <Link :link="`/pencarian?q=${encodeURI(item)}`" class="min-w-[182px] h-[54px] bg-white rounded-xl px-[14px] flex items-center justify-between">
-                <p class="font-bold text-gray-800 text-base leading-6">
+              <Link
+                :link="`/pencarian?q=${encodeURI(item)}`"
+                class="min-w-[182px] h-[54px] bg-white group hover:bg-green-600 rounded-xl px-[14px] flex items-center justify-between
+                transition-colors ease-brand duration-300"
+              >
+                <p class="font-bold text-gray-800 text-base leading-6 group-hover:text-white">
                   {{ item }}
                 </p>
-                <Icon name="open-new-tab" size="14px" class="text-green-800" />
+                <Icon name="open-new-tab" size="14px" class="text-green-800 group-hover:text-white" />
               </Link>
             </swiper-slide>
           </swiper>
