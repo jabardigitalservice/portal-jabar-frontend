@@ -35,13 +35,15 @@
             >
               <div
                 class="w-[275px] h-[253px] md:w-[400px] md:h-[230px] lg:w-full lg:h-full flex flex-col gap-4 group
-              bg-white p-6 rounded-lg border border-white hover:border-blue-gray-50 hover:shadow"
+              bg-white p-6 rounded-lg border border-white hover:border-green-700 hover:shadow transition-colors ease-brand duration-250"
               >
                 <LazyImg :src="menu.icon" :alt="menu.title" width="32" height="32" />
-                <h3 class="font-bold text-xl md:text-2xl leading-normal group-hover:text-green-800">
-                  {{ menu.title }}
-                </h3>
-                <p class="text-sm leading-6 text-gray-600 group-hover:text-blue-gray-800">
+                <Link :link="menu.link">
+                  <h3 class="font-bold text-xl md:text-2xl leading-normal group-hover:text-green-700">
+                    {{ menu.title }}
+                  </h3>
+                </Link>
+                <p class="text-sm leading-6 text-blue-gray-800 group-hover:text-blue-gray-900">
                   {{ menu.description }}
                 </p>
                 <Link :link="menu.link" class="self-start">
@@ -67,13 +69,16 @@
         <li
           v-for="menu in menus"
           :key="menu.id"
-          class="flex flex-col gap-4 group bg-white p-6 rounded-lg border border-white hover:border-blue-gray-50 hover:shadow"
+          class="flex flex-col gap-4 group bg-white p-6 rounded-lg border border-white hover:border-green-700 hover:shadow
+          transition-colors ease-brand duration-250"
         >
           <LazyImg :src="menu.icon" :alt="menu.title" width="32" height="32" />
-          <h3 class="font-bold text-2xl leading-normal group-hover:text-green-800">
-            {{ menu.title }}
-          </h3>
-          <p class="text-sm leading-6 text-gray-600 group-hover:text-blue-gray-800">
+          <Link :link="menu.link" class="self-start">
+            <h3 class="font-bold text-2xl leading-normal group-hover:text-green-700">
+              {{ menu.title }}
+            </h3>
+          </Link>
+          <p class="text-sm leading-6 text-blue-gray-600 group-hover:text-blue-gray-900">
             {{ menu.description }}
           </p>
           <Link :link="menu.link" class="self-start">
