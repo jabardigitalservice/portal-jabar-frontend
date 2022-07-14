@@ -13,7 +13,7 @@
           '!w-[72px] !h-[72px]' : small
         }"
       >
-        <img
+        <LazyImg
           v-if="image"
           :src="image"
           :alt="title"
@@ -23,14 +23,14 @@
             'group-hover:scale-110 transition-all ease-in duration-150' : true,
             'w-full h-full object-cover object-center': domain.type !== 'featured_program'
           }"
-        >
-        <img
+        />
+        <LazyImg
           v-else
           src="/icons/program-unggulan/logo-placeholder.svg"
           alt="gambar tidak ditemukan"
           width="60"
           height="60"
-        >
+        />
       </div>
     </a>
     <div class="w-full flex flex-col">
