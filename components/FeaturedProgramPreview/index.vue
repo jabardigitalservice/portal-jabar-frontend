@@ -35,7 +35,7 @@
             >
               <div
                 class="w-[275px] h-[253px] md:w-[400px] md:h-[230px] lg:w-full lg:h-full flex flex-col gap-4 group
-              bg-white p-6 rounded-lg border border-white hover:border-green-700 hover:shadow transition-colors ease-brand duration-250"
+              bg-white p-6 rounded-xl border border-white hover:border-green-700 hover:shadow transition-colors ease-brand duration-250"
               >
                 <LazyImg :src="menu.icon" :alt="menu.title" width="32" height="32" />
                 <Link :link="menu.link">
@@ -69,7 +69,7 @@
         <li
           v-for="menu in menus"
           :key="menu.id"
-          class="flex flex-col gap-4 group bg-white p-6 rounded-lg border border-white hover:border-green-700 hover:shadow
+          class="flex flex-col gap-4 group bg-white p-6 rounded-xl border border-white hover:border-green-700 hover:shadow
           transition-colors ease-brand duration-250"
         >
           <LazyImg :src="menu.icon" :alt="menu.title" width="32" height="32" />
