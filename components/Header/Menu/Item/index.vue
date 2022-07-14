@@ -1,5 +1,5 @@
 <template>
-  <ul v-show="isMenuActive" class="bg-green-800 w-full absolute top-full left-0 border-t border-white">
+  <ul v-show="isMenuActive" class="bg-green-primary w-full absolute top-full left-0 border-t border-green-400">
     <BaseContainer>
       <div
         class="flex mx-auto items-start pt-6 pb-10 bg-no-repeat"
@@ -58,6 +58,10 @@
 
 <script>
 export default {
+  transition: {
+    name: 'home',
+    mode: 'out-in'
+  },
   props: {
     id: {
       type: Number,
