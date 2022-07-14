@@ -8,7 +8,7 @@
         </h2>
 
         <!-- Sitemap Details (Mobile Only) -->
-        <section class="min-w-0 flex flex-col divide-y divide-green-500 -mt-4 lg:hidden">
+        <section class="min-w-0 flex flex-col divide-y divide-green-400 -mt-4 lg:hidden">
           <details
             v-for="navigation in navigationMenu"
             :key="`details-${navigation.id}`"
@@ -33,7 +33,7 @@
         </section>
 
         <!-- Sitemap Details (Large Screen)  -->
-        <section class="min-w-0 w-full hidden divide-x divide-green-500 justify-between lg:flex lg:-ml-8 xl:-ml-16">
+        <section class="min-w-0 w-full hidden divide-x divide-green-400 justify-between lg:flex lg:-ml-8 xl:-ml-16">
           <div
             v-for="navigation in navigationMenu"
             :key="`details-${navigation.id}`"
