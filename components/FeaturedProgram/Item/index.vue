@@ -7,14 +7,14 @@
       class="inline-flex w-10 h-10 p-1 items-center justify-center mb-1 rounded-full"
       :class="[icon ? 'bg-white' : 'bg-gray-200']"
     >
-      <img
+      <LazyImg
         v-if="icon"
         :src="icon"
         :alt="title"
-        width="32px"
-        height="32px"
+        width="32"
+        height="32"
         class="min-h-full object-center object-contain"
-      >
+      />
     </figure>
     <h2
       :title="title"
