@@ -47,7 +47,7 @@
                     <h3 class="font-bold text-blue-gray-600 ">
                       {{ item.title }}
                     </h3>
-                    <p class="text-sm leading-5 text-blue-gray-300 ">
+                    <p class="text-sm leading-5 text-blue-gray-600 ">
                       {{ item.description }}
                     </p>
                   </a>
@@ -87,7 +87,7 @@
               <li
                 v-for="item in menu.items"
                 :key="item.id"
-                class="rounded-md flex justify-start items-start px-4 py-3 group hover:bg-green-50"
+                class="rounded-md flex justify-start items-start px-4 py-3 group hover:bg-green-50 transition-all ease-brand duration-250"
               >
                 <a
                   :href="item.link"
@@ -95,16 +95,19 @@
                   rel="noreferrer"
                   class="w-full flex flex-col gap-1"
                 >
-                  <Icon
-                    :src="item.icon"
-                    size="24px"
-                    :alt="item.title"
-                    class="opacity-40 filter grayscale group-hover:grayscale-0 group-hover:opacity-100"
-                  />
+                  <div class="min-w-0 flex justify-between items-center">
+                    <Icon
+                      :src="item.icon"
+                      size="24"
+                      :alt="item.title"
+                      class="opacity-40 filter grayscale group-hover:grayscale-0 group-hover:opacity-100"
+                    />
+                    <Icon name="open-new-tab" size="14px" class="text-transparent group-hover:text-green-800" />
+                  </div>
                   <h3 class="font-bold text-blue-gray-600 group-hover:text-green-800">
                     {{ item.title }}
                   </h3>
-                  <p class="text-sm leading-5 text-blue-gray-300 group-hover:text-blue-gray-800">
+                  <p class="text-sm leading-5 text-blue-gray-600 group-hover:text-blue-gray-900">
                     {{ item.description }}
                   </p>
                 </a>
