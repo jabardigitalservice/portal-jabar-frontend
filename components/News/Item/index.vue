@@ -2,7 +2,7 @@
   <article
     ref="news-item"
     class="min-h-[88px] flex overflow-hidden w-full gap-4 border-4 border-transparent rounded-xl group
-    hover:bg-gray-100 hover:border-gray-100 p-1"
+    hover:bg-gray-100 hover:border-gray-100 p-1 transition-colors ease-brand duration-250"
     :class="{ '!min-h-[88px]' : small }"
   >
     <div

@@ -17,7 +17,7 @@
       >
         <button
           class="px-6 py-2 rounded-full font-roboto uppercase cursor-pointer"
-          :class="[isActive(category) ? 'bg-green-800 font-bold text-white': 'bg-transparent text-gray-600']"
+          :class="[isActive(category) ? 'bg-green-700 font-bold text-white': 'bg-transparent text-gray-600']"
           @click.self="setCurrentCategory(category)"
         >
           {{ category }}
