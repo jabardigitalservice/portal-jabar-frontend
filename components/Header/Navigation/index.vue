@@ -57,7 +57,7 @@ export default {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  @apply transition-opacity ease-brand duration-300 opacity-100;
+  @apply transition-opacity ease-brand duration-250 opacity-100;
 }
 
 .fade-enter,

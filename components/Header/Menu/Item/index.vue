@@ -19,7 +19,7 @@
                   class="py-1.5"
                   :src="item.icon"
                   width="52"
-                  height="65"
+                  height="52"
                   :alt="item.title"
                 >
                 <div>
