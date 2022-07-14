@@ -1,6 +1,6 @@
 <template>
   <section class="jabar-contribution md:grid md:grid-cols-1 lg:grid-cols-[minmax(310px,370px),auto] gap-6 md:p-6">
-    <div class="bg-green-700 rounded-lg text-white p-4 flex flex-col gap-4 mb-10 md:mb-0">
+    <div class="bg-green-primary rounded-lg text-white p-4 flex flex-col gap-4 mb-10 md:mb-0">
       <div>
         <p class="font-lora font-bold text-2xl text-center lg:text-left mb-2 leading-[44px] xl:leading-10">
           <span class="lg:text-[26px] xl:text-xl">Kontribusi</span> <br class="hidden lg:block"> Provinsi Jawa Barat <br> Terhadap Negara
