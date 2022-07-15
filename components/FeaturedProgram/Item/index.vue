@@ -1,6 +1,6 @@
 <template>
   <article
-    class="w-full bg-white py-3 px-4 group cursor-pointer rounded-lg hover:bg-[#F0FBF4]"
+    class="w-full bg-white py-3 px-4 group cursor-pointer rounded-lg hover:bg-[#F0FBF4] transition-colors ease-brand duration-250"
     v-on="$listeners"
   >
     <figure

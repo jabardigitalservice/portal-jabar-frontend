@@ -9,7 +9,7 @@
           />
           <div
             v-if="ongoing"
-            class="animate-ping w-2 h-2 rounded-full absolute z-10 top-0 border-2 border-green-800 bg-white"
+            class="animate-ping w-2 h-2 rounded-full absolute z-10 top-0 border-2 border-green-700 bg-white"
           />
         </div>
         <div
@@ -19,7 +19,7 @@
         />
       </div>
       <div
-        class="flex gap-2 w-full px-3 py-2 rounded-lg"
+        class="flex gap-2 w-full px-3 py-2 rounded-lg transition-colors ease-brand duration-250"
         :class="cardClass"
         @click="toggleEventDetail"
       >
@@ -71,7 +71,7 @@
               <p class="text-xs text-blue-gray-200">
                 Kategori Acara
               </p>
-              <p class="text-sm text-green-800 bg-green-50 px-2 py-1 rounded-md whitespace-nowrap">
+              <p class="text-sm text-green-700 bg-green-50 px-2 py-1 rounded-md whitespace-nowrap">
                 {{ category }}
               </p>
             </div>
@@ -261,48 +261,48 @@ export default {
     circleClass () {
       return {
         'bg-gray-300': this.notStarted,
-        'border-2 border-green-800 bg-white': this.ongoing,
-        'bg-green-800': this.done
+        'border-2 border-green-700 bg-white': this.ongoing,
+        'bg-green-700': this.done
       }
     },
     borderClass () {
       return {
         'border-gray-300': this.notStarted,
-        'border-green-800': this.ongoing || this.done
+        'border-green-700': this.ongoing || this.done
       }
     },
     cardClass () {
       return {
         'bg-gray-50 group hover:bg-green-50': this.notStarted,
-        'bg-green-800 bg-opacity-100': this.ongoing,
-        'bg-green-50 bg-opacity-50 border border-green-800': this.done
+        'bg-green-700 bg-opacity-100': this.ongoing,
+        'bg-green-50 bg-opacity-50 border border-green-700': this.done
       }
     },
     titleClass () {
       return {
-        'group-hover:text-green-800': this.notStarted,
+        'group-hover:text-green-700': this.notStarted,
         'text-white': this.ongoing,
-        'text-green-800': this.done
+        'text-green-700': this.done
       }
     },
     categoryClass () {
       return {
-        'text-green-800 bg-gray-200 bg-opacity-75 group-hover:bg-green-100 group-hover:bg-opacity-40': this.notStarted,
-        'text-white bg-green-900 bg-opacity-50': this.ongoing,
-        'text-green-800 bg-green-100 bg-opacity-40': this.done
+        'text-green-700 bg-gray-200 bg-opacity-75 group-hover:bg-green-100 group-hover:bg-opacity-40': this.notStarted,
+        'text-white bg-green-800': this.ongoing,
+        'text-green-700 bg-green-100 bg-opacity-40': this.done
       }
     },
     timeClass () {
       return {
         'text-gray-600': this.notStarted,
-        'text-green-800': this.done,
+        'text-green-700': this.done,
         'text-white': this.ongoing
       }
     },
     statusClass () {
       return {
         'text-gray-600': this.notStarted,
-        'text-green-800': this.done,
+        'text-green-700': this.done,
         'text-white': this.ongoing
       }
     }

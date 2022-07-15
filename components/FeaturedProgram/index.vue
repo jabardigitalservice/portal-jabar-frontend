@@ -13,6 +13,7 @@
               v-model="searchValue"
               placeholder="Cari Program"
               small
+              :clear="false"
             />
           </section>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation__sidebar top-12 sm:top-16 left-0 right-0 bottom-0 fixed bg-green-800 z-50 border-t border-green-500 lg:hidden">
+  <div class="navigation__sidebar top-12 sm:top-16 left-0 right-0 bottom-0 fixed bg-green-primary z-50 border-t border-green-500 lg:hidden">
     <BaseContainer class="h-full">
       <div class="navigation__sidebar__container py-4 w-full h-full flex flex-col overflow-y-auto">
         <section class="min-w-0 flex flex-col">

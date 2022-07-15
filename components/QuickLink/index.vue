@@ -10,10 +10,10 @@
             Dapatkan kemudahaan akses ke beberapa layanan Pemerintah Provinsi Jawa Barat untuk kebutuhan Anda.
           </p>
         </li>
-        <li v-for="menu in menus" :key="menu.id" class="group px-4 py-3 rounded-md hover:bg-green-50">
+        <li v-for="menu in menus" :key="menu.id" class="group px-4 py-3 rounded-md hover:bg-green-50 transition-colors ease-brand duration-250">
           <Link :link="menu.link" class="flex flex-col gap-4">
             <LazyImg :src="menu.icon" :alt="menu.title" width="32" height="32" />
-            <p class="font-roboto font-bold group-hover:text-green-800">
+            <p class="font-roboto font-bold group-hover:text-green-700">
               {{ menu.title }}
             </p>
             <p class="text-sm text-gray-600 leading-6 group-hover:text-blue-gray-800 focus:outline-none">

@@ -7,10 +7,10 @@
       <p class="text-sm leading-6 text-blue-gray-800 mb-8">
         Gubernur Jawa Barat adalah kepala daerah tingkat I yang memegang pemerintahan di Jawa Barat bersama dengan Wakil Gubernur dan 120 anggota Dewan Perwakilan Rakyat Daerah Jawa Barat. Gubernur dan Wakil Gubernur Jawa Barat dipilih melalui pemilihan umum yang dilaksanakan 5 tahun sekali.
       </p>
-      <div class="grid grid:cols-1 lg:grid-cols-[1fr,auto] gap-8 items-center bg-green-700 rounded-[18px] py-4 px-7 md:p-6 relative">
+      <div class="grid grid:cols-1 lg:grid-cols-[1fr,auto] gap-8 items-center bg-green-primary rounded-[18px] py-4 px-7 md:p-6 relative">
         <div class="hidden md:block absolute left-0 bottom-0">
           <svg width="117" height="114" viewBox="0 0 117 114" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.62939e-06 0C31.0303 2.6432e-06 60.7897 12.0107 82.7315 33.3898C104.673 54.769 117 83.7653 117 114H79.6837C79.6837 93.4085 71.2885 73.6603 56.3449 59.0999C41.4013 44.5394 21.1334 36.3595 7.62939e-06 36.3595V0Z" fill="#008444" />
+            <path d="M7.62939e-06 0C31.0303 2.6432e-06 60.7897 12.0107 82.7315 33.3898C104.673 54.769 117 83.7653 117 114H79.6837C79.6837 93.4085 71.2885 73.6603 56.3449 59.0999C41.4013 44.5394 21.1334 36.3595 7.62939e-06 36.3595V0Z" fill="#069550" />
           </svg>
         </div>
         <div class="relative z-10">
@@ -22,7 +22,7 @@
           </p>
         </div>
         <div class="min-w-0 flex flex-col md:flex-row md:justify-center w-full lg:flex-row gap-4">
-          <div class="p-4 bg-green-800 rounded-2xl flex flex-col justify-center items-center w-full min-w-[200px] md:max-w-[200px]">
+          <div class="p-4 bg-green-700 rounded-2xl flex flex-col justify-center items-center w-full min-w-[200px] md:max-w-[200px]">
             <p class="font-lato font-bold text-sm leading-6 text-green-300">
               Gubernur
             </p>
@@ -30,11 +30,11 @@
               Dr. H. Moch. Ridwan Kamil
             </p>
             <img class="mb-3" src="/images/about/pimpinan/ridwan-kamil.png" alt="Ridwan Kamil" width="103" height="125">
-            <button class="bg-green-700 py-[10px] text-sm rounded-lg text-white w-full hover:bg-[#008f4a]" @click="setSelectedProfile('gubernur')">
+            <button class="bg-green-primary py-[10px] text-sm rounded-lg text-white w-full hover:bg-green-800 transition-colors ease-brand duration-250" @click="setSelectedProfile('gubernur')">
               Lihat Profil
             </button>
           </div>
-          <div class="p-4 bg-green-800 rounded-2xl flex flex-col justify-center items-center w-full min-w-[200px] md:max-w-[200px]">
+          <div class="p-4 bg-green-700 rounded-2xl flex flex-col justify-center items-center w-full min-w-[200px] md:max-w-[200px]">
             <p class="font-lato font-bold text-sm leading-6 text-green-300">
               Wakil Gubernur
             </p>
@@ -42,7 +42,7 @@
               H. Uu Ruzhanul Ulum
             </p>
             <img class="mb-3" src="/images/about/pimpinan/ruzhanul-ulum.png" alt="Ruzhanul Ulum" width="103" height="125">
-            <button class="bg-green-700 py-[10px] text-sm rounded-lg text-white w-full hover:bg-[#008f4a]" @click="setSelectedProfile('wakil gubernur')">
+            <button class="bg-green-primary py-[10px] text-sm rounded-lg text-white w-full hover:bg-green-800 transition-colors ease-brand duration-250" @click="setSelectedProfile('wakil gubernur')">
               Lihat Profil
             </button>
           </div>

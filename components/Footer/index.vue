@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-green-800">
+  <footer class="bg-green-primary">
     <BaseContainer>
       <div
         class="py-6 md:py-12 flex flex-col gap-6 md:gap-12 bg-no-repeat"

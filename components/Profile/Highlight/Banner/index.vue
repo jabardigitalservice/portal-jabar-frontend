@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-[288px] lg:h-[371px] lg:max-h-[371px] bg-green-700 rounded-xl grid grid-cols-1 md:grid-cols-2 items-center md:gap-x-0 lg:gap-x-12">
+  <section class="min-h-[288px] lg:h-[371px] lg:max-h-[371px] bg-green-primary rounded-xl grid grid-cols-1 md:grid-cols-2 items-center md:gap-x-0 lg:gap-x-12">
     <div class="flex flex-col justify-center p-4 md:px-6 xl:px-8 xl:py-12">
       <p class="font-lora font-bold text-2xl md:text-xl xl:text-[28px] text-center md:text-left text-white xl:mb-4">
         Dibalik Layar
