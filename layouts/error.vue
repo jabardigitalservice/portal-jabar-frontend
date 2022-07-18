@@ -3,7 +3,7 @@
     <Jumbotron />
     <section class="w-full bg-gray-200">
       <BaseContainer class="relative -top-24 z-20">
-        <div class="py-[120px] rounded-xl bg-white flex flex-col gap-8 justify-center items-center">
+        <div class="px-3 md:px-4 lg:px-6 py-[120px] rounded-xl bg-white flex flex-col gap-8 justify-center items-center">
           <img
             src="/images/404.svg"
             width="295"
