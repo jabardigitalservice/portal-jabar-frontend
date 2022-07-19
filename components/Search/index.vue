@@ -31,7 +31,11 @@
             <h3 class="font-roboto font-medium text-[22px] text-center md:text-left leading-[26px]">
               Layanan Publik <br class="md:hidden"> terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
             </h3>
-            <Link :link="`/pencarian/layanan?q=${searchKeyword}`" tabindex="-1">
+            <Link
+              v-show="hasData(publicServiceData) && publicServiceData.length >= 3"
+              :link="`/pencarian/layanan?q=${searchKeyword}`"
+              tabindex="-1"
+            >
               <Button type="button" variant="secondary">
                 Lihat Semua Layanan Publik
                 <Icon name="open-new-tab" size="14px" />
@@ -52,7 +56,11 @@
             <h3 class="font-roboto text-center md:text-left font-medium text-[22px] leading-[26px]">
               Berita Jawa Barat <br class="md:hidden"> terkait <strong class="text-green-700">{{ searchKeyword }}</strong>
             </h3>
-            <Link :link="`/pencarian/berita?q=${searchKeyword}`" tabindex="-1">
+            <Link
+              v-show="hasData(relatedNewsData) && relatedNewsData.length >= 3"
+              :link="`/pencarian/berita?q=${searchKeyword}`"
+              tabindex="-1"
+            >
               <Button type="button" variant="secondary">
                 Lihat Semua Berita Jawa Barat
                 <Icon name="open-new-tab" size="14px" />
