@@ -16,6 +16,7 @@
             >
               <swiper
                 v-show="isSwiperReady"
+                ref="aboutJabarMenuSwiper"
                 :auto-update="true"
                 :auto-destroy="true"
                 :delete-instance-on-destroy="true"
@@ -195,10 +196,17 @@ export default {
       isDropdownOpen: false
     }
   },
+  computed: {
+    swiper () {
+      return this.$refs.aboutJabarMenuSwiper.$swiper
+    }
+  },
   watch: {
     $route: {
       handler () {
         this.closeDropdown()
+        this.setActiveMenuBasedOnRoute()
+        this.slideToActiveIndex()
       }
     }
   },
@@ -213,6 +221,15 @@ export default {
     },
     closeDropdown () {
       this.isDropdownOpen = false
+    },
+    setActiveMenuBasedOnRoute () {
+      const index = this.menus.findIndex(menu => menu.items.some(item => item.link === this.$route.path))
+      this.activeMenuIndex = index
+    },
+    slideToActiveIndex () {
+      if (this.isSwiperReady) {
+        this.swiper.slideTo(this.activeMenuIndex)
+      }
     }
   }
 }
