@@ -1,6 +1,6 @@
 <template>
   <section class="w-full min-w-0 flex flex-col gap-6">
-    <h1 class="font-bold font-lora text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-[56px]">
+    <h1 class="font-bold font-lora text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-9 md:leading-[56px]">
       Daftar Kabupaten Kota
     </h1>
     <InputSearch
