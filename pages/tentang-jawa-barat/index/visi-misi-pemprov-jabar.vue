@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left mb-8 !leading-[56px] max-w-[35ch] px-4 md:px-0">
+    <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left mb-8 leading-9 md:leading-[56px] max-w-[35ch] px-4 md:px-0">
       Visi Misi Pemerintahan Provinsi Jawa Barat 2018-2023
     </h2>
     <div class="grid grid-cols-2 items-center px-0 md:px-6 lg:px-8 mb-8 md:gap-8 lg:gap-12">

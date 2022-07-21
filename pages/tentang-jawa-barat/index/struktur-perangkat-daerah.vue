@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mb-16">
-      <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-[56px] mb-4">
+      <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-9 md:leading-[56px] mb-4">
         Struktur Perangkat Daerah
       </h2>
       <p class="text-sm leading-6 text-blue-gray-800 mb-6 md:mb-8">
