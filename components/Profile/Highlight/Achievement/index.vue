@@ -114,7 +114,7 @@
     <div class="flex justify-center mt-8">
       <Link link="/selayang-pandang/prestasi-jawa-barat" tabindex="-1">
         <Button class="max-w-max text-left md:text-center" type="button" variant="secondary">
-          Kenali Lebih Lanjut Tentang Pemerintahan Jawa Barat
+          Lihat Semua Penghargaan Provinsi Jawa Barat
           <Icon name="open-new-tab" size="14px" />
         </Button>
       </Link>
