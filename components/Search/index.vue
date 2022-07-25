@@ -91,6 +91,7 @@
             />
             <div class="mt-6 flex justify-center items-center">
               <Link
+                v-show="hasData(relatedSearchData) && relatedSearchData.length >= 3"
                 :link="`/pencarian/lainnya?q=${searchKeyword}`"
                 tabindex="-1"
                 class="w-full xl:w-auto"
