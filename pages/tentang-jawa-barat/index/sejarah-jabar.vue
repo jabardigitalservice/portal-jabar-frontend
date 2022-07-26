@@ -1,21 +1,21 @@
 <template>
   <section>
     <div class="mb-9">
-      <h2 class="font-lora font-bold text-green-700 text-4xl leading-[56px] mb-4">
+      <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-9 md:leading-[56px] mb-4">
         Sejarah Jawa Barat
       </h2>
-      <p class="text-sm leading-6 text-blue-gray-800 mb-8">
+      <p class="text-sm leading-6 text-blue-gray-800 mb-12">
         Jawa Barat merupakan jantung budaya Sunda atau biasa disebut sebagai Tatar Sunda/Pasundan bersama dengan provinsi Banten meskipun banyak pendatang yang menetap dan tinggal dari berbagai suku bangsa lainnya di Indonesia terutama di wilayah metropolitan Jakarta dan migrasi di Cirebon sejak berabad abad lama.
       </p>
     </div>
     <ul class="flex flex-col gap-4 relative">
-      <div class="absolute h-[calc(100%-80px)] w-[2px] left-[52px] bg-green-700 top-6" />
-      <li v-for="item in history" :key="item.id" class="p-6 rounded-lg min-h-[100px]">
+      <div class="absolute h-[calc(100%-80px)] w-[2px] left-[40px] md:left-[52px] bg-green-700 top-6" />
+      <li v-for="item in history" :key="item.id" class="px-3 py-4 md:p-6 rounded-lg min-h-[100px]">
         <div class="flex gap-6">
           <p class="absolute text-xs text-center rounded-full p-2 bg-green-700 text-white self-start w-14 h-14 flex-shrink-0 flex justify-center items-center">
             {{ item.year }}
           </p>
-          <div class="pl-20">
+          <div class="pl-[70px] md:pl-20">
             <p class="text-blue-gray-700 mb-2 text-sm">
               {{ item.subtitle }}
             </p>

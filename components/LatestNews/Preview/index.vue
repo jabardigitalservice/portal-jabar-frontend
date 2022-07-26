@@ -1,38 +1,52 @@
 <template>
-  <div class="col-span-5 rounded-lg overflow-hidden">
+  <div class="news__preview w-full h-[536px] lg:col-span-5 rounded-lg overflow-hidden">
     <Carousel :items="items" hover pause-on-hover>
       <template #content="{ item, currentIndex, prev, next }">
-        <div
-          class="absolute bottom-0 w-full bg-black bg-opacity-50 transition duration-500 ease-in-out group-hover:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg px-8 py-6 text-white"
-          style="height: 47%"
-        >
+        <div class="news__preview__content visible inline-block h-[67%] md:h-[45%] absolute bottom-0 w-full bg-black bg-opacity-50 transition duration-500 ease-in-out group-hover:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg px-8 py-6 text-white">
           <div class="flex flex-col h-full">
+            <!-- Navigation (Mobile Only) -->
+            <div class="md:hidden flex items-center justify-between py-2 px-3 rounded-full bg-white bg-opacity-20 mb-4">
+              <div class="cursor-pointer" @click="prev">
+                <Icon name="chevron-left" size="10px" />
+              </div>
+              <p class="text-sm text-white">
+                <span class="font-bold mr-1">{{ currentIndex + 1 }}</span>dari {{ items.length }}
+              </p>
+              <div class="cursor-pointer" @click="next">
+                <Icon name="chevron-right" size="10px" />
+              </div>
+            </div>
+
             <div class="flex-grow">
               <p class="font-roboto text-sm uppercase leading-relaxed tracking-wider opacity-80 mb-1">
                 {{ item.category }}
               </p>
-              <h3 class="line-clamp-2 font-lora font-bold text-3xl leading-normal mb-3">
+              <h3 class="news__preview__title line-clamp-3 md:line-clamp-2 font-lora font-bold text-2xl md:text-3xl leading-normal max-h-[108px] md:max-h-[90px] mb-3">
                 {{ item.title }}
               </h3>
-              <div class="flex gap-2 opacity-60 text-xs">
-                <div class="flex items-center gap-2">
+              <div class="flex flex-col md:flex-row gap-2 opacity-60 text-xs md:divide-x divide-white">
+                <div class="flex items-center gap-2 md:pr-2">
                   <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
-                  <p>{{ formatDate(item.created_at) }}</p>
+                  <p>{{ formatDate(item.published_at) }}</p>
                 </div>
-                <div>|</div>
-                <div class="flex items-center gap-2 capitalize">
+                <div class="md:pl-2 flex items-center gap-2 capitalize">
                   <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-                  <p>Penulis: {{ item.author }}</p>
+                  <p class="line-clamp-1">
+                    Penulis: {{ item.author }}
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="flex justify-between items-center">
+
+            <div class="md:flex justify-between items-center">
               <Link :link="`/berita/${item.slug}`">
-                <button type="button" class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg">
+                <button type="button" class="w-full text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg">
                   Baca Selengkapnya
                 </button>
               </Link>
-              <div class="flex items-center gap-4">
+
+              <!-- Navigation (Tablet and Dekstop Only) -->
+              <div class="hidden md:flex items-center gap-4">
                 <div class="cursor-pointer" @click="prev">
                   <Icon name="chevron-left" size="10px" />
                 </div>
@@ -108,3 +122,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* Fallback style for Safari or browser that doesn't support line-clamp */
+.news__preview .news__preview__title {
+  overflow: hidden;
+  line-break: after-white-space;
+}
+</style>

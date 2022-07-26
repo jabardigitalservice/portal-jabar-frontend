@@ -39,11 +39,11 @@
     <!-- Social Media -->
     <div class="flex items-start gap-3">
       <Icon src="/icons/network.svg" alt="Lokasi" size="20px" class="py-1" />
-      <div class="flex flex-col gap-2">
+      <div class="flex w-full flex-col gap-2">
         <p class="font-bold">
           Media Sosial
         </p>
-        <div class="w-full grid grid-cols-4 gap-6">
+        <div class="w-full flex justify-between md:justify-start gap-6">
           <a
             v-for="socialMediaSite in socialMediaSites"
             :key="socialMediaSite.id"

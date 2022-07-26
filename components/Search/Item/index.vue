@@ -2,7 +2,7 @@
   <article
     class="search-item min-w-0 w-full p-3 group rounded-xl cursor-pointer border border-transparent
     transition-all duration-150 ease-out hover:border-[#E9EDF4] hover:shadow-md"
-    :class="view === 'grid' ? 'flex flex-col' : 'flex gap-4'"
+    :class="view === 'grid' ? 'flex flex-col min-h-[320px]' : 'flex gap-4 min-h-[147px]'"
   >
     <a :href="link" target="_blank" rel="noopener" :aria-label="title" :title="title">
       <div
@@ -10,10 +10,10 @@
         :class="{
           'w-[120px] h-[120px]' : view === 'list',
           'w-full h-[120px] mb-6': view === 'grid',
-          'w-[72px] h-[72px]' : small
+          '!w-[72px] !h-[72px]' : small
         }"
       >
-        <img
+        <LazyImg
           v-if="image"
           :src="image"
           :alt="title"
@@ -23,14 +23,14 @@
             'group-hover:scale-110 transition-all ease-in duration-150' : true,
             'w-full h-full object-cover object-center': domain.type !== 'featured_program'
           }"
-        >
-        <img
+        />
+        <LazyImg
           v-else
           src="/icons/program-unggulan/logo-placeholder.svg"
           alt="gambar tidak ditemukan"
           width="60"
           height="60"
-        >
+        />
       </div>
     </a>
     <div class="w-full flex flex-col">
@@ -109,7 +109,15 @@ export default {
       return this.item?.excerpt || '-'
     },
     date () {
-      return this.item?.created_at ? this.formatDate(new Date(this.item.created_at)) : '-'
+      if (this.item?.published_at) {
+        return this.formatDate(new Date(this.item.published_at))
+      }
+
+      if (this.item?.created_at) {
+        return this.formatDate(new Date(this.item.created_at))
+      }
+
+      return '-'
     },
     link () {
       const domain = this.item?.domain || null

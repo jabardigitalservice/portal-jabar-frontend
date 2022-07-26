@@ -1,58 +1,58 @@
 <template>
-  <div>
-    <div class="absolute top-24 w-full z-10">
+  <div class="news__header w-full">
+    <div class="absolute w-full top-[5rem] md:top-24 lg:top-28 z-10">
       <BaseContainer>
         <Breadcrumb class="mb-6" />
       </BaseContainer>
     </div>
-    <div class="w-full" style="height: 625px;">
-      <div
-        class="w-full absolute top-0 h-full"
-        style="background: linear-gradient(100deg, rgba(0,40,19,0.9) 0%, rgba(0,32,39,0.8) 55%);"
-      />
+    <div class="h-[650px] bg-gray-800">
       <Carousel :items="items" :duration="10000" pause-on-hover>
         <template #filter>
           <div
-            class="w-full h-full absolute top-0"
-            style="background: radial-gradient(circle, rgba(0,23,28,0.08) 0%, rgba(0,11,14,0.59) 50%, rgba(0,11,14,0.82) 100%);"
+            class="absolute inset-0"
+            style="background: radial-gradient(56.33% 56.33% at 50.59% 43.67%, rgba(0, 23, 28, 0.5) 0%, rgba(0, 11, 14, 0.7) 46.15%, rgba(0, 11, 14, 0.82) 100%)"
           />
         </template>
         <template #content="{ item, currentIndex, prev, next }">
-          <div class="absolute bottom-0 w-full text-white">
-            <BaseContainer class="grid grid-cols-1 lg:grid-cols-9">
-              <div class="flex flex-col justify-end h-full lg:col-span-6 lg:pr-20 xl:pr-32 pb-10">
+          <div class="absolute w-full bottom-0 text-white">
+            <BaseContainer class="grid grid-cols-1 xl:grid-cols-9">
+              <div class="flex flex-col justify-end h-full lg:col-span-6 xl:pr-32 pb-6 md:pb-10">
                 <div>
                   <p class="font-roboto uppercase leading-relaxed tracking-wider opacity-80 mb-1">
                     {{ item.category }}
                   </p>
-                  <h3 class="line-clamp-2 font-lora font-bold text-4xl leading-normal mb-6">
+                  <h3 class="news__header__title line-clamp-3 md:line-clamp-2 lg:line-clamp-3 text-[23px] font-lora font-bold md:text-3xl lg:text-4xl leading-9 md:!leading-[48px] mb-6 max-h-[108px] lg:max-h-full">
                     {{ item.title }}
                   </h3>
-                  <div class="flex gap-2 opacity-60 text-sm mb-6">
+                  <div class="flex flex-col md:flex-row gap-2 opacity-100 md:opacity-60 text-sm mb-6">
                     <div class="flex items-center gap-2">
                       <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
-                      <p>{{ formatDate(item.published_at) }}</p>
+                      <p class="text-sm md:text-base">
+                        {{ formatDate(item.published_at) }}
+                      </p>
                     </div>
-                    <div class="hidden sm:block">
+                    <div class="hidden md:block">
                       |
                     </div>
-                    <div class="hidden sm:flex sm:items-center sm:gap-2">
+                    <div class="flex items-center gap-2">
                       <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-                      <p>Penulis: {{ item.author }}</p>
+                      <p class="text-sm md:text-base capitalize">
+                        Penulis: {{ item.author }}
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div class="flex justify-between items-center">
+                <div class="md:flex md:justify-between md:items-center">
                   <Link :link="`/berita/${item.slug}`">
-                    <button type="button" class="border border-white border-opacity-30 px-4 py-2 rounded-lg">
+                    <button type="button" class="w-full md:w-[fit-content] border border-white border-opacity-30 px-4 py-2 rounded-lg mb-4 md:mb-0">
                       Baca Selengkapnya
                     </button>
                   </Link>
-                  <div class="flex items-center gap-4">
+                  <div class="flex justify-between md:justify-start items-center gap-4 h-[38px] md:rounded-full md:bg-[#383838] md:bg-opacity-50 px-2">
                     <div class="cursor-pointer" @click="prev">
                       <Icon name="chevron-left" size="10px" />
                     </div>
-                    <p class="text-gray-500">
+                    <p class="text-gray-500 text-sm md:text-base">
                       <span class="font-bold text-white mr-1">{{ currentIndex + 1 }}</span>dari {{ items.length }}
                     </p>
                     <div class="cursor-pointer" @click="next">
@@ -61,7 +61,58 @@
                   </div>
                 </div>
               </div>
-              <div class="hidden lg:block col-span-3 p-4 rounded-tl-xl rounded-tr-xl bg-white bg-opacity-5 backdrop-filter backdrop-blur-xl border-l border-t border-white border-opacity-10">
+
+              <!-- Related News Swiper (Mobile and Tablet Only) -->
+              <div class="min-h-[153px] md:min-h-[177px] bg-white bg-opacity-5 backdrop-filter backdrop-blur-xl py-3 px-3 md:px-6 rounded-xl border border-white border-opacity-10 mb-6 xl:hidden">
+                <p class="uppercase mb-3 font-bold">
+                  Berita Terkait
+                </p>
+                <swiper
+                  ref="swiper"
+                  :auto-update="true"
+                  :auto-destroy="true"
+                  :delete-instance-on-destroy="true"
+                  :cleanup-styles-on-destroy="true"
+                  :options="swiperOptions"
+                >
+                  <swiper-slide
+                    v-for="news of item.related_news.slice(0, 4)"
+                    :key="news.id"
+                    class="sm:!w-[fit-content]"
+                  >
+                    <Link :link="`/berita/${news.slug}`" class="group">
+                      <div class="h-full sm:min-w-[300px] sm:max-w-[380px] flex gap-3 py-2 bg-white bg-opacity-0 rounded-xl">
+                        <div class="flex-shrink-0 overflow-hidden rounded-xl w-16 h-16 md:w-24 md:h-24">
+                          <img
+                            :src="news.image"
+                            :alt="news.title"
+                            width="64"
+                            height="64"
+                            class="w-full h-full flex-shrink-0 object-cover group-hover:transform group-hover:scale-110 transition duration-500 ease-in-out"
+                          >
+                        </div>
+                        <div class="flex flex-col gap-1">
+                          <p class="text-xs font-medium uppercase opacity-50 group-hover:opacity-100">
+                            {{ news.category }}
+                          </p>
+                          <p class="news__header__title line-clamp-1 md:line-clamp-2 text-sm leading-relaxed max-h-6 sm:max-h-12">
+                            {{ news.title }}
+                          </p>
+                          <div class="flex gap-2">
+                            <Icon src="/icons/calendar.svg" size="14px" alt="Diterbitkan" class="opacity-50 group-hover:opacity-100" />
+                            <p class="text-xs opacity-50 group-hover:opacity-100">
+                              {{ formatDate(news.published_at) }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </swiper-slide>
+                </swiper>
+              </div>
+
+              <!-- Related News List (Dekstop Only) -->
+              <div class="hidden xl:block col-span-3 p-4 rounded-tl-xl rounded-tr-xl bg-white bg-opacity-5 backdrop-filter backdrop-blur-xl border-l border-t border-white border-opacity-10">
                 <p class="p-2 uppercase mb-1 font-bold">
                   Berita Terkait
                 </p>
@@ -109,7 +160,19 @@ import { format, daysDifference, relativeTime } from '~/utils/date'
 export default {
   data () {
     return {
-      items: []
+      items: [],
+      swiperOptions: Object.freeze({
+        slidesPerView: 1,
+        spaceBetween: 16,
+        mousewheel: true,
+        passiveListeners: true,
+        breakpoints: {
+          420: {
+            slidesPerView: 'auto',
+            spaceBetween: 24
+          }
+        }
+      })
     }
   },
   async fetch () {
@@ -156,3 +219,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* Fallback style for Safari or browser that doesn't support line-clamp */
+.news__header .news__header__title {
+  overflow: hidden;
+  line-break: after-white-space;
+}
+</style>

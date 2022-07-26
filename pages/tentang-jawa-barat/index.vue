@@ -7,10 +7,71 @@
     </Jumbotron>
     <section class="w-full bg-gray-200">
       <BaseContainer class="relative -top-24 z-20">
-        <div class="py-8 px-10 rounded-xl bg-white min-h-screen">
-          <div class="grid grid-cols-[268px,auto] gap-6">
-            <!-- Sidebar menu -->
-            <aside class="p-4 border border-gray-200 rounded-xl h-[fit-content]">
+        <div class="p-3 md:p-6 lg:py-8 lg:px-10 rounded-xl bg-white">
+          <div class="about__jabar w-full grid grid-cols-1 xl:grid-cols-[268px,auto] gap-6">
+            <!-- Submenu Swiper (Mobile and Tablet Only) -->
+            <div
+              v-on-clickaway="closeDropdown"
+              class="h-[42px] overflow-hidden xl:hidden"
+            >
+              <swiper
+                v-show="isSwiperReady"
+                ref="aboutJabarMenuSwiper"
+                :auto-update="true"
+                :auto-destroy="true"
+                :delete-instance-on-destroy="true"
+                :cleanup-styles-on-destroy="true"
+                class="w-full"
+                @ready="isSwiperReady = true"
+              >
+                <swiper-slide
+                  v-for="(menu, index) in menus"
+                  :key="menu.id"
+                  class="!w-[fit-content]"
+                >
+                  <div
+                    class="relative min-w-[200px] h-[42px] px-4 flex gap-4 items-center justify-between border-b-2"
+                    :class="activeMenuIndex === index ? 'border-green-700' : 'border-transparent'"
+                    @click="toggleDropdown(index)"
+                  >
+                    <p
+                      class="font-bold"
+                      :class="activeMenuIndex === index ? 'text-green-700' : 'text-gray-500'"
+                    >
+                      {{ menu.title }}
+                    </p>
+                    <Icon
+                      name="chevron-down"
+                      size="16px"
+                      class="transition-all ease-brand duration-250"
+                      :class="[
+                        activeMenuIndex === index ? 'text-green-700' : 'text-gray-500',
+                        activeMenuIndex === index && isDropdownOpen ? '-rotate-180' : 'rotate-0'
+                      ]"
+                    />
+                  </div>
+                </swiper-slide>
+              </swiper>
+              <JdsPopover
+                :value="isDropdownOpen"
+                :options="popoverOptions"
+                class="w-full"
+              >
+                <template #activator>
+                  <div class="w-full" />
+                </template>
+                <JdsPopoverDropdown class="p-3">
+                  <div v-for="item in menus[activeMenuIndex].items" :key="item.id">
+                    <NuxtLink :to="item.link" class="text-sm text-gray-700 hover:text-green-700">
+                      {{ item.label }}
+                    </NuxtLink>
+                  </div>
+                </JdsPopoverDropdown>
+              </JdsPopover>
+            </div>
+
+            <!-- Sidebar menu (Dekstop Only) -->
+            <aside class="hidden xl:block p-4 border border-gray-200 rounded-xl h-[fit-content]">
               <ul v-for="menu in menus" :key="menu.id">
                 <p class="text-sm font-bold text-gray-800 mb-5">
                   {{ menu.title }}
@@ -32,7 +93,12 @@
 </template>
 
 <script>
+import { directive as onClickaway } from 'vue-clickaway'
+
 export default {
+  directives: {
+    onClickaway
+  },
   data () {
     return {
       jumbotron: {
@@ -105,14 +171,84 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      popoverOptions: {
+        strategy: 'fixed',
+        placement: 'bottom-start',
+        modifiers: [
+          {
+            name: 'offset',
+            options: { offset: [0, -4] }
+          },
+          {
+            name: 'sameWidth',
+            enabled: true,
+            fn: ({ state }) => {
+              state.styles.popper.width = `${state.rects.reference.width}px`
+            },
+            phase: 'beforeWrite',
+            requires: ['computeStyles']
+          }
+        ]
+      },
+      activeMenuIndex: 0,
+      isSwiperReady: false,
+      isDropdownOpen: false
+    }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.aboutJabarMenuSwiper.$swiper
+    }
+  },
+  watch: {
+    $route: {
+      handler () {
+        this.closeDropdown()
+        this.setActiveMenuBasedOnRoute()
+        this.slideToActiveIndex()
+      }
+    }
+  },
+  methods: {
+    toggleDropdown (index) {
+      if (this.activeMenuIndex !== index) {
+        this.activeMenuIndex = index
+        this.isDropdownOpen = true
+      } else {
+        this.isDropdownOpen = !this.isDropdownOpen
+      }
+    },
+    closeDropdown () {
+      this.isDropdownOpen = false
+    },
+    setActiveMenuBasedOnRoute () {
+      const index = this.menus.findIndex(menu => menu.items.some(item => item.link === this.$route.path))
+      this.activeMenuIndex = index
+    },
+    slideToActiveIndex () {
+      if (this.isSwiperReady) {
+        this.swiper.slideTo(this.activeMenuIndex)
+      }
     }
   }
 }
 </script>
 
-<style scoped>
-a.nuxt-link-active {
-  @apply font-bold text-green-700
+<style>
+.about__jabar .jds-popover__activator {
+  width: 100% !important;
+}
+
+.about__jabar a.nuxt-link-active {
+  @apply font-bold text-green-700;
+}
+
+.about__jabar .jds-popover-dropdown__body {
+  @apply grid grid-cols-1 gap-4;
+}
+
+.about__jabar .jds-popover__content {
+  z-index: 30 !important;
 }
 </style>

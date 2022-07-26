@@ -1,9 +1,13 @@
 <template>
-  <ul class="absolute h-[740px] top-0 right-6 flex flex-col justify-center gap-6">
+  <ul
+    class="flex w-full md:w-[fit-content] max-w-xl mt-4 justify-between md:justify-center gap-6
+    md:mt-0 md:absolute md:h-[740px] md:top-0 md:right-6 md:flex-col"
+  >
     <li
       v-for="socialMediaSite in socialMediaSites"
       :key="socialMediaSite.id"
-      class="bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg group cursor-pointer border-l border-t border-transparent hover:bg-opacity-10 hover:border-white hover:border-opacity-10"
+      class="group bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg group cursor-pointer border-l border-t border-transparent
+      hover:bg-opacity-10 hover:border-white hover:border-opacity-10 transition-all ease-brand duration-250"
     >
       <Link
         :link="socialMediaSite.link"
@@ -13,7 +17,7 @@
         <Icon
           :name="socialMediaSite.icon"
           size="18px"
-          class="text-white opacity-40 group-hover:opacity-100"
+          class="text-white group-hover:opacity-100 md:opacity-40"
         />
       </Link>
     </li>

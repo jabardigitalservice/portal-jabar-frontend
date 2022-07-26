@@ -16,9 +16,10 @@
       </p>
     </div>
 
-    <!-- Jabar Achievements Slider -->
     <client-only>
+      <!-- Jabar Achievements Slider -->
       <swiper
+        v-show="swiperReady"
         ref="jabarAchievementSwiper"
         :options="swiperOptions"
         :auto-update="true"
@@ -58,11 +59,12 @@
           </div>
         </swiper-slide>
         <template #pagination>
-          <div class="flex justify-between items-center mt-3 md:hidden">
+          <div class="flex w-full justify-between mt-4 md:hidden">
+            <!-- Next Button -->
             <button
+              id="custom-button-prev"
               :disabled="isFirstSlide"
-              class="w-8 h-8 bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
-              @click="prevSlide"
+              class="flex-shrink-0 w-[42px] h-[42px] bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
             >
               <Icon
                 name="chevron-left"
@@ -70,11 +72,13 @@
                 size="16px"
               />
             </button>
-            <div slot="pagination" class="swiper-pagination !static !w-[fit-content]" />
+            <!-- Pagination -->
+            <div id="custom-pagination" class="!w-[fit-content] flex items-center align-center" />
+            <!-- Prev Button -->
             <button
+              id="custom-button-next"
               :disabled="isLastSlide"
-              class="w-8 h-8 bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
-              @click="nextSlide"
+              class="flex-shrink-0 w-[42px] h-[42px] bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center disabled:bg-gray-100"
             >
               <Icon
                 name="chevron-right"
@@ -85,10 +89,9 @@
           </div>
         </template>
       </swiper>
-
       <template #placeholder>
         <!-- Swiper Skeleton -->
-        <div class="w-full h-[254px] overflow-x-hidden flex gap-4">
+        <div class="w-full min-h-[234px] overflow-x-hidden flex gap-4">
           <div
             v-for="index in 5"
             :key="`skeleton-${index}`"
@@ -110,7 +113,7 @@
 
     <div class="flex justify-center mt-8">
       <Link link="/selayang-pandang/prestasi-jawa-barat" tabindex="-1">
-        <Button class="max-w-max" type="button" variant="secondary">
+        <Button class="max-w-max text-left md:text-center" type="button" variant="secondary">
           Lihat Semua Penghargaan Provinsi Jawa Barat
           <Icon name="open-new-tab" size="14px" />
         </Button>
@@ -127,13 +130,25 @@ export default {
       currentSlide: 0,
       swiperReady: false,
       swiperOptions: Object.freeze({
-        slidesPerView: 'auto',
+        slidesPerView: 1,
         spaceBetween: 16,
         mousewheel: true,
         passiveListeners: true,
         pagination: {
-          el: '.swiper-pagination',
-          type: 'fraction'
+          el: '#custom-pagination',
+          type: 'custom',
+          renderCustom (swiper, current, total) {
+            return `<p>${current} dari ${total}</p>`
+          }
+        },
+        navigation: {
+          nextEl: '#custom-button-next',
+          prevEl: '#custom-button-prev'
+        },
+        breakpoints: {
+          720: {
+            slidesPerView: 'auto'
+          }
         }
       }),
       items: [
@@ -192,12 +207,6 @@ export default {
     }
   },
   methods: {
-    nextSlide () {
-      this.swiperReady && this.swiper.slideNext()
-    },
-    prevSlide () {
-      this.swiperReady && this.swiper.slidePrev()
-    },
     setCurrentSlide () {
       this.currentSlide = this.swiper.activeIndex
     }

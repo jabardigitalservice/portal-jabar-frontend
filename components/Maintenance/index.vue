@@ -3,7 +3,9 @@
     <Jumbotron />
     <section class="w-full bg-gray-200">
       <BaseContainer class="relative -top-24 z-20">
-        <div class="py-[120px] rounded-xl bg-white flex flex-col gap-8 justify-center items-center">
+        <div
+          class="px-3 md:px-4 lg:px-6 py-[120px] rounded-xl bg-white flex flex-col gap-8 justify-center items-center"
+        >
           <img
             src="/images/under-construction.svg"
             alt="ilustrasi halaman sedang dalam pengembangan"
@@ -12,13 +14,18 @@
             class="max-w-full object-cover object-center mb-8"
           >
           <div>
-            <h1 class="font-lora text-[21px] leading-[34px] text-green-700 font-bold mb-2 text-center">
+            <h1
+              class="font-lora text-[21px] leading-[34px] text-green-700 font-bold mb-2 text-center"
+            >
               Fitur sedang dalam tahap pengembangan
             </h1>
-            <p class="font-lato text-sm text-blue-gray-800 leading-6 text-center">
+            <p
+              class="font-lato text-sm text-blue-gray-800 leading-6 text-center"
+            >
               Fitur yang Anda tuju saat ini sedang dalam tahap pengembangan.
               <br>
-              Silahkan kunjungi fitur ini dilain waktu atau Anda dapat mengunjungi halaman lainnya.
+              Silahkan kunjungi fitur ini dilain waktu atau Anda dapat
+              mengunjungi halaman lainnya.
             </p>
           </div>
           <Link link="/">

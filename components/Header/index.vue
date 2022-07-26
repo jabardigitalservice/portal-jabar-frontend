@@ -1,16 +1,20 @@
 <template>
   <header
-    class="flex items-center w-full h-20 fixed top-0 z-50"
-    :class="[hasBackgroundColor ? 'bg-green-800' : 'bg-black bg-opacity-10 backdrop-filter backdrop-blur-lg hover:bg-green-800']"
+    class="flex items-center w-screen h-12 fixed top-0 z-50 bg-green-primary sm:h-16 lg:h-20 transition-colors ease-brand duration-250"
+    :class="[hasBackgroundColor ? 'bg-green-primary' : 'lg:bg-black lg:bg-opacity-10 lg:backdrop-filter lg:backdrop-blur-lg lg:hover:bg-green-primary']"
   >
     <BaseContainer>
       <HeaderNavigation @active="setActiveMenu" />
+      <transition name="sidebar">
+        <HeaderSidebar v-if="open" key="sidebar" />
+      </transition>
     </BaseContainer>
   </header>
 </template>
 
 <script>
 import throttle from 'lodash/throttle'
+import { lockScroll } from '~/utils/browser'
 
 export default {
   data () {
@@ -20,8 +24,19 @@ export default {
     }
   },
   computed: {
+    open () {
+      return this.$store.state.sidebar.open
+    },
     hasBackgroundColor () {
       return this.windowsHeight > 600 || !!this.activeMenu
+    }
+  },
+  watch: {
+    $route () {
+      this.$store.dispatch('sidebar/closeSidebar')
+    },
+    open () {
+      lockScroll(this.open)
     }
   },
   mounted () {
@@ -44,3 +59,16 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+.sidebar-enter-active,
+.sidebar-leave-active {
+  @apply ease-brand;
+  transition: opacity 200ms;
+}
+
+.sidebar-enter,
+.sidebar-leave-to {
+  opacity: 0;
+}
+</style>

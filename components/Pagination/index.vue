@@ -49,4 +49,9 @@ export default {
 .pagination .jds-popover__content {
   z-index: 20 !important;
 }
+
+.pagination .jds-pagination__page-control--left span,
+.pagination .jds-pagination__page-control--right span {
+  white-space: nowrap !important;
+}
 </style>

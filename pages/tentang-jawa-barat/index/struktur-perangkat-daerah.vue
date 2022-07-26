@@ -1,10 +1,10 @@
 <template>
   <section>
     <div class="mb-16">
-      <h2 class="font-lora font-bold text-green-700 text-4xl leading-[56px] mb-4">
+      <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-9 md:leading-[56px] mb-4">
         Struktur Perangkat Daerah
       </h2>
-      <p class="text-sm leading-6 text-blue-gray-800 mb-8">
+      <p class="text-sm leading-6 text-blue-gray-800 mb-6 md:mb-8">
         Berdasarkan Peraturan Gubernur Jawa Barat No. 82 tahun 2020 tentang Kedudukan dan Susunan Perangkat Daerah Provinsi Jawa Barat, Perangkat Daerah merupakan unsur pembantu Gubernur dan Dewan Perwakilan Rakyat Daerah dalam menyelenggarakan urusan pemerintahan yang menjadi kewenangan Daerah Provinsi Jawa Barat.
       </p>
       <div class="flex justify-center items-center w-full p-8 rounded-[18px] bg-gray-100">
@@ -12,11 +12,11 @@
       </div>
     </div>
     <div>
-      <h3 class="font-lora font-bold text-[26px] text-blue-gray-700 mb-7">
+      <h3 class="font-lora font-bold text-[26px] text-center md:text-left text-blue-gray-700 mb-7">
         Tugas Pokok dan Fungsi
       </h3>
-      <ul class="grid gap-6 lg:grid-cols-2">
-        <li v-for="item in items" :key="item.id" class="p-5 rounded-lg border border-gray-300">
+      <ul class="grid gap-6 md:grid-cols-2">
+        <li v-for="item in items" :key="item.id" class="p-4 md:p-5 rounded-lg border border-gray-300">
           <h3 class="font-lato font-bold text-xl text-green-700 mb-4">
             {{ item.title }}
           </h3>

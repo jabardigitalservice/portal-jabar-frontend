@@ -76,7 +76,7 @@ export const navigationMenu = [
   {
     id: 2,
     title: 'Layanan Publik',
-    link: '#',
+    link: '',
     items: [
       {
         id: 1,
@@ -125,7 +125,7 @@ export const navigationMenu = [
   {
     id: 3,
     title: 'Dashboard Publik',
-    link: '#',
+    link: '',
     items: [
       {
         id: 1,
@@ -160,7 +160,7 @@ export const navigationMenu = [
   {
     id: 4,
     title: 'Profil Jawa Barat',
-    link: '#',
+    link: '',
     items: [
       {
         id: 1,

@@ -1,11 +1,11 @@
 <template>
-  <div class="col-span-2 rounded-md overflow-hidden flex flex-col">
-    <div class="flex flex-col gap-1 bg-green-800 px-5 pt-3 pb-4 text-white">
+  <div class="rounded-md overflow-hidden flex flex-col lg:col-span-3 xl:col-span-2">
+    <div class="flex flex-col gap-1 bg-green-700 px-5 pt-3 pb-4 text-white">
       <h4 class="text-xl leading-8 font-bold">
         Agenda Jawa Barat
       </h4>
       <p class="text-xs leading-5">
-        Dapatkan informasi terkait semua kegiatan yang dilakukan di jawa barat.
+        Dapatkan informasi terkait semua kegiatan yang dilakukan di Jawa Barat.
       </p>
     </div>
     <div class="rounded-br-md rounded-bl-md flex-grow bg-white border border-blue-gray-50 overflow-hidden">

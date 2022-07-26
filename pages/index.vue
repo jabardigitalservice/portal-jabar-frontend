@@ -3,14 +3,20 @@
     <Hero />
     <MostPopularServices />
     <FeaturedProgramPreview />
-    <section class="pt-6 pb-10">
+    <section class="pb-10">
       <BaseContainer>
-        <div class="grid grid-cols-7 gap-8">
-          <LatestNews />
-          <AgendaWidget />
+        <div class="w-full grid gap-6 lg:grid-cols-7 lg:gap-8">
+          <LazyLatestNews />
+          <LazyAgendaWidget />
         </div>
       </BaseContainer>
     </section>
-    <QuickLink />
+    <LazyQuickLink />
   </main>
 </template>
+
+<script>
+export default {
+  name: 'HomePage'
+}
+</script>

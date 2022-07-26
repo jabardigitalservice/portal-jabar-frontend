@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mb-9">
-      <h2 class="font-lora font-bold text-green-700 text-4xl leading-[56px] mb-4">
+      <h2 class="font-lora font-bold text-green-700 text-[28px] md:text-4xl text-center md:text-left leading-9 md:leading-[56px] mb-4">
         Lambang dan Moto
       </h2>
       <p class="text-sm leading-6 text-blue-gray-800 mb-8">
@@ -12,12 +12,17 @@
         <img class="banner__logo" src="/images/about/logo.svg" width="260" height="268" alt="Logo Jawa Barat">
       </div>
     </div>
-    <div class="mb-16">
-      <h3 class="p-6 font-lora font-bold text-[26px] text-blue-gray-700">
+    <div class="mb-12 lg:mb-16">
+      <h3 class="md:p-6 font-lora font-bold text-2xl md:text-[26px] text-center md:text-left text-blue-gray-700 mb-6 md:mb-0">
         Makna Logo
       </h3>
-      <ul class="grid lg:grid-cols-2 logo-items">
-        <li v-for="item in logoItems" :key="item.id" class="min-h-[159px] p-6 flex gap-6">
+      <ul class="grid md:grid-cols-2 logo-items">
+        <li
+          v-for="item in logoItems"
+          :key="item.id"
+          class="min-h-[159px] p-6 flex flex-col-reverse md:flex-row gap-6
+          md:odd:border-r md:border-b md:last-of-type:border-b-0"
+        >
           <div>
             <p class="font-roboto font-bold text-green-700 mb-2">
               {{ item.title }}
@@ -26,7 +31,7 @@
               {{ item.description }}
             </p>
           </div>
-          <div class="h-28 flex justify-center items-center flex-shrink-0">
+          <div class="h-12 md:h-28 flex justify-start md:justify-center items-center flex-shrink-0 mb-4 md:mb-0">
             <Icon
               :src="item.icon"
               :alt="item.title"
@@ -35,12 +40,12 @@
         </li>
       </ul>
     </div>
-    <div class="p-6 bg-gray-100 rounded-2xl">
-      <h3 class="font-lora font-bold text-[26px] text-blue-gray-700 mb-6">
+    <div class="p-4 md:p-6 bg-gray-100 rounded-2xl">
+      <h3 class="font-lora font-bold text-[26px] text-center md:text-left text-blue-gray-700 mb-6">
         Makna Warna
       </h3>
-      <ul class="grid gap-4 lg:grid-cols-3">
-        <li v-for="color in colors" :key="color.id" class="p-6 rounded-xl flex flex-col xl:flex-row gap-6 bg-white">
+      <ul class="grid gap-4 md:grid-cols-3">
+        <li v-for="color in colors" :key="color.id" class="p-4 lg:p-6 rounded-xl flex flex-col xl:flex-row gap-6 bg-white">
           <div
             class="w-[26px] h-[26px] rounded-full flex-shrink-0"
             :style="{ backgroundColor: color.hex, border: `1px solid ${color.border}` }"

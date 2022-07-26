@@ -1,11 +1,11 @@
 <template>
-  <div class="col-span-3 flex flex-col gap-4 h-full">
+  <div class="flex flex-col gap-4 lg:col-span-3">
     <div class="grid grid-cols-2">
       <p
         v-for="(tab, index) in tabs"
         :key="index"
         class="text-sm uppercase text-center border-b-4 pb-3 cursor-pointer"
-        :class="[selectedTab === tab ? 'font-bold border-green-800' : 'text-gray-700 border-blue-gray-50']"
+        :class="[selectedTab === tab ? 'font-bold border-green-700' : 'text-gray-700 border-blue-gray-50']"
         @click="setSelectedTab(tab)"
       >
         {{ tab }}

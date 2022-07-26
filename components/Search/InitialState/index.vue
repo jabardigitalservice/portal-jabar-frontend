@@ -11,7 +11,7 @@
       <h1 class="font-lora font-bold text-[21px] leading-8 text-blue-gray-800 text-center">
         Temukan Semua Hal Terkait Provinsi Jawa Barat
       </h1>
-      <p class="font-lato font-medium text-base text-green-800 leading-7">
+      <p class="font-lato font-medium text-base text-green-800 leading-7 text-center">
         Masukkan kata kunci yang ingin dicari pada kotak pencarian diatas
       </p>
     </div>

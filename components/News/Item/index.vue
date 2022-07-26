@@ -1,32 +1,39 @@
 <template>
   <article
     ref="news-item"
-    class="overflow-hidden grid w-full gap-4 border-4 border-transparent rounded-xl group
-    hover:bg-gray-100 hover:border-gray-100"
-    :class="small ? 'grid-cols-news-small p-1' : 'grid-cols-news-large'"
-    :style="wrapperHeight"
+    class="min-h-[88px] flex overflow-hidden w-full gap-4 border-4 border-transparent rounded-xl group
+    hover:bg-gray-100 hover:border-gray-100 p-1 transition-colors ease-brand duration-250"
+    :class="{ '!min-h-[88px]' : small }"
   >
     <div
       ref="news-item-image-wrapper"
-      class="cursor-pointer overflow-hidden rounded-lg transition-transform duration-300 ease-in-out"
-      :class="loading ? 'bg-gray-200 animate-pulse' : ''"
-      :style="imageSize"
+      class="flex-shrink-0 w-[72px] h-[72px] md:w-[200px] md:h-[130px] cursor-pointer overflow-hidden rounded-lg transition-transform duration-300 ease-in-out"
+      :class="{
+        'bg-gray-200 animate-pulse' : loading,
+        '!w-[72px] !h-[72px]': small
+      }"
     >
       <Link :link="`/berita/${item.slug}`">
-        <img
+        <LazyImg
           v-show="!loading"
           ref="news-item-image"
+          width="72"
+          height="72"
           :src="item.image"
           :alt="item.title"
-          class="block transition-transform object-center object-cover duration-300 ease-in-out
+          class="w-full h-full block transition-transform object-center object-cover duration-300 ease-in-out
           group-hover:transform group-hover:scale-125"
-          :style="imageSize"
-        >
+        />
       </Link>
     </div>
     <div class="w-full flex flex-col items-start justify-center">
       <!-- skeleton -->
-      <div v-if="loading" ref="news-item-skeletons" class="w-full">
+      <div
+        v-if="loading"
+        ref="news-item-skeletons"
+        class="w-full min-h-[72px] md:min-h-[130px]"
+        :class="{ '!min-h-[88px]' : small }"
+      >
         <div class="w-3/4 h-5 bg-gray-200 animate-pulse rounded-md mb-3" />
         <div class="w-1/2 h-4 bg-gray-200 animate-pulse rounded-md mb-2" />
       </div>
@@ -34,9 +41,9 @@
         <Link :link="`/berita/${item.slug}`">
           <h2
             ref="news-item-title"
-            class="cursor-pointer font-lato font-medium text-blue-gray-800 mb-2
+            class="text-base md:text-lg cursor-pointer font-lato font-medium text-blue-gray-800 mb-2
           group-hover:text-green-800 line-clamp-2"
-            :class="small ? 'text-base leading-6' : 'text-lg leading-7'"
+            :class="{ '!text-base !leading-6' : small }"
           >
             {{ item.title }}
           </h2>
@@ -68,22 +75,6 @@ export default {
       type: Boolean,
       required: false,
       default: false
-    }
-  },
-  computed: {
-    imageSize () {
-      if (this.small) {
-        return { width: '72px', height: '72px' }
-      }
-
-      return { width: '200px', height: '130px' }
-    },
-    wrapperHeight () {
-      if (this.small) {
-        return { height: '88px' }
-      }
-
-      return { height: '138px' }
     }
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
-  <div class="col-span-5 flex flex-col gap-4">
-    <div class="flex items-center gap-4 mb-4">
-      <h2 class="font-medium text-4xl leading-loose">
+  <div class="flex flex-col gap-4 lg:col-span-4 xl:col-span-5">
+    <div class="flex flex-col md:flex-row items-center gap-1 md:gap-4 mb-4">
+      <h2 class="font-medium text-2xl md:text-4xl leading-loose">
         Berita Terkini
       </h2>
       <div class="flex-1 flex justify-center flex-col text-center">
@@ -14,7 +14,7 @@
         </Button>
       </Link>
     </div>
-    <div class="grid grid-cols-8 gap-8 grid-rows-1 flex-grow">
+    <div class="grid grid-cols-1 xl:grid-cols-8 gap-8 md:grid-rows-1">
       <LatestNewsPreview />
       <LatestNewsTab />
     </div>

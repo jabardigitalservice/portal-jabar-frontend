@@ -37,7 +37,8 @@ module.exports = {
           600: '#16A75C',
           700: '#069550',
           800: '#008444',
-          900: '#006430'
+          900: '#006430',
+          primary: '#16A75C'
         },
         gray: {
           50: '#FAFAFA',
@@ -63,6 +64,12 @@ module.exports = {
           800: '#022B55',
           900: '#001B3D'
         }
+      },
+      transitionTimingFunction: {
+        brand: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
+      },
+      transitionDuration: {
+        250: '250ms'
       }
     }
   },

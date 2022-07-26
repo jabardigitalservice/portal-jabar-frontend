@@ -1,17 +1,17 @@
 <template>
-  <section class="toolbar min-w-0 w-full h-[38px] flex justify-between">
+  <section class="hidden toolbar min-w-0 w-full h-[38px] md:grid md:grid-cols-1 lg:grid-cols-[auto,1fr]">
     <!-- Results Counter -->
     <div class="min-w-0 flex items-center">
-      <p class="font-roboto text-base leading-5 text-blue-gray-300">
+      <p class="font-roboto text-base leading-5 text-gray-700">
         <slot name="resultText">
-          Menampilkan <strong class="text-blue-gray-600">{{ totalCount }} hasil pencarian</strong>
+          Menampilkan <strong class="text-gray-700">{{ totalCount }} hasil pencarian</strong>
         </slot>
       </p>
     </div>
-    <div class="min-w-0 flex gap-4 justify-end">
+    <div class="min-w-0 flex gap-4 justify-between lg:justify-end lg:divide-x lg:divide-gray-400">
       <!-- List and Grid View -->
-      <div class="flex gap-4 items-center ">
-        <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500">
+      <div class="flex gap-4 items-center">
+        <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500 whitespace-nowrap">
           Tipe Tampilan :
         </p>
         <button
@@ -39,11 +39,9 @@
           />
         </button>
       </div>
-      <!-- Separator -->
-      <div v-if="sortable" class="border border-r-[#BDBDBD] my-2" />
       <!-- Sort Dropdown -->
-      <div v-if="sortable" class="flex gap-4 items-center h-full overflow-hidden">
-        <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500">
+      <div v-if="sortable" class="pl-3 flex gap-4 items-center h-full">
+        <p class="font-lato font-normal text-sm leading-6 text-blue-gray-500 whitespace-nowrap">
           Urut Berdasarkan :
         </p>
         <Select

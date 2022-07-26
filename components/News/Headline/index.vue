@@ -1,8 +1,7 @@
 <template>
   <section
     ref="news-headline"
-    class="relative rounded-xl overflow-hidden group"
-    style="height: 450px"
+    class="relative rounded-xl overflow-hidden group h-[425px] md:h-[400px] lg:h-[450px]"
   >
     <template v-if="loading || !hasNews">
       <div class="w-full h-full bg-gray-200 animate-pulse" />
@@ -25,16 +24,16 @@
       <nuxt-link :to="`/berita/${item.slug}`" :aria-label="item.title">
         <div
           ref="news-headline-image"
+          v-lazy:background-image="item.image"
           class="cursor-pointer w-full h-full bg-cover bg-no-repeat bg-center transition-transform
           duration-300 ease-in-out group-hover:transform group-hover:scale-110"
           :class="loading ?'bg-gray-200 animate-pulse' : ''"
-          :style="`background-image: url('${item.image}')`"
         />
       </nuxt-link>
       <div
         ref="news-headline-meta"
         class="absolute bottom-0 w-full bg-black bg-opacity-50 transition duration-500 ease-in-out
-        group-hover:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg px-8 py-6 text-white"
+        group-hover:bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg p-4 md:px-8 md:py-6 text-white"
       >
         <div class="flex flex-col h-full">
           <div class="flex-grow mb-4">
@@ -44,32 +43,33 @@
             >
               Topik Hangat di {{ item.category }}
             </p>
-            <h3 ref="news-headline-title" class="line-clamp-2 font-lora font-bold text-3xl leading-normal mb-3">
+            <h3 ref="news-headline-title" class="line-clamp-3 md:line-clamp-2 font-lora font-bold text-2xl md:text-3xl !leading-normal mb-3">
               {{ item.title }}
             </h3>
-            <div class="flex gap-2 opacity-60 text-xs">
+            <div class="flex flex-col md:flex-row gap-2 opacity-60">
               <div ref="news-headline-date" class="flex items-center gap-2">
                 <Icon src="/icons/calendar.svg" size="16px" alt="Diterbitkan" />
-                <p>{{ date }}</p>
+                <p class="text-sm md:text-xs">
+                  {{ date }}
+                </p>
               </div>
-              <div>|</div>
+              <div class="hidden md:block">
+                |
+              </div>
               <div ref="news-headline-author" class="flex items-center gap-2">
                 <Icon src="/icons/pen.svg" size="16px" alt="Penulis" />
-                <p class="capitalize">
+                <p class="capitalize text-sm md:text-xs">
                   Penulis: {{ author }}
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex justify-between items-center">
-            <nuxt-link
-              ref="news-headline-button"
-              class="text-sm border border-white border-opacity-30 px-4 py-2 rounded-lg"
-              :to="`/berita/${item.slug}`"
-              :aria-label="item.title"
-            >
-              Baca Selengkapnya
-            </nuxt-link>
+          <div class="block md:flex md:justify-between md:items-center">
+            <Link :link="`/berita/${item.slug}`">
+              <button type="button" class="w-full md:w-[fit-content] border border-white border-opacity-30 px-4 py-2 rounded-lg">
+                Baca Selengkapnya
+              </button>
+            </Link>
           </div>
         </div>
       </div>

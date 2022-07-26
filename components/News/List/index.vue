@@ -5,18 +5,14 @@
     </div>
     <div
       :class="{
-        'w-full min-h-[138px]' : true,
-        'min-h-[88px]' : small
+        'w-full min-h-[540px]': true,
+        'min-h-0 pr-4 overflow-y-auto' : maxHeight
       }"
-      :style="maxHeight ? {
-        maxHeight: maxHeight + 'px',
-        paddingRight: '16px',
-        overflowY: 'auto'
-      } : null"
+      :style="maxHeight ? { maxHeight: maxHeight + 'px' } : null"
     >
       <div
         ref="news-list-body"
-        class="flex-auto w-full flex flex-col"
+        class="flex-auto w-full flex flex-col gap-5 md:gap-6"
         :class="small ? 'gap-5' : 'gap-6'"
       >
         <NewsItem

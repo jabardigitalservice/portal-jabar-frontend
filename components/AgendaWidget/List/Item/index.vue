@@ -9,7 +9,7 @@
           />
           <div
             v-if="ongoing"
-            class="animate-ping w-2 h-2 rounded-full absolute z-10 top-0 border-2 border-green-800 bg-white"
+            class="animate-ping w-2 h-2 rounded-full absolute z-10 top-0 border-2 border-green-700 bg-white"
           />
         </div>
         <div
@@ -19,7 +19,7 @@
         />
       </div>
       <div
-        class="flex gap-2 w-full px-3 py-2 rounded-lg"
+        class="flex gap-2 w-full px-3 py-2 rounded-lg transition-colors ease-brand duration-250"
         :class="cardClass"
         @click="toggleEventDetail"
       >
@@ -53,26 +53,30 @@
         </div>
       </div>
     </div>
-    <Modal
+    <BaseModal
       :show="isEventDetailOpen"
-      :header="title"
-      :close-button="false"
+      button-label="Tutup"
       @close="toggleEventDetail"
     >
-      <div class="p-6 flex flex-col gap-6">
-        <div class="flex gap-6">
+      <template #header>
+        <h1 class="font-roboto font-medium text-[21px] leading-[34px] text-green-700 px-6 py-2">
+          {{ title }}
+        </h1>
+      </template>
+      <div class="py-4 px-6 flex flex-col gap-6 max-w-[525px]">
+        <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/category.svg" size="20px" />
             <div class="flex flex-col gap-2">
               <p class="text-xs text-blue-gray-200">
                 Kategori Acara
               </p>
-              <p class="text-sm text-green-800 bg-green-50 px-2 py-1 rounded-md whitespace-nowrap">
+              <p class="text-sm text-green-700 bg-green-50 px-2 py-1 rounded-md whitespace-nowrap">
                 {{ category }}
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 ml-9 md:ml-0">
             <p class="text-xs text-blue-gray-200">
               Tipe Acara
             </p>
@@ -84,7 +88,7 @@
             </p>
           </div>
         </div>
-        <div class="flex gap-6">
+        <div class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/calendar.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -96,7 +100,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 ml-9 md:ml-0">
             <p class="text-xs text-blue-gray-200">
               Waktu
             </p>
@@ -104,11 +108,11 @@
               {{ time }}
             </p>
           </div>
-          <div class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap self-end">
+          <div class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap self-end ml-9 md:ml-0">
             {{ status }}
           </div>
         </div>
-        <div v-if="isOnline" class="flex gap-6">
+        <div v-if="isOnline" class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/url.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -121,7 +125,7 @@
             </div>
           </div>
         </div>
-        <div v-else class="flex gap-6">
+        <div v-else class="flex gap-3 md:gap-6 flex-wrap">
           <div class="flex items-start gap-4">
             <Icon src="/icons/agenda/location.svg" size="20px" />
             <div class="flex flex-col gap-2">
@@ -135,12 +139,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-gray-50 py-4 flex justify-center items-center">
-        <div @click="toggleEventDetail">
-          <Button>Tutup</Button>
-        </div>
-      </div>
-    </Modal>
+    </BaseModal>
   </div>
 </template>
 
@@ -262,48 +261,48 @@ export default {
     circleClass () {
       return {
         'bg-gray-300': this.notStarted,
-        'border-2 border-green-800 bg-white': this.ongoing,
-        'bg-green-800': this.done
+        'border-2 border-green-700 bg-white': this.ongoing,
+        'bg-green-700': this.done
       }
     },
     borderClass () {
       return {
         'border-gray-300': this.notStarted,
-        'border-green-800': this.ongoing || this.done
+        'border-green-700': this.ongoing || this.done
       }
     },
     cardClass () {
       return {
         'bg-gray-50 group hover:bg-green-50': this.notStarted,
-        'bg-green-800 bg-opacity-100': this.ongoing,
-        'bg-green-50 bg-opacity-50 border border-green-800': this.done
+        'bg-green-700 bg-opacity-100': this.ongoing,
+        'bg-green-50 bg-opacity-50 border border-green-700': this.done
       }
     },
     titleClass () {
       return {
-        'group-hover:text-green-800': this.notStarted,
+        'group-hover:text-green-700': this.notStarted,
         'text-white': this.ongoing,
-        'text-green-800': this.done
+        'text-green-700': this.done
       }
     },
     categoryClass () {
       return {
-        'text-green-800 bg-gray-200 bg-opacity-75 group-hover:bg-green-100 group-hover:bg-opacity-40': this.notStarted,
-        'text-white bg-green-900 bg-opacity-50': this.ongoing,
-        'text-green-800 bg-green-100 bg-opacity-40': this.done
+        'text-green-700 bg-gray-200 bg-opacity-75 group-hover:bg-green-100 group-hover:bg-opacity-40': this.notStarted,
+        'text-white bg-green-800': this.ongoing,
+        'text-green-700 bg-green-100 bg-opacity-40': this.done
       }
     },
     timeClass () {
       return {
         'text-gray-600': this.notStarted,
-        'text-green-800': this.done,
+        'text-green-700': this.done,
         'text-white': this.ongoing
       }
     },
     statusClass () {
       return {
         'text-gray-600': this.notStarted,
-        'text-green-800': this.done,
+        'text-green-700': this.done,
         'text-white': this.ongoing
       }
     }

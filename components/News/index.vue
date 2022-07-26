@@ -11,15 +11,14 @@
       />
     </section>
     <!-- News Section -->
-    <BaseContainer class="mx-auto grid grid-cols-1 gap-10 md:grid-cols-news-container md:gap-20">
+    <BaseContainer class="mx-auto grid grid-cols-1 gap-8 lg:gap-20 lg:grid-cols-news-container pb-8">
       <section class="w-full flex flex-col">
         <NewsHeadline :item="headline" :loading="loading" class="mb-6" />
         <NewsList
           :items="mainNews"
           :loading="mainNewsLoading"
           :max-item="pagination.itemsPerPage"
-          class="mb-6"
-          :class="mainNews.length ? 'min-h-[850px]' : ''"
+          :class="mainNews.length ? 'min-h-[540px] md:min-h-[850px]' : ''"
         >
           <!-- Main News Pagination -->
           <template #footer>
@@ -35,7 +34,7 @@
           </template>
         </NewsList>
       </section>
-      <section class="w-full flex flex-col gap-14">
+      <section class="w-full flex flex-col gap-8 lg:gap-14">
         <!-- Latest News -->
         <NewsList :items="latestNews" small :loading="loading">
           <template #header>

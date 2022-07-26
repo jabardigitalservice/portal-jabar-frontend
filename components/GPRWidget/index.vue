@@ -46,6 +46,17 @@ export default {
       isOpen: false
     }
   },
+  head () {
+    return {
+      script: [
+        {
+          hid: 'text/javascript"',
+          src: 'https://widget.kominfo.go.id/gpr-widget-kominfo.min.js',
+          defer: true
+        }
+      ]
+    }
+  },
   methods: {
     toggleOpen () {
       this.isOpen = !this.isOpen

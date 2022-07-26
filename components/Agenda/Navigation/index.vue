@@ -1,29 +1,28 @@
 <template>
-  <div class="flex justify-between items-center">
-    <div class="flex justify-between items-center gap-5">
-      <div class="flex gap-4">
-        <Icon
-          name="chevron-left"
-          class="text-green-800 cursor-pointer"
-          size="18px"
-          @click="prev"
-        />
-        <Icon
-          name="chevron-right"
-          class="text-green-800 cursor-pointer"
-          size="18px"
-          @click="next"
-        />
-      </div>
-      <p class="font-roboto font-bold text-3xl">
+  <div class="agenda-navigation flex justify-between items-center">
+    <div class="grid grid-cols-[auto,1fr,auto] md:grid-cols-[auto,auto,1fr] w-full lg:w-[fit-content] justify-between items-center gap-4 md:gap-5">
+      <Icon
+        name="chevron-left"
+        class="text-green-800 cursor-pointer"
+        size="18px"
+        @click="prev"
+      />
+      <Icon
+        name="chevron-right"
+        class="text-green-800 cursor-pointer row-start-1 col-start-3 md:col-start-2"
+        size="18px"
+        @click="next"
+      />
+      <p class="font-roboto font-bold text-lg md:text-2xl lg:text-3xl text-center md:text-left row-start-1 col-start-2 md:col-start-3">
         {{ day }} {{ month }}
         <span class="font-medium text-gray-500">{{ year }}</span>
       </p>
     </div>
     <Select
+      class="agenda-navigation__view-select hidden xl:flex"
       label="Tampilkan dalam"
       :options="[{ value: 'month', label: 'Bulan' }, { value: 'week', label: 'Minggu' }]"
-      value="month"
+      :value="agendaView"
       @click="setAgendaView"
     />
   </div>
@@ -174,8 +173,16 @@ export default {
       }
     },
     setAgendaView (view) {
-      this.$emit('update:agenda-view', view)
+      if (view) {
+        this.$emit('update:agenda-view', view)
+      }
     }
   }
 }
 </script>
+
+<style>
+.agenda-navigation .agenda-navigation__view-select .jds-input-text__input-wrapper {
+  width: 120px !important;
+}
+</style>

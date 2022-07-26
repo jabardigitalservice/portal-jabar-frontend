@@ -1,13 +1,19 @@
 <template>
-  <div>
-    <div class="absolute h-[740px] top-0 -left-11 flex flex-col" @click="toggleFeedbackForm">
-      <div class="relative top-[225px] transform -rotate-90 group cursor-pointer">
-        <div class="bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm flex justify-center items-center gap-4 pl-3 pr-4 py-3 rounded-br-lg rounded-bl-lg border-l border-b border-transparent hover:bg-opacity-10 hover:border-white hover:border-opacity-10">
+  <div class="w-full max-w-xl">
+    <div
+      class="flex flex-col mt-6 md:mt-0 md:absolute md:h-[740px] md:top-0 md:-left-11"
+      @click="toggleFeedbackForm"
+    >
+      <div class="group cursor-pointer md:relative md:top-[225px] md:transform md:-rotate-90">
+        <div
+          class="bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm flex justify-center items-center gap-4 pl-3 pr-4 py-3 rounded-lg border-l border-b border-transparent
+          md:rounded-tr-none md:rounded-tl-none hover:bg-opacity-10 hover:border-white hover:border-opacity-10 transition-all ease-brand duration-250"
+        >
           <Icon
             src="/icons/feedback.svg"
             alt="Umpan balik"
             size="20px"
-            class="transform rotate-90"
+            class="transform md:rotate-90"
           />
           <p class="whitespace-nowrap text-white text-opacity-80 tracking-wide">
             Isi Survey
